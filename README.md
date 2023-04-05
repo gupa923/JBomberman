@@ -5,7 +5,7 @@ mdp project
 
 info:
 prima di tutto installa git, basta che cerchi git download e lo trovi.
-per lavorare sul progetto sul tuo pc nella pagina web  di questa repository clicca il tasto code e copia l'url https. apri intellij e nella schermata in cui ti chiede 
+per lavorare sul progetto sul tuo pc nella pagina web  di questa repository clicca il tasto "clone or download" e copia l'url https. apri intellij e nella schermata in cui ti chiede 
 che progetto vuoi aprire, clicca su "get from VCS" in alto a destra. ora scegli la directory dove vuoi mettere il progetto, incolla l'url nella sezione url e clicca su 
 clone.
 in teoria ti dovresti trovare nel branch Master. Se premi Alt+9 dovrebbe aprirsi il menù di git, da qui puoi vedere i branch e i commit fatti. per creare un branch clicca
