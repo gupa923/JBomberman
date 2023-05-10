@@ -85,7 +85,7 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
 
         subImg = img.getSubimage(0, 1, 16, 24);
-        setupSchermata
+        
         g.drawImage(subImg, 0, 0, (int) (16* Constants.GAME_SCALE), (int) (24 * Constants.GAME_SCALE), null);
 
     
