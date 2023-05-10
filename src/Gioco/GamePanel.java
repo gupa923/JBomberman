@@ -1,5 +1,10 @@
 package Gioco;
 
+import GameInfo.Constants;
+import InputManagment.KeyInputManager;
+
+import static GameInfo.Constants.BoardConstants.*;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +23,8 @@ import java.io.InputStream;
 public class GamePanel extends JPanel {
     private BufferedImage img;
     private BufferedImage subImg;
+    private int direction = 0;
+    private boolean isMoving = false;
 
     /**
      * nel costruttore chiamo due metodi importImg che crea una BufferedImage e un setPanelSize che imposta la dimensione del GamePanel
@@ -28,6 +35,8 @@ public class GamePanel extends JPanel {
     public GamePanel(){
         importImg();
         setPanelSize();
+
+        addKeyListener(new KeyInputManager(this));
     }
 
     /**
@@ -45,13 +54,20 @@ public class GamePanel extends JPanel {
         }
     }
 
+    public void setMoving(boolean moving) {
+        isMoving = moving;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
 
     /**
      * imposto le dimensioni del GamePanel
      *
      */
     private void setPanelSize() {
-        Dimension size = new Dimension(1280, 800);
+        Dimension size = new Dimension(BOARD_SIZE_X, BOARD_SIZE_Y);
         setMinimumSize(size);
         setPreferredSize(size);
         setMaximumSize(size);
@@ -68,8 +84,8 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
-        subImg = img.getSubimage(1, 0, 16, 24);
-        g.drawImage(subImg, 0, 0, 160, 240, null);
+        subImg = img.getSubimage(0, 1, 16, 24);
+        g.drawImage(subImg, 0, 0, (int) (16* Constants.GAME_SCALE), (int) (24 * Constants.GAME_SCALE), null);
     }
 
 }
