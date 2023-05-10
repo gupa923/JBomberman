@@ -8,7 +8,7 @@ import javax.swing.*;
  *
  * @autor gupa923
  */
-public class GameWindow  extends JFrame{
+public class GameFrame extends JFrame{
 
     /**
      * questo costruttore crea la finistra.
@@ -24,7 +24,7 @@ public class GameWindow  extends JFrame{
      * infine con setVisible faccio apparire la finestra
      * @param gamePanel
      */
-    public GameWindow(GamePanel gamePanel){
+    public GameFrame(GamePanel gamePanel){
         super("JBomberman");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
