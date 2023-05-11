@@ -2,6 +2,7 @@ package Gioco;
 
 import GameInfo.Constants;
 import InputManagment.KeyInputManager;
+import InputManagment.MouseInputManager;
 
 import static GameInfo.Constants.BoardConstants.*;
 
@@ -26,6 +27,7 @@ public class GamePanel extends JPanel {
     private int direction = 0;
     private boolean isMoving = false;
     private int dx, dy;
+    private int xm, ym;
 
     /**
      * nel costruttore chiamo due metodi importImg che crea una BufferedImage e un setPanelSize che imposta la dimensione del GamePanel
@@ -38,6 +40,7 @@ public class GamePanel extends JPanel {
         setPanelSize();
 
         addKeyListener(new KeyInputManager(this));
+        addMouseListener(new MouseInputManager(this));
     }
 
     /**
@@ -80,6 +83,16 @@ public class GamePanel extends JPanel {
 
     public void setDy(int dy) {
         this.dy += dy;
+    }
+
+    public void setXm(int xm) {
+        this.xm = xm;
+        dx = xm;
+    }
+
+    public void setYm(int ym) {
+        this.ym = ym;
+        dy = ym;
     }
 
     /**
