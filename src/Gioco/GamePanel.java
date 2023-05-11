@@ -28,6 +28,7 @@ public class GamePanel extends JPanel {
     private boolean isMoving = false;
     private int dx, dy;
     private int xm, ym;
+    private int rgergg = 0;
 
     /**
      * nel costruttore chiamo due metodi importImg che crea una BufferedImage e un setPanelSize che imposta la dimensione del GamePanel
