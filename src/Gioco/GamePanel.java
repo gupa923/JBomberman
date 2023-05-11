@@ -5,6 +5,7 @@ import InputManagment.KeyInputManager;
 import InputManagment.MouseInputManager;
 
 import static GameInfo.Constants.BoardConstants.*;
+import static GameInfo.Constants.Direction.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -96,6 +97,24 @@ public class GamePanel extends JPanel {
         dy = ym;
     }
 
+    private void updatePos(){
+        if (isMoving){
+            switch (direction){
+                case UP:
+                    dy -= 5;
+                    break;
+                case DOWN:
+                    dy += 5;
+                    break;
+                case LEFT:
+                    dx -= 5;
+                    break;
+                case RIGHT:
+                    dx += 5;
+                    break;
+            }
+        }
+    }
     /**
      * con questo metodo disegno le cose cose a schero non si deve chiamare poichè viene eseguito insieme alla creazione del JPanel
      *
@@ -106,6 +125,8 @@ public class GamePanel extends JPanel {
      */
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+
+        updatePos();
 
         subImg = img.getSubimage(0, 1, 16, 24);
         g.drawImage(subImg, dx, dy, (int) (16* Constants.GAME_SCALE), (int) (24 * Constants.GAME_SCALE), null);

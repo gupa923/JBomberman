@@ -30,6 +30,7 @@ public class Constants {
      *
      */
     public static class Direction{
+        public static final int IDLE = 0;
         public static final int UP = 1;
         public static final int DOWN = 2;
         public static final int LEFT = 3;
