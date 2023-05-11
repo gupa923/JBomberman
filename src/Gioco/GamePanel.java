@@ -25,6 +25,7 @@ public class GamePanel extends JPanel {
     private BufferedImage subImg;
     private int direction = 0;
     private boolean isMoving = false;
+    private int dx, dy;
 
     /**
      * nel costruttore chiamo due metodi importImg che crea una BufferedImage e un setPanelSize che imposta la dimensione del GamePanel
@@ -73,6 +74,14 @@ public class GamePanel extends JPanel {
         setMaximumSize(size);
     }
 
+    public void setDx(int dx) {
+        this.dx += dx;
+    }
+
+    public void setDy(int dy) {
+        this.dy += dy;
+    }
+
     /**
      * con questo metodo disegno le cose cose a schero non si deve chiamare poichè viene eseguito insieme alla creazione del JPanel
      *
@@ -85,8 +94,7 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
 
         subImg = img.getSubimage(0, 1, 16, 24);
-        setupSchermata
-        g.drawImage(subImg, 0, 0, (int) (16* Constants.GAME_SCALE), (int) (24 * Constants.GAME_SCALE), null);
+        g.drawImage(subImg, dx, dy, (int) (16* Constants.GAME_SCALE), (int) (24 * Constants.GAME_SCALE), null);
 
     
     }
