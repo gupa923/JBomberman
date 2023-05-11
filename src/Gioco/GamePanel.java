@@ -1,6 +1,7 @@
 package Gioco;
 
 import GameInfo.Constants;
+import static GameInfo.PlayerConstants.*;
 import InputManagment.KeyInputManager;
 import InputManagment.MouseInputManager;
 
@@ -29,7 +30,6 @@ public class GamePanel extends JPanel {
     private boolean isMoving = false;
     private int dx, dy;
     private int xm, ym;
-    private int rgergg = 0;
 
     /**
      * nel costruttore chiamo due metodi importImg che crea una BufferedImage e un setPanelSize che imposta la dimensione del GamePanel
@@ -101,16 +101,16 @@ public class GamePanel extends JPanel {
         if (isMoving){
             switch (direction){
                 case UP:
-                    dy -= 5;
+                    dy -= PLAYER_SPEED;
                     break;
                 case DOWN:
-                    dy += 5;
+                    dy += PLAYER_SPEED;
                     break;
                 case LEFT:
-                    dx -= 5;
+                    dx -= PLAYER_SPEED;
                     break;
                 case RIGHT:
-                    dx += 5;
+                    dx += PLAYER_SPEED;
                     break;
             }
         }
@@ -128,10 +128,10 @@ public class GamePanel extends JPanel {
 
         updatePos();
 
-        subImg = img.getSubimage(0, 1, 16, 24);
+        subImg = img.getSubimage(4*16 + 2, 1, 16, 24);
         g.drawImage(subImg, dx, dy, (int) (16* Constants.GAME_SCALE), (int) (24 * Constants.GAME_SCALE), null);
 
-    
+
     }
 
 }

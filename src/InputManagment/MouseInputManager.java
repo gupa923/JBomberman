@@ -4,8 +4,9 @@ import Gioco.GamePanel;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
-public class MouseInputManager implements MouseListener
+public class MouseInputManager implements MouseListener, MouseMotionListener
 {
 
     private GamePanel panel;
@@ -37,6 +38,16 @@ public class MouseInputManager implements MouseListener
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
 
     }
 }
