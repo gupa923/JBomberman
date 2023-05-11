@@ -128,8 +128,9 @@ public class GamePanel extends JPanel {
 
         updatePos();
 
-        subImg = img.getSubimage(0, 1, 16, 24);
+        subImg = img.getSubimage(0, 1, 16, 24); 
         g.drawImage(subImg, dx, dy, (int) (16* Constants.GAME_SCALE), (int) (24 * Constants.GAME_SCALE), null);
+
 
     
     }

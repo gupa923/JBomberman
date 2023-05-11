@@ -21,3 +21,6 @@ per vedere le modifiche su github, se lo tenevi già aperto devi aggiornare la p
 il branch di default della repository è master, quindi le tue modifiche le vedrai sul branch Master, per metterle nel branch di default deevi fare una pull request.
 quindi clicci su pull request, poi su new pull request, lasci come base "master" e come compare metti "Master", a questo punto selezioni il commit da mettere in master e confermi la
 creazione della pull request. Non so se github ti permetta di confermare la pull request e quindi di modificare il master, quindi probabilmente io devo confermare la tua pull request.
+
+
+N.B. intellij ha un problema cioè che bisogna specificare manualmente qual è la cartella delle risorse (nel nostro caso res). per farlo una volta aperto il progetto clicca sul nome del progetto prima col tasto sinistro e poi col tasto destro, ora sul menù che si è aperto va su "mark directory as" poi seleziona "source root". a questo punto vai sul menu "file", seleziona "project structure" vai su moduli seleziona la cartella res e premi sul bottone "resources" a questo punto confrema
