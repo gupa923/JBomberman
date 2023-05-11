@@ -23,29 +23,32 @@ public class KeyInputManager implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()){
             case KeyEvent.VK_W:
-                panel.setDirection(UP);
-                panel.setMoving(true);
+                panel.setDy(-10);
+                //panel.setDirection(UP);
+                //panel.setMoving(true);
                 break;
 
             case KeyEvent.VK_S:
-                panel.setDy(5);
+                panel.setDy(10);
                 //panel.setDirection(DOWN);
                 //panel.setMoving(true);
                 break;
 
             case KeyEvent.VK_A:
-                panel.setDirection(LEFT);
-                panel.setMoving(true);
+                panel.setDx(-10);
+                //panel.setDirection(LEFT);
+               // panel.setMoving(true);
                 break;
 
             case KeyEvent.VK_D:
-                panel.setDirection(RIGHT);
-                panel.setMoving(true);
+                panel.setDx(10);
+               // panel.setDirection(RIGHT);
+               // panel.setMoving(true);
                 break;
 
             default:
-                panel.setDirection(0);
-                panel.setMoving(false);
+               // panel.setDirection(0);
+              //  panel.setMoving(false);
                 break;
         }
     }

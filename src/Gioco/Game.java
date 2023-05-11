@@ -28,7 +28,7 @@ public class Game implements Runnable
     }
 
     private void startGame() {
-        thread = new Thread();
+        thread = new Thread(this);
         thread.start();
     }
 
