@@ -1,9 +1,9 @@
-package Gioco;
+package View;
 
+import Controller.KeyInputManager;
+import Controller.MouseInputManager;
 import GameInfo.Constants;
 import static GameInfo.PlayerConstants.*;
-import InputManagment.KeyInputManager;
-import InputManagment.MouseInputManager;
 
 import static GameInfo.Constants.BoardConstants.*;
 import static GameInfo.Constants.Direction.*;
@@ -33,7 +33,7 @@ public class GamePanel extends JPanel {
     private int stocazzo;
 
     /**
-     * nel costruttore chiamo due metodi importImg che crea una BufferedImage e un setPanelSize che imposta la dimensione del GamePanel
+     * nel costruttore chiamo due metodi importImg che crea una BufferedImage e un setPanelSize che imposta la dimensione del View.GamePanel
      *
      *
      *
@@ -61,16 +61,9 @@ public class GamePanel extends JPanel {
         }
     }
 
-    public void setMoving(boolean moving) {
-        isMoving = moving;
-    }
-
-    public void setDirection(int direction) {
-        this.direction = direction;
-    }
 
     /**
-     * imposto le dimensioni del GamePanel
+     * imposto le dimensioni del View.GamePanel
      *
      */
     private void setPanelSize() {
@@ -80,23 +73,7 @@ public class GamePanel extends JPanel {
         setMaximumSize(size);
     }
 
-    public void setDx(int dx) {
-        this.dx += dx;
-    }
 
-    public void setDy(int dy) {
-        this.dy += dy;
-    }
-
-    public void setXm(int xm) {
-        this.xm = xm;
-        dx = xm;
-    }
-
-    public void setYm(int ym) {
-        this.ym = ym;
-        dy = ym;
-    }
 
     private void updatePos(){
         if (isMoving){
@@ -120,7 +97,7 @@ public class GamePanel extends JPanel {
      * con questo metodo disegno le cose cose a schero non si deve chiamare poichè viene eseguito insieme alla creazione del JPanel
      *
      * con il metodo getSubimage prendo rettangolo dell'imagine che parte dal pixel con x = 1 e y = 0, che è largo 16 pixel e alto 24
-     * con il metodo drawImage disegno nel GamePanel la subImage create prima, alle coordinate (0, 0) e con width e height dico quanto deve essere grande,
+     * con il metodo drawImage disegno nel View.GamePanel la subImage create prima, alle coordinate (0, 0) e con width e height dico quanto deve essere grande,
      * in questo caso ho moltiplicato per 10 la dimensione della sottoimagine in modo che si vedesse chiaramente
      * @param g the <code>Graphics</code> object to protect
      */
@@ -135,4 +112,29 @@ public class GamePanel extends JPanel {
 
     }
 
+    public void setMoving(boolean moving) {
+        isMoving = moving;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+
+    public void setDx(int dx) {
+        this.dx += dx;
+    }
+
+    public void setDy(int dy) {
+        this.dy += dy;
+    }
+
+    public void setXm(int xm) {
+        this.xm = xm;
+        dx = xm;
+    }
+
+    public void setYm(int ym) {
+        this.ym = ym;
+        dy = ym;
+    }
 }

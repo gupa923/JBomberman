@@ -1,7 +1,10 @@
-package Gioco;
+package Controller;
+
+import View.GameFrame;
+import View.GamePanel;
 
 /**
- * questa classe gestirà il game loop e creando le istanze di GameWindow e GamePanel si occuperà anche della visualizzazione delle immagini a schermo
+ * questa classe gestirà il game loop e creando le istanze di GameWindow e View.GamePanel si occuperà anche della visualizzazione delle immagini a schermo
  *
  *
  * @autor gupa923
@@ -15,7 +18,7 @@ public class Game implements Runnable
     private int FPS = 120;
 
     /**
-     * nel costruttore creo le due istanze in modo che quando creo un instanza di Game vengoano creati anche il JFrame e il JPanel
+     * nel costruttore creo le due istanze in modo che quando creo un instanza di Controller.Game vengoano creati anche il JFrame e il JPanel
      *
      *
      */

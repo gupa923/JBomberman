@@ -8,7 +8,7 @@ package GameInfo;
  */
 public class Constants {
 
-    public static final float GAME_SCALE = 3.0f;
+    public static final float GAME_SCALE = 3.25f;
     /**
      * questa classe contiene la dimensione della mappa di gioco, che per adesso è la dimensione di tutta la schermata
      *

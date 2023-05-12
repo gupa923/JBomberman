@@ -1,4 +1,4 @@
-package Gioco;
+package View;
 
 import javax.swing.*;
 
@@ -12,7 +12,7 @@ public class GameFrame extends JFrame{
 
     /**
      * questo costruttore crea la finistra.
-     * ha come argomento un istanza di GamePanel.
+     * ha come argomento un istanza di View.GamePanel.
      * in primo luogo chiama il costruttore della classe JFrame
      * con il secondo comando faccio in modo che quando chiudo la finestra si interrompa anche l'esecuzione del programma
      * con il metodo add aggiungo il gamePanel al JFrame
@@ -25,7 +25,7 @@ public class GameFrame extends JFrame{
      * @param gamePanel
      */
     public GameFrame(GamePanel gamePanel){
-        super("JBomberman");
+        super("Controller.JBomberman");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(gamePanel);
