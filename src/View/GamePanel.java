@@ -1,7 +1,7 @@
 package View;
 
-import Controller.KeyInputManager;
-import Controller.MouseInputManager;
+import Controller.InputManager.KeyInputManager;
+import Controller.InputManager.MouseInputManager;
 import GameInfo.Constants;
 import static GameInfo.PlayerConstants.*;
 
@@ -75,7 +75,7 @@ public class GamePanel extends JPanel {
 
 
 
-    private void updatePos(){
+    public void updatePos(){
         if (isMoving){
             switch (direction){
                 case UP:
@@ -104,7 +104,7 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
-        updatePos();
+        //updatePos();
 
         subImg = img.getSubimage(4*16 + 2, 1, 16, 24);
         g.drawImage(subImg, dx, dy, (int) (16* Constants.GAME_SCALE), (int) (24 * Constants.GAME_SCALE), null);

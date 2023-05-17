@@ -15,7 +15,8 @@ public class Game implements Runnable
     private GameFrame gameFrame;
     private GamePanel gamePanel;
     private Thread thread;
-    private int FPS = 120;
+    private final int FPS = 120;
+    private final int UPS = 120;
 
     /**
      * nel costruttore creo le due istanze in modo che quando creo un instanza di Controller.Game vengoano creati anche il JFrame e il JPanel
@@ -37,29 +38,48 @@ public class Game implements Runnable
 
     @Override
     public void run() {
-        double timePerFrame = 1000000000.0 / FPS;
-        long lastFrame = System.nanoTime();
-        long now = System.nanoTime();
+        double timePerFrame = 1000000000.0 / FPS;  // si usano nanosecondi
+        double timePerUpdate = 1000000000.0 / UPS;
+
+
+        long previousTime = System.nanoTime();
 
         int frames = 0;
+        int updates = 0;
         long lastCheck = System.currentTimeMillis();
 
-        while (true) {
+        double deltaU = 0;
+        double deltaF = 0;
 
-            now = System.nanoTime();
-            if (now - lastFrame >= timePerFrame) {
-                gamePanel.repaint();
-                lastFrame = now;
-                frames++;
+        while(true) {
+
+
+            long currentTime = System.nanoTime();
+
+            deltaU += (currentTime - previousTime)/ timePerUpdate;
+            deltaF += (currentTime - previousTime)/ timePerFrame;
+            previousTime = currentTime;
+            if (deltaU >= 1){
+                gamePanel.updatePos();
+                updates++;
+                deltaU--;
             }
+
+            if (deltaF >= 1){
+                gamePanel.repaint();
+
+                frames++;
+                deltaF--;
+            }
+
 
             if (System.currentTimeMillis() - lastCheck >= 1000) {
                 lastCheck = System.currentTimeMillis();
-                System.out.println("FPS: " + frames);
+                System.out.println("FPS = " + frames + "| UPS: " + updates);
                 frames = 0;
+                updates = 0;
             }
         }
-
     }
 
 }

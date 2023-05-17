@@ -1,4 +1,4 @@
-package Controller;
+package Controller.InputManager;
 
 import View.GamePanel;
 
