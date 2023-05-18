@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.KeyInputsManager;
 import Model.Prova;
 import View.GameFrame;
 import View.GamePanel;
