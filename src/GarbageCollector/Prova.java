@@ -2,6 +2,15 @@ package GarbageCollector;
 
 import java.util.Observable;
 
+/**
+ *
+ * le classi in GarbageCollector sono classi di prova che non devono restare nel progetto
+ * una volta terminato.
+ *
+ *
+ *
+ */
+
 public class Prova extends Observable {
     private int x, y, width,heigth;
     private boolean moving;
