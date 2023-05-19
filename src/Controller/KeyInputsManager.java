@@ -1,15 +1,15 @@
 package Controller;
 
-import Model.Prova;
+import Model.Player;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyInputsManager implements KeyListener {
-    private Prova prova;
+    private Player player;
 
-    public KeyInputsManager(Prova prova) {
-        this.prova = prova;
+    public KeyInputsManager(Player player) {
+        this.player = player;
     }
 
     @Override
@@ -21,20 +21,20 @@ public class KeyInputsManager implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()){
             case KeyEvent.VK_D ->{
-                prova.setMoving(true);
-                prova.setDirection("RIGHT");
+                player.setMoving(true);
+                player.setDirection("RIGHT");
             }
             case KeyEvent.VK_W -> {
-                prova.setMoving(true);
-                prova.setDirection("UP");
+                player.setMoving(true);
+                player.setDirection("UP");
             }
             case KeyEvent.VK_A->{
-                prova.setMoving(true);
-                prova.setDirection("LEFT");
+                player.setMoving(true);
+                player.setDirection("LEFT");
             }
             case KeyEvent.VK_S -> {
-                prova.setMoving(true);
-                prova.setDirection("DOWN");
+                player.setMoving(true);
+                player.setDirection("DOWN");
             }
 
         }
@@ -47,7 +47,7 @@ public class KeyInputsManager implements KeyListener {
             case KeyEvent.VK_W:
             case KeyEvent.VK_S:
             case KeyEvent.VK_D:
-                prova.setMoving(false);
+                player.setMoving(false);
                 break;
         }
     }

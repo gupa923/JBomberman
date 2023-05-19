@@ -1,25 +1,26 @@
 package Controller;
 
-import Model.Prova;
+import Model.GameModel;
 import View.GameFrame;
 import View.GamePanel;
 
 public class Game implements Runnable{
     private GameFrame frame;
     private GamePanel panel;
-    private Prova test;
+    //private Prova test;
+    private GameModel gameModel;
     private Thread gameThread;
-    private int FPS = 120;
-    private int UPS = 200;
+    private int FPS = 60;
+    private int UPS = 100;
 
     public Game(){
         panel = new GamePanel();
         frame = new GameFrame(panel);
-        test = new Prova(0, 0, 16, 24);
-        test.addObserver(panel.getProvaG());
 
-        panel.addKeyListener(new KeyInputsManager(test));
+        gameModel = new GameModel();
+        panel.addKeyListener(new KeyInputsManager(gameModel.getPlayer()));
         panel.requestFocus();
+        gameModel.getPlayer().addObserver(panel.getPlayerGraphics());
 
         startExecution();
     }
@@ -51,7 +52,7 @@ public class Game implements Runnable{
             previousTime = currentTime;
 
             if (deltaU >= 1) {
-                test.updatePos();
+                gameModel.updateGame();
                 updates++;
                 deltaU--;
             }

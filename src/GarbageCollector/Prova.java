@@ -1,4 +1,4 @@
-package Model;
+package GarbageCollector;
 
 import java.util.Observable;
 
@@ -6,6 +6,7 @@ public class Prova extends Observable {
     private int x, y, width,heigth;
     private boolean moving;
     private String direction;
+    private int speed = 1;
 
     public Prova(int x, int y, int width, int heigth) {
         this.x = x;
@@ -15,23 +16,36 @@ public class Prova extends Observable {
     }
 
     public void updatePos(){
+
         if (moving){
             switch (direction){
                 case "LEFT" -> {
-                    x --;
-                    sendMessage(direction);
+                    if (x-speed>= 0)
+                    {
+                        x -= speed;
+                        sendMessage(direction);
+                    }
                 }
                 case "RIGHT" ->{
-                    x++;
-                    sendMessage(direction);
+                    if (x+speed+width <= 272)
+                    {
+                        x += speed;
+                        sendMessage(direction);
+                    }
                 }
                 case "UP" -> {
-                    y--;
-                    sendMessage(direction);
+                    if (y-speed>= 0)
+                    {
+                        y -= speed;
+                        sendMessage(direction);
+                    }
                 }
                 case "DOWN" -> {
-                    y++;
-                    sendMessage(direction);
+                    if (y+speed+heigth<= 208)
+                    {
+                        y += speed;
+                        sendMessage(direction);
+                    }
                 }
             }
         }

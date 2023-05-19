@@ -1,4 +1,4 @@
-package View;
+package GarbageCollector;
 
 import java.awt.*;
 import java.util.Observable;
@@ -9,7 +9,7 @@ import static View.ScreenConstants.GAME_SCALE;
 public class ProvaG implements Observer {
 
     private int x, y, width, height;
-    private int speed = (int)(0.5f * GAME_SCALE);
+    private int speed = 1;
 
     public ProvaG(int x, int y, int width, int height) {
         this.x = x;
