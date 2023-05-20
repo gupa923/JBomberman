@@ -40,6 +40,7 @@ public class PlayerGraphics extends EntityGraphics{
 
 
 
+
     private void updateAnimation(){
         animationIndexUpdate++;
         if (animationIndexUpdate >= animationSpeed){
@@ -48,6 +49,7 @@ public class PlayerGraphics extends EntityGraphics{
             if (animationIndex >= movingAnimations[typeAnimation].length)
                 animationIndex = 0;
         }
+
     }
 
     @Override

@@ -5,6 +5,16 @@ import Model.Player;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * questa classe gestisce gli input da tastiera e fa cambiare il Player di conseguenza
+ *
+ *
+ * @see Player
+ * @see java.util.EventListener
+ * @see java.awt.event.KeyListener
+ * @author gupa9
+ */
+
 public class KeyInputsManager implements KeyListener {
     private Player player;
 
@@ -17,6 +27,11 @@ public class KeyInputsManager implements KeyListener {
 
     }
 
+    /**
+     * questa classe imposta lo stato del Player a moving, e indica la direction corrispondente al tasto premuto.
+     *
+     * @param e the event to be processed
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()){
@@ -40,6 +55,11 @@ public class KeyInputsManager implements KeyListener {
         }
     }
 
+    /**
+     * questo metodo fa cessare il movimento quando il tasto viene rilasciato
+     *
+     * @param e the event to be processed
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()){
