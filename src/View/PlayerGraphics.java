@@ -8,8 +8,8 @@ import java.util.Observable;
 import static View.ScreenConstants.GAME_SCALE;
 
 public class PlayerGraphics extends EntityGraphics{
-    private BufferedImage left, down, up;
-    private int animationIndex, animationIndexUpdate, typeAnimation, animationSpeed = 15;
+    private BufferedImage left, down, up, right;
+    private int animationIndex, animationIndexUpdate, typeAnimation, animationSpeed = 10;
 
     private int speed = 1;
     private String direction;
@@ -21,7 +21,7 @@ public class PlayerGraphics extends EntityGraphics{
     }
 
     private void loadAnimations() {
-        movingAnimations = new BufferedImage[3][3];
+        movingAnimations = new BufferedImage[4][3];
         for (int y = 0; y < movingAnimations.length; y++){
             for (int x = 0; x<movingAnimations[y].length; x++){
                 BufferedImage temp = imgAmount[y].getSubimage(x*16, 0, width, height);
@@ -34,7 +34,8 @@ public class PlayerGraphics extends EntityGraphics{
         left = loadImg("/left.png");
         down = loadImg("/down.png");
         up = loadImg("/up.png");
-        imgAmount = new BufferedImage[] { down, left, up};
+        right = loadImg("/right.png");
+        imgAmount = new BufferedImage[] { down, left, up, right};
     }
 
 
@@ -69,7 +70,7 @@ public class PlayerGraphics extends EntityGraphics{
                 }
                 case "RIGHT" -> {
                     x += speed;
-                    typeAnimation = 1;
+                    typeAnimation = 3;
                 }
                 case "UP" -> {
                     y -= speed;
