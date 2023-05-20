@@ -5,11 +5,13 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Observer;
 
 public abstract class EntityGraphics implements Observer {
 
-    protected BufferedImage img;
+    protected BufferedImage[] imgAmount;
+    protected BufferedImage[][] movingAnimations;
     protected int x, y, width, height;
 
     public EntityGraphics(int x, int y, int width, int height) {
@@ -19,20 +21,22 @@ public abstract class EntityGraphics implements Observer {
         this.height = height;
     }
 
-    public void loadImg(String filename){
+    public BufferedImage loadImg(String filename) {
         InputStream is = getClass().getResourceAsStream(filename);
 
+        BufferedImage temp;
         try {
-            img = ImageIO.read(is);
+            temp = ImageIO.read(is);
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
             try {
                 is.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+        return temp;
     }
 
     public abstract void draw(Graphics g);
