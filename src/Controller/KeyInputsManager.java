@@ -35,19 +35,19 @@ public class KeyInputsManager implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()){
-            case KeyEvent.VK_D ->{
+            case KeyEvent.VK_D, KeyEvent.VK_RIGHT ->{
                 player.setMoving(true);
                 player.setDirection("RIGHT");
             }
-            case KeyEvent.VK_W -> {
+            case KeyEvent.VK_W, KeyEvent.VK_UP -> {
                 player.setMoving(true);
                 player.setDirection("UP");
             }
-            case KeyEvent.VK_A->{
+            case KeyEvent.VK_A, KeyEvent.VK_LEFT->{
                 player.setMoving(true);
                 player.setDirection("LEFT");
             }
-            case KeyEvent.VK_S -> {
+            case KeyEvent.VK_S, KeyEvent.VK_DOWN -> {
                 player.setMoving(true);
                 player.setDirection("DOWN");
             }
@@ -62,14 +62,11 @@ public class KeyInputsManager implements KeyListener {
      */
     @Override
     public void keyReleased(KeyEvent e) {
-        switch (e.getKeyCode()){
-            case KeyEvent.VK_A:
-            case KeyEvent.VK_W:
-            case KeyEvent.VK_S:
-            case KeyEvent.VK_D:
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_A, KeyEvent.VK_LEFT, KeyEvent.VK_W, KeyEvent.VK_UP, KeyEvent.VK_S, KeyEvent.VK_DOWN , KeyEvent.VK_D, KeyEvent.VK_RIGHT -> {
                 player.setMoving(false);
                 player.setDirection("STAY");
-                break;
+            }
         }
     }
 }
