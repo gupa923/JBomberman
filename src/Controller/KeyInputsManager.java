@@ -68,6 +68,7 @@ public class KeyInputsManager implements KeyListener {
             case KeyEvent.VK_S:
             case KeyEvent.VK_D:
                 player.setMoving(false);
+                player.setDirection("STAY");
                 break;
         }
     }

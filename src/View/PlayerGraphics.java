@@ -10,9 +10,10 @@ import static View.ScreenConstants.GAME_SCALE;
 public class PlayerGraphics extends EntityGraphics{
     private BufferedImage left, down, up, right;
     private int animationIndex, animationIndexUpdate, typeAnimation, animationSpeed = 10;
-
     private int speed = 1;
     private String direction;
+    private boolean moving;
+
 
     public PlayerGraphics(int x, int y, int width, int height) {
         super(x, y, width, height);
@@ -42,12 +43,17 @@ public class PlayerGraphics extends EntityGraphics{
 
 
     private void updateAnimation(){
-        animationIndexUpdate++;
-        if (animationIndexUpdate >= animationSpeed){
-            animationIndexUpdate = 0;
-            animationIndex++;
-            if (animationIndex >= movingAnimations[typeAnimation].length)
-                animationIndex = 0;
+        if (!moving){
+            animationIndex = 1;
+        }
+        else {
+            animationIndexUpdate++;
+            if (animationIndexUpdate >= animationSpeed) {
+                animationIndexUpdate = 0;
+                animationIndex++;
+                if (animationIndex >= movingAnimations[typeAnimation].length)
+                    animationIndex = 0;
+            }
         }
 
     }
@@ -68,19 +74,26 @@ public class PlayerGraphics extends EntityGraphics{
             switch (direction){
                 case "LEFT" -> {
                     x -= speed;
+                    moving = true;
                     typeAnimation = 1;
                 }
                 case "RIGHT" -> {
                     x += speed;
+                    moving = true;
                     typeAnimation = 3;
                 }
                 case "UP" -> {
                     y -= speed;
+                    moving = true;
                     typeAnimation = 2;
                 }
                 case "DOWN" -> {
                     y += speed;
+                    moving = true;
                     typeAnimation = 0;
+                }
+                case "STAY" -> {
+                    moving = false;
                 }
             }
         }

@@ -11,7 +11,7 @@ package Model;
  */
 public class Player extends Entity{
     private int speed= 1;
-    private String direction;
+    private String direction = "STAY";
     private boolean moving;
     public Player(int x, int y, int width, int height) {
         super(x, y, width, height);
@@ -56,7 +56,11 @@ public class Player extends Entity{
                         sendMessage(direction);
                     }
                 }
+
             }
+        } else {
+            if (direction.equals("STAY"))
+                sendMessage(direction);
         }
     }
 
