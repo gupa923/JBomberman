@@ -12,7 +12,7 @@ public class PlayerGraphics extends EntityGraphics{
     private BufferedImage left, down, up, right;
     private int animationIndex, animationIndexUpdate, typeAnimation, animationSpeed = 10;
     private int speed = 1;
-    private String direction;
+    private String action;
     private boolean moving;
 
 
@@ -71,8 +71,8 @@ public class PlayerGraphics extends EntityGraphics{
     @Override
     public void update(Observable o, Object arg) {
         if (arg instanceof String){
-            direction = (String) arg;
-            switch (direction){
+            action = (String) arg;
+            switch (action){
                 case "LEFT" -> {
                     x -= speed;
                     moving = true;

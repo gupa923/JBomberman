@@ -9,7 +9,7 @@ public class GameModel {
     private Player player;
 
     public GameModel(){
-        player = new Player(0, 0, 16, 24);
+        player = new Player(32, 8, 16, 24);
     }
 
     public Player getPlayer() {
