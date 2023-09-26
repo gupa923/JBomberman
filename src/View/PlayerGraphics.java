@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 import java.util.Observable;
 
+import static View.GraphicMethods.loadImg;
 import static View.ScreenConstants.GAME_SCALE;
 
 public class PlayerGraphics extends EntityGraphics{

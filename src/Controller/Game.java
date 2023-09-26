@@ -3,6 +3,7 @@ package Controller;
 import Model.GameModel;
 import View.GameFrame;
 import View.GamePanel;
+import View.LevelGraphics;
 
 /**
  * Questa classe crea un'instanza della classe GameModel, che gestisce i dati del gioco
@@ -34,6 +35,7 @@ public class Game implements Runnable{
     public Game(){
         panel = new GamePanel();
         frame = new GameFrame(panel);
+
 
         gameModel = new GameModel();
         panel.addKeyListener(new KeyInputsManager(gameModel.getPlayer()));

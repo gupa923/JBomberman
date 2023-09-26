@@ -21,23 +21,7 @@ public abstract class EntityGraphics implements Observer {
         this.height = height;
     }
 
-    public BufferedImage loadImg(String filename) {
-        InputStream is = getClass().getResourceAsStream(filename);
 
-        BufferedImage temp;
-        try {
-            temp = ImageIO.read(is);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return temp;
-    }
 
     public abstract void draw(Graphics g);
 
