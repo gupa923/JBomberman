@@ -5,62 +5,71 @@ import View.GameFrame;
 import View.GamePanel;
 
 /**
- * Questa classe crea un'instanza della classe GameModel, che gestisce i dati del gioco
- * poi crea un'oggetto GameFrame e un GamePanel, creando così la finestra.
- * La classe GamePanel disegna tutti gli oggetti che devono essere disegnati.
- * Viene creata anche una nuova istanza della Classe Threadche con il metodo start()
- * chiamerà il metodo run() ottenuto implementando l'interfaccia Runnable
+ * questa classe inizializza tutte le cose chiama i vari costruttori e da inizio al gioco
  *
- * @see java.lang.Runnable
+ * è singleton
+ * @see Runnable
  * @author gupa9
  */
 public class Game implements Runnable{
-    private GameFrame frame;
-    private GamePanel panel;
-    //private Prova test;
+
+    private static Game instance;
+    private GameFrame gameFrame;
+    private GamePanel gamePanel;
+    private Thread thread;
+    private MouseManager mouseManager;
+    private KeyManager keyManager;
     private GameModel gameModel;
-    private Thread gameThread;
+    private PlayerManager playerManager;
+    private LevelManager levelManager;
+
     private int FPS = 60;
-    private int UPS = 100;
+    private int UPS = 120;
 
-    /**
-     * qui vengono inizializzati i vari campi.
-     * aggiungo poi l'oggetto della classe PlayerGraphics instanziato in
-     * GamePanel, come osservatore di Player.
-     * aggiunga al GamePanel il KeyListener KeyInputManager
-     * chiamo il metodo di JPanel requestFocus()
-     * infine chiamo startExecution()
-     */
-    public Game(){
-        panel = new GamePanel();
-        frame = new GameFrame(panel);
+    //TODO fare un po' di pulizia in questo costruttore è veramente incasinato: spostare un po' di codice in nuovi metodi che vengono chiamati dal costruttore.
+    private Game() {
 
-        gameModel = new GameModel();
-        panel.addKeyListener(new KeyInputsManager(gameModel.getPlayer()));
-        panel.requestFocus();
-        gameModel.getPlayer().addObserver(panel.getPlayerGraphics());
+        //creazione model
+        this.gameModel = GameModel.getInstance();
+        this.playerManager = PlayerManager.getInstance();
+        this.levelManager = LevelManager.getInstance();
 
-        startExecution();
+        //creazione view
+        this.gamePanel = new GamePanel();
+        this.gameFrame = new GameFrame(gamePanel);
+
+        //aggiungo alla view le varie cose grafiche
+        gamePanel.setPlayerGraphics(playerManager.getPlayerGraphics());
+        gamePanel.setLevelGraphics(levelManager.getLevelGraphics());
+
+        //inizializzazione dei listener
+        mouseManager = new MouseManager();
+        keyManager = new KeyManager(gameModel);
+
+        //aggiunta dei listener
+        gamePanel.requestFocus();
+        gamePanel.addMouseListener(mouseManager);
+        gamePanel.addMouseMotionListener(mouseManager);
+        gamePanel.addKeyListener(keyManager);
+
     }
 
     /**
-     * questo metodo crea un'instanza della classe Thread e con il metodo start() fa
-     * partire l'esecuzione del programma
+     * iniza l'esecuzione del trhead
      *
      */
-    private void startExecution() {
-        gameThread = new Thread(this);
-        gameThread.start();
+    public void startGame(){
+        thread = new Thread(this);
+        thread.start();
     }
 
     /**
-     * in questo metodo viene implementato il gameLoop.
-     * tra i campi di questa classe ci sono due valori che sono il target di FPS e di UPS
-     * il loop controlla quanto tempo è passata dall'ultimo update, se è uguale ad UPS viene chiamato il metodo
-     * updateGame() di GameModel, lo stesso vale per gli FPS, solo che in questo caso verrà chiamato il metodo
-     * repaint() del GamePanel
+     * gameloop
+     * il gameloop è un while che viene eseguito finchè l'esecuzione non viene interrotta.
+     * il loop aggiorna il model e la view.
+     * gli update per secondo sono 120 e il game loop in base a quanto tempo è passato dall'ultimo update, chiama gameModel.update().
+     * lo stesso vale per i frame, impostati a 120
      */
-
     @Override
     public void run() {
         double timePerFrame = 1000000000.0 / FPS;
@@ -83,13 +92,13 @@ public class Game implements Runnable{
             previousTime = currentTime;
 
             if (deltaU >= 1) {
-                gameModel.updateGame();
+                gameModel.update();
                 updates++;
                 deltaU--;
             }
 
             if (deltaF >= 1) {
-                panel.repaint();
+                gamePanel.repaint();
                 frames++;
                 deltaF--;
             }
@@ -103,4 +112,11 @@ public class Game implements Runnable{
             }
         }
     }
+
+    public static Game getInstance(){
+        if (instance == null)
+            instance = new Game();
+        return instance;
+    }
+
 }
