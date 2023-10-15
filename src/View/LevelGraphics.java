@@ -3,19 +3,20 @@ package View;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static View.GraphicMethods.loadImg;
-import static View.ScreenConstants.MapSize.MAP_X;
-import static View.ScreenConstants.MapSize.MAP_Y;
+/**
+ * contiene l'immagine del livello attuale e la disegna con il metodo draw
+ *
+ * @see ImgImporter
+ * @author gupa9
+ */
+public class LevelGraphics implements ImgImporter{
+    private BufferedImage lvl1Bg;
 
-public class LevelGraphics {
-
-    private BufferedImage bgImg;
-
-    public LevelGraphics(String filename){
-        bgImg = loadImg(filename);
+    public LevelGraphics(String filename) {
+        this.lvl1Bg = loadImg(filename);
     }
 
     public void draw(Graphics g){
-        g.drawImage(bgImg, 0, 0, MAP_X, MAP_Y, null);
+        g.drawImage(lvl1Bg, 0,0, 272 * 3, 208*3, null);
     }
 }

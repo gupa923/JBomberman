@@ -1,15 +1,27 @@
 package Model;
 
-/**
- * questa classe è il modello del gioco, che quindi gestisce tutti i modelli e la loro inizializazione
- *
- * @author gupa9
- */
-public class GameModel {
+public class GameModel{
+    private static GameModel instance;
     private Player player;
+    private Level level;
 
-    public GameModel(){
+
+    private GameModel(){
         player = new Player(32, 8, 16, 24);
+    }
+
+    public static GameModel getInstance() {
+        if (instance == null)
+            instance = new GameModel();
+        return instance;
+    }
+
+    /**
+     * questo metodo update chiama gli update di tutte le classi del model
+     *
+     */
+    public void update(){
+        player.update();
     }
 
     public Player getPlayer() {
@@ -17,11 +29,12 @@ public class GameModel {
     }
 
     /**
-     * questo metodo chiama gli update di tutti i modelli.
+     * imposta il livello attuale e aggiunge la matrice data alla hitbox
      *
-     *
+     * @param level
      */
-    public void updateGame(){
-        player.updatePos();
+    public void setLevel(Level level) {
+        this.level = level;
+        player.getHitbox().setData(level.getData());
     }
 }
