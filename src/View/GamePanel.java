@@ -11,8 +11,8 @@ import java.awt.*;
  */
 public class GamePanel extends JPanel {
 
-    private PlayerGraphics playerGraphics;
-    private LevelGraphics levelGraphics;
+    private MatchGraphics matchGraphics;
+    private MenuGraphics menuGraphics;
 
     public GamePanel(){
         setPreferredSize(new Dimension(272 * 3, 208* 3));
@@ -27,15 +27,26 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        levelGraphics.draw(g);
-        playerGraphics.draw(g);
+        if (menuGraphics.isActive()){
+            menuGraphics.draw(g);
+        }else if (matchGraphics.isActive()){
+            matchGraphics.draw(g);
+        }
     }
 
-    public void setPlayerGraphics(PlayerGraphics playerGraphics){
-        this.playerGraphics = playerGraphics;
+    public void setMatchGraphics(MatchGraphics matchGraphics) {
+        this.matchGraphics = matchGraphics;
     }
 
-    public void setLevelGraphics(LevelGraphics levelGraphics) {
-        this.levelGraphics = levelGraphics;
+    public void setMenuGraphics(MenuGraphics menuGraphics) {
+        this.menuGraphics = menuGraphics;
+    }
+
+    public MenuGraphics getMenuGraphics() {
+        return menuGraphics;
+    }
+
+    public MatchGraphics getMatchGraphics() {
+        return matchGraphics;
     }
 }

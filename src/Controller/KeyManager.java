@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.GameModel;
+import Model.Stati;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -12,13 +13,20 @@ import java.awt.event.KeyListener;
 public class KeyManager implements KeyListener {
 
     private GameModel gameModel;
-    public KeyManager(GameModel gameModel) {
+    private StateManager stateManager;
+
+    public KeyManager(GameModel gameModel, StateManager stateManager) {
         this.gameModel = gameModel;
+        this.stateManager = stateManager;
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
+        switch (gameModel.getStatoAttuale()){
+            case MENU -> {
 
+            }
+        }
     }
 
     /**
@@ -27,24 +35,39 @@ public class KeyManager implements KeyListener {
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()){
-            case KeyEvent.VK_D -> {
-                gameModel.getPlayer().setMoving(true);
-                gameModel.getPlayer().setDirection("RIGHT");
+        switch(gameModel.getStatoAttuale()){
+            case MENU -> {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    gameModel.setStatoAttuale(Stati.PARTITA);
+                    stateManager.changeState(Stati.PARTITA);
+                }
             }
-            case KeyEvent.VK_A-> {
-                gameModel.getPlayer().setMoving(true);
-                gameModel.getPlayer().setDirection("LEFT");
-            }
-            case KeyEvent.VK_S-> {
-                gameModel.getPlayer().setMoving(true);
-                gameModel.getPlayer().setDirection("DOWN");
-            }
-            case KeyEvent.VK_W-> {
-                gameModel.getPlayer().setMoving(true);
-                gameModel.getPlayer().setDirection("UP");
+            case PARTITA -> {
+                switch (e.getKeyCode()){
+                    case KeyEvent.VK_D -> {
+                        gameModel.getPartita().getPlayer().setMoving(true);
+                        gameModel.getPartita().getPlayer().setDirection("RIGHT");
+                    }
+                    case KeyEvent.VK_A-> {
+                        gameModel.getPartita().getPlayer().setMoving(true);
+                        gameModel.getPartita().getPlayer().setDirection("LEFT");
+                    }
+                    case KeyEvent.VK_S-> {
+                        gameModel.getPartita().getPlayer().setMoving(true);
+                        gameModel.getPartita().getPlayer().setDirection("DOWN");
+                    }
+                    case KeyEvent.VK_W-> {
+                        gameModel.getPartita().getPlayer().setMoving(true);
+                        gameModel.getPartita().getPlayer().setDirection("UP");
+                    }
+                    case KeyEvent.VK_BACK_SPACE -> {
+                        gameModel.setStatoAttuale(Stati.MENU);
+                        stateManager.changeState(Stati.MENU);
+                    }
+                }
             }
         }
+
     }
 
     /**
@@ -54,11 +77,19 @@ public class KeyManager implements KeyListener {
      */
     @Override
     public void keyReleased(KeyEvent e) {
-        switch (e.getKeyCode()){
-            case KeyEvent.VK_D, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_W-> {
-                gameModel.getPlayer().setMoving(false);
-                gameModel.getPlayer().setDirection("");
+        switch (gameModel.getStatoAttuale()){
+            case MENU -> {
+
+            }
+            case PARTITA -> {
+                switch (e.getKeyCode()){
+                    case KeyEvent.VK_D, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_W-> {
+                        gameModel.getPartita().getPlayer().setMoving(false);
+                        gameModel.getPartita().getPlayer().setDirection("");
+                    }
+                }
             }
         }
+
     }
 }

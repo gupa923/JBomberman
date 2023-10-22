@@ -1,5 +1,7 @@
 package Controller;
 
+import Model.GameModel;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -10,6 +12,13 @@ import java.awt.event.MouseMotionListener;
  *
  */
 public class MouseManager implements MouseListener, MouseMotionListener {
+
+    private GameModel gameModel;
+
+    public MouseManager(GameModel gameModel) {
+        this.gameModel = gameModel;
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
 

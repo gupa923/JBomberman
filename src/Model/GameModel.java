@@ -2,12 +2,15 @@ package Model;
 
 public class GameModel{
     private static GameModel instance;
-    private Player player;
-    private Level level;
+    private Stati statoAttuale;
+    private Menu menu;
+    private Partita partita;
 
 
     private GameModel(){
-        player = new Player(32, 8, 16, 24);
+        this.statoAttuale = Stati.MENU;
+        partita = new Partita(this);
+        menu = new Menu(this);
     }
 
     public static GameModel getInstance() {
@@ -21,20 +24,26 @@ public class GameModel{
      *
      */
     public void update(){
-        player.update();
+        switch(statoAttuale){
+            case MENU -> menu.update();
+            case PARTITA -> partita.update();
+        }
     }
 
-    public Player getPlayer() {
-        return player;
+
+    public Partita getPartita() {
+        return partita;
     }
 
-    /**
-     * imposta il livello attuale e aggiunge la matrice data alla hitbox
-     *
-     * @param level
-     */
-    public void setLevel(Level level) {
-        this.level = level;
-        player.getHitbox().setData(level.getData());
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setStatoAttuale(Stati statoAttuale) {
+        this.statoAttuale = statoAttuale;
+    }
+
+    public Stati getStatoAttuale() {
+        return statoAttuale;
     }
 }

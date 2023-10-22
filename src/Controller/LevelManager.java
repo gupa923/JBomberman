@@ -29,7 +29,7 @@ public class LevelManager {
         gameModel = GameModel.getInstance();
         levelGraphics = new LevelGraphics("/lvl1.png");
         level = new Level(getLvlData());
-        gameModel.setLevel(level);
+        gameModel.getPartita().setLevel(level);
     }
 
 

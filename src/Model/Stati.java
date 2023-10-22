@@ -1,4 +1,4 @@
-package Controller;
+package Model;
 
 /**
  * è un enum con tutti i possibili stati del gioco che verranno cambiati l

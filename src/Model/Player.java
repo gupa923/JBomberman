@@ -23,7 +23,7 @@ public class Player extends Entity{
     //TODO prova a cambiare i valori di h e w per vedere se il movimento migliora.
     @Override
     public void initHitbox() {
-        hitbox = new Hitbox(x, y + 8, 16, 16);
+        hitbox = new Hitbox(x, y + 8, 15, 15);
     }
 
     /**
@@ -45,7 +45,7 @@ public class Player extends Entity{
                     }
                 }
                 case "RIGHT" -> {
-                    if (hitbox.checkCollision(hitbox.x + w, hitbox.y) && hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y + hitbox.h -1 )) {
+                    if (hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y) && hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y + hitbox.h -1 )) {
                         x += 1;
                         hitbox.update(1, 0);
                         sendMessage(direction);

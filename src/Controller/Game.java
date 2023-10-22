@@ -20,6 +20,7 @@ public class Game implements Runnable{
     private MouseManager mouseManager;
     private KeyManager keyManager;
     private GameModel gameModel;
+    private StateManager stateManager;
     private PlayerManager playerManager;
     private LevelManager levelManager;
 
@@ -31,6 +32,7 @@ public class Game implements Runnable{
 
         //creazione model
         this.gameModel = GameModel.getInstance();
+        this.stateManager = new StateManager();
         this.playerManager = PlayerManager.getInstance();
         this.levelManager = LevelManager.getInstance();
 
@@ -38,13 +40,15 @@ public class Game implements Runnable{
         this.gamePanel = new GamePanel();
         this.gameFrame = new GameFrame(gamePanel);
 
+        gamePanel.setMatchGraphics(stateManager.getMatchGraphics());
+        gamePanel.setMenuGraphics(stateManager.getMenuGraphics());
         //aggiungo alla view le varie cose grafiche
-        gamePanel.setPlayerGraphics(playerManager.getPlayerGraphics());
-        gamePanel.setLevelGraphics(levelManager.getLevelGraphics());
+        gamePanel.getMatchGraphics().setPlayerGraphics(playerManager.getPlayerGraphics());
+        gamePanel.getMatchGraphics().setLevelGraphics(levelManager.getLevelGraphics());
 
         //inizializzazione dei listener
-        mouseManager = new MouseManager();
-        keyManager = new KeyManager(gameModel);
+        mouseManager = new MouseManager(gameModel);
+        keyManager = new KeyManager(gameModel, stateManager);
 
         //aggiunta dei listener
         gamePanel.requestFocus();
@@ -119,4 +123,7 @@ public class Game implements Runnable{
         return instance;
     }
 
+    public GameModel getGameModel() {
+        return gameModel;
+    }
 }
