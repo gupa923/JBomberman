@@ -13,9 +13,10 @@ public class GamePanel extends JPanel {
 
     private MatchGraphics matchGraphics;
     private MenuGraphics menuGraphics;
-
-    public GamePanel(){
+    private StateGraphics activeState;
+    public GamePanel(StateGraphics activeState){
         setPreferredSize(new Dimension(272 * 3, 208* 3));
+        this.activeState = activeState;
     }
 
     /**
@@ -27,11 +28,14 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        if (menuGraphics.isActive()){
-            menuGraphics.draw(g);
-        }else if (matchGraphics.isActive()){
+       // if (menuGraphics.isActive()){
+         //   menuGraphics.draw(g);
+       // }else if (matchGraphics.isActive()){
+         //   matchGraphics.draw(g);
+        //}
+        if (activeState instanceof PauseGraphics)
             matchGraphics.draw(g);
-        }
+        activeState.draw(g);
     }
 
     public void setMatchGraphics(MatchGraphics matchGraphics) {
@@ -48,5 +52,9 @@ public class GamePanel extends JPanel {
 
     public MatchGraphics getMatchGraphics() {
         return matchGraphics;
+    }
+
+    public void setActiveState(StateGraphics activeState) {
+        this.activeState = activeState;
     }
 }

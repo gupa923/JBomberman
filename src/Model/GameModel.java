@@ -5,12 +5,14 @@ public class GameModel{
     private Stati statoAttuale;
     private Menu menu;
     private Partita partita;
+    private Pause pause;
 
 
     private GameModel(){
         this.statoAttuale = Stati.MENU;
         partita = new Partita(this);
         menu = new Menu(this);
+        pause = new Pause(this);
     }
 
     public static GameModel getInstance() {
@@ -27,6 +29,7 @@ public class GameModel{
         switch(statoAttuale){
             case MENU -> menu.update();
             case PARTITA -> partita.update();
+            case PAUSE -> pause.update();
         }
     }
 
@@ -45,5 +48,9 @@ public class GameModel{
 
     public Stati getStatoAttuale() {
         return statoAttuale;
+    }
+
+    public Pause getPause() {
+        return pause;
     }
 }
