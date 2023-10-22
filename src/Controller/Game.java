@@ -37,9 +37,10 @@ public class Game implements Runnable{
         this.levelManager = LevelManager.getInstance();
 
         //creazione view
-        this.gamePanel = new GamePanel();
+        this.gamePanel = new GamePanel(stateManager.getMenuGraphics());
         this.gameFrame = new GameFrame(gamePanel);
 
+        stateManager.setGamePanel(gamePanel);
         gamePanel.setMatchGraphics(stateManager.getMatchGraphics());
         gamePanel.setMenuGraphics(stateManager.getMenuGraphics());
         //aggiungo alla view le varie cose grafiche
