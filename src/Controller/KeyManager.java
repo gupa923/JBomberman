@@ -37,9 +37,15 @@ public class KeyManager implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch(gameModel.getStatoAttuale()){
             case MENU -> {
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    gameModel.setStatoAttuale(Stati.PARTITA);
-                    stateManager.changeState(Stati.PARTITA);
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_ENTER -> {
+                        gameModel.setStatoAttuale(Stati.PARTITA);
+                        stateManager.changeState(Stati.PARTITA);
+                    }
+                    case KeyEvent.VK_I -> {
+                        gameModel.setStatoAttuale(Stati.SETTINGS);
+                        stateManager.changeState(Stati.SETTINGS);
+                    }
                 }
             }
             case PARTITA -> {
@@ -75,6 +81,14 @@ public class KeyManager implements KeyListener {
                     case KeyEvent.VK_BACK_SPACE -> {
                         gameModel.setStatoAttuale(Stati.PARTITA);
                         stateManager.changeState(Stati.PARTITA);
+                    }
+                }
+            }
+            case SETTINGS -> {
+                switch (e.getKeyCode()){
+                    case KeyEvent.VK_BACK_SPACE -> {
+                        gameModel.setStatoAttuale(Stati.MENU);
+                        stateManager.changeState(Stati.MENU);
                     }
                 }
             }

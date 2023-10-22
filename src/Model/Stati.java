@@ -8,7 +8,7 @@ package Model;
 //TODO avremo una classe per ogni stato (una nel model e una nella view) in base allo stato attuale verra aggiornata solo una parte del codice
 public enum Stati {
 
-    PARTITA, MENU, LOGIN, IMPOSTAZIONI, QUIT, PAUSE;
+    PARTITA, MENU, LOGIN, SETTINGS, QUIT, PAUSE;
 
     public static Stati stato = MENU;
 }

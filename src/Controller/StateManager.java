@@ -1,10 +1,7 @@
 package Controller;
 
 import Model.*;
-import View.GamePanel;
-import View.MatchGraphics;
-import View.MenuGraphics;
-import View.PauseGraphics;
+import View.*;
 
 public class StateManager {
 
@@ -12,9 +9,11 @@ public class StateManager {
     private Menu menu;
     private Partita partita;
     private Pause pause;
+    private Settings settings;
     private MatchGraphics matchGraphics;
     private MenuGraphics menuGraphics;
     private PauseGraphics pauseGraphics;
+    private SettingsGraphics settingsGraphics;
     private GamePanel gamePanel;
 
     public StateManager(){
@@ -25,6 +24,7 @@ public class StateManager {
         menuGraphics = new MenuGraphics();
         matchGraphics = new MatchGraphics();
         pauseGraphics = new PauseGraphics();
+        settingsGraphics = new SettingsGraphics();
         //matchGraphics.setActive(false);
         //menuGraphics.setActive(true);
     }
@@ -43,6 +43,9 @@ public class StateManager {
             }
             case PAUSE -> {
                 gamePanel.setActiveState(pauseGraphics);
+            }
+            case SETTINGS -> {
+                gamePanel.setActiveState(settingsGraphics);
             }
         }
     }

@@ -6,6 +6,7 @@ public class GameModel{
     private Menu menu;
     private Partita partita;
     private Pause pause;
+    private Settings settings;
 
 
     private GameModel(){
@@ -13,6 +14,7 @@ public class GameModel{
         partita = new Partita(this);
         menu = new Menu(this);
         pause = new Pause(this);
+        settings = new Settings(this);
     }
 
     public static GameModel getInstance() {
@@ -30,6 +32,7 @@ public class GameModel{
             case MENU -> menu.update();
             case PARTITA -> partita.update();
             case PAUSE -> pause.update();
+            case SETTINGS -> settings.update();
         }
     }
 
