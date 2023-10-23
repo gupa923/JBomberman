@@ -1,4 +1,6 @@
-package Model;
+package Model.StateModels;
+
+import Model.GameModel;
 
 public abstract class Stato {
     private GameModel gameModel;

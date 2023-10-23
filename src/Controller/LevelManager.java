@@ -2,7 +2,6 @@ package Controller;
 
 import Model.GameModel;
 import Model.Level;
-import View.ImgImporter;
 import View.LevelGraphics;
 
 import javax.imageio.ImageIO;
@@ -42,7 +41,7 @@ public class LevelManager {
 
     //TODO da modificare quando avremo più livelli da gestire.
     private int[][] getLvlData(){
-        InputStream is = ImgImporter.class.getResourceAsStream("/lvl1Data.png");
+        InputStream is = LevelManager.class.getResourceAsStream("/lvl1Data.png");
 
         BufferedImage lvlDataPng = null;
         try {

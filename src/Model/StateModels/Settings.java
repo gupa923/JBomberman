@@ -1,4 +1,6 @@
-package Model;
+package Model.StateModels;
+
+import Model.GameModel;
 
 public class Settings extends Stato{
     public Settings(GameModel gameModel) {

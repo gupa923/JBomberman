@@ -1,11 +1,16 @@
 package View;
 
+import View.StatesGraphics.MatchGraphics;
+import View.StatesGraphics.MenuGraphics;
+import View.StatesGraphics.PauseGraphics;
+import View.StatesGraphics.StateGraphics;
+
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * questa classe è il pannello del gioco e gestisce tutte le cose che vanno disegnate sullo schermo
- *
+ * il gamePanel ha un activeState che ha un metodo draw che verrà invocato durante l'esecuzione del paintComponent.
  * @see JPanel
  * @author gupa9
  */
@@ -33,8 +38,10 @@ public class GamePanel extends JPanel {
        // }else if (matchGraphics.isActive()){
          //   matchGraphics.draw(g);
         //}
-        if (activeState instanceof PauseGraphics)
+        if (activeState instanceof PauseGraphics){
+            matchGraphics.getPlayerGraphics().setMoving(false);
             matchGraphics.draw(g);
+        }
         activeState.draw(g);
     }
 

@@ -1,5 +1,13 @@
-package Model;
+package Model.StateModels;
 
+import Model.EntityModel.Player;
+import Model.GameModel;
+import Model.Level;
+
+/**
+ * la classe partita gestisce la logica della partita
+ *
+ */
 public class Partita extends Stato{
     private Player player;
     private Level actuaLevel;

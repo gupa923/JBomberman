@@ -1,5 +1,10 @@
 package Model;
 
+import Model.StateModels.Menu;
+import Model.StateModels.Partita;
+import Model.StateModels.Pause;
+import Model.StateModels.Settings;
+
 public class GameModel{
     private static GameModel instance;
     private Stati statoAttuale;

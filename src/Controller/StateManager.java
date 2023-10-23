@@ -1,8 +1,22 @@
 package Controller;
 
 import Model.*;
+import Model.StateModels.Menu;
+import Model.StateModels.Partita;
+import Model.StateModels.Pause;
+import Model.StateModels.Settings;
 import View.*;
+import View.StatesGraphics.MatchGraphics;
+import View.StatesGraphics.MenuGraphics;
+import View.StatesGraphics.PauseGraphics;
+import View.StatesGraphics.SettingsGraphics;
 
+/**
+ * Questa classe gestisce il passaggio tra uno stato all'altro fancendo cambiare sia il model che la view
+ *
+ *
+ *
+ */
 public class StateManager {
 
     private GameModel gameModel;
@@ -25,20 +39,19 @@ public class StateManager {
         matchGraphics = new MatchGraphics();
         pauseGraphics = new PauseGraphics();
         settingsGraphics = new SettingsGraphics();
-        //matchGraphics.setActive(false);
-        //menuGraphics.setActive(true);
     }
 
+    /**
+     * cambia la view e il model il base allo stato che deve essere impostato come stato attivo.
+     *
+     * @param nextState
+     */
     public void changeState(Stati nextState){
         switch(nextState){
             case MENU -> {
-                //matchGraphics.setActive(false);
-               // menuGraphics.setActive(true);
                 gamePanel.setActiveState(menuGraphics);
             }
             case PARTITA ->{
-                //matchGraphics.setActive(true);
-                //menuGraphics.setActive(false);
                 gamePanel.setActiveState(matchGraphics);
             }
             case PAUSE -> {

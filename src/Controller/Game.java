@@ -1,5 +1,8 @@
 package Controller;
 
+import Controller.EntityManagers.PlayerManager;
+import Controller.InputManagers.KeyManager;
+import Controller.InputManagers.MouseManager;
 import Model.GameModel;
 import View.GameFrame;
 import View.GamePanel;

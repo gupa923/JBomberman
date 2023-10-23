@@ -1,8 +1,8 @@
-package Controller;
+package Controller.EntityManagers;
 
 import Model.GameModel;
-import Model.Player;
-import View.PlayerGraphics;
+import Model.EntityModel.Player;
+import View.EntitiesGraphics.PlayerGraphics;
 
 /**
  * questa classe gestisce il modello del player e la view del player

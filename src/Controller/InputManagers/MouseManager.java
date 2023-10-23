@@ -1,4 +1,4 @@
-package Controller;
+package Controller.InputManagers;
 
 import Model.GameModel;
 

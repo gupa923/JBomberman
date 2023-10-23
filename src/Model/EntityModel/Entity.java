@@ -1,4 +1,6 @@
-package Model;
+package Model.EntityModel;
+
+import Model.Hitbox;
 
 import java.util.Observable;
 

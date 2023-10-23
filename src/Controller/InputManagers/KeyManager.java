@@ -1,5 +1,6 @@
-package Controller;
+package Controller.InputManagers;
 
+import Controller.StateManager;
 import Model.GameModel;
 import Model.Stati;
 
@@ -22,11 +23,7 @@ public class KeyManager implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        switch (gameModel.getStatoAttuale()){
-            case MENU -> {
 
-            }
-        }
     }
 
     /**
@@ -79,6 +76,8 @@ public class KeyManager implements KeyListener {
             case PAUSE -> {
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_BACK_SPACE -> {
+                        gameModel.getPartita().getPlayer().setMoving(false);
+                        gameModel.getPartita().getPlayer().setDirection("");
                         gameModel.setStatoAttuale(Stati.PARTITA);
                         stateManager.changeState(Stati.PARTITA);
                     }

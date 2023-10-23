@@ -1,4 +1,7 @@
-package Model;
+package Model.EntityModel;
+
+import Model.EntityModel.Entity;
+import Model.Hitbox;
 
 /**
  *
@@ -10,6 +13,7 @@ package Model;
 //TODO istanziare una nuova hitbox chiamata damageBox per quando gestiremo il danno.
 public class Player extends Entity{
     private String direction;
+    private int speed = 1;
     private boolean moving;
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -38,33 +42,42 @@ public class Player extends Entity{
         if (moving) {
             switch (direction) {
                 case "LEFT" -> {
-                    if ((hitbox.checkCollision(hitbox.x - 1, hitbox.y) && hitbox.checkCollision(hitbox.x -1, hitbox.y + hitbox.h - 1))) {
-                        x -= 1;
-                        hitbox.update(-1, 0);
+                    if ((hitbox.checkCollision(hitbox.x - speed, hitbox.y) && hitbox.checkCollision(hitbox.x - speed, hitbox.y + hitbox.h - 1))) {
+                        x -= speed;
+                        hitbox.update(-speed, 0);
                         sendMessage(direction);
+                    } else {
+                        sendMessage("STAY");
                     }
                 }
                 case "RIGHT" -> {
                     if (hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y) && hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y + hitbox.h -1 )) {
-                        x += 1;
-                        hitbox.update(1, 0);
+                        x += speed;
+                        hitbox.update(speed, 0);
                         sendMessage(direction);
+                    }else {
+                        sendMessage("STAY");
                     }
                 }
                 case "UP" -> {
-                    if(hitbox.checkCollision(hitbox.x, hitbox.y - 1) && hitbox.checkCollision(hitbox.x + hitbox.w -1, hitbox.y- 1)){
-                        y -= 1;
-                        hitbox.update(0, -1);
+                    if(hitbox.checkCollision(hitbox.x, hitbox.y - speed) && hitbox.checkCollision(hitbox.x + hitbox.w -1, hitbox.y- speed)){
+                        y -= speed;
+                        hitbox.update(0, -speed);
                         sendMessage(direction);
+                    }else {
+                        sendMessage("STAY");
                     }
                 }
                 case "DOWN" -> {
                     if ( hitbox.checkCollision(hitbox.x, hitbox.y  + hitbox.h) && hitbox.checkCollision(hitbox.x + hitbox.w - 1, hitbox.y + hitbox.h )){
-                        y += 1;
-                        hitbox.update(0, 1);
+                        y += speed;
+                        hitbox.update(0, speed);
                         sendMessage(direction);
+                    }else {
+                        sendMessage("STAY");
                     }
                 }
+                default -> sendMessage("STAY");
             }
         }else{
             sendMessage("STAY");

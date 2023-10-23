@@ -1,4 +1,6 @@
-package Model;
+package Model.StateModels;
+
+import Model.GameModel;
 
 public class Menu extends Stato {
     public Menu(GameModel gameModel) {

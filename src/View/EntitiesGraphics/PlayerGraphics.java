@@ -1,7 +1,8 @@
-package View;
+package View.EntitiesGraphics;
 
 
 import Model.Hitbox;
+import View.ImgImporter;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,6 +20,7 @@ import java.util.Observer;
 //TODO forse è il caso di creare una superclasse
 public class PlayerGraphics implements Observer, ImgImporter {
     private int x, y, w, h;
+    private int speed = 1;
     private boolean moving;
     private BufferedImage right, left, up, down;
     private BufferedImage[] imgAmount;
@@ -79,23 +81,23 @@ public class PlayerGraphics implements Observer, ImgImporter {
             String direction = (String) arg;
             switch (direction){
                 case "RIGHT" -> {
-                    x += 1;
+                    x += speed;
                     moving = true;
                     typeAnimation = 3;
                 }
                 case "LEFT" -> {
                     moving = true;
-                    x -= 1;
+                    x -= speed;
                     typeAnimation = 1;
                 }
                 case "UP" -> {
                     moving = true;
-                    y -= 1;
+                    y -= speed;
                     typeAnimation = 2;
                 }
                 case "DOWN" -> {
                     moving = true;
-                    y += 1;
+                    y += speed;
                     typeAnimation = 0;
                 }
                 case "STAY" -> {
@@ -142,5 +144,9 @@ public class PlayerGraphics implements Observer, ImgImporter {
 
     public void setHitbox(Hitbox hitbox) {
         this.hitbox = hitbox;
+    }
+
+    public void setMoving(boolean moving) {
+        this.moving = moving;
     }
 }
