@@ -26,6 +26,7 @@ public class PlayerGraphics implements Observer, ImgImporter {
     private BufferedImage[] imgAmount;
     private BufferedImage[][] movingAnimations;
     private int animationIndex, animationIndexUpdate, typeAnimation, animationSpeed = 7;
+    private BombGraphics bombGraphics;
 
     //TODO ricordati di eliminare questa variabile perchè ci serve solo a fini di debug.
     private Hitbox hitbox;
@@ -79,6 +80,9 @@ public class PlayerGraphics implements Observer, ImgImporter {
     public void update(Observable o, Object arg) {
         if (arg instanceof String){
             String direction = (String) arg;
+            if (!direction.equals( "STAY")) {
+                System.out.println(direction);
+            }
             switch (direction){
                 case "RIGHT" -> {
                     x += speed;
@@ -103,8 +107,21 @@ public class PlayerGraphics implements Observer, ImgImporter {
                 case "STAY" -> {
                     moving = false;
                 }
+                case "BOMB" -> {
+                    System.out.println("DIO STRONZO");
+
+                    spawnBomb();
+                }
             }
         }
+    }
+
+    private void spawnBomb() {
+        int nx = (x);
+        int ny = (y);
+        System.out.println(nx + " " + ny);
+
+        bombGraphics = new BombGraphics(nx, ny);
     }
 
     /**
@@ -137,9 +154,12 @@ public class PlayerGraphics implements Observer, ImgImporter {
      */
     public void draw(Graphics g){
         updateAnimation();
+
         g.setColor(Color.RED);
         g.drawRect(hitbox.x * 3, hitbox.y * 3, hitbox.w * 3, hitbox.h * 3);
         g.drawImage(movingAnimations[typeAnimation][animationIndex], x*3, y*3, w*3, h*3, null);
+        if (bombGraphics != null)
+            bombGraphics.draw(g);
     }
 
     public void setHitbox(Hitbox hitbox) {
