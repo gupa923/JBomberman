@@ -2,7 +2,8 @@ package View.EntitiesGraphics;
 
 
 import Model.Hitbox;
-import View.ImgImporter;
+import View.UtilityInterfaces.Drawable;
+import View.UtilityInterfaces.ImgImporter;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -18,7 +19,7 @@ import java.util.Observer;
  * @author gupa9
  */
 //TODO forse è il caso di creare una superclasse
-public class PlayerGraphics implements Observer, ImgImporter {
+public class PlayerGraphics implements Observer, ImgImporter, Drawable {
     private int x, y, w, h;
     private int speed = 1;
     private boolean moving;
@@ -80,9 +81,6 @@ public class PlayerGraphics implements Observer, ImgImporter {
     public void update(Observable o, Object arg) {
         if (arg instanceof String){
             String direction = (String) arg;
-            if (!direction.equals( "STAY")) {
-                System.out.println(direction);
-            }
             switch (direction){
                 case "RIGHT" -> {
                     x += speed;
@@ -119,7 +117,7 @@ public class PlayerGraphics implements Observer, ImgImporter {
     private void spawnBomb() {
         int nx = (x);
         int ny = (y);
-        System.out.println(nx + " " + ny);
+
 
         bombGraphics = new BombGraphics(nx, ny);
     }
@@ -152,6 +150,7 @@ public class PlayerGraphics implements Observer, ImgImporter {
      * per ora disegna il player e per ora anche la hitbox ma solo per fini di debug.
      * @param g
      */
+    @Override
     public void draw(Graphics g){
         updateAnimation();
 

@@ -1,13 +1,12 @@
 package View.EntitiesGraphics;
 
-import Model.EntityModel.Bomb;
-import View.ImgImporter;
+import View.UtilityInterfaces.Drawable;
+import View.UtilityInterfaces.ImgImporter;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 
-public class BombGraphics implements ImgImporter {
+public class BombGraphics implements ImgImporter, Drawable {
     private int x, y, w, h;
     private BufferedImage[] imgs;
 
@@ -28,6 +27,7 @@ public class BombGraphics implements ImgImporter {
         imgs[2] = temp.getSubimage(32, 0, 16, 16);
     }
 
+    @Override
     public void draw(Graphics g){
         g.drawImage(imgs[0], x*3, (y+8)*3, w*3, h*3, null);
     }

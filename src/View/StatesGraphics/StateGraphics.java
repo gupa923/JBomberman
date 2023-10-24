@@ -1,12 +1,11 @@
 package View.StatesGraphics;
 
-import java.awt.*;
+import View.UtilityInterfaces.Drawable;
 
-public abstract class StateGraphics {
+public abstract class StateGraphics implements Drawable {
 
     private Boolean active;
 
-    public abstract void draw(Graphics g);
 
     public boolean isActive(){return active;}
 
