@@ -71,6 +71,10 @@ public class KeyManager implements KeyListener {
                         gameModel.setStatoAttuale(Stati.PAUSE);
                         stateManager.changeState(Stati.PAUSE);
                     }
+                    case KeyEvent.VK_ENTER -> {
+                        gameModel.getPartita().getPlayer().setDirection("BOMB");
+                        System.out.println("PORCO DIO");
+                    }
                 }
             }
             case PAUSE -> {

@@ -12,7 +12,8 @@ import Model.Hitbox;
 //TODO improve the movement system fa veramente schifo. Forse si può risolvere diminuendo la hitbox.
 //TODO istanziare una nuova hitbox chiamata damageBox per quando gestiremo il danno.
 public class Player extends Entity{
-    private String direction;
+    private String direction = "STAY";
+    private Bomb bomb;
     private int speed = 1;
     private boolean moving;
     public Player(int x, int y, int w, int h) {
@@ -80,8 +81,21 @@ public class Player extends Entity{
                 default -> sendMessage("STAY");
             }
         }else{
-            sendMessage("STAY");
+            switch (direction){
+                case "BOMB" -> {
+                    spawnBomb();
+                }
+                default -> {
+                    sendMessage("STAY");
+
+                }
+            }
         }
+    }
+
+    private void spawnBomb() {
+        bomb = new Bomb(x, y);
+        sendMessage("BOMB");
     }
 
 
