@@ -1,9 +1,6 @@
 package Model;
 
-import Model.StateModels.Menu;
-import Model.StateModels.Partita;
-import Model.StateModels.Pause;
-import Model.StateModels.Settings;
+import Model.StateModels.*;
 
 public class GameModel{
     private static GameModel instance;
@@ -12,6 +9,7 @@ public class GameModel{
     private Partita partita;
     private Pause pause;
     private Settings settings;
+    private CommandInfo commandInfo;
 
 
     private GameModel(){
@@ -20,6 +18,7 @@ public class GameModel{
         menu = new Menu(this);
         pause = new Pause(this);
         settings = new Settings(this);
+        commandInfo = new CommandInfo(this);
     }
 
     public static GameModel getInstance() {
@@ -38,6 +37,7 @@ public class GameModel{
             case PARTITA -> partita.update();
             case PAUSE -> pause.update();
             case SETTINGS -> settings.update();
+            case COMMAND_INFO -> commandInfo.update();
         }
     }
 

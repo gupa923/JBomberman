@@ -92,6 +92,18 @@ public class KeyManager implements KeyListener {
                         gameModel.setStatoAttuale(Stati.MENU);
                         stateManager.changeState(Stati.MENU);
                     }
+                    case KeyEvent.VK_C -> {
+                        gameModel.setStatoAttuale(Stati.COMMAND_INFO);
+                        stateManager.changeState(Stati.COMMAND_INFO);
+                    }
+                }
+            }
+            case COMMAND_INFO -> {
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_BACK_SPACE -> {
+                        gameModel.setStatoAttuale(Stati.SETTINGS);
+                        stateManager.changeState(Stati.SETTINGS);
+                    }
                 }
             }
         }

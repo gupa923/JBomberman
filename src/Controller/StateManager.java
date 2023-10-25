@@ -6,10 +6,7 @@ import Model.StateModels.Partita;
 import Model.StateModels.Pause;
 import Model.StateModels.Settings;
 import View.*;
-import View.StatesGraphics.MatchGraphics;
-import View.StatesGraphics.MenuGraphics;
-import View.StatesGraphics.PauseGraphics;
-import View.StatesGraphics.SettingsGraphics;
+import View.StatesGraphics.*;
 
 /**
  * Questa classe gestisce il passaggio tra uno stato all'altro fancendo cambiare sia il model che la view
@@ -28,6 +25,7 @@ public class StateManager {
     private MenuGraphics menuGraphics;
     private PauseGraphics pauseGraphics;
     private SettingsGraphics settingsGraphics;
+    private CommandInfoGraphics commandInfoGraphics;
     private GamePanel gamePanel;
 
     public StateManager(){
@@ -39,6 +37,7 @@ public class StateManager {
         matchGraphics = new MatchGraphics();
         pauseGraphics = new PauseGraphics();
         settingsGraphics = new SettingsGraphics();
+        commandInfoGraphics = new CommandInfoGraphics();
     }
 
     /**
@@ -60,6 +59,10 @@ public class StateManager {
             case SETTINGS -> {
                 gamePanel.setActiveState(settingsGraphics);
             }
+            case COMMAND_INFO -> {
+                gamePanel.setActiveState(commandInfoGraphics);
+            }
+
         }
     }
 
