@@ -12,8 +12,8 @@ public class BombGraphics implements ImgImporter, Drawable {
 
 
     public BombGraphics(int x, int y){
-        this.x = x;
-        this.y = y;
+        this.x = x*16;
+        this.y = y*16;
         w = h = 16;
         importImgs();
     }
@@ -29,7 +29,7 @@ public class BombGraphics implements ImgImporter, Drawable {
 
     @Override
     public void draw(Graphics g){
-        g.drawImage(imgs[0], x*3, (y+8)*3, w*3, h*3, null);
+        g.drawImage(imgs[0], x*3, (y)*3, w*3, h*3, null);
     }
 
 }

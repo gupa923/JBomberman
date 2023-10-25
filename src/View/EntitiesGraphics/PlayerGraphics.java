@@ -114,8 +114,8 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
     }
 
     private void spawnBomb() {
-        int nx = (x);
-        int ny = (y);
+        int nx = (x)/16;
+        int ny = (y+8)/16;
 
 
         bombGraphics = new BombGraphics(nx, ny);
