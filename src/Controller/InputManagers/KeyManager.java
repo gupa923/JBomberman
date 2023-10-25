@@ -73,7 +73,6 @@ public class KeyManager implements KeyListener {
                     }
                     case KeyEvent.VK_ENTER -> {
                         gameModel.getPartita().getPlayer().setDirection("BOMB");
-                        System.out.println("PORCO DIO");
                     }
                 }
             }

@@ -106,7 +106,6 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
                     moving = false;
                 }
                 case "BOMB" -> {
-                    System.out.println("DIO STRONZO");
 
                     spawnBomb();
                 }

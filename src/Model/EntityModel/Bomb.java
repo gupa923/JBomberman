@@ -5,7 +5,7 @@ import Model.Hitbox;
 public class Bomb extends Entity{
     public Bomb(int x, int y) {
         super(x, y, 16, 16);
-        System.out.println(x + " " + y);
+
     }
 
     @Override
