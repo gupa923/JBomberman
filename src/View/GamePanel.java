@@ -20,7 +20,7 @@ public class GamePanel extends JPanel {
     private MenuGraphics menuGraphics;
     private StateGraphics activeState;
     public GamePanel(StateGraphics activeState){
-        setPreferredSize(new Dimension(272 * 3, 208* 3));
+        setPreferredSize(new Dimension(272 * 3, 272* 3));
         this.activeState = activeState;
     }
 

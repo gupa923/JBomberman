@@ -23,6 +23,8 @@ public class MatchGraphics extends StateGraphics {
     public void draw(Graphics g) {
         levelGraphics.draw(g);
         playerGraphics.draw(g);
+        g.setColor(Color.ORANGE);
+        g.fillRect(0, 208*3, 272*3, 64*3);
     }
 
     public void setLevelGraphics(LevelGraphics levelGraphics) {
