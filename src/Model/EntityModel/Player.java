@@ -16,6 +16,7 @@ public class Player extends Entity{
     private Bomb bomb;
     private int speed = 1;
     private boolean moving;
+    private int maxBombNum = 1;
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
         initHitbox();
@@ -115,7 +116,7 @@ public class Player extends Entity{
                 }
             }
         }
-        if(Bomb.BOMB_COUNTER == 1){
+        if(Bomb.BOMB_COUNTER >= maxBombNum){
             bomb.update();
         }
     }
