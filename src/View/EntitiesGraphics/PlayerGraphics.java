@@ -109,8 +109,15 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
 
                     spawnBomb();
                 }
+                case "EXPLOSION" -> {
+                    despawnBomb();
+                }
             }
         }
+    }
+
+    private void despawnBomb() {
+        this.bombGraphics = null;
     }
 
     private void spawnBomb() {

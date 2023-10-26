@@ -47,7 +47,7 @@ public class Player extends Entity{
                     if ((hitbox.checkCollision(hitbox.x - speed, hitbox.y) && hitbox.checkCollision(hitbox.x - speed, hitbox.y + hitbox.h - 1))) {
                         x -= speed;
                         hitbox.update(-speed, 0);
-                        if (Bomb.BOMB_COUNTER == 0 || !bomb.intersect(this, "LEFT"))
+                        if (Bomb.BOMB_COUNTER == 0 || !bomb.intersect( "LEFT"))
                             sendMessage(direction);
                         else{
                             x += speed;
@@ -62,7 +62,7 @@ public class Player extends Entity{
                     if (hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y) && hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y + hitbox.h -1 )) {
                         x += speed;
                         hitbox.update(speed, 0);
-                        if (Bomb.BOMB_COUNTER == 0 || !bomb.intersect(this,"RIGHT"))
+                        if (Bomb.BOMB_COUNTER == 0 || !bomb.intersect("RIGHT"))
                             sendMessage(direction);
                         else{
                             x -= speed;
@@ -77,7 +77,7 @@ public class Player extends Entity{
                     if(hitbox.checkCollision(hitbox.x, hitbox.y - speed) && hitbox.checkCollision(hitbox.x + hitbox.w -1, hitbox.y- speed)){
                         y -= speed;
                         hitbox.update(0, -speed);
-                        if (Bomb.BOMB_COUNTER == 0 || !bomb.intersect(this, "UP"))
+                        if (Bomb.BOMB_COUNTER == 0 || !bomb.intersect( "UP"))
                             sendMessage(direction);
                         else{
                             y += speed;
@@ -92,7 +92,7 @@ public class Player extends Entity{
                     if ( hitbox.checkCollision(hitbox.x, hitbox.y  + hitbox.h) && hitbox.checkCollision(hitbox.x + hitbox.w - 1, hitbox.y + hitbox.h )){
                         y += speed;
                         hitbox.update(0, speed);
-                        if (Bomb.BOMB_COUNTER == 0 || !bomb.intersect(this, "DOWN"))
+                        if (Bomb.BOMB_COUNTER == 0 || !bomb.intersect( "DOWN"))
                             sendMessage(direction);
                         else{
                             y -= speed;
@@ -127,9 +127,15 @@ public class Player extends Entity{
      */
     private void spawnBomb() {
         if (Bomb.BOMB_COUNTER < maxBombNum) {
-            bomb = new Bomb(x/16, (y+8)/16);
+            bomb = new Bomb(this,x/16, (y+8)/16);
+
             sendMessage("BOMB");
         }
+    }
+    public void explodeBomb() {
+        this.bomb = null;
+        Bomb.BOMB_COUNTER --;
+        sendMessage("EXPLOSION");
     }
 
 
@@ -145,4 +151,6 @@ public class Player extends Entity{
     public void setDirection(String direction) {
         this.direction = direction;
     }
+
+
 }
