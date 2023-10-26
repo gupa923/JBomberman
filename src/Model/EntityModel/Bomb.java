@@ -13,10 +13,12 @@ public class Bomb extends Entity{
      */
     public static int BOMB_COUNTER = 0;
     private int notCollideTick = 0;
+    private Player player;
     private final int collideTickLim = 180;
     private final int explosionTick = 600;
-    public Bomb(int x, int y) {
+    public Bomb(Player player, int x, int y) {
         super(x*16, y*16, 16, 16);
+        this.player = player;
         BOMB_COUNTER++;
         initHitbox();
     }
@@ -33,19 +35,20 @@ public class Bomb extends Entity{
     @Override
     public void update() {
         notCollideTick++;
+        if (notCollideTick >= explosionTick)
+            player.explodeBomb();
     }
 
     /**
      * sto metodo controlla la collisione tra il giocatore e la bomba
      *
      *
-     * @param player: la classe player
      * @param dir: la direzione in cui il player si sta muovendo
      * @return
      */
-    public boolean intersect(Player player, String dir){
+    public boolean intersect( String dir){
         Hitbox pHitbox = player.getHitbox();
-        if (notCollideTick <= 180)
+        if (notCollideTick <= collideTickLim)
             return false;
         switch (dir){
             case "LEFT", "UP" -> {
