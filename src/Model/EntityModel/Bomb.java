@@ -34,7 +34,7 @@ public class Bomb extends Entity{
                 return checkPoints((hitbox.x) / 16, hitbox.y/16, (pHitbox.x + pHitbox.w)/16,pHitbox.y/16);
             }
             case "DOWN" -> {
-                return checkPoints((hitbox.x) / 16, (hitbox.y )/16, pHitbox.x/16,(pHitbox.y + pHitbox.h)/16);
+                return checkPoints((hitbox.x) / 16, (hitbox.y )/16, pHitbox.x/16,(pHitbox.y + pHitbox.h - 1)/16);
             }
         }
         return false;
