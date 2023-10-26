@@ -6,6 +6,9 @@ import View.UtilityInterfaces.ImgImporter;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * gestisce la rappresentazione grafica di una bomba
+ */
 public class BombGraphics implements ImgImporter, Drawable {
     private int x, y, w, h;
     private BufferedImage[] imgs;

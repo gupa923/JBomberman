@@ -121,8 +121,12 @@ public class Player extends Entity{
         }
     }
 
+    /**
+     * controllo inizialmente se il numero di bombe in gioco è minore del numero massimo di bombe consentito.
+     * se ciò è vero creo una nuova bomba e mando una notifica all'observer
+     */
     private void spawnBomb() {
-        if (Bomb.BOMB_COUNTER < 1) {
+        if (Bomb.BOMB_COUNTER < maxBombNum) {
             bomb = new Bomb(x/16, (y+8)/16);
             sendMessage("BOMB");
         }

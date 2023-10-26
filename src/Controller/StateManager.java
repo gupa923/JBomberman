@@ -43,7 +43,7 @@ public class StateManager {
     /**
      * cambia la view e il model il base allo stato che deve essere impostato come stato attivo.
      *
-     * @param nextState
+     * @param nextState: in base a valore di nextState imposta actualState che verrà disegnato nella view
      */
     public void changeState(Stati nextState){
         switch(nextState){
