@@ -130,6 +130,7 @@ public class Player extends Entity{
             bomb = new Bomb(this,x/16, (y+8)/16);
 
             sendMessage("BOMB");
+            direction = "STAY";
         }
     }
     public void explodeBomb() {

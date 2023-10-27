@@ -14,7 +14,7 @@ public class BombGraphics implements ImgImporter, Drawable {
     private BufferedImage[] imgs;
     private int animationIndex;
     private int numFrames;
-    private int animationSpeed = 15;
+    private int animationSpeed = 12;
 
 
     public BombGraphics(int x, int y){
