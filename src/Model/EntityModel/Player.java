@@ -3,6 +3,8 @@ package Model.EntityModel;
 import Model.EntityModel.Entity;
 import Model.Hitbox;
 
+import java.util.ArrayList;
+
 /**
  *
  *
@@ -14,11 +16,13 @@ import Model.Hitbox;
 public class Player extends Entity{
     private String direction = "STAY";
     private Bomb bomb;
+    private ArrayList<Bomb> bombs;
     private int speed = 1;
     private boolean moving;
     private int maxBombNum = 1;
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
+        bombs = new ArrayList<>();
         initHitbox();
     }
 
@@ -112,12 +116,13 @@ public class Player extends Entity{
                 }
                 default -> {
                     sendMessage("STAY");
-
                 }
             }
         }
-        if(Bomb.BOMB_COUNTER >= maxBombNum){
-            bomb.update();
+        if(Bomb.BOMB_COUNTER > 0){
+            for (int x = 0; x < bombs.size(); x++){
+                bombs.get(x).update();
+            }
         }
     }
 
@@ -128,15 +133,16 @@ public class Player extends Entity{
     private void spawnBomb() {
         if (Bomb.BOMB_COUNTER < maxBombNum) {
             bomb = new Bomb(this,x/16, (y+8)/16);
+            bombs.add(bomb);
 
             sendMessage("BOMB");
             direction = "STAY";
         }
     }
-    public void explodeBomb() {
-        this.bomb = null;
+    public void explodeBomb(Bomb b) {
+        bombs.remove(b);
         Bomb.BOMB_COUNTER --;
-        sendMessage("EXPLOSION");
+        sendMessage(new int[] {b.getX(), b.getY()});
     }
 
 

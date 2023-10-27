@@ -49,4 +49,11 @@ public class BombGraphics implements ImgImporter, Drawable {
         g.drawImage(imgs[animationIndex], x*3, (y)*3, w*3, h*3, null);
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }
