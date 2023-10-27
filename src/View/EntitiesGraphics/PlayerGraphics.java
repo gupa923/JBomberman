@@ -7,6 +7,7 @@ import View.UtilityInterfaces.ImgImporter;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -28,6 +29,7 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
     private BufferedImage[][] movingAnimations;
     private int animationIndex, animationIndexUpdate, typeAnimation, animationSpeed = 7;
     private BombGraphics bombGraphics;
+    private ArrayList<BombGraphics> bombViews;
 
     //TODO ricordati di eliminare questa variabile perchè ci serve solo a fini di debug.
     private Hitbox hitbox;
@@ -37,7 +39,7 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
         this.y = y;
         this.w = w;
         this.h = h;
-
+        bombViews = new ArrayList<>();
         loadSprites();
         loadAnimations();
     }
@@ -110,22 +112,31 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
                     spawnBomb();
                 }
                 case "EXPLOSION" -> {
-                    despawnBomb();
+                    //despawnBomb();
                 }
             }
         }
+        if (arg instanceof int[]){
+            int[] pos = (int[]) arg;
+            despawnBomb(pos);
+        }
     }
 
-    private void despawnBomb() {
-        this.bombGraphics = null;
+    private void despawnBomb(int[] pos) {
+        for (int x = 0; x < bombViews.size(); x++){
+            BombGraphics temp = bombViews.get(x);
+            if (temp.getX() == pos[0] && temp.getY() == pos[1]){
+                bombViews.remove(temp);
+            }
+        }
     }
 
     private void spawnBomb() {
         int nx = (x)/16;
         int ny = (y+8)/16;
 
-
         bombGraphics = new BombGraphics(nx, ny);
+        bombViews.add(bombGraphics);
     }
 
     /**
@@ -163,8 +174,9 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
         g.setColor(Color.RED);
         g.drawRect(hitbox.x * 3, hitbox.y * 3, hitbox.w * 3, hitbox.h * 3);
         g.drawImage(movingAnimations[typeAnimation][animationIndex], x*3, y*3, w*3, h*3, null);
-        if (bombGraphics != null)
-            bombGraphics.draw(g);
+        for (BombGraphics b : bombViews){
+            b.draw(g);
+        }
     }
 
     public void setHitbox(Hitbox hitbox) {

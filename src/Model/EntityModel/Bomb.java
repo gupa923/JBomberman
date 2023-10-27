@@ -15,7 +15,8 @@ public class Bomb extends Entity{
     private int notCollideTick = 0;
     private Player player;
     private final int collideTickLim = 180;
-    private final int explosionTick = 600;
+    private final int explosionTick = 480;
+    private boolean exploding;
     public Bomb(Player player, int x, int y) {
         super(x*16, y*16, 16, 16);
         this.player = player;
@@ -36,7 +37,7 @@ public class Bomb extends Entity{
     public void update() {
         notCollideTick++;
         if (notCollideTick >= explosionTick)
-            player.explodeBomb();
+            player.explodeBomb(this);
     }
 
     /**
@@ -76,5 +77,18 @@ public class Bomb extends Entity{
      */
     private boolean checkPoints(int x1, int y1, int x2, int y2){
         return (x1 == x2) && (y1 == y2);
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (o instanceof Bomb){
+            Bomb b = (Bomb) o;
+            return this.x == b.x && this.y == b.y;
+        }
+        return false;
+    }
+
+    public boolean isExploding() {
+        return exploding;
     }
 }
