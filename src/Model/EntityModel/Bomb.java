@@ -18,6 +18,7 @@ public class Bomb extends Entity{
     private final int explosionTick = 480;
     private final int explosionEnd = 600;
     private boolean exploding;
+    public static int RANGE = 1;
     public Bomb(Player player, int x, int y) {
         super(x*16, y*16, 16, 16);
         this.player = player;
