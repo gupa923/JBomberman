@@ -15,7 +15,8 @@ public class BombGraphics implements ImgImporter, Drawable {
     private int animationIndex;
     private int numFrames;
     private int animationSpeed = 12;
-
+    private boolean exploding;
+    private boolean canDraw = true;
 
     public BombGraphics(int x, int y){
         this.x = x*16;
@@ -45,8 +46,16 @@ public class BombGraphics implements ImgImporter, Drawable {
     }
     @Override
     public void draw(Graphics g){
-        updateAnimations();
-        g.drawImage(imgs[animationIndex], x*3, (y)*3, w*3, h*3, null);
+        if (canDraw) {
+            if (!exploding) {
+                updateAnimations();
+                g.drawImage(imgs[animationIndex], x * 3, (y) * 3, w * 3, h * 3, null);
+            } else {
+                g.setColor(Color.RED);
+                g.fillRect(x * 3, y * 3, w * 3, h * 3);
+            }
+        }
+
     }
 
     public int getX() {
@@ -55,5 +64,21 @@ public class BombGraphics implements ImgImporter, Drawable {
 
     public int getY() {
         return y;
+    }
+
+    public boolean isExploding() {
+        return exploding;
+    }
+
+    public void setExploding(boolean exploding) {
+        this.exploding = exploding;
+    }
+
+    public void setCanDraw(boolean canDraw) {
+        this.canDraw = canDraw;
+    }
+
+    public boolean isCanDraw() {
+        return canDraw;
     }
 }

@@ -118,15 +118,30 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
         }
         if (arg instanceof int[]){
             int[] pos = (int[]) arg;
-            despawnBomb(pos);
+            explodBomb(pos);
+        }
+        else if (arg instanceof String[]){
+            String[] a = (String[] ) arg;
+            despawnBomb(a);
         }
     }
 
-    private void despawnBomb(int[] pos) {
+    private void despawnBomb(String[] a) {
+        int xb = Integer.parseInt(a[0]);
+        int yb = Integer.parseInt(a[1]);
+        for (int x = 0; x < bombViews.size(); x++){
+            BombGraphics temp = bombViews.get(x);
+            if (temp.getX() == xb && temp.getY() == yb){
+                bombViews.remove(temp);
+            }
+        }
+    }
+
+    private void explodBomb(int[] pos) {
         for (int x = 0; x < bombViews.size(); x++){
             BombGraphics temp = bombViews.get(x);
             if (temp.getX() == pos[0] && temp.getY() == pos[1]){
-                bombViews.remove(temp);
+                temp.setExploding(true);
             }
         }
     }
@@ -171,12 +186,13 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
     public void draw(Graphics g){
         updateAnimation();
 
-        g.setColor(Color.RED);
-        g.drawRect(hitbox.x * 3, hitbox.y * 3, hitbox.w * 3, hitbox.h * 3);
-        g.drawImage(movingAnimations[typeAnimation][animationIndex], x*3, y*3, w*3, h*3, null);
         for (BombGraphics b : bombViews){
             b.draw(g);
         }
+        g.setColor(Color.RED);
+        g.drawRect(hitbox.x * 3, hitbox.y * 3, hitbox.w * 3, hitbox.h * 3);
+        g.drawImage(movingAnimations[typeAnimation][animationIndex], x*3, y*3, w*3, h*3, null);
+
     }
 
     public void setHitbox(Hitbox hitbox) {

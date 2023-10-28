@@ -16,6 +16,7 @@ public class Bomb extends Entity{
     private Player player;
     private final int collideTickLim = 180;
     private final int explosionTick = 480;
+    private final int explosionEnd = 600;
     private boolean exploding;
     public Bomb(Player player, int x, int y) {
         super(x*16, y*16, 16, 16);
@@ -36,8 +37,11 @@ public class Bomb extends Entity{
     @Override
     public void update() {
         notCollideTick++;
-        if (notCollideTick >= explosionTick)
+        if (notCollideTick == explosionTick) {
             player.explodeBomb(this);
+        } else if (notCollideTick == explosionEnd){
+            player.removeBomb(this);
+        }
     }
 
     /**

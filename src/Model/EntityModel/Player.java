@@ -19,7 +19,7 @@ public class Player extends Entity{
     private ArrayList<Bomb> bombs;
     private int speed = 1;
     private boolean moving;
-    private int maxBombNum = 1;
+    private int maxBombNum = 3;
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
         bombs = new ArrayList<>();
@@ -119,7 +119,7 @@ public class Player extends Entity{
                 }
             }
         }
-        if(Bomb.BOMB_COUNTER > 0){
+        if(bombs.size() > 0){
             for (int x = 0; x < bombs.size(); x++){
                 bombs.get(x).update();
             }
@@ -140,11 +140,17 @@ public class Player extends Entity{
         }
     }
     public void explodeBomb(Bomb b) {
-        bombs.remove(b);
+
         Bomb.BOMB_COUNTER --;
         sendMessage(new int[] {b.getX(), b.getY()});
     }
 
+    public void removeBomb(Bomb b) {
+        bombs.remove(b);
+        String m1 = String.valueOf(b.getX());
+        String m2 = String.valueOf(b.getY());
+        sendMessage(new String[] {m1, m2});
+    }
 
     public void sendMessage(Object arg){
         setChanged();
@@ -158,6 +164,7 @@ public class Player extends Entity{
     public void setDirection(String direction) {
         this.direction = direction;
     }
+
 
 
 }
