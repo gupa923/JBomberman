@@ -119,7 +119,7 @@ public class Player extends Entity{
                 }
             }
         }
-        if(Bomb.BOMB_COUNTER > 0){
+        if(bombs.size() > 0){
             for (int x = 0; x < bombs.size(); x++){
                 bombs.get(x).update();
             }
