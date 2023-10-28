@@ -51,7 +51,7 @@ public class Player extends Entity{
                     if ((hitbox.checkCollision(hitbox.x - speed, hitbox.y) && hitbox.checkCollision(hitbox.x - speed, hitbox.y + hitbox.h - 1))) {
                         x -= speed;
                         hitbox.update(-speed, 0);
-                        if (Bomb.BOMB_COUNTER == 0 || !intersect( "LEFT"))
+                        if (bombs.size() == 0 || !intersect( "LEFT"))
                             sendMessage(direction);
                         else{
                             x += speed;
@@ -66,7 +66,7 @@ public class Player extends Entity{
                     if (hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y) && hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y + hitbox.h -1 )) {
                         x += speed;
                         hitbox.update(speed, 0);
-                        if (Bomb.BOMB_COUNTER == 0 || !intersect("RIGHT"))
+                        if (bombs.size() == 0 || !intersect("RIGHT"))
                             sendMessage(direction);
                         else{
                             x -= speed;
@@ -81,7 +81,7 @@ public class Player extends Entity{
                     if(hitbox.checkCollision(hitbox.x, hitbox.y - speed) && hitbox.checkCollision(hitbox.x + hitbox.w -1, hitbox.y- speed)){
                         y -= speed;
                         hitbox.update(0, -speed);
-                        if (Bomb.BOMB_COUNTER == 0 || !intersect( "UP"))
+                        if (bombs.size() == 0 || !intersect( "UP"))
                             sendMessage(direction);
                         else{
                             y += speed;
@@ -96,7 +96,7 @@ public class Player extends Entity{
                     if ( hitbox.checkCollision(hitbox.x, hitbox.y  + hitbox.h) && hitbox.checkCollision(hitbox.x + hitbox.w - 1, hitbox.y + hitbox.h )){
                         y += speed;
                         hitbox.update(0, speed);
-                        if (Bomb.BOMB_COUNTER == 0 || !intersect( "DOWN"))
+                        if (bombs.size() == 0 || !intersect( "DOWN"))
                             sendMessage(direction);
                         else{
                             y -= speed;
@@ -119,10 +119,8 @@ public class Player extends Entity{
                 }
             }
         }
-        if(bombs.size() > 0){
-            for (int x = 0; x < bombs.size(); x++){
-                bombs.get(x).update();
-            }
+        for (int x = 0; x < bombs.size(); x++){
+            bombs.get(x).update();
         }
     }
 
@@ -142,6 +140,11 @@ public class Player extends Entity{
     private void spawnBomb() {
         if (Bomb.BOMB_COUNTER < maxBombNum) {
             bomb = new Bomb(this,x/16, (y+8)/16);
+            for (Bomb b : bombs){
+                if (b.equals(bomb)){
+                    return;
+                }
+            }
             bombs.add(bomb);
 
             sendMessage("BOMB");
