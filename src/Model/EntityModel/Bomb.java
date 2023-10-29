@@ -29,6 +29,8 @@ public class Bomb extends Entity{
     @Override
     public void initHitbox() {
         hitbox = new Hitbox(x, y, 16, 16);
+        hitbox.setData(player.hitbox.getData());
+
     }
 
     /**
