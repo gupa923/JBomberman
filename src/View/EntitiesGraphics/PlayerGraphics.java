@@ -116,8 +116,8 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
                 }
             }
         }
-        if (arg instanceof int[]){
-            int[] pos = (int[]) arg;
+        if (arg instanceof int[][]){
+            int[][] pos = (int[][]) arg;
             explodBomb(pos);
         }
         else if (arg instanceof String[]){
@@ -137,11 +137,13 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
         }
     }
 
-    private void explodBomb(int[] pos) {
+    private void explodBomb(int[][] pos) {
         for (int x = 0; x < bombViews.size(); x++){
             BombGraphics temp = bombViews.get(x);
-            if (temp.getX() == pos[0] && temp.getY() == pos[1]){
+            if (temp.getX() == pos[0][0] && temp.getY() == pos[0][1]){
+                temp.setExplosion(pos);
                 temp.setExploding(true);
+
             }
         }
     }

@@ -17,8 +17,9 @@ public class Bomb extends Entity{
     private final int collideTickLim = 180;
     private final int explosionTick = 480;
     private final int explosionEnd = 600;
+    private int[][] explosionTiles;
     private boolean exploding;
-    public static int RANGE = 1;
+    public static int RANGE = 2;
     public Bomb(Player player, int x, int y) {
         super(x*16, y*16, 16, 16);
         this.player = player;
@@ -97,5 +98,19 @@ public class Bomb extends Entity{
 
     public boolean isExploding() {
         return exploding;
+    }
+
+    public void setExplosionTiles(int[][] explosionTiles) {
+        this.explosionTiles = explosionTiles;
+    }
+
+    public int[][] getExplosionTiles() {
+        return explosionTiles;
+    }
+
+    public void printExplosion(){
+        for (int y = 0; y < explosionTiles.length; y++){
+            System.out.println(explosionTiles[y][0] + " " + explosionTiles[y][1]);
+        }
     }
 }

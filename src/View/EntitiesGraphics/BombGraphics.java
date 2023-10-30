@@ -17,6 +17,7 @@ public class BombGraphics implements ImgImporter, Drawable {
     private int animationSpeed = 12;
     private boolean exploding;
     private boolean canDraw = true;
+    private int[][] explosion;
 
     public BombGraphics(int x, int y){
         this.x = x*16;
@@ -51,8 +52,13 @@ public class BombGraphics implements ImgImporter, Drawable {
                 updateAnimations();
                 g.drawImage(imgs[animationIndex], x * 3, (y) * 3, w * 3, h * 3, null);
             } else {
-                g.setColor(Color.RED);
-                g.fillRect(x * 3, y * 3, w * 3, h * 3);
+                for (int c = 0; c < explosion.length; c++){
+
+                    int tx = explosion[c][0];
+                    int ty = explosion[c][1];
+                    g.setColor(Color.RED);
+                    g.fillRect(tx *3, ty *3, w*3, h*3);
+                }
             }
         }
 
@@ -80,5 +86,9 @@ public class BombGraphics implements ImgImporter, Drawable {
 
     public boolean isCanDraw() {
         return canDraw;
+    }
+
+    public void setExplosion(int[][] explosion) {
+        this.explosion = explosion;
     }
 }

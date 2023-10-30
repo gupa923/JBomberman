@@ -155,7 +155,9 @@ public class Player extends Entity{
     public void explodeBomb(Bomb b) {
 
         Bomb.BOMB_COUNTER --;
-        sendMessage(new int[] {b.getX(), b.getY()});
+        b.setExplosionTiles(ExplosionCreator.CreateExplosionTiles(b));
+        b.printExplosion();
+        sendMessage(b.getExplosionTiles());
     }
 
     public void removeBomb(Bomb b) {
