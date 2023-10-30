@@ -26,7 +26,9 @@ public class ExplosionCreator {
         AddValidTiles(l, temp, lvlData);
         AddValidTiles(r, temp, lvlData);
 
-        return temp.stream().filter(p -> CheckOutOfBounds(p)).map(c -> MulTimes16(c)).toArray(int[][] :: new);
+        return temp.stream()
+                //.filter(p -> CheckOutOfBounds(p))
+                .map(c -> MulTimes16(c)).toArray(int[][] :: new);
     }
 
     private static void AddValidTiles(ArrayList<int[]> l, ArrayList<int[]> result, int[][] lvlData){
@@ -39,13 +41,13 @@ public class ExplosionCreator {
         }
     }
 
-    private static boolean CheckOutOfBounds(int[] c){
-        if (c[0] < 0 || c[0] >= 17)
-            return false;
-        if (c[1] < 0 || c[1] >= 13)
-            return false;
-        return true;
-    }
+//    private static boolean CheckOutOfBounds(int[] c){
+//        if (c[0] < 0 || c[0] >= 17)
+//            return false;
+//        if (c[1] < 0 || c[1] >= 13)
+//            return false;
+//        return true;
+//    }
     private static boolean CheckValidity(int[] pos, int[][] lvlData){
         try{
             return lvlData[pos[1]][pos[0]] != 1;

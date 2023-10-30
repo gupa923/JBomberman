@@ -156,7 +156,6 @@ public class Player extends Entity{
 
         Bomb.BOMB_COUNTER --;
         b.setExplosionTiles(ExplosionCreator.CreateExplosionTiles(b));
-        b.printExplosion();
         b.setExploding(true);
         sendMessage(b.getExplosionTiles());
     }
