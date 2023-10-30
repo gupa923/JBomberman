@@ -139,12 +139,13 @@ public class Player extends Entity{
      */
     private void spawnBomb() {
         if (Bomb.BOMB_COUNTER < maxBombNum) {
-            bomb = new Bomb(this,x/16, (y+8)/16);
             for (Bomb b : bombs){
-                if (b.equals(bomb)){
+                if (b.getX() == (x/16)*16 && b.getY() == ((y+8)/16)*16){
                     return;
                 }
             }
+            bomb = new Bomb(this,x/16, (y+8)/16);
+
             bombs.add(bomb);
 
             sendMessage("BOMB");
@@ -154,7 +155,9 @@ public class Player extends Entity{
     public void explodeBomb(Bomb b) {
 
         Bomb.BOMB_COUNTER --;
-        sendMessage(new int[] {b.getX(), b.getY()});
+        b.setExplosionTiles(ExplosionCreator.CreateExplosionTiles(b));
+        b.printExplosion();
+        sendMessage(b.getExplosionTiles());
     }
 
     public void removeBomb(Bomb b) {
