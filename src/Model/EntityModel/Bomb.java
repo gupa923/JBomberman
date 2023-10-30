@@ -19,7 +19,7 @@ public class Bomb extends Entity{
     private final int explosionEnd = 600;
     private int[][] explosionTiles;
     private boolean exploding;
-    public static int RANGE = 2;
+    public static int RANGE = 1;
     public Bomb(Player player, int x, int y) {
         super(x*16, y*16, 16, 16);
         this.player = player;
@@ -59,18 +59,45 @@ public class Bomb extends Entity{
         Hitbox pHitbox = player.getHitbox();
         if (notCollideTick <= collideTickLim)
             return false;
-        switch (dir){
-            case "LEFT", "UP" -> {
-                return checkPoints((hitbox.x) / 16, hitbox.y/16, pHitbox.x/16,pHitbox.y/16);
+        if (!exploding) {
+            switch (dir) {
+                case "LEFT", "UP" -> {
+                    return checkPoints((hitbox.x) / 16, hitbox.y / 16, pHitbox.x / 16, pHitbox.y / 16);
+                }
+                case "RIGHT" -> {
+                    return checkPoints((hitbox.x) / 16, hitbox.y / 16, (pHitbox.x + pHitbox.w - 1) / 16, pHitbox.y / 16);
+                }
+                case "DOWN" -> {
+                    return checkPoints((hitbox.x) / 16, (hitbox.y) / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16);
+                }
             }
-            case "RIGHT" -> {
-                return checkPoints((hitbox.x) / 16, hitbox.y/16, (pHitbox.x + pHitbox.w)/16,pHitbox.y/16);
+            return false;
+        }else{
+            switch (dir) {
+                case "LEFT", "UP" -> {
+                    for (int[] p: explosionTiles){
+                        if (checkPoints((p[0]) / 16, p[1] / 16, pHitbox.x / 16, pHitbox.y / 16)){
+                            return true;
+                        }
+                    }
+                }
+                case "RIGHT" -> {
+                    for (int[] p: explosionTiles){
+                        if (checkPoints(p[0] / 16, p[1] / 16, (pHitbox.x + pHitbox.w - 1) / 16, pHitbox.y / 16)){
+                            return true;
+                        }
+                    }
+                }
+                case "DOWN" -> {
+                    for (int[] p: explosionTiles){
+                        if (checkPoints(p[0] / 16, p[1] / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)){
+                            return true;
+                        }
+                    }
+                }
             }
-            case "DOWN" -> {
-                return checkPoints((hitbox.x) / 16, (hitbox.y )/16, pHitbox.x/16,(pHitbox.y + pHitbox.h - 1)/16);
-            }
+            return false;
         }
-        return false;
         //return checkPoints(hitbox.x + hitbox.w, hitbox.y, pHitbox.x, pHitbox.h) || checkPoints(hitbox.x + hitbox.w, hitbox.y+ hitbox.h, pHitbox.x, pHitbox.y+ pHitbox.h);
 
     }
@@ -98,6 +125,10 @@ public class Bomb extends Entity{
 
     public boolean isExploding() {
         return exploding;
+    }
+
+    public void setExploding(boolean exploding) {
+        this.exploding = exploding;
     }
 
     public void setExplosionTiles(int[][] explosionTiles) {
