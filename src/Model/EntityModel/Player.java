@@ -157,10 +157,12 @@ public class Player extends Entity{
         Bomb.BOMB_COUNTER --;
         b.setExplosionTiles(ExplosionCreator.CreateExplosionTiles(b));
         b.printExplosion();
+        b.setExploding(true);
         sendMessage(b.getExplosionTiles());
     }
 
     public void removeBomb(Bomb b) {
+        b.setExploding(false);
         bombs.remove(b);
         String m1 = String.valueOf(b.getX());
         String m2 = String.valueOf(b.getY());
