@@ -4,6 +4,8 @@ import View.EntitiesGraphics.PlayerGraphics;
 import View.LevelGraphics;
 
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * questa classe gestisce la rappresentazione grafica della partita vera e propria
@@ -11,7 +13,7 @@ import java.awt.*;
  *
  *
  */
-public class MatchGraphics extends StateGraphics {
+public class MatchGraphics extends StateGraphics implements Observer {
 
     private PlayerGraphics playerGraphics;
     private LevelGraphics levelGraphics;
@@ -37,5 +39,19 @@ public class MatchGraphics extends StateGraphics {
 
     public PlayerGraphics getPlayerGraphics() {
         return playerGraphics;
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (arg instanceof String){
+            String message = (String) arg;
+            if (message.equals("RESET")){
+                resetALL();
+            }
+        }
+    }
+
+    private void resetALL() {
+        playerGraphics.reset();
     }
 }

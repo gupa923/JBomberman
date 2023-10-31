@@ -182,5 +182,12 @@ public class Player extends Entity{
     }
 
 
-
+    public void reset() {
+        x = 32;
+        y = 8;
+        hitbox.x = x;
+        hitbox.y = y + 8;
+        bombs.clear();
+        Bomb.BOMB_COUNTER = 0;
+    }
 }

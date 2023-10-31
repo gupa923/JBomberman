@@ -38,6 +38,7 @@ public class StateManager {
         pauseGraphics = new PauseGraphics();
         settingsGraphics = new SettingsGraphics();
         commandInfoGraphics = new CommandInfoGraphics();
+        partita.addObserver(matchGraphics);
     }
 
     /**
