@@ -34,6 +34,13 @@ public class Partita extends Stato{
         player.getHitbox().setData(level.getData());
     }
 
+    public void reset(){
+        player.reset();
+
+        setChanged();
+        notifyObservers("RESET");
+    }
+
     public Player getPlayer() {
         return player;
     }

@@ -2,7 +2,9 @@ package Model.StateModels;
 
 import Model.GameModel;
 
-public abstract class Stato {
+import java.util.Observable;
+
+public abstract class Stato extends Observable {
     private GameModel gameModel;
 
     public Stato(GameModel gameModel) {

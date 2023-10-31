@@ -84,6 +84,11 @@ public class KeyManager implements KeyListener {
                         gameModel.setStatoAttuale(Stati.PARTITA);
                         stateManager.changeState(Stati.PARTITA);
                     }
+                    case KeyEvent.VK_R -> {
+                        gameModel.setStatoAttuale(Stati.PARTITA);
+                        stateManager.changeState(Stati.PARTITA);
+                        gameModel.getPartita().reset();
+                    }
                 }
             }
             case SETTINGS -> {

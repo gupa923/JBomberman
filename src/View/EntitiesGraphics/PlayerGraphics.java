@@ -204,4 +204,12 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
     public void setMoving(boolean moving) {
         this.moving = moving;
     }
+
+    public void reset() {
+        x = 32;
+        y = 8;
+        hitbox.x = 32;
+        hitbox.y = 16;
+        bombViews.clear();
+    }
 }
