@@ -152,6 +152,11 @@ public class Player extends Entity{
             direction = "STAY";
         }
     }
+
+    /**
+     * crea l'esplosione
+     * @param b
+     */
     public void explodeBomb(Bomb b) {
 
         Bomb.BOMB_COUNTER --;
@@ -160,6 +165,11 @@ public class Player extends Entity{
         sendMessage(b.getExplosionTiles());
     }
 
+    /**
+     * rimuove la bomba dall'array
+     *
+     * @param b
+     */
     public void removeBomb(Bomb b) {
         b.setExploding(false);
         bombs.remove(b);
@@ -181,7 +191,9 @@ public class Player extends Entity{
         this.direction = direction;
     }
 
-
+    /**
+     * resetta tutti i valori del player ai valori iniziali
+     */
     public void reset() {
         x = 32;
         y = 8;

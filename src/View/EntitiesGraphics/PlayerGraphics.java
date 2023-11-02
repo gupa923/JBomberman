@@ -126,6 +126,10 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
         }
     }
 
+    /**
+     * elimina la bomba dall'array
+     * @param a
+     */
     private void despawnBomb(String[] a) {
         int xb = Integer.parseInt(a[0]);
         int yb = Integer.parseInt(a[1]);
@@ -137,6 +141,10 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
         }
     }
 
+    /**
+     * fa esplodere una bomba
+     * @param pos
+     */
     private void explodBomb(int[][] pos) {
         for (int x = 0; x < bombViews.size(); x++){
             BombGraphics temp = bombViews.get(x);
@@ -148,6 +156,9 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
         }
     }
 
+    /**
+     * aggiunge una bomba
+     */
     private void spawnBomb() {
         int nx = (x)/16;
         int ny = (y+8)/16;

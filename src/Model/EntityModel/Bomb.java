@@ -139,6 +139,9 @@ public class Bomb extends Entity{
         return explosionTiles;
     }
 
+    /**
+     * metodo creato solo a fini di debug. stampa solamente il contenuto dell'arrylist explosionTiles
+     */
     public void printExplosion(){
         for (int y = 0; y < explosionTiles.length; y++){
             System.out.println(explosionTiles[y][0] + " " + explosionTiles[y][1]);

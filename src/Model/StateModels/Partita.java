@@ -34,6 +34,9 @@ public class Partita extends Stato{
         player.getHitbox().setData(level.getData());
     }
 
+    /**
+     * resetta tutte le classi coinvolte nella partita
+     */
     public void reset(){
         player.reset();
 
