@@ -200,6 +200,7 @@ public class Player extends Entity{
         x = 32;
         y = 8;
         alive = true;
+        direction = "STAY";
         hitbox.x = x;
         hitbox.y = y + 8;
         bombs.clear();
