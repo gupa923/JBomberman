@@ -1,4 +1,4 @@
-package Model;
+package Model.EntityModel;
 
 /**
  * questa classe gestisce le collisioni con le tile non walkabili sulla mappa

@@ -1,8 +1,5 @@
 package Model.EntityModel;
 
-import Model.EntityModel.Entity;
-import Model.Hitbox;
-
 import java.util.ArrayList;
 
 /**

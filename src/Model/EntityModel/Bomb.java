@@ -1,7 +1,5 @@
 package Model.EntityModel;
 
-import Model.Hitbox;
-
 /**
  * questa classe gestisce le cose che fanno le bombe.
  * ci sta un counter che contiene il numero di bombe attive nel gioco

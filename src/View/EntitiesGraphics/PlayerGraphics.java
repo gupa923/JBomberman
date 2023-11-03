@@ -1,7 +1,7 @@
 package View.EntitiesGraphics;
 
 
-import Model.Hitbox;
+import Model.EntityModel.Hitbox;
 import View.UtilityInterfaces.Drawable;
 import View.UtilityInterfaces.ImgImporter;
 
