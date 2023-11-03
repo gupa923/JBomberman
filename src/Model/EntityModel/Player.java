@@ -206,7 +206,6 @@ public class Player extends Entity{
         hitbox.y = y + 8;
         bombs.clear();
         Bomb.BOMB_COUNTER = 0;
-        VITE = 4;
     }
 
     public boolean isAlive() {
