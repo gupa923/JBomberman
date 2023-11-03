@@ -222,5 +222,7 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
         hitbox.x = 32;
         hitbox.y = 16;
         bombViews.clear();
+        typeAnimation = 0;
+        animationIndex = 1;
     }
 }

@@ -77,21 +77,27 @@ public class Bomb extends Entity{
                 case "LEFT", "UP" -> {
                     for (int[] p: explosionTiles){
                         if (checkPoints((p[0]) / 16, p[1] / 16, pHitbox.x / 16, pHitbox.y / 16)){
-                            return true;
+                            player.setAlive(false);
+                            Player.VITE --;
+                            break;
                         }
                     }
                 }
                 case "RIGHT" -> {
                     for (int[] p: explosionTiles){
                         if (checkPoints(p[0] / 16, p[1] / 16, (pHitbox.x + pHitbox.w - 1) / 16, pHitbox.y / 16)){
-                            return true;
+                            player.setAlive(false);
+                            Player.VITE --;
+                            break;
                         }
                     }
                 }
                 case "DOWN" -> {
                     for (int[] p: explosionTiles){
                         if (checkPoints(p[0] / 16, p[1] / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)){
-                            return true;
+                            player.setAlive(false);
+                            Player.VITE --;
+                            break;
                         }
                     }
                 }

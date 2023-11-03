@@ -17,16 +17,22 @@ public class MatchGraphics extends StateGraphics implements Observer {
 
     private PlayerGraphics playerGraphics;
     private LevelGraphics levelGraphics;
+    private GameOverScreen gameOverScreen;
+    private boolean playing = true;
 
     public MatchGraphics(){
-
+        gameOverScreen = new GameOverScreen();
     }
     @Override
     public void draw(Graphics g) {
-        levelGraphics.draw(g);
-        playerGraphics.draw(g);
-        g.setColor(new Color(240, 128,0));
-        g.fillRect(0, 208*3, 272*3, 64*3);
+        if (playing) {
+            levelGraphics.draw(g);
+            playerGraphics.draw(g);
+            g.setColor(new Color(240, 128, 0));
+            g.fillRect(0, 208 * 3, 272 * 3, 64 * 3);
+        }else{
+            gameOverScreen.draw(g);
+        }
     }
 
     public void setLevelGraphics(LevelGraphics levelGraphics) {
@@ -47,11 +53,16 @@ public class MatchGraphics extends StateGraphics implements Observer {
             String message = (String) arg;
             if (message.equals("RESET")){
                 resetALL();
+            } else if (message.equals("PLAYING")){
+                playing = true;
+            } else if (message.equals("DEAD")){
+                playing = false;
             }
         }
     }
 
     private void resetALL() {
+        playing = true;
         playerGraphics.reset();
     }
 }
