@@ -10,6 +10,7 @@ import Model.Stati;
  *
  */
 public class Partita extends Stato{
+    private boolean firstUpdate = true;
     private Player player;
     private Level actuaLevel;
     private GameOver gameOver;
@@ -21,6 +22,7 @@ public class Partita extends Stato{
     @Override
     public void update() {
         if(player.isAlive()){
+            actuaLevel.update();
             player.update();
             setChanged();
             notifyObservers("PLAYING");
@@ -33,6 +35,10 @@ public class Partita extends Stato{
             }else{
                 reset();
             }
+        }if (firstUpdate){
+            setChanged();
+            notifyObservers(actuaLevel.obsToArr());
+            firstUpdate = false;
         }
     }
 
@@ -48,6 +54,7 @@ public class Partita extends Stato{
     public void setLevel(Level level) {
         this.actuaLevel = level;
         player.getHitbox().setData(level.getData());
+
     }
 
     /**
