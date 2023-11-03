@@ -58,6 +58,7 @@ public class Player extends Entity{
                             sendMessage("STAY");
                         }
                     } else {
+                        moving = false;
                         sendMessage("STAY");
                     }
                 }
@@ -73,6 +74,7 @@ public class Player extends Entity{
                             sendMessage("STAY");
                         }
                     }else {
+                        moving = false;
                         sendMessage("STAY");
                     }
                 }
@@ -88,6 +90,7 @@ public class Player extends Entity{
                             sendMessage("STAY");
                         }
                     }else {
+                        moving = false;
                         sendMessage("STAY");
                     }
                 }
@@ -103,6 +106,7 @@ public class Player extends Entity{
                             sendMessage("STAY");
                         }
                     }else {
+                        moving = false;
                         sendMessage("STAY");
                     }
                 }

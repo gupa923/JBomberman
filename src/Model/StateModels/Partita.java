@@ -53,7 +53,7 @@ public class Partita extends Stato{
      */
     public void setLevel(Level level) {
         this.actuaLevel = level;
-        player.getHitbox().setData(level.getData());
+        player.getHitbox().setLevel(level);
 
     }
 

@@ -54,4 +54,8 @@ public class Level {
     public void setData(int[][] data) {
         this.data = data;
     }
+
+    public ArrayList<Obstacle> getObstacles() {
+        return obstacles;
+    }
 }

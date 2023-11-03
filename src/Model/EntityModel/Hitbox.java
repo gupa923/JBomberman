@@ -1,5 +1,7 @@
 package Model.EntityModel;
 
+import Model.Level;
+
 /**
  * questa classe gestisce le collisioni con le tile non walkabili sulla mappa
  *
@@ -9,6 +11,7 @@ package Model.EntityModel;
 //TODO creare una classe figlia damageBox per la collisione con i nemici e con le esplosioni.
 public class Hitbox {
     public int x, y, w, h;
+    private Level level;
     private int[][] data;
 
     public Hitbox(int x, int y, int w, int h) {
@@ -43,7 +46,18 @@ public class Hitbox {
         int nx = x / 16;
         int ny = y / 16;
 
-        return (data[ny][nx] != 1);
+        if (data[ny][nx] == 1){
+            return false;
+        }
+        else if (data[ny][nx] == 3){
+            for (Obstacle o: level.getObstacles()){
+                if (o.getX() == nx*16 && o.getY() == ny*16)
+                        return false;
+            }
+            return true;
+        }else{
+            return true;
+        }
     }
 
     public void setData(int[][] data) {
@@ -52,5 +66,10 @@ public class Hitbox {
 
     public int[][] getData() {
         return data;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
+        data = this.level.getData();
     }
 }
