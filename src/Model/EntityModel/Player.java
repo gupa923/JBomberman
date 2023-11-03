@@ -20,6 +20,7 @@ public class Player extends Entity{
     private int speed = 1;
     private boolean moving;
     private int maxBombNum = 3;
+    private boolean alive = true;
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
         bombs = new ArrayList<>();
@@ -197,9 +198,18 @@ public class Player extends Entity{
     public void reset() {
         x = 32;
         y = 8;
+        alive = true;
         hitbox.x = x;
         hitbox.y = y + 8;
         bombs.clear();
         Bomb.BOMB_COUNTER = 0;
+    }
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
     }
 }

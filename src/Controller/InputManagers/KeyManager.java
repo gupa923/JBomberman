@@ -111,6 +111,13 @@ public class KeyManager implements KeyListener {
                     }
                 }
             }
+            case GAME_OVER -> {
+                switch (e.getKeyCode()){
+                    case KeyEvent.VK_BACK_SPACE -> {
+                        gameModel.getPartita().reset();
+                    }
+                }
+            }
         }
 
     }
