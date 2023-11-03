@@ -1,12 +1,13 @@
 package View.EntitiesGraphics;
 
+import View.UtilityInterfaces.Animatable;
 import View.UtilityInterfaces.Drawable;
 import View.UtilityInterfaces.ImgImporter;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class ObstacleGraphics implements Drawable, ImgImporter {
+public class ObstacleGraphics implements Drawable, ImgImporter, Animatable {
     private int x, y, w, h;
     private BufferedImage sprite;
 
@@ -21,5 +22,15 @@ public class ObstacleGraphics implements Drawable, ImgImporter {
     @Override
     public void draw(Graphics g) {
         g.drawImage(sprite, x*3, y*3, 16*3, 16*3, null);
+    }
+
+    @Override
+    public void loadAnimations() {
+
+    }
+
+    @Override
+    public void updateAnimation() {
+
     }
 }

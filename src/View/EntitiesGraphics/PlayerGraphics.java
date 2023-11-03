@@ -2,6 +2,7 @@ package View.EntitiesGraphics;
 
 
 import Model.EntityModel.Hitbox;
+import View.UtilityInterfaces.Animatable;
 import View.UtilityInterfaces.Drawable;
 import View.UtilityInterfaces.ImgImporter;
 
@@ -20,7 +21,7 @@ import java.util.Observer;
  * @author gupa9
  */
 //TODO forse è il caso di creare una superclasse
-public class PlayerGraphics implements Observer, ImgImporter, Drawable {
+public class PlayerGraphics implements Observer, ImgImporter, Drawable, Animatable {
     private int x, y, w, h;
     private int speed = 1;
     private boolean moving;
@@ -61,7 +62,8 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
     /**
      * a partire dall'array di BufferedImage imgAmount questo metodo crea una matrice di BufferedImage ogni riga conterra frame della stessa animazione
      */
-    private void loadAnimations() {
+    @Override
+    public void loadAnimations() {
         movingAnimations = new BufferedImage[4][3];
         for (int y = 0; y < movingAnimations.length; y++){
             for (int x = 0; x<movingAnimations[y].length; x++){
@@ -175,7 +177,8 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable {
      * se il giocatore non si muove viene disegnato un frame di default.
      *
      */
-    private void updateAnimation(){
+    @Override
+    public void updateAnimation(){
         if (!moving){
             animationIndex = 1;
         }

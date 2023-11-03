@@ -1,5 +1,6 @@
 package View.EntitiesGraphics;
 
+import View.UtilityInterfaces.Animatable;
 import View.UtilityInterfaces.Drawable;
 import View.UtilityInterfaces.ImgImporter;
 
@@ -9,7 +10,7 @@ import java.awt.image.BufferedImage;
 /**
  * gestisce la rappresentazione grafica di una bomba
  */
-public class BombGraphics implements ImgImporter, Drawable {
+public class BombGraphics implements ImgImporter, Drawable, Animatable {
     private int x, y, w, h;
     private BufferedImage[] imgs;
     private int animationIndex;
@@ -23,10 +24,12 @@ public class BombGraphics implements ImgImporter, Drawable {
         this.x = x*16;
         this.y = y*16;
         w = h = 16;
-        importImgs();
+        loadAnimations();
     }
 
-    private void importImgs(){
+
+    @Override
+    public void loadAnimations(){
         BufferedImage temp = loadImg("/bomb.png");
 
         imgs = new BufferedImage[3];
@@ -35,7 +38,8 @@ public class BombGraphics implements ImgImporter, Drawable {
         imgs[2] = temp.getSubimage(32, 0, 16, 16);
     }
 
-    public void updateAnimations(){
+    @Override
+    public void updateAnimation() {
         numFrames++;
         if (numFrames >= animationSpeed){
             animationIndex++;
@@ -45,11 +49,12 @@ public class BombGraphics implements ImgImporter, Drawable {
             }
         }
     }
+
     @Override
     public void draw(Graphics g){
         if (canDraw) {
             if (!exploding) {
-                updateAnimations();
+                updateAnimation();
                 g.drawImage(imgs[animationIndex], x * 3, (y) * 3, w * 3, h * 3, null);
             } else {
                 for (int c = 0; c < explosion.length; c++){
