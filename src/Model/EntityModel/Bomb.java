@@ -78,6 +78,7 @@ public class Bomb extends Entity{
                     for (int[] p: explosionTiles){
                         if (checkPoints((p[0]) / 16, p[1] / 16, pHitbox.x / 16, pHitbox.y / 16)){
                             player.setAlive(false);
+                            Player.VITE --;
                             break;
                         }
                     }
@@ -86,6 +87,7 @@ public class Bomb extends Entity{
                     for (int[] p: explosionTiles){
                         if (checkPoints(p[0] / 16, p[1] / 16, (pHitbox.x + pHitbox.w - 1) / 16, pHitbox.y / 16)){
                             player.setAlive(false);
+                            Player.VITE --;
                             break;
                         }
                     }
@@ -94,6 +96,7 @@ public class Bomb extends Entity{
                     for (int[] p: explosionTiles){
                         if (checkPoints(p[0] / 16, p[1] / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)){
                             player.setAlive(false);
+                            Player.VITE --;
                             break;
                         }
                     }

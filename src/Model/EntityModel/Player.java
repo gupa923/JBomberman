@@ -14,6 +14,7 @@ import java.util.ArrayList;
 //TODO improve the movement system fa veramente schifo. Forse si può risolvere diminuendo la hitbox.
 //TODO istanziare una nuova hitbox chiamata damageBox per quando gestiremo il danno.
 public class Player extends Entity{
+    public static int VITE = 4;
     private String direction = "STAY";
     private Bomb bomb;
     private ArrayList<Bomb> bombs;
@@ -203,6 +204,7 @@ public class Player extends Entity{
         hitbox.y = y + 8;
         bombs.clear();
         Bomb.BOMB_COUNTER = 0;
+        VITE = 4;
     }
 
     public boolean isAlive() {

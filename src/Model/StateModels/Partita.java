@@ -25,10 +25,14 @@ public class Partita extends Stato{
             setChanged();
             notifyObservers("PLAYING");
         }else {
-            gameModel.setStatoAttuale(Stati.GAME_OVER);
-            gameOver.update();
-            setChanged();
-            notifyObservers("DEAD");
+            if (Player.VITE <= 0) {
+                gameModel.setStatoAttuale(Stati.GAME_OVER);
+                gameOver.update();
+                setChanged();
+                notifyObservers("DEAD");
+            }else{
+                reset();
+            }
         }
     }
 
