@@ -17,7 +17,7 @@ public class Bomb extends Entity{
     private final int explosionEnd = 600;
     private int[][] explosionTiles;
     private boolean exploding;
-    public static int RANGE = 1;
+    public static int RANGE = 2;
     public Bomb(Player player, int x, int y) {
         super(x*16, y*16, 16, 16);
         this.player = player;
@@ -28,7 +28,7 @@ public class Bomb extends Entity{
     @Override
     public void initHitbox() {
         hitbox = new Hitbox(x, y, 16, 16);
-        hitbox.setData(player.hitbox.getData());
+        hitbox.setLevel(player.hitbox.getLevel());
 
     }
 

@@ -28,6 +28,7 @@ public class LevelManager {
         gameModel = GameModel.getInstance();
         levelGraphics = new LevelGraphics("/lvl1.png");
         level = new Level(getLvlData());
+        level.addObserver(levelGraphics);
         gameModel.getPartita().setLevel(level);
     }
 
