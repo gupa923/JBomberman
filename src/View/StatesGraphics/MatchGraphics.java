@@ -59,10 +59,8 @@ public class MatchGraphics extends StateGraphics implements Observer {
                 playing = false;
             }
         }
-        if (arg instanceof int[][]){
-            int[][] temp = (int[][]) arg;
-            levelGraphics.initObstacleGraphics(temp);
-        }
+
+
     }
 
     private void resetALL() {

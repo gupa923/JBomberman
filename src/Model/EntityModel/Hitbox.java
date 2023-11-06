@@ -72,4 +72,8 @@ public class Hitbox {
         this.level = level;
         data = this.level.getData();
     }
+
+    public Level getLevel() {
+        return level;
+    }
 }

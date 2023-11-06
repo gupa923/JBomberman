@@ -36,10 +36,6 @@ public class Partita extends Stato{
             }else{
                 reset();
             }
-        }if (firstUpdate){
-            setChanged();
-            notifyObservers(actuaLevel.obsToArr());
-            firstUpdate = false;
         }
     }
 

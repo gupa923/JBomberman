@@ -21,7 +21,7 @@ public class ObstacleGraphics implements Drawable, ImgImporter, Animatable {
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(sprite, x*3, y*3, 16*3, 16*3, null);
+        g.drawImage(sprite, x*3, y*3, h*3, w*3, null);
     }
 
     @Override
@@ -32,5 +32,13 @@ public class ObstacleGraphics implements Drawable, ImgImporter, Animatable {
     @Override
     public void updateAnimation() {
 
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }

@@ -1,5 +1,7 @@
 package Model.EntityModel;
 
+import Model.Level;
+
 import java.util.ArrayList;
 
 /**
@@ -14,7 +16,7 @@ public class ExplosionCreator {
      * @return
      */
     public static int[][] CreateExplosionTiles(Bomb bomb){
-        int[][] lvlData = bomb.getHitbox().getData();
+        Level lvl = bomb.getHitbox().getLevel();
         int x = bomb.getX()/16;
         int y = bomb.getY()/16;
         //result[0][0] = x;
@@ -31,10 +33,10 @@ public class ExplosionCreator {
             l.add(new int[] {x -c, y});
             r.add(new int[] {x + c, y});
         }
-        AddValidTiles(u, temp, lvlData);
-        AddValidTiles(d, temp, lvlData);
-        AddValidTiles(l, temp, lvlData);
-        AddValidTiles(r, temp, lvlData);
+        AddValidTiles(u, temp, lvl);
+        AddValidTiles(d, temp, lvl);
+        AddValidTiles(l, temp, lvl);
+        AddValidTiles(r, temp, lvl);
 
         return temp.stream()
                 //.filter(p -> CheckOutOfBounds(p))
@@ -46,11 +48,10 @@ public class ExplosionCreator {
      *
      * @param l: lista di tile colpite da un esplosione in una direzione
      * @param result: la lista a cui appendere le tile valide
-     * @param lvlData
      */
-    private static void AddValidTiles(ArrayList<int[]> l, ArrayList<int[]> result, int[][] lvlData){
+    private static void AddValidTiles(ArrayList<int[]> l, ArrayList<int[]> result, Level lvl){
         for (int[] p: l){
-            if (!CheckValidity(p, lvlData))
+            if (!CheckValidity(p, lvl))
                 return;
             else{
                 result.add(p);
@@ -69,11 +70,22 @@ public class ExplosionCreator {
     /**
      * controlla se la tile non è un muro
      * @param pos
-     * @param lvlData
      * @return
      */
-    private static boolean CheckValidity(int[] pos, int[][] lvlData){
+    private static boolean CheckValidity(int[] pos, Level lvl){
+        int[][] lvlData = lvl.getData();
         try{
+            if (lvlData[pos[1]][pos[0]] != 1){
+                if (lvlData[pos[1]][pos[0]] == 3){
+                    for (int x = 0; x < lvl.getObstacles().size(); x++){
+                        if (lvl.getObstacles().get(x).getX() == pos[0]*16 && lvl.getObstacles().get(x).getY() == pos[1]*16){
+                            lvl.removeObstacles(pos[0]*16, pos[1]*16);
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
             return lvlData[pos[1]][pos[0]] != 1;
         } catch (IndexOutOfBoundsException e){
             return false;

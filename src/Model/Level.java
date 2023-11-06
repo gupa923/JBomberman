@@ -3,6 +3,7 @@ package Model;
 import Model.EntityModel.Obstacle;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
  * questa classe contiene i dati dei vari livelli.
@@ -13,9 +14,10 @@ import java.util.ArrayList;
  *
  */
 // TODO fare classe figlia che gestisce i livelli con i Boss.
-public class Level {
+public class Level extends Observable {
     private int[][] data;
     private ArrayList<Obstacle> obstacles;
+    private boolean firstUpdate = true;
 
     public Level(int[][] data){
         this.data = data;
@@ -23,10 +25,16 @@ public class Level {
         createObstacles();
     }
 
+
     public int[][] getData() {
         return data;
     }
     public void update(){
+        if (firstUpdate){
+            setChanged();
+            notifyObservers(obsToArr());
+            firstUpdate = false;
+        }
         for (Obstacle o: obstacles){
             o.update();
         }
@@ -57,5 +65,16 @@ public class Level {
 
     public ArrayList<Obstacle> getObstacles() {
         return obstacles;
+    }
+
+    public void removeObstacles(int x, int y) {
+        for (int j = 0; j < obstacles.size(); j++){
+            if (obstacles.get(j).getX() == x && obstacles.get(j).getY() == y){
+                obstacles.remove(obstacles.get(j));
+                setChanged();
+                notifyObservers(new int[] {x, y});
+                return;
+            }
+        }
     }
 }
