@@ -51,7 +51,7 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable, Animatab
      */
     //TODO aggiungi animazione morte, immortalità e livello successivo.
     private void loadSprites() {
-        right = loadImg("/right.png");
+        right = loadImg("/playerSprites/right.png");
         left = loadImg("/playerSprites/left.png");
         up = loadImg("/playerSprites/up.png");
         down = loadImg("/playerSprites/down.png");

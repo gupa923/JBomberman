@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 public class BombGraphics implements ImgImporter, Drawable, Animatable {
     private int x, y, w, h;
     private BufferedImage[] imgs;
+    private BufferedImage explosionImg;
     private int animationIndex;
     private int numFrames;
     private int animationSpeed = 12;
@@ -30,7 +31,8 @@ public class BombGraphics implements ImgImporter, Drawable, Animatable {
 
     @Override
     public void loadAnimations(){
-        BufferedImage temp = loadImg("/playerSprites/bomb.png");
+        BufferedImage temp = loadImg("/bomb.png");
+        explosionImg = loadImg("/esplosione0.png");
 
         imgs = new BufferedImage[3];
         imgs[0] = temp.getSubimage(0, 0, 16, 16);
@@ -61,8 +63,9 @@ public class BombGraphics implements ImgImporter, Drawable, Animatable {
 
                     int tx = explosion[c][0];
                     int ty = explosion[c][1];
-                    g.setColor(Color.RED);
-                    g.fillRect(tx *3, ty *3, w*3, h*3);
+                    //g.setColor(Color.RED);
+                    //g.fillRect(tx *3, ty *3, w*3, h*3);
+                    g.drawImage(explosionImg, tx*3, ty*3, w*3, h*3, null);
                 }
             }
         }
