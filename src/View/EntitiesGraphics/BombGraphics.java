@@ -31,8 +31,8 @@ public class BombGraphics implements ImgImporter, Drawable, Animatable {
 
     @Override
     public void loadAnimations(){
-        BufferedImage temp = loadImg("/bomb.png");
-        explosionImg = loadImg("/esplosione0.png");
+        BufferedImage temp = loadImg("/entitySprites/bombSprites/bomb.png");
+        explosionImg = loadImg("/entitySprites/bombSprites/esplosione0.png");
 
         imgs = new BufferedImage[3];
         imgs[0] = temp.getSubimage(0, 0, 16, 16);
