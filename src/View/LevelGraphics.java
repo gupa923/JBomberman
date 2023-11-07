@@ -19,17 +19,21 @@ import java.util.Observer;
  */
 public class LevelGraphics implements ImgImporter, Drawable, Observer {
     private BufferedImage lvl1Bg;
-    private ArrayList<ObstacleGraphics> obstacleGraphics;
+    private ArrayList<ObstacleGraphics> obstacleGraphics, exploadingObstacles;
 
     public LevelGraphics(String filename) {
         this.lvl1Bg = loadImg(filename);
         obstacleGraphics = new ArrayList<>();
+        exploadingObstacles = new ArrayList<>();
     }
 
     @Override
     public void draw(Graphics g){
         g.drawImage(lvl1Bg, 0,0, 272 * 3, 208*3, null);
         for (ObstacleGraphics o: obstacleGraphics){
+            o.draw(g);
+        }
+        for (ObstacleGraphics o : exploadingObstacles){
             o.draw(g);
         }
     }
@@ -55,7 +59,16 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     private void removeObstacle(int[] temp2) {
         for (int j = 0; j < obstacleGraphics.size(); j++){
             if (obstacleGraphics.get(j).getX() == temp2[0] && obstacleGraphics.get(j).getY() == temp2[1]){
-                obstacleGraphics.remove(obstacleGraphics.get(j));
+                ObstacleGraphics tempO = obstacleGraphics.get(j);
+                obstacleGraphics.remove(tempO);
+                tempO.setExploading(true);
+                exploadingObstacles.add(tempO);
+                return;
+            }
+        }
+        for (int i = 0; i < exploadingObstacles.size(); i++){
+            if (exploadingObstacles.get(i).getX() == temp2[0] && exploadingObstacles.get(i).getY() == temp2[1]){
+                exploadingObstacles.remove(exploadingObstacles.get(i));
                 return;
             }
         }

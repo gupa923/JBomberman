@@ -9,7 +9,8 @@ import java.awt.image.BufferedImage;
 
 public class ObstacleGraphics implements Drawable, ImgImporter, Animatable {
     private int x, y, w, h;
-    private BufferedImage sprite;
+    private BufferedImage sprite, explosionSprite;
+    private boolean exploading = false;
 
     public ObstacleGraphics(int x, int y){
         this.x = x;
@@ -17,11 +18,16 @@ public class ObstacleGraphics implements Drawable, ImgImporter, Animatable {
         w = h = 16;
         BufferedImage temp = loadImg("/provaSpritesTemp.png");
         sprite = temp.getSubimage(69, 0, 16, 16);
+        explosionSprite = temp.getSubimage(1, 16*8 + 8, 16, 16 );
     }
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(sprite, x*3, y*3, h*3, w*3, null);
+        if(!exploading)
+            g.drawImage(sprite, x*3, y*3, h*3, w*3, null);
+        else{
+            g.drawImage(explosionSprite, x*3, y*3, w*3, h*3, null);
+        }
     }
 
     @Override
@@ -40,5 +46,9 @@ public class ObstacleGraphics implements Drawable, ImgImporter, Animatable {
 
     public int getY() {
         return y;
+    }
+
+    public void setExploading(boolean exploading) {
+        this.exploading = exploading;
     }
 }
