@@ -21,8 +21,7 @@ import java.util.Observer;
  * @author gupa9
  */
 //TODO forse è il caso di creare una superclasse
-public class PlayerGraphics implements Observer, ImgImporter, Drawable, Animatable {
-    private int x, y, w, h;
+public class PlayerGraphics extends EntityGraphics implements Observer {
     private int speed = 1;
     private boolean moving;
     private BufferedImage right, left, up, down;
@@ -36,10 +35,7 @@ public class PlayerGraphics implements Observer, ImgImporter, Drawable, Animatab
     private Hitbox hitbox;
 
     public PlayerGraphics(int x, int y, int w, int h) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
+        super(x, y, w, h);
         bombViews = new ArrayList<>();
         loadSprites();
         loadAnimations();

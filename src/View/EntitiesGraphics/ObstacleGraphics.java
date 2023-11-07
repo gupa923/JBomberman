@@ -7,15 +7,12 @@ import View.UtilityInterfaces.ImgImporter;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class ObstacleGraphics implements Drawable, ImgImporter, Animatable {
-    private int x, y, w, h;
+public class ObstacleGraphics extends EntityGraphics {
     private BufferedImage sprite, explosionSprite;
     private boolean exploading = false;
 
     public ObstacleGraphics(int x, int y){
-        this.x = x;
-        this.y = y;
-        w = h = 16;
+        super(x, y, 16, 16);
         BufferedImage temp = loadImg("/provaSpritesTemp.png");
         sprite = temp.getSubimage(69, 0, 16, 16);
         explosionSprite = temp.getSubimage(1, 16*8 + 8, 16, 16 );

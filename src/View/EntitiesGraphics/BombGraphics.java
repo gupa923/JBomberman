@@ -10,8 +10,7 @@ import java.awt.image.BufferedImage;
 /**
  * gestisce la rappresentazione grafica di una bomba
  */
-public class BombGraphics implements ImgImporter, Drawable, Animatable {
-    private int x, y, w, h;
+public class BombGraphics extends EntityGraphics {
     private BufferedImage[] imgs;
     private BufferedImage explosionImg;
     private int animationIndex;
@@ -22,9 +21,7 @@ public class BombGraphics implements ImgImporter, Drawable, Animatable {
     private int[][] explosion;
 
     public BombGraphics(int x, int y){
-        this.x = x*16;
-        this.y = y*16;
-        w = h = 16;
+        super (x*16, y*16, 16, 16);
         loadAnimations();
     }
 
