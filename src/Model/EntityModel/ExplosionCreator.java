@@ -76,7 +76,7 @@ public class ExplosionCreator {
         int[][] lvlData = lvl.getData();
         try{
             if (lvlData[pos[1]][pos[0]] != 1){
-                if (lvlData[pos[1]][pos[0]] == 3){
+                if (lvlData[pos[1]][pos[0]] == 3 || lvlData[pos[1]][pos[0]] == 2){
                     for (int x = 0; x < lvl.getObstacles().size(); x++){
                         if (lvl.getObstacles().get(x).getX() == pos[0]*16 && lvl.getObstacles().get(x).getY() == pos[1]*16){
                             lvl.explodeObstacle(pos[0]*16, pos[1]*16);

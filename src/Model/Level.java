@@ -43,7 +43,7 @@ public class Level extends Observable {
     private void createObstacles(){
         for (int y = 0; y < data.length; y++){
             for (int x = 0; x < data[y].length; x++){
-                if (data[y][x] == 3){
+                if (data[y][x] == 3 || data[y][x] == 2){
                     obstacles.add(new Obstacle(this,x*16, y*16));
                 }
             }

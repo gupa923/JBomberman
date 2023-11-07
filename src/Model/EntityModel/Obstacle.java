@@ -1,5 +1,4 @@
 package Model.EntityModel;
-
 import Model.Level;
 
 public class Obstacle extends Entity{
