@@ -35,8 +35,8 @@ public class Level extends Observable {
             notifyObservers(obsToArr());
             firstUpdate = false;
         }
-        for (Obstacle o: obstacles){
-            o.update();
+        for (int i = 0; i < obstacles.size(); i++){
+            obstacles.get(i).update();
         }
     }
 
@@ -44,7 +44,7 @@ public class Level extends Observable {
         for (int y = 0; y < data.length; y++){
             for (int x = 0; x < data[y].length; x++){
                 if (data[y][x] == 3){
-                    obstacles.add(new Obstacle(x*16, y*16));
+                    obstacles.add(new Obstacle(this,x*16, y*16));
                 }
             }
         }
@@ -67,14 +67,20 @@ public class Level extends Observable {
         return obstacles;
     }
 
-    public void removeObstacles(int x, int y) {
+    public void explodeObstacle(int x, int y) {
         for (int j = 0; j < obstacles.size(); j++){
             if (obstacles.get(j).getX() == x && obstacles.get(j).getY() == y){
-                obstacles.remove(obstacles.get(j));
+                obstacles.get(j).setHit(true);
                 setChanged();
                 notifyObservers(new int[] {x, y});
                 return;
             }
         }
+    }
+
+    public void removeObstacle(Obstacle obstacle) {
+        obstacles.remove(obstacle);
+        setChanged();
+        notifyObservers(new int[] {obstacle.getX(), obstacle.getY()});
     }
 }

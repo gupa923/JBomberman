@@ -79,7 +79,7 @@ public class ExplosionCreator {
                 if (lvlData[pos[1]][pos[0]] == 3){
                     for (int x = 0; x < lvl.getObstacles().size(); x++){
                         if (lvl.getObstacles().get(x).getX() == pos[0]*16 && lvl.getObstacles().get(x).getY() == pos[1]*16){
-                            lvl.removeObstacles(pos[0]*16, pos[1]*16);
+                            lvl.explodeObstacle(pos[0]*16, pos[1]*16);
                             return false;
                         }
                     }
