@@ -26,7 +26,7 @@ public class LevelManager {
 
     private LevelManager(){
         gameModel = GameModel.getInstance();
-        levelGraphics = new LevelGraphics("/lvl1.png");
+        levelGraphics = new LevelGraphics("/livelli/livello1/lvl1.png");
         level = new Level(getLvlData());
         level.addObserver(levelGraphics);
         gameModel.getPartita().setLevel(level);
@@ -42,7 +42,7 @@ public class LevelManager {
 
     //TODO da modificare quando avremo più livelli da gestire.
     private int[][] getLvlData(){
-        InputStream is = LevelManager.class.getResourceAsStream("/lvl1Data.png");
+        InputStream is = LevelManager.class.getResourceAsStream("/livelli/livello1/lvl1Data.png");
 
         BufferedImage lvlDataPng = null;
         try {
