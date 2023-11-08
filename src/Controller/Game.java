@@ -48,7 +48,7 @@ public class Game implements Runnable{
         gamePanel.setMenuGraphics(stateManager.getMenuGraphics());
         //aggiungo alla view le varie cose grafiche
         gamePanel.getMatchGraphics().setPlayerGraphics(playerManager.getPlayerGraphics());
-        gamePanel.getMatchGraphics().setLevelGraphics(levelManager.getLevelGraphics());
+        gamePanel.getMatchGraphics().setLevelGraphics(levelManager.getLevelGraphicsArrayList());
 
         //inizializzazione dei listener
         mouseManager = new MouseManager(gameModel);

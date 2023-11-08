@@ -49,7 +49,7 @@ public class Hitbox {
         if (data[ny][nx] == 1){
             return false;
         }
-        else if (data[ny][nx] == 3){
+        else if (data[ny][nx] == 3 || data[ny][nx] == 2){
             for (Obstacle o: level.getObstacles()){
                 if (o.getX() == nx*16 && o.getY() == ny*16)
                         return false;

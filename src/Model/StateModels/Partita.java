@@ -5,6 +5,8 @@ import Model.GameModel;
 import Model.Level;
 import Model.Stati;
 
+import java.util.ArrayList;
+
 /**
  * la classe partita gestisce la logica della partita
  *
@@ -12,7 +14,8 @@ import Model.Stati;
 public class Partita extends Stato{
     private boolean firstUpdate = true;
     private Player player;
-    private Level actuaLevel;
+    private int actuaLevel;
+    private ArrayList<Level> levels;
     private GameOver gameOver;
     public Partita(GameModel gameModel) {
         super(gameModel);
@@ -22,8 +25,12 @@ public class Partita extends Stato{
     @Override
     public void update() {
         if(player.isAlive()){
-            actuaLevel.update();
+            levels.get(actuaLevel).update();
             player.update();
+            if (levels.get(actuaLevel).getObstacles().size() == 0){
+                nextLevel();
+                return;
+            }
             setChanged();
             notifyObservers("PLAYING");
         }else {
@@ -39,19 +46,20 @@ public class Partita extends Stato{
         }
     }
 
+    private void nextLevel() {
+        actuaLevel ++;
+        player.getHitbox().setLevel(levels.get(actuaLevel));
+        setChanged();
+        notifyObservers("NEW LEVEL");
+    }
+
     public void setPlayer(Player player) {
         this.player = player;
     }
 
-    /**
-     * imposta il livello attuale e aggiunge la matrice data alla hitbox
-     *
-     * @param level
-     */
-    public void setLevel(Level level) {
-        this.actuaLevel = level;
-        player.getHitbox().setLevel(level);
-
+    public void setLevels(ArrayList<Level> levels) {
+        this.levels = levels;
+        player.getHitbox().setLevel(this.levels.get(actuaLevel));
     }
 
     /**
