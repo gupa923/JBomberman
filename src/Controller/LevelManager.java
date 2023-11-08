@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 /**
  * gestisce il model del level e la view del level
@@ -22,14 +23,25 @@ public class LevelManager {
 
     private GameModel gameModel;
     private Level level;
+    private ArrayList<Level> levels;
     private LevelGraphics levelGraphics;
+    private ArrayList<LevelGraphics> levelGraphicsArrayList;
 
     private LevelManager(){
+        levels = new ArrayList<>();
+        levelGraphicsArrayList = new ArrayList<>();
         gameModel = GameModel.getInstance();
         levelGraphics = new LevelGraphics("/livelli/livello1/lvl1.png");
-        level = new Level(getLvlData());
+        level = new Level(getLvlData("/livelli/livello1/lvl1Data.png"));
         level.addObserver(levelGraphics);
-        gameModel.getPartita().setLevel(level);
+        levels.add(level);
+        levelGraphicsArrayList.add(levelGraphics);
+        level = new Level(getLvlData("/livelli/livello2/lvl2Data.png"));
+        levelGraphics = new LevelGraphics("/livelli/livello2/lvl2.png");
+        level.addObserver(levelGraphics);
+        levels.add(level);
+        levelGraphicsArrayList.add(levelGraphics);
+        gameModel.getPartita().setLevels(levels);
     }
 
 
@@ -41,8 +53,8 @@ public class LevelManager {
      */
 
     //TODO da modificare quando avremo più livelli da gestire.
-    private int[][] getLvlData(){
-        InputStream is = LevelManager.class.getResourceAsStream("/livelli/livello1/lvl1Data.png");
+    private int[][] getLvlData(String name){
+        InputStream is = LevelManager.class.getResourceAsStream(name);
 
         BufferedImage lvlDataPng = null;
         try {
@@ -76,5 +88,9 @@ public class LevelManager {
 
     public LevelGraphics getLevelGraphics() {
         return levelGraphics;
+    }
+
+    public ArrayList<LevelGraphics> getLevelGraphicsArrayList() {
+        return levelGraphicsArrayList;
     }
 }

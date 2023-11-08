@@ -4,6 +4,7 @@ import View.EntitiesGraphics.PlayerGraphics;
 import View.LevelGraphics;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -16,7 +17,8 @@ import java.util.Observer;
 public class MatchGraphics extends StateGraphics implements Observer {
 
     private PlayerGraphics playerGraphics;
-    private LevelGraphics levelGraphics;
+    private int actualLevel;
+    private ArrayList<LevelGraphics> levelGraphics;
     private GameOverScreen gameOverScreen;
     private boolean playing = true;
 
@@ -26,7 +28,7 @@ public class MatchGraphics extends StateGraphics implements Observer {
     @Override
     public void draw(Graphics g) {
         if (playing) {
-            levelGraphics.draw(g);
+            levelGraphics.get(actualLevel).draw(g);
             playerGraphics.draw(g);
             g.setColor(new Color(240, 128, 0));
             g.fillRect(0, 208 * 3, 272 * 3, 64 * 3);
@@ -35,7 +37,7 @@ public class MatchGraphics extends StateGraphics implements Observer {
         }
     }
 
-    public void setLevelGraphics(LevelGraphics levelGraphics) {
+    public void setLevelGraphics(ArrayList<LevelGraphics> levelGraphics) {
         this.levelGraphics = levelGraphics;
     }
 
@@ -57,6 +59,8 @@ public class MatchGraphics extends StateGraphics implements Observer {
                 playing = true;
             } else if (message.equals("DEAD")){
                 playing = false;
+            } else if (message.equals("NEW LEVEL")){
+                actualLevel++;
             }
         }
 
