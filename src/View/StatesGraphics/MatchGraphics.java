@@ -14,7 +14,7 @@ import java.util.Observer;
  *
  *
  */
-public class MatchGraphics extends StateGraphics implements Observer {
+public class MatchGraphics extends StateGraphics {
 
     private PlayerGraphics playerGraphics;
     private int actualLevel;
@@ -70,5 +70,9 @@ public class MatchGraphics extends StateGraphics implements Observer {
     private void resetALL() {
         playing = true;
         playerGraphics.reset();
+    }
+
+    public GameOverScreen getGameOverScreen() {
+        return gameOverScreen;
     }
 }

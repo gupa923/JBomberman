@@ -76,4 +76,8 @@ public class Partita extends Stato{
     public Player getPlayer() {
         return player;
     }
+
+    public GameOver getGameOver() {
+        return gameOver;
+    }
 }

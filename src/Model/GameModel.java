@@ -61,4 +61,12 @@ public class GameModel{
     public Pause getPause() {
         return pause;
     }
+
+    public Settings getSettings() {
+        return settings;
+    }
+
+    public CommandInfo getCommandInfo() {
+        return commandInfo;
+    }
 }

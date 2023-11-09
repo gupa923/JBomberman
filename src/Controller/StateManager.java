@@ -1,10 +1,7 @@
 package Controller;
 
 import Model.*;
-import Model.StateModels.Menu;
-import Model.StateModels.Partita;
-import Model.StateModels.Pause;
-import Model.StateModels.Settings;
+import Model.StateModels.*;
 import View.*;
 import View.StatesGraphics.*;
 
@@ -21,6 +18,7 @@ public class StateManager {
     private Partita partita;
     private Pause pause;
     private Settings settings;
+    private CommandInfo commandInfo;
     private MatchGraphics matchGraphics;
     private MenuGraphics menuGraphics;
     private PauseGraphics pauseGraphics;
@@ -33,12 +31,19 @@ public class StateManager {
         partita = gameModel.getPartita();
         menu = gameModel.getMenu();
         pause = gameModel.getPause();
+        settings = gameModel.getSettings();
+        commandInfo = gameModel.getCommandInfo();
         menuGraphics = new MenuGraphics();
         matchGraphics = new MatchGraphics();
         pauseGraphics = new PauseGraphics();
         settingsGraphics = new SettingsGraphics();
         commandInfoGraphics = new CommandInfoGraphics();
         partita.addObserver(matchGraphics);
+        menu.addObserver(menuGraphics);
+        pause.addObserver(pauseGraphics);
+        settings.addObserver(settingsGraphics);
+        commandInfo.addObserver(commandInfoGraphics);
+        gameModel.getPartita().getGameOver().addObserver(matchGraphics.getGameOverScreen());
     }
 
     /**
