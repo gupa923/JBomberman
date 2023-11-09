@@ -17,33 +17,54 @@ public class Partita extends Stato{
     private int actuaLevel;
     private ArrayList<Level> levels;
     private GameOver gameOver;
+    private Win win;
+    private boolean gameCompleted;
     public Partita(GameModel gameModel) {
         super(gameModel);
-        gameOver = new GameOver(gameModel);
+        gameOver = new GameOver(this.gameModel);
+        win = new Win(this.gameModel);
     }
 
     @Override
     public void update() {
-        if(player.isAlive()){
-            levels.get(actuaLevel).update();
-            player.update();
-            if (levels.get(actuaLevel).getObstacles().size() == 0){
-                nextLevel();
-                return;
-            }
-            setChanged();
-            notifyObservers("PLAYING");
+        if (gameCompleted){
+            win.update();
         }else {
-            if (Player.VITE <= 0) {
-                Player.VITE = 4;
-                gameModel.setStatoAttuale(Stati.GAME_OVER);
-                gameOver.update();
+            if (player.isAlive()) {
+                levels.get(actuaLevel).update();
+                player.update();
+                if (levels.get(actuaLevel).getObstacles().size() == 0) {
+                    if (checkLevelCompleted()){
+                        return;
+                    }
+                    nextLevel();
+                    return;
+                }
                 setChanged();
-                notifyObservers("DEAD");
-            }else{
-                reset();
+                notifyObservers("PLAYING");
+            } else {
+                if (Player.VITE <= 0) {
+                    Player.VITE = 4;
+                    gameModel.setStatoAttuale(Stati.GAME_OVER);
+                    gameOver.update();
+                    setChanged();
+                    notifyObservers("DEAD");
+                } else {
+                    reset();
+                }
             }
         }
+    }
+    private boolean checkLevelCompleted(){
+        if (actuaLevel +1 >= levels.size()){
+            gameCompleted = true;
+            gameModel.setStatoAttuale(Stati.WIN);
+
+            setChanged();
+            notifyObservers("WIN");
+            return true;
+        }
+        return false;
     }
 
     private void nextLevel() {
