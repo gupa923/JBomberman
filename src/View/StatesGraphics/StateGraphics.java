@@ -2,7 +2,9 @@ package View.StatesGraphics;
 
 import View.UtilityInterfaces.Drawable;
 
-public abstract class StateGraphics implements Drawable {
+import java.util.Observer;
+
+public abstract class StateGraphics implements Drawable, Observer {
 
     private Boolean active;
 

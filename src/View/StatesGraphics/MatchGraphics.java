@@ -14,26 +14,32 @@ import java.util.Observer;
  *
  *
  */
-public class MatchGraphics extends StateGraphics implements Observer {
+public class MatchGraphics extends StateGraphics {
 
     private PlayerGraphics playerGraphics;
     private int actualLevel;
     private ArrayList<LevelGraphics> levelGraphics;
     private GameOverScreen gameOverScreen;
-    private boolean playing = true;
+    private boolean win, playing = true;
+    private WinGraphics winGraphics;
 
     public MatchGraphics(){
         gameOverScreen = new GameOverScreen();
+        winGraphics = new WinGraphics();
     }
     @Override
     public void draw(Graphics g) {
-        if (playing) {
-            levelGraphics.get(actualLevel).draw(g);
-            playerGraphics.draw(g);
-            g.setColor(new Color(240, 128, 0));
-            g.fillRect(0, 208 * 3, 272 * 3, 64 * 3);
-        }else{
-            gameOverScreen.draw(g);
+        if(win){
+            winGraphics.draw(g);
+        }else {
+            if (playing) {
+                levelGraphics.get(actualLevel).draw(g);
+                playerGraphics.draw(g);
+                g.setColor(new Color(240, 128, 0));
+                g.fillRect(0, 208 * 3, 272 * 3, 64 * 3);
+            } else {
+                gameOverScreen.draw(g);
+            }
         }
     }
 
@@ -61,6 +67,8 @@ public class MatchGraphics extends StateGraphics implements Observer {
                 playing = false;
             } else if (message.equals("NEW LEVEL")){
                 actualLevel++;
+            }else if (message.equals("WIN")){
+                win = true;
             }
         }
 
@@ -70,5 +78,9 @@ public class MatchGraphics extends StateGraphics implements Observer {
     private void resetALL() {
         playing = true;
         playerGraphics.reset();
+    }
+
+    public GameOverScreen getGameOverScreen() {
+        return gameOverScreen;
     }
 }

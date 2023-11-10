@@ -1,19 +1,13 @@
 package View.StatesGraphics;
 
-
-
 import java.awt.*;
 import java.util.Observable;
 
-public class MenuGraphics extends StateGraphics{
-
-    public MenuGraphics(){
-
-    }
+public class WinGraphics extends StateGraphics{
     @Override
     public void draw(Graphics g) {
-        g.setColor(Color.BLACK);
-        g.drawString("PRESS ENTER TO START THE GAME", 100,100);
+        g.setColor(Color.YELLOW);
+        g.fillRect(0, 0, 272*3, 272*3);
     }
 
     @Override
