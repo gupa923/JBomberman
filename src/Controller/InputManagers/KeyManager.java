@@ -118,6 +118,15 @@ public class KeyManager implements KeyListener {
                     }
                 }
             }
+            case WIN -> {
+                switch (e.getKeyCode()){
+                    case KeyEvent.VK_R -> {
+                        gameModel.getPartita().restartGame();
+                        gameModel.setStatoAttuale(Stati.PARTITA);
+                        stateManager.changeState(Stati.PARTITA);
+                    }
+                }
+            }
         }
 
     }

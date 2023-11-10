@@ -224,4 +224,11 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         typeAnimation = 0;
         animationIndex = 1;
     }
+
+    public void resetPos() {
+        x = 32;
+        y = 8;
+        hitbox.x = 32;
+        hitbox.y = 16;
+    }
 }

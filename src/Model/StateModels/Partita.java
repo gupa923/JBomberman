@@ -34,7 +34,7 @@ public class Partita extends Stato{
                 levels.get(actuaLevel).update();
                 player.update();
                 if (levels.get(actuaLevel).getObstacles().size() == 0) {
-                    if (checkLevelCompleted()){
+                    if (checkGameCompleted()){
                         return;
                     }
                     nextLevel();
@@ -55,7 +55,7 @@ public class Partita extends Stato{
             }
         }
     }
-    private boolean checkLevelCompleted(){
+    private boolean checkGameCompleted(){
         if (actuaLevel +1 >= levels.size()){
             gameCompleted = true;
             gameModel.setStatoAttuale(Stati.WIN);
@@ -70,6 +70,7 @@ public class Partita extends Stato{
     private void nextLevel() {
         actuaLevel ++;
         player.getHitbox().setLevel(levels.get(actuaLevel));
+        player.resetPos();
         setChanged();
         notifyObservers("NEW LEVEL");
     }
@@ -100,5 +101,21 @@ public class Partita extends Stato{
 
     public GameOver getGameOver() {
         return gameOver;
+    }
+
+    public void restartGame() {
+        player.reset();
+        resetLevels();
+        actuaLevel = 0;
+        gameCompleted = false;
+        player.getHitbox().setLevel(levels.get(actuaLevel));
+        setChanged();
+        notifyObservers("NEW GAME");
+    }
+
+    private void resetLevels() {
+        for (Level l : levels){
+            l.reset();
+        }
     }
 }
