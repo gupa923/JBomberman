@@ -83,4 +83,10 @@ public class Level extends Observable {
         setChanged();
         notifyObservers(new int[] {obstacle.getX(), obstacle.getY()});
     }
+
+    public void reset() {
+        createObstacles();
+        setChanged();
+        notifyObservers(obsToArr());
+    }
 }

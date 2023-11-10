@@ -215,4 +215,11 @@ public class Player extends Entity{
     public void setAlive(boolean alive) {
         this.alive = alive;
     }
+
+    public void resetPos() {
+        x = 32;
+        y = 8;
+        hitbox.x = x;
+        hitbox.y = y + 8;
+    }
 }

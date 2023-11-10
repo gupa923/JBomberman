@@ -66,9 +66,14 @@ public class MatchGraphics extends StateGraphics {
             } else if (message.equals("DEAD")){
                 playing = false;
             } else if (message.equals("NEW LEVEL")){
+                playerGraphics.resetPos();
                 actualLevel++;
             }else if (message.equals("WIN")){
                 win = true;
+            } else if ( message.equals("NEW GAME")){
+                win = false;
+                playerGraphics.reset();
+                actualLevel = 0;
             }
         }
 
