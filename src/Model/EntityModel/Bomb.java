@@ -98,6 +98,16 @@ public class Bomb extends Entity{
                             break;
                         }
                     }
+                }case "STAY"-> {
+                    if (explosionTiles != null){
+                        for (int[] p: explosionTiles){
+                            if (checkPoints(p[0] / 16, p[1] / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)){
+                                player.setAlive(false);
+                                Player.VITE --;
+                                break;
+                            }
+                        }
+                    }
                 }
             }
             return false;

@@ -118,6 +118,7 @@ public class Player extends Entity{
                     spawnBomb();
                 }
                 default -> {
+                    intersect("STAY");
                     sendMessage("STAY");
                 }
             }
