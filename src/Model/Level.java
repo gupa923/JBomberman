@@ -1,9 +1,12 @@
 package Model;
 
 import Model.EntityModel.Obstacle;
+import Model.EntityModel.Player;
 
 import java.util.ArrayList;
 import java.util.Observable;
+
+import static Model.StateModels.Partita.SCORE;
 
 /**
  * questa classe contiene i dati dei vari livelli.
@@ -71,6 +74,13 @@ public class Level extends Observable {
         for (int j = 0; j < obstacles.size(); j++){
             if (obstacles.get(j).getX() == x && obstacles.get(j).getY() == y){
                 obstacles.get(j).setHit(true);
+                Player.OBSTACLE_DESTROYED ++;
+                System.out.println(Player.OBSTACLE_DESTROYED);
+                if (Player.OBSTACLE_DESTROYED%10 == 0 && Player.OBSTACLE_DESTROYED != 0) {
+                    SCORE += 50;
+                    System.out.println(SCORE);
+                }
+
                 setChanged();
                 notifyObservers(new int[] {x, y});
                 return;

@@ -12,6 +12,7 @@ import java.util.ArrayList;
  *
  */
 public class Partita extends Stato{
+    public static int SCORE = 0;
     private boolean firstUpdate = true;
     private Player player;
     private int actuaLevel;
@@ -33,6 +34,7 @@ public class Partita extends Stato{
             if (player.isAlive()) {
                 levels.get(actuaLevel).update();
                 player.update();
+
                 if (levels.get(actuaLevel).getData()[player.getHitbox().y/16][player.getHitbox().x/16] == 2) {
                     if (checkGameCompleted()){
                         return;

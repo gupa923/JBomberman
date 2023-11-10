@@ -11,6 +11,7 @@ import java.util.ArrayList;
 //TODO improve the movement system fa veramente schifo. Forse si può risolvere diminuendo la hitbox.
 //TODO istanziare una nuova hitbox chiamata damageBox per quando gestiremo il danno.
 public class Player extends Entity{
+    public static int OBSTACLE_DESTROYED = 0;
     public static int VITE = 4;
     private String direction = "STAY";
     private Bomb bomb;
