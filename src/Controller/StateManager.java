@@ -34,6 +34,10 @@ public class StateManager {
         settings = gameModel.getSettings();
         commandInfo = gameModel.getCommandInfo();
         menuGraphics = new MenuGraphics();
+        menuGraphics.setbExit(menu.getbExit());
+        menuGraphics.setbPlay(menu.getbPlay());
+        menuGraphics.setbSetting(menu.getbSettings());
+        menuGraphics.setbLogin(menu.getbLogin());
         matchGraphics = new MatchGraphics();
         pauseGraphics = new PauseGraphics();
         settingsGraphics = new SettingsGraphics();
