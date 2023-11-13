@@ -24,6 +24,13 @@ public class Menu extends Stato {
         bSettings.update();
         bLogin.update();
         bExit.update();
+        if (allNotPressed()){
+            sendMessage("NOT PRESSED");
+        }
+    }
+
+    private boolean allNotPressed() {
+        return !bPlay.isMousePressed() && !bSettings.isMousePressed() && !bExit.isMousePressed() && !bLogin.isMousePressed();
     }
 
     public Button getbExit() {

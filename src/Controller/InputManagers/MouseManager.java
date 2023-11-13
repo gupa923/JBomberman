@@ -33,15 +33,16 @@ public class MouseManager implements MouseListener, MouseMotionListener {
         switch (gameModel.getStatoAttuale()){
             case MENU -> {
                 if (gameModel.getMenu().getbPlay().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getMenu().getbPlay().setMousePressed(true);
+                    //gameModel.getMenu().getbPlay().setMousePressed(true);
                     gameModel.setStatoAttuale(Stati.PARTITA);
                     stateManager.changeState(Stati.PARTITA);
                 }else if (gameModel.getMenu().getbSettings().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getMenu().getbSettings().setMousePressed(true);
+                    //gameModel.getMenu().getbSettings().setMousePressed(true);
                     gameModel.setStatoAttuale(Stati.SETTINGS);
                     stateManager.changeState(Stati.SETTINGS);
-                }else if (gameModel.getMenu().getbSettings().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getMenu().getbLogin().setMousePressed(true);
+                }else if (gameModel.getMenu().getbLogin().getBounds().contains(e.getX(), e.getY())){
+                    System.out.println("LOGIN");
+                    //gameModel.getMenu().getbLogin().setMousePressed(true);
                 }else if(gameModel.getMenu().getbExit().getBounds().contains(e.getX(), e.getY())){
                     System.exit(0);
                 }
@@ -55,11 +56,11 @@ public class MouseManager implements MouseListener, MouseMotionListener {
         switch (gameModel.getStatoAttuale()){
             case MENU -> {
                 if (gameModel.getMenu().getbPlay().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getMenu().getbPlay().setMousePressed(false);
+                    //gameModel.getMenu().getbPlay().setMousePressed(false);
                 }else if (gameModel.getMenu().getbSettings().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getMenu().getbPlay().setMousePressed(false);
-                }else if (gameModel.getMenu().getbSettings().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getMenu().getbLogin().setMousePressed(false);
+                    //gameModel.getMenu().getbPlay().setMousePressed(false);
+                }else if (gameModel.getMenu().getbLogin().getBounds().contains(e.getX(), e.getY())){
+                   // gameModel.getMenu().getbLogin().setMousePressed(false);
                 }
             }
         }
@@ -82,6 +83,29 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-
+        switch (gameModel.getStatoAttuale()){
+            case MENU -> {
+                if (gameModel.getMenu().getbPlay().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getMenu().getbPlay().setMousePressed(true);
+                } else{
+                    gameModel.getMenu().getbPlay().setMousePressed(false);
+                }
+                if (gameModel.getMenu().getbSettings().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getMenu().getbSettings().setMousePressed(true);
+                }else {
+                    gameModel.getMenu().getbSettings().setMousePressed(false);
+                }
+                 if (gameModel.getMenu().getbLogin().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getMenu().getbLogin().setMousePressed(true);
+                }else{
+                     gameModel.getMenu().getbLogin().setMousePressed(false);
+                 }
+                 if(gameModel.getMenu().getbExit().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getMenu().getbExit().setMousePressed(true);
+                }else{
+                    gameModel.getMenu().getbExit().setMousePressed(false);
+                }
+            }
+        }
     }
 }

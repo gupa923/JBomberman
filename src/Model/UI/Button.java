@@ -5,7 +5,7 @@ import Model.StateModels.Stato;
 import java.awt.geom.Rectangle2D;
 
 public class Button {
-    private int x, y, w, h;
+    public int x, y, w, h;
     private boolean mousePressed;
     private Stato stato;
     private String text;
@@ -23,8 +23,6 @@ public class Button {
     public void update(){
         if (mousePressed){
             stato.sendMessage(text + " PRESSED");
-        } else {
-            stato.sendMessage("NOT PRESSED");
         }
     }
 
@@ -38,5 +36,9 @@ public class Button {
 
     public Rectangle2D.Float getBounds() {
         return bounds;
+    }
+
+    public boolean isMousePressed() {
+        return mousePressed;
     }
 }
