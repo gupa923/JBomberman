@@ -51,7 +51,7 @@ public class Game implements Runnable{
         gamePanel.getMatchGraphics().setLevelGraphics(levelManager.getLevelGraphicsArrayList());
 
         //inizializzazione dei listener
-        mouseManager = new MouseManager(gameModel);
+        mouseManager = new MouseManager(gameModel, stateManager);
         keyManager = new KeyManager(gameModel, stateManager);
 
         //aggiunta dei listener

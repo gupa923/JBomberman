@@ -12,4 +12,9 @@ public abstract class Stato extends Observable {
     }
 
     public abstract void update();
+
+    public void sendMessage(Object arg){
+        setChanged();
+        notifyObservers(arg);
+    }
 }
