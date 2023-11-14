@@ -47,6 +47,32 @@ public class MouseManager implements MouseListener, MouseMotionListener {
                     System.exit(0);
                 }
             }
+            case PAUSE -> {
+                if (gameModel.getPause().getbResume().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getPartita().getPlayer().setMoving(false);
+                    gameModel.getPartita().getPlayer().setDirection("");
+                    gameModel.setStatoAttuale(Stati.PARTITA);
+                    stateManager.changeState(Stati.PARTITA);
+                }else if (gameModel.getPause().getbClose().getBounds().contains(e.getX(), e.getY())){
+                    System.exit(0);
+                }else if(gameModel.getPause().getbQuit().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getPartita().getPlayer().setMoving(false);
+                    gameModel.getPartita().getPlayer().setDirection("");
+                    gameModel.setStatoAttuale(Stati.MENU);
+                    stateManager.changeState(Stati.MENU);
+                }
+            }
+            case SETTINGS -> {
+                if (gameModel.getSettings().getbAudio() .getBounds().contains(e.getX(), e.getY())){
+                }
+                else if (gameModel.getSettings().getbComandi().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.setStatoAttuale(Stati.COMMAND_INFO);
+                    stateManager.changeState(Stati.COMMAND_INFO);
+                }else if (gameModel.getSettings().getbStartPage().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.setStatoAttuale(Stati.MENU);
+                    stateManager.changeState(Stati.MENU);
+                }
+            }
         }
 
     }
@@ -104,6 +130,40 @@ public class MouseManager implements MouseListener, MouseMotionListener {
                     gameModel.getMenu().getbExit().setMousePressed(true);
                 }else{
                     gameModel.getMenu().getbExit().setMousePressed(false);
+                }
+            }
+            case PAUSE -> {
+                if (gameModel.getPause().getbResume().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getPause().getbResume().setMousePressed(true);
+                } else{
+                    gameModel.getPause().getbResume().setMousePressed(false);
+                }
+                if (gameModel.getPause().getbClose().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getPause().getbClose().setMousePressed(true);
+                }else {
+                    gameModel.getPause().getbClose().setMousePressed(false);
+                }
+                if (gameModel.getPause().getbQuit().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getPause().getbQuit().setMousePressed(true);
+                }else{
+                    gameModel.getPause().getbQuit().setMousePressed(false);
+                }
+            }
+            case SETTINGS -> {
+                if (gameModel.getSettings().getbAudio() .getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getSettings().getbAudio().setMousePressed(true);
+                } else{
+                    gameModel.getSettings().getbAudio().setMousePressed(false);
+                }
+                if (gameModel.getSettings().getbComandi().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getSettings().getbComandi().setMousePressed(true);
+                }else {
+                    gameModel.getSettings().getbComandi().setMousePressed(false);
+                }
+                if (gameModel.getSettings().getbStartPage().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getSettings().getbStartPage().setMousePressed(true);
+                }else{
+                    gameModel.getSettings().getbStartPage().setMousePressed(false);
                 }
             }
         }
