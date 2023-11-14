@@ -1,9 +1,6 @@
 package View.StatesGraphics;
 
-import Model.StateModels.Pause;
-
 import java.awt.*;
-import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
 
@@ -16,10 +13,10 @@ public class PauseGraphics extends StateGraphics{
 
     private void loadImgs() {
         imgs = new BufferedImage[4];
-        imgs[0] = loadImg("/JBomberman_menù_pausa.png");
-        imgs[1] = loadImg("/JBomberman_menù_pausa_close_premuto.png");
-        imgs[2] = loadImg("/JBomberman_menù_pausa_quit_premuto.png");
-        imgs[3] = loadImg("/JBomberman_menù_pausa_resume_premuto.png");
+        imgs[0] = loadImg("/pause_menu/JBomberman_menù_pausa.png");
+        imgs[1] = loadImg("/pause_menu/JBomberman_menù_pausa_close_premuto.png");
+        imgs[2] = loadImg("/pause_menu/JBomberman_menù_pausa_quit_premuto.png");
+        imgs[3] = loadImg("/pause_menu/JBomberman_menù_pausa_resume_premuto.png");
     }
 
     @Override
