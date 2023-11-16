@@ -1,6 +1,7 @@
 package Model.StateModels;
 
 import Model.EntityModel.Player;
+import Model.EntityModel.PowerUp;
 import Model.GameModel;
 import Model.Level;
 import Model.Stati;
@@ -79,6 +80,7 @@ public class Partita extends Stato{
 
     public void setPlayer(Player player) {
         this.player = player;
+        PowerUp.player = this.player;
     }
 
     public void setLevels(ArrayList<Level> levels) {

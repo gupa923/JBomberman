@@ -1,7 +1,9 @@
 package View;
 
 import Model.EntityModel.Obstacle;
+import Model.EntityModel.PowerUpType;
 import View.EntitiesGraphics.ObstacleGraphics;
+import View.EntitiesGraphics.PowerUpGraphics;
 import View.UtilityInterfaces.Drawable;
 import View.UtilityInterfaces.ImgImporter;
 
@@ -20,11 +22,13 @@ import java.util.Observer;
 public class LevelGraphics implements ImgImporter, Drawable, Observer {
     private BufferedImage lvl1Bg;
     private ArrayList<ObstacleGraphics> obstacleGraphics, exploadingObstacles;
+    private ArrayList<PowerUpGraphics> powerUps;
 
     public LevelGraphics(String filename) {
         this.lvl1Bg = loadImg(filename);
         obstacleGraphics = new ArrayList<>();
         exploadingObstacles = new ArrayList<>();
+        powerUps = new ArrayList<>();
     }
 
     @Override
@@ -35,6 +39,9 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
         }
         for (ObstacleGraphics o : exploadingObstacles){
             o.draw(g);
+        }
+        for (PowerUpGraphics p : powerUps){
+            p.draw(g);
         }
     }
 
@@ -52,7 +59,11 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
             initObstacleGraphics(temp);
         }else if (arg instanceof int[]){
             int[] temp2 = (int[]) arg;
-            removeObstacle(temp2);
+            if (temp2.length == 3){
+                powerUps.add(new PowerUpGraphics(temp2[0],temp2[1], temp2[2]));
+            }else {
+                removeObstacle(temp2);
+            }
         }
     }
 

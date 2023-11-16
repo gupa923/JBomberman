@@ -2,6 +2,8 @@ package Model;
 
 import Model.EntityModel.Obstacle;
 import Model.EntityModel.Player;
+import Model.EntityModel.PowerUp;
+import Model.EntityModel.PowerUpType;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -18,6 +20,8 @@ import static Model.StateModels.Partita.SCORE;
  */
 // TODO fare classe figlia che gestisce i livelli con i Boss.
 public class Level extends Observable {
+    public static PowerUpType[] pTypes = PowerUpType.values();
+    private ArrayList<PowerUp> powerUps = new ArrayList<>();
     private int[][] data;
     private ArrayList<Obstacle> obstacles;
     private boolean firstUpdate = true;
@@ -37,10 +41,21 @@ public class Level extends Observable {
             setChanged();
             notifyObservers(obsToArr());
             firstUpdate = false;
+            createPowerUp();
         }
         for (int i = 0; i < obstacles.size(); i++){
             obstacles.get(i).update();
         }
+        for (int i = 0; i < powerUps.size();i++){
+            powerUps.get(i).update();
+        }
+    }
+
+    private void createPowerUp() {
+        powerUps.add(new PowerUp(7*16,5*16, PowerUpType.BOMB_UP ));
+        setChanged();
+        System.out.println("PORCO DIO");
+        notifyObservers(new int[] {7*16, 5*16, PowerUpType.BOMB_UP.getId()});
     }
 
     private void createObstacles(){

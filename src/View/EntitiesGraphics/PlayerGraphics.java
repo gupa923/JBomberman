@@ -112,6 +112,9 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
                 case "EXPLOSION" -> {
                     //despawnBomb();
                 }
+                case "SPEED" -> {
+                    speed++;
+                }
             }
         }
         if (arg instanceof int[][]){
