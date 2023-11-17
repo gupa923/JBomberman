@@ -20,6 +20,7 @@ public class Player extends Entity{
     private boolean moving;
     public static int MAX_BOMB_NUMS = 3;
     private boolean alive = true;
+    public static int HP = 1;
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
         bombs = new ArrayList<>();
@@ -204,6 +205,7 @@ public class Player extends Entity{
         y = 8;
         alive = true;
         direction = "STAY";
+        HP = 1;
         hitbox.x = x;
         hitbox.y = y + 8;
         bombs.clear();
@@ -228,5 +230,12 @@ public class Player extends Entity{
     public void addSpeed(int val) {
         speed += val;
         sendMessage("SPEED");
+    }
+
+    public void hit(){
+        HP--;
+        if (HP == 0){
+            alive = false;
+        }
     }
 }
