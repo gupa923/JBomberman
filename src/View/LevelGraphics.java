@@ -1,7 +1,9 @@
 package View;
 
 import Model.EntityModel.Obstacle;
+import Model.EntityModel.PowerUpType;
 import View.EntitiesGraphics.ObstacleGraphics;
+import View.EntitiesGraphics.PowerUpGraphics;
 import View.UtilityInterfaces.Drawable;
 import View.UtilityInterfaces.ImgImporter;
 
@@ -20,22 +22,28 @@ import java.util.Observer;
 public class LevelGraphics implements ImgImporter, Drawable, Observer {
     private BufferedImage lvl1Bg;
     private ArrayList<ObstacleGraphics> obstacleGraphics, exploadingObstacles;
+    private ArrayList<PowerUpGraphics> powerUps;
 
     public LevelGraphics(String filename) {
         this.lvl1Bg = loadImg(filename);
         obstacleGraphics = new ArrayList<>();
         exploadingObstacles = new ArrayList<>();
+        powerUps = new ArrayList<>();
     }
 
     @Override
     public void draw(Graphics g){
         g.drawImage(lvl1Bg, 0,0, 272 * 3, 208*3, null);
+        for (PowerUpGraphics p : powerUps){
+            p.draw(g);
+        }
         for (ObstacleGraphics o: obstacleGraphics){
             o.draw(g);
         }
         for (ObstacleGraphics o : exploadingObstacles){
             o.draw(g);
         }
+
     }
 
     public void initObstacleGraphics(int[][] pos) {
@@ -49,11 +57,35 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     public void update(Observable o, Object arg) {
         if (arg instanceof int[][]){
             int[][] temp = (int[][]) arg;
-            initObstacleGraphics(temp);
+            if (temp[0].length == 2) {
+                initObstacleGraphics(temp);
+            }else{
+                System.out.println("STOCAZZO");
+                initPowerUpsGraphics(temp);
+            }
         }else if (arg instanceof int[]){
             int[] temp2 = (int[]) arg;
-            removeObstacle(temp2);
+            if (temp2.length == 3){
+                PowerUpGraphics g = new PowerUpGraphics(temp2[0], temp2[1], temp2[2]);
+                for (int i = 0; i < powerUps.size(); i++){
+                    if (powerUps.get(i).equals(g)){
+                        powerUps.remove(g);
+                        break;
+                    }
+                }
+            }else {
+                removeObstacle(temp2);
+            }
         }
+    }
+
+    private void initPowerUpsGraphics(int[][] temp) {
+        for (int i = 0; i < temp.length; i++){
+            int[] temp2 = temp[i];
+            powerUps.add(new PowerUpGraphics(temp2[0],temp2[1], temp2[2]));
+        }
+        System.out.println("Dio cane");
+        System.out.println(powerUps.size());
     }
 
     private void removeObstacle(int[] temp2) {

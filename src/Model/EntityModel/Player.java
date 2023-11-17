@@ -18,7 +18,7 @@ public class Player extends Entity{
     private ArrayList<Bomb> bombs;
     private int speed = 1;
     private boolean moving;
-    private int maxBombNum = 3;
+    public static int MAX_BOMB_NUMS = 3;
     private boolean alive = true;
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -143,7 +143,7 @@ public class Player extends Entity{
      * se ciò è vero creo una nuova bomba e mando una notifica all'observer
      */
     private void spawnBomb() {
-        if (Bomb.BOMB_COUNTER < maxBombNum) {
+        if (Bomb.BOMB_COUNTER < MAX_BOMB_NUMS) {
             for (Bomb b : bombs){
                 if (b.getX() == (x/16)*16 && b.getY() == ((y+8)/16)*16){
                     return;
@@ -223,5 +223,10 @@ public class Player extends Entity{
         y = 8;
         hitbox.x = x;
         hitbox.y = y + 8;
+    }
+
+    public void addSpeed(int val) {
+        speed += val;
+        sendMessage("SPEED");
     }
 }
