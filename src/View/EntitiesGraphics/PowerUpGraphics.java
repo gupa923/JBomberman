@@ -5,7 +5,8 @@ import java.awt.image.BufferedImage;
 
 public class PowerUpGraphics extends EntityGraphics{
     private int id;
-    private BufferedImage[] imgs;
+    private BufferedImage[][] imgs;
+    private int animationTick, animationIndex, maxTick = 20;
 
     public PowerUpGraphics(int x, int y, int id) {
         super(x, y, 16, 16);
@@ -15,9 +16,11 @@ public class PowerUpGraphics extends EntityGraphics{
 
     private void loadImgs() {
         BufferedImage temp = loadImg("/power_up.png");
-        imgs = new BufferedImage[2];
-        imgs[0] = temp.getSubimage(0*16,1*16, 16, 16);
-        imgs[1] = temp.getSubimage(6*16, 3*16, 16, 16);
+        imgs = new BufferedImage[2][2];
+        imgs[0][0] = temp.getSubimage(0*16,0*16, 16, 16);
+        imgs[0][1] = temp.getSubimage(0*16,1*16, 16, 16);
+        imgs[1][0] = temp.getSubimage(6*16, 2*16, 16, 16);
+        imgs[1][1] = temp.getSubimage(6*16, 3*16, 16, 16);
     }
 
     @Override
@@ -27,12 +30,19 @@ public class PowerUpGraphics extends EntityGraphics{
 
     @Override
     public void updateAnimation() {
-
+        animationTick++;
+        if (animationTick >= maxTick) {
+            animationTick = 0;
+            animationIndex++;
+            if (animationIndex >= 2)
+                animationIndex = 0;
+        }
     }
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(imgs[id], x*3, y*3, w*3, h*3, null);
+        updateAnimation();
+        g.drawImage(imgs[id][animationIndex], x*3, y*3, w*3, h*3, null);
     }
 
     @Override
