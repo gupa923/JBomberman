@@ -34,4 +34,13 @@ public class PowerUpGraphics extends EntityGraphics{
     public void draw(Graphics g) {
         g.drawImage(imgs[id], x*3, y*3, w*3, h*3, null);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof PowerUpGraphics){
+            PowerUpGraphics op = (PowerUpGraphics) obj;
+            return this.x == op.x && this.y == op.y && this.id == op.id;
+        }
+        return false;
+    }
 }

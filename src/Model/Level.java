@@ -48,14 +48,28 @@ public class Level extends Observable {
         }
         for (int i = 0; i < powerUps.size();i++){
             powerUps.get(i).update();
+            if (!powerUps.get(i).isActive()){
+                despawnPowerUp(i);
+            }
         }
+    }
+
+    private void despawnPowerUp(int i) {
+        PowerUp temp = powerUps.remove(i);
+        setChanged();
+        notifyObservers(new int[] {temp.getX(), temp.getY(), temp.getId()});
     }
 
     private void createPowerUp() {
         powerUps.add(new PowerUp(7*16,5*16, PowerUpType.BOMB_UP ));
-        setChanged();
+        powerUps.add(new PowerUp(11*16, 5*16, PowerUpType.LIVE_UP));
+        int[][] message = new int[powerUps.size()][3];
+        for (int i = 0; i< powerUps.size(); i++){
+            message[i] = powerUps.get(i).toArr();
+        }
         System.out.println("PORCO DIO");
-        notifyObservers(new int[] {7*16, 5*16, PowerUpType.BOMB_UP.getId()});
+        setChanged();
+        notifyObservers(message);
     }
 
     private void createObstacles(){

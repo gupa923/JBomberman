@@ -46,4 +46,15 @@ public class PowerUp extends Entity{
             }
         }
     }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public int[] toArr(){
+        return new int[]{x, y, id};
+    }
 }

@@ -56,15 +56,35 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     public void update(Observable o, Object arg) {
         if (arg instanceof int[][]){
             int[][] temp = (int[][]) arg;
-            initObstacleGraphics(temp);
+            if (temp[0].length == 2) {
+                initObstacleGraphics(temp);
+            }else{
+                System.out.println("STOCAZZO");
+                initPowerUpsGraphics(temp);
+            }
         }else if (arg instanceof int[]){
             int[] temp2 = (int[]) arg;
             if (temp2.length == 3){
-                powerUps.add(new PowerUpGraphics(temp2[0],temp2[1], temp2[2]));
+                PowerUpGraphics g = new PowerUpGraphics(temp2[0], temp2[1], temp2[2]);
+                for (int i = 0; i < powerUps.size(); i++){
+                    if (powerUps.get(i).equals(g)){
+                        powerUps.remove(g);
+                        break;
+                    }
+                }
             }else {
                 removeObstacle(temp2);
             }
         }
+    }
+
+    private void initPowerUpsGraphics(int[][] temp) {
+        for (int i = 0; i < temp.length; i++){
+            int[] temp2 = temp[i];
+            powerUps.add(new PowerUpGraphics(temp2[0],temp2[1], temp2[2]));
+        }
+        System.out.println("Dio cane");
+        System.out.println(powerUps.size());
     }
 
     private void removeObstacle(int[] temp2) {
