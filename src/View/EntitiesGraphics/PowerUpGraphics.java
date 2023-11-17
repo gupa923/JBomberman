@@ -16,13 +16,17 @@ public class PowerUpGraphics extends EntityGraphics{
 
     private void loadImgs() {
         BufferedImage temp = loadImg("/power_up.png");
-        imgs = new BufferedImage[3][2];
+        imgs = new BufferedImage[5][2];
         imgs[0][0] = temp.getSubimage(0*16,0*16, 16, 16);
         imgs[0][1] = temp.getSubimage(0*16,1*16, 16, 16);
         imgs[1][0] = temp.getSubimage(6*16, 2*16, 16, 16);
         imgs[1][1] = temp.getSubimage(6*16, 3*16, 16, 16);
         imgs[2][0] = temp.getSubimage(1*16, 4*16, 16, 16);
         imgs[2][1] = temp.getSubimage(1*16, 5*16, 16, 16);
+        imgs[3][0] = temp.getSubimage(0*16, 4*16, 16, 16);
+        imgs[3][1] = temp.getSubimage(0*16, 5*16, 16, 16);
+        imgs[4][0] = temp.getSubimage(5*16, 0*16, 16, 16);
+        imgs[4][1] = temp.getSubimage(5*16, 1*16, 16, 16);
     }
 
     @Override

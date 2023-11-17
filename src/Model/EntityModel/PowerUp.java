@@ -49,6 +49,12 @@ public class PowerUp extends Entity{
             case "CAKE" -> {
                 Partita.SCORE += val;
             }
+            case "HP_PLUS" -> {
+                Player.HP += val;
+            }
+            case "HP_MEN" -> {
+                player.hit();
+            }
         }
     }
 
