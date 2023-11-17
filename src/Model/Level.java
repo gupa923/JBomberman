@@ -7,6 +7,7 @@ import Model.EntityModel.PowerUpType;
 
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Random;
 
 import static Model.StateModels.Partita.SCORE;
 
@@ -61,8 +62,16 @@ public class Level extends Observable {
     }
 
     private void createPowerUp() {
-        powerUps.add(new PowerUp(7*16,5*16, PowerUpType.BOMB_UP ));
-        powerUps.add(new PowerUp(11*16, 5*16, PowerUpType.LIVE_UP));
+        Random r = new Random();
+        for (int y = 0; y < data.length; y++){
+            for (int x = 0; x < data[y].length; x++){
+                if (data[y][x] == 4){
+                    powerUps.add(new PowerUp(x*16, y*16, pTypes[r.nextInt(0, pTypes.length)]));
+                }
+            }
+        }
+        //powerUps.add(new PowerUp(7*16,5*16, PowerUpType.BOMB_UP ));
+        //powerUps.add(new PowerUp(11*16, 5*16, PowerUpType.LIVE_UP));
         int[][] message = new int[powerUps.size()][3];
         for (int i = 0; i< powerUps.size(); i++){
             message[i] = powerUps.get(i).toArr();
@@ -75,7 +84,7 @@ public class Level extends Observable {
     private void createObstacles(){
         for (int y = 0; y < data.length; y++){
             for (int x = 0; x < data[y].length; x++){
-                if (data[y][x] == 3 || data[y][x] == 2){
+                if (data[y][x] == 3 || data[y][x] == 2 || data[y][x] == 4){
                     obstacles.add(new Obstacle(this,x*16, y*16));
                 }
             }
