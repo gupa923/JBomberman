@@ -1,5 +1,7 @@
 package Model.EntityModel;
 
+import Model.StateModels.Partita;
+
 import java.awt.geom.Rectangle2D;
 
 public class PowerUp extends Entity{
@@ -43,6 +45,9 @@ public class PowerUp extends Entity{
             }
             case "BOMB_UP" -> {
                 Player.MAX_BOMB_NUMS += val;
+            }
+            case "CAKE" -> {
+                Partita.SCORE += val;
             }
         }
     }

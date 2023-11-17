@@ -2,7 +2,7 @@ package Model.EntityModel;
 
 public enum PowerUpType {
 
-    BOMB_UP("BOMB_UP", 1, 0), LIVE_UP("LIVE_UP", 1, 1);
+    BOMB_UP("BOMB_UP", 1, 0), LIVE_UP("LIVE_UP", 1, 1), CAKE ("CAKE", 100, 2);
     private final String name;
     private final int val;
     private final int id;
