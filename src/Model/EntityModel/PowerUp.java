@@ -56,6 +56,13 @@ public class PowerUp extends Entity{
             case "HP_MEN" -> {
                 player.hit();
             }
+            case "IMMORTALITY" -> {
+                if (player.isImmortality()){
+                    player.resetImmortalityTick();
+                }else {
+                    player.setImmortality(true);
+                }
+            }
         }
     }
 

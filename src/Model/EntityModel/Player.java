@@ -21,6 +21,8 @@ public class Player extends Entity{
     public static int MAX_BOMB_NUMS = 3;
     private boolean alive = true;
     public static int HP = 1;
+    private boolean immortality;
+    private int immortalityTick;
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
         bombs = new ArrayList<>();
@@ -127,6 +129,13 @@ public class Player extends Entity{
         }
         for (int x = 0; x < bombs.size(); x++){
             bombs.get(x).update();
+        }
+
+        if (immortality){
+            immortalityTick++;
+            if (immortalityTick >= 600){
+                immortality = false;
+            }
         }
     }
 
@@ -237,5 +246,17 @@ public class Player extends Entity{
         if (HP == 0){
             alive = false;
         }
+    }
+
+    public boolean isImmortality() {
+        return immortality;
+    }
+
+    public void setImmortality(boolean immortality) {
+        this.immortality = immortality;
+    }
+
+    public void resetImmortalityTick(){
+        immortalityTick = 0;
     }
 }

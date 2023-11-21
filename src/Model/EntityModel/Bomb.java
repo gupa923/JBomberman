@@ -71,36 +71,39 @@ public class Bomb extends Entity{
             }
             return false;
         }else{
-            switch (dir) {
-                case "LEFT", "UP" -> {
-                    for (int[] p: explosionTiles){
-                        if (checkPoints((p[0]) / 16, p[1] / 16, pHitbox.x / 16, pHitbox.y / 16)){
-                            player.hit();
-                            break;
-                        }
-                    }
-                }
-                case "RIGHT" -> {
-                    for (int[] p: explosionTiles){
-                        if (checkPoints(p[0] / 16, p[1] / 16, (pHitbox.x + pHitbox.w - 1) / 16, pHitbox.y / 16)){
-                            player.hit();
-                            break;
-                        }
-                    }
-                }
-                case "DOWN" -> {
-                    for (int[] p: explosionTiles){
-                        if (checkPoints(p[0] / 16, p[1] / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)){
-                            player.hit();
-                            break;
-                        }
-                    }
-                }case "STAY"-> {
-                    if (explosionTiles != null){
-                        for (int[] p: explosionTiles){
-                            if (checkPoints(p[0] / 16, p[1] / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)){
+            if (!player.isImmortality()) {
+                switch (dir) {
+                    case "LEFT", "UP" -> {
+                        for (int[] p : explosionTiles) {
+                            if (checkPoints((p[0]) / 16, p[1] / 16, pHitbox.x / 16, pHitbox.y / 16)) {
                                 player.hit();
                                 break;
+                            }
+                        }
+                    }
+                    case "RIGHT" -> {
+                        for (int[] p : explosionTiles) {
+                            if (checkPoints(p[0] / 16, p[1] / 16, (pHitbox.x + pHitbox.w - 1) / 16, pHitbox.y / 16)) {
+                                player.hit();
+                                break;
+                            }
+                        }
+                    }
+                    case "DOWN" -> {
+                        for (int[] p : explosionTiles) {
+                            if (checkPoints(p[0] / 16, p[1] / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)) {
+                                player.hit();
+                                break;
+                            }
+                        }
+                    }
+                    case "STAY" -> {
+                        if (explosionTiles != null) {
+                            for (int[] p : explosionTiles) {
+                                if (checkPoints(p[0] / 16, p[1] / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)) {
+                                    player.hit();
+                                    break;
+                                }
                             }
                         }
                     }
