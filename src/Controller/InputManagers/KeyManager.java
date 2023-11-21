@@ -49,19 +49,19 @@ public class KeyManager implements KeyListener {
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_D -> {
                         gameModel.getPartita().getPlayer().setMoving(true);
-                        gameModel.getPartita().getPlayer().setDirection("RIGHT");
+                        gameModel.getPartita().getPlayer().setAction("RIGHT");
                     }
                     case KeyEvent.VK_A-> {
                         gameModel.getPartita().getPlayer().setMoving(true);
-                        gameModel.getPartita().getPlayer().setDirection("LEFT");
+                        gameModel.getPartita().getPlayer().setAction("LEFT");
                     }
                     case KeyEvent.VK_S-> {
                         gameModel.getPartita().getPlayer().setMoving(true);
-                        gameModel.getPartita().getPlayer().setDirection("DOWN");
+                        gameModel.getPartita().getPlayer().setAction("DOWN");
                     }
                     case KeyEvent.VK_W-> {
                         gameModel.getPartita().getPlayer().setMoving(true);
-                        gameModel.getPartita().getPlayer().setDirection("UP");
+                        gameModel.getPartita().getPlayer().setAction("UP");
                     }
                     case KeyEvent.VK_BACK_SPACE -> {
                         gameModel.setStatoAttuale(Stati.MENU);
@@ -72,7 +72,7 @@ public class KeyManager implements KeyListener {
                         stateManager.changeState(Stati.PAUSE);
                     }
                     case KeyEvent.VK_ENTER -> {
-                        gameModel.getPartita().getPlayer().setDirection("BOMB");
+                        gameModel.getPartita().getPlayer().setAction("BOMB");
                     }
                 }
             }
@@ -80,7 +80,7 @@ public class KeyManager implements KeyListener {
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_BACK_SPACE -> {
                         gameModel.getPartita().getPlayer().setMoving(false);
-                        gameModel.getPartita().getPlayer().setDirection("");
+                        gameModel.getPartita().getPlayer().setAction("");
                         gameModel.setStatoAttuale(Stati.PARTITA);
                         stateManager.changeState(Stati.PARTITA);
                     }
@@ -151,7 +151,7 @@ public class KeyManager implements KeyListener {
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_D, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_W-> {
                         gameModel.getPartita().getPlayer().setMoving(false);
-                        gameModel.getPartita().getPlayer().setDirection("");
+                        gameModel.getPartita().getPlayer().setAction("");
                     }
                 }
             }

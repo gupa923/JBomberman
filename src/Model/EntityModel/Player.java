@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Player extends Entity{
     public static int OBSTACLE_DESTROYED = 0;
     public static int VITE = 4;
-    private String direction = "STAY";
+    private String action = "STAY";
     private Bomb bomb;
     private ArrayList<Bomb> bombs;
     private int speed = 1;
@@ -49,13 +49,13 @@ public class Player extends Entity{
     @Override
     public void update() {
         if (moving) {
-            switch (direction) {
+            switch (action) {
                 case "LEFT" -> {
                     if ((hitbox.checkCollision(hitbox.x - speed, hitbox.y) && hitbox.checkCollision(hitbox.x - speed, hitbox.y + hitbox.h - 1))) {
                         x -= speed;
                         hitbox.update(-speed, 0);
                         if (bombs.size() == 0 || !intersect( "LEFT"))
-                            sendMessage(direction);
+                            sendMessage(action);
                         else{
                             x += speed;
                             hitbox.update(+speed, 0);
@@ -71,7 +71,7 @@ public class Player extends Entity{
                         x += speed;
                         hitbox.update(speed, 0);
                         if (bombs.size() == 0 || !intersect("RIGHT"))
-                            sendMessage(direction);
+                            sendMessage(action);
                         else{
                             x -= speed;
                             hitbox.update(-speed, 0);
@@ -87,7 +87,7 @@ public class Player extends Entity{
                         y -= speed;
                         hitbox.update(0, -speed);
                         if (bombs.size() == 0 || !intersect( "UP"))
-                            sendMessage(direction);
+                            sendMessage(action);
                         else{
                             y += speed;
                             hitbox.update(0, +speed);
@@ -103,7 +103,7 @@ public class Player extends Entity{
                         y += speed;
                         hitbox.update(0, speed);
                         if (bombs.size() == 0 || !intersect( "DOWN"))
-                            sendMessage(direction);
+                            sendMessage(action);
                         else{
                             y -= speed;
                             hitbox.update(0, -speed);
@@ -117,7 +117,7 @@ public class Player extends Entity{
                 default -> sendMessage("STAY");
             }
         }else{
-            switch (direction){
+            switch (action){
                 case "BOMB" -> {
                     spawnBomb();
                 }
@@ -164,7 +164,7 @@ public class Player extends Entity{
             bombs.add(bomb);
 
             sendMessage("BOMB");
-            direction = "STAY";
+            action = "STAY";
         }
     }
 
@@ -202,8 +202,8 @@ public class Player extends Entity{
         this.moving = moving;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
+    public void setAction(String action) {
+        this.action = action;
     }
 
     /**
@@ -213,7 +213,7 @@ public class Player extends Entity{
         x = 32;
         y = 8;
         alive = true;
-        direction = "STAY";
+        action = "STAY";
         HP = 1;
         hitbox.x = x;
         hitbox.y = y + 8;

@@ -50,14 +50,14 @@ public class MouseManager implements MouseListener, MouseMotionListener {
             case PAUSE -> {
                 if (gameModel.getPause().getbResume().getBounds().contains(e.getX(), e.getY())){
                     gameModel.getPartita().getPlayer().setMoving(false);
-                    gameModel.getPartita().getPlayer().setDirection("");
+                    gameModel.getPartita().getPlayer().setAction("");
                     gameModel.setStatoAttuale(Stati.PARTITA);
                     stateManager.changeState(Stati.PARTITA);
                 }else if (gameModel.getPause().getbClose().getBounds().contains(e.getX(), e.getY())){
                     System.exit(0);
                 }else if(gameModel.getPause().getbQuit().getBounds().contains(e.getX(), e.getY())){
                     gameModel.getPartita().getPlayer().setMoving(false);
-                    gameModel.getPartita().getPlayer().setDirection("");
+                    gameModel.getPartita().getPlayer().setAction("");
                     gameModel.setStatoAttuale(Stati.MENU);
                     stateManager.changeState(Stati.MENU);
                 }
