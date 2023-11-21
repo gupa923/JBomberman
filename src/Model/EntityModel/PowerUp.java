@@ -62,6 +62,8 @@ public class PowerUp extends Entity{
                 }else {
                     player.setImmortality(true);
                 }
+            }case "WALK_OVER" -> {
+                player.setWalkOver(true);
             }
         }
     }

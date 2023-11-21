@@ -13,6 +13,7 @@ public class Hitbox {
     public int x, y, w, h;
     private Level level;
     private int[][] data;
+    private boolean walkOver;
 
     public Hitbox(int x, int y, int w, int h) {
         this.x = x;
@@ -50,6 +51,8 @@ public class Hitbox {
             return false;
         }
         else if (data[ny][nx] == 3 || data[ny][nx] == 2 || data[ny][nx] == 4){
+            if (walkOver)
+                return true;
             for (Obstacle o: level.getObstacles()){
                 if (o.getX() == nx*16 && o.getY() == ny*16)
                         return false;
@@ -75,5 +78,9 @@ public class Hitbox {
 
     public Level getLevel() {
         return level;
+    }
+
+    public void setWalkOver(boolean walkOver) {
+        this.walkOver = walkOver;
     }
 }

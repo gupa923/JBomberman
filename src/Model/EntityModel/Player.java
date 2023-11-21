@@ -23,6 +23,7 @@ public class Player extends Entity{
     public static int HP = 1;
     private boolean immortality;
     private int immortalityTick;
+    private boolean walkOver;
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
         bombs = new ArrayList<>();
@@ -48,13 +49,15 @@ public class Player extends Entity{
     //TODO invece che usare +1 e -1 salvare tale valore in un campo speed, in modo da poterla aumentare con i power up
     @Override
     public void update() {
+        if (walkOver)
+            hitbox.setWalkOver(true);
         if (moving) {
             switch (action) {
                 case "LEFT" -> {
                     if ((hitbox.checkCollision(hitbox.x - speed, hitbox.y) && hitbox.checkCollision(hitbox.x - speed, hitbox.y + hitbox.h - 1))) {
                         x -= speed;
                         hitbox.update(-speed, 0);
-                        if (bombs.size() == 0 || !intersect( "LEFT"))
+                        if (bombs.isEmpty() || !intersect( "LEFT"))
                             sendMessage(action);
                         else{
                             x += speed;
@@ -70,7 +73,7 @@ public class Player extends Entity{
                     if (hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y) && hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y + hitbox.h -1 )) {
                         x += speed;
                         hitbox.update(speed, 0);
-                        if (bombs.size() == 0 || !intersect("RIGHT"))
+                        if (bombs.isEmpty() || !intersect("RIGHT"))
                             sendMessage(action);
                         else{
                             x -= speed;
@@ -86,7 +89,7 @@ public class Player extends Entity{
                     if(hitbox.checkCollision(hitbox.x, hitbox.y - speed) && hitbox.checkCollision(hitbox.x + hitbox.w -1, hitbox.y- speed)){
                         y -= speed;
                         hitbox.update(0, -speed);
-                        if (bombs.size() == 0 || !intersect( "UP"))
+                        if (bombs.isEmpty() || !intersect( "UP"))
                             sendMessage(action);
                         else{
                             y += speed;
@@ -102,7 +105,7 @@ public class Player extends Entity{
                     if ( hitbox.checkCollision(hitbox.x, hitbox.y  + hitbox.h) && hitbox.checkCollision(hitbox.x + hitbox.w - 1, hitbox.y + hitbox.h )){
                         y += speed;
                         hitbox.update(0, speed);
-                        if (bombs.size() == 0 || !intersect( "DOWN"))
+                        if (bombs.isEmpty() || !intersect( "DOWN"))
                             sendMessage(action);
                         else{
                             y -= speed;
@@ -137,6 +140,7 @@ public class Player extends Entity{
                 immortality = false;
             }
         }
+
     }
 
     private boolean intersect(String dir) {
@@ -218,6 +222,7 @@ public class Player extends Entity{
         hitbox.x = x;
         hitbox.y = y + 8;
         bombs.clear();
+        walkOver = false;
         Bomb.BOMB_COUNTER = 0;
     }
 
@@ -258,5 +263,13 @@ public class Player extends Entity{
 
     public void resetImmortalityTick(){
         immortalityTick = 0;
+    }
+
+    public boolean isWalkOver() {
+        return walkOver;
+    }
+
+    public void setWalkOver(boolean walkOver) {
+        this.walkOver = walkOver;
     }
 }
