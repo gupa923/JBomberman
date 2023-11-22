@@ -142,5 +142,8 @@ public class Level extends Observable {
         createObstacles();
         setChanged();
         notifyObservers(obsToArr());
+
+        createPowerUp();
+
     }
 }

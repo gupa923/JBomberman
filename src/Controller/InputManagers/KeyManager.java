@@ -87,7 +87,7 @@ public class KeyManager implements KeyListener {
                     case KeyEvent.VK_R -> {
                         gameModel.setStatoAttuale(Stati.PARTITA);
                         stateManager.changeState(Stati.PARTITA);
-                        gameModel.getPartita().reset();
+                        gameModel.getPartita().restartGame();
                     }
                 }
             }
@@ -114,7 +114,9 @@ public class KeyManager implements KeyListener {
             case GAME_OVER -> {
                 switch (e.getKeyCode()){
                     case KeyEvent.VK_BACK_SPACE -> {
-                        gameModel.getPartita().reset();
+                        gameModel.getPartita().restartGame();
+                        gameModel.setStatoAttuale(Stati.PARTITA);
+                        stateManager.changeState(Stati.PARTITA);
                     }
                 }
             }

@@ -34,18 +34,18 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     @Override
     public void draw(Graphics g){
         g.drawImage(lvl1Bg, 0,0, 272 * 3, 208*3, null);
-//        for (PowerUpGraphics p : powerUps){
-//            p.draw(g);
-//        }
+        for (PowerUpGraphics p : powerUps){
+            p.draw(g);
+        }
         for (ObstacleGraphics o: obstacleGraphics){
             o.draw(g);
         }
         for (ObstacleGraphics o : exploadingObstacles){
             o.draw(g);
         }
-        for (PowerUpGraphics p : powerUps){
-            p.draw(g);
-        }
+//        for (PowerUpGraphics p : powerUps){
+//            p.draw(g);
+//        }
     }
 
     public void initObstacleGraphics(int[][] pos) {

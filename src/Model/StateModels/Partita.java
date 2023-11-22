@@ -54,6 +54,7 @@ public class Partita extends Stato{
                     setChanged();
                     notifyObservers("DEAD");
                 } else {
+                    Player.VITE--;
                     reset();
                 }
             }
