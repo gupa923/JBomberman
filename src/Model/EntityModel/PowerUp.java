@@ -3,9 +3,13 @@ package Model.EntityModel;
 import Model.StateModels.Partita;
 
 import java.awt.geom.Rectangle2D;
+import java.util.Random;
+
+import static Model.Level.pTypes;
 
 public class PowerUp extends Entity{
     public static Player player;
+    private Random r = new Random();
     private String name;
     private int val;
     private int id;
@@ -18,6 +22,7 @@ public class PowerUp extends Entity{
         id = pType.getId();
         val = pType.getVal();
         bounds = new Rectangle2D.Float(this.x, this.y, this.w, this.h);
+
     }
 
     @Override
@@ -41,6 +46,11 @@ public class PowerUp extends Entity{
     }
 
     private void applyPowerUP() {
+        if (name.equals("RANDOM")){
+            PowerUpType p = pTypes[r.nextInt(6)];
+            name = p.getName();
+            val = p.getVal();
+        }
         switch (name){
             case "LIVE_UP" -> {
                 Player.VITE += val;
@@ -68,6 +78,7 @@ public class PowerUp extends Entity{
             }case "WALK_OVER" -> {
                 player.setWalkOver(true);
             }
+
         }
     }
 
