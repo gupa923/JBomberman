@@ -249,10 +249,6 @@ public class Player extends Entity{
         hitbox.y = y + 8;
     }
 
-    public void addSpeed(int val) {
-        speed += val;
-        sendMessage("SPEED");
-    }
 
     public void hit(){
         HP--;
