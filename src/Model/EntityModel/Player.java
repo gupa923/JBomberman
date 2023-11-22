@@ -163,6 +163,13 @@ public class Player extends Entity{
                     return;
                 }
             }
+            if (hitbox.getData()[(y+8)/16][x/16] != 0 || hitbox.getData()[(y+8)/16][x/16] != 1){
+                for (Obstacle o : hitbox.getLevel().getObstacles()){
+                    if (o.getX() == (x/16)*16 && o.getY() == ((y+8)/16)*16){
+                        return;
+                    }
+                }
+            }
             bomb = new Bomb(this,x/16, (y+8)/16);
 
             bombs.add(bomb);
@@ -223,6 +230,7 @@ public class Player extends Entity{
         hitbox.y = y + 8;
         bombs.clear();
         walkOver = false;
+        hitbox.setWalkOver(false);
         Bomb.BOMB_COUNTER = 0;
     }
 
