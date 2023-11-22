@@ -1,5 +1,6 @@
 package Model.StateModels;
 
+import Model.EntityModel.Obstacle;
 import Model.EntityModel.Player;
 import Model.EntityModel.PowerUp;
 import Model.GameModel;
@@ -36,7 +37,7 @@ public class Partita extends Stato{
                 levels.get(actuaLevel).update();
                 player.update();
 
-                if (levels.get(actuaLevel).getData()[player.getHitbox().y/16][player.getHitbox().x/16] == 2) {
+                if (levelCompleted()) {
                     if (checkGameCompleted()){
                         return;
                     }
@@ -58,6 +59,19 @@ public class Partita extends Stato{
             }
         }
     }
+
+    private boolean levelCompleted() {
+        if (levels.get(actuaLevel).getData()[player.getHitbox().y/16][player.getHitbox().x/16] == 2){
+            for (Obstacle o : levels.get(actuaLevel).getObstacles()){
+                if (o.getX()/16 == player.getHitbox().x /16 && o.getY()/16 == player.getHitbox().y/16){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     private boolean checkGameCompleted(){
         if (actuaLevel +1 >= levels.size()){
             gameCompleted = true;
@@ -69,6 +83,7 @@ public class Partita extends Stato{
         }
         return false;
     }
+
 
     private void nextLevel() {
         actuaLevel ++;
