@@ -128,6 +128,12 @@ public class Level extends Observable {
 
     public void removeObstacle(Obstacle obstacle) {
         obstacles.remove(obstacle);
+        for (PowerUp p : powerUps){
+            if (p.getX() == obstacle.getX() && p.getY() == obstacle.getY()){
+                p.setOver(false);
+                break;
+            }
+        }
         setChanged();
         notifyObservers(new int[] {obstacle.getX(), obstacle.getY()});
     }

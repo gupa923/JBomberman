@@ -10,6 +10,7 @@ public class PowerUp extends Entity{
     private int val;
     private int id;
     private boolean collision, active = true;
+    private boolean over = true;
     private Rectangle2D.Float bounds;
     public PowerUp(int x, int y, PowerUpType pType) {
         super(x, y, 16, 16);
@@ -28,7 +29,9 @@ public class PowerUp extends Entity{
     public void update() {
         if (active) {
             if (bounds.contains(player.getHitbox().x, player.getHitbox().y))
-                collision = true;
+                if (!over) {
+                    collision = true;
+                }
             if (collision) {
                 applyPowerUP();
                 collision = false;
@@ -77,5 +80,13 @@ public class PowerUp extends Entity{
     }
     public int[] toArr(){
         return new int[]{x, y, id};
+    }
+
+    public boolean isOver() {
+        return over;
+    }
+
+    public void setOver(boolean over) {
+        this.over = over;
     }
 }
