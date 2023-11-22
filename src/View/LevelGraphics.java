@@ -62,7 +62,6 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
             if (temp[0].length == 2) {
                 initObstacleGraphics(temp);
             }else{
-                System.out.println("STOCAZZO");
                 initPowerUpsGraphics(temp);
             }
         }else if (arg instanceof int[]){
@@ -86,8 +85,6 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
             int[] temp2 = temp[i];
             powerUps.add(new PowerUpGraphics(temp2[0],temp2[1], temp2[2]));
         }
-        System.out.println("Dio cane");
-        System.out.println(powerUps.size());
     }
 
     private void removeObstacle(int[] temp2) {

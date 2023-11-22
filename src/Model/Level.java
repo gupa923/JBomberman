@@ -76,7 +76,6 @@ public class Level extends Observable {
         for (int i = 0; i< powerUps.size(); i++){
             message[i] = powerUps.get(i).toArr();
         }
-        System.out.println("PORCO DIO");
         setChanged();
         notifyObservers(message);
     }
