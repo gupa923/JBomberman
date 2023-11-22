@@ -47,19 +47,19 @@ public class KeyManager implements KeyListener {
             }
             case PARTITA -> {
                 switch (e.getKeyCode()){
-                    case KeyEvent.VK_D -> {
+                    case KeyEvent.VK_D, KeyEvent.VK_RIGHT -> {
                         gameModel.getPartita().getPlayer().setMoving(true);
                         gameModel.getPartita().getPlayer().setAction("RIGHT");
                     }
-                    case KeyEvent.VK_A-> {
+                    case KeyEvent.VK_A, KeyEvent.VK_LEFT-> {
                         gameModel.getPartita().getPlayer().setMoving(true);
                         gameModel.getPartita().getPlayer().setAction("LEFT");
                     }
-                    case KeyEvent.VK_S-> {
+                    case KeyEvent.VK_S, KeyEvent.VK_DOWN-> {
                         gameModel.getPartita().getPlayer().setMoving(true);
                         gameModel.getPartita().getPlayer().setAction("DOWN");
                     }
-                    case KeyEvent.VK_W-> {
+                    case KeyEvent.VK_W, KeyEvent.VK_UP-> {
                         gameModel.getPartita().getPlayer().setMoving(true);
                         gameModel.getPartita().getPlayer().setAction("UP");
                     }
@@ -151,7 +151,7 @@ public class KeyManager implements KeyListener {
             }
             case PARTITA -> {
                 switch (e.getKeyCode()){
-                    case KeyEvent.VK_D, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_W-> {
+                    case KeyEvent.VK_D, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_W, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT-> {
                         gameModel.getPartita().getPlayer().setMoving(false);
                         gameModel.getPartita().getPlayer().setAction("");
                     }

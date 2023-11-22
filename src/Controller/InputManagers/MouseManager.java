@@ -31,6 +31,11 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     @Override
     public void mousePressed(MouseEvent e) {
         switch (gameModel.getStatoAttuale()){
+            case PARTITA -> {
+                if (e.getButton() == MouseEvent.BUTTON1){
+                    gameModel.getPartita().getPlayer().setAction("BOMB");
+                }
+            }
             case MENU -> {
                 if (gameModel.getMenu().getbPlay().getBounds().contains(e.getX(), e.getY())){
                     //gameModel.getMenu().getbPlay().setMousePressed(true);
