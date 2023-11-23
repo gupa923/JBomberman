@@ -136,8 +136,9 @@ public class Player extends Entity{
 
         if (immortality){
             immortalityTick++;
-            if (immortalityTick >= 600){
+            if (immortalityTick >= 1200){
                 immortality = false;
+                immortalityTick = 0;
             }
         }
 
@@ -251,9 +252,13 @@ public class Player extends Entity{
 
 
     public void hit(){
-        HP--;
-        if (HP == 0){
-            alive = false;
+        if (!immortality) {
+            HP--;
+            if (HP == 0) {
+                alive = false;
+            }
+            immortality = true;
+            immortalityTick = 0;
         }
     }
 
