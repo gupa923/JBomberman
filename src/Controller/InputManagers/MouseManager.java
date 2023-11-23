@@ -1,6 +1,8 @@
 package Controller.InputManagers;
 
 import Controller.StateManager;
+import Model.EntityModel.Hitbox;
+import Model.EntityModel.Player;
 import Model.GameModel;
 import Model.Stati;
 
@@ -32,8 +34,32 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     public void mousePressed(MouseEvent e) {
         switch (gameModel.getStatoAttuale()){
             case PARTITA -> {
-                if (e.getButton() == MouseEvent.BUTTON1){
-                    gameModel.getPartita().getPlayer().setAction("BOMB");
+                switch (e.getButton()) {
+                    case MouseEvent.BUTTON3 -> {
+                        gameModel.getPartita().getPlayer().setAction("BOMB");
+                    }
+                    case MouseEvent.BUTTON1 -> {
+                        Player player = gameModel.getPartita().getPlayer();
+                        Hitbox hitbox = player.getHitbox();
+                        if (hitbox.y /16 == (e.getY()/3)/16){
+                            if (hitbox.x/16 <= (e.getX()/3)/16){
+                                player.setMoving(true);
+                                player.setAction("RIGHT");
+                            }else{
+                                player.setMoving(true);
+                                player.setAction("LEFT");
+                            }
+                        }
+                        else if (hitbox.x/16 == (e.getX()/3)/16){
+                            if (hitbox.y/16 <= (e.getY()/3)/16){
+                                player.setMoving(true);
+                                player.setAction("DOWN");
+                            }else {
+                                player.setMoving(true);
+                                player.setAction("UP");
+                            }
+                        }
+                    }
                 }
             }
             case MENU -> {
@@ -92,6 +118,12 @@ public class MouseManager implements MouseListener, MouseMotionListener {
                     //gameModel.getMenu().getbPlay().setMousePressed(false);
                 }else if (gameModel.getMenu().getbLogin().getBounds().contains(e.getX(), e.getY())){
                    // gameModel.getMenu().getbLogin().setMousePressed(false);
+                }
+            }
+            case PARTITA -> {
+                if (e.getButton() == MouseEvent.BUTTON1){
+                    gameModel.getPartita().getPlayer().setMoving(true);
+                    gameModel.getPartita().getPlayer().setAction("STAY");
                 }
             }
         }

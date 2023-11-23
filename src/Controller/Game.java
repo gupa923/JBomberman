@@ -55,10 +55,11 @@ public class Game implements Runnable{
         keyManager = new KeyManager(gameModel, stateManager);
 
         //aggiunta dei listener
-        gamePanel.requestFocus();
+
         gamePanel.addMouseListener(mouseManager);
         gamePanel.addMouseMotionListener(mouseManager);
         gamePanel.addKeyListener(keyManager);
+        gamePanel.requestFocus();
 
     }
 
