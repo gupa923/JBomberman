@@ -82,7 +82,7 @@ public class MatchGraphics extends StateGraphics {
 
     private void resetALL() {
         playing = true;
-        playerGraphics.reset();
+        playerGraphics.resetPos();
     }
 
     public GameOverScreen getGameOverScreen() {

@@ -233,5 +233,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         y = 8;
         hitbox.x = 32;
         hitbox.y = 16;
+        typeAnimation = 0;
+        animationIndex = 1;
     }
 }

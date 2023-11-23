@@ -21,7 +21,7 @@ public class Player extends Entity{
     public static int MAX_BOMB_NUMS = 3;
     private boolean alive = true;
     public static int HP = 1;
-    private boolean immortality;
+    private boolean immortality = true;
     private int immortalityTick;
     private boolean walkOver;
     public Player(int x, int y, int w, int h) {
@@ -225,6 +225,8 @@ public class Player extends Entity{
         x = 32;
         y = 8;
         alive = true;
+        immortality = true;
+        immortalityTick = 0;
         action = "STAY";
         HP = 1;
         hitbox.x = x;
@@ -248,6 +250,11 @@ public class Player extends Entity{
         y = 8;
         hitbox.x = x;
         hitbox.y = y + 8;
+        alive = true;
+        immortality = true;
+        immortalityTick = 0;
+        action = "STAY";
+        HP = 1;
     }
 
 
