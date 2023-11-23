@@ -138,6 +138,8 @@ public class Level extends Observable {
     }
 
     public void reset() {
+        obstacles.clear();
+        powerUps.clear();
         createObstacles();
         setChanged();
         notifyObservers(obsToArr());

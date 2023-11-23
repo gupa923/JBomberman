@@ -49,6 +49,8 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     }
 
     public void initObstacleGraphics(int[][] pos) {
+        obstacleGraphics.clear();
+        exploadingObstacles.clear();
         for (int y = 0; y < pos.length; y ++){
             obstacleGraphics.add(new ObstacleGraphics(pos[y][0], pos[y][1]));
         }
@@ -81,6 +83,7 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     }
 
     private void initPowerUpsGraphics(int[][] temp) {
+        powerUps.clear();
         for (int i = 0; i < temp.length; i++){
             int[] temp2 = temp[i];
             powerUps.add(new PowerUpGraphics(temp2[0],temp2[1], temp2[2]));
