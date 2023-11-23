@@ -24,6 +24,7 @@ public class Player extends Entity{
     private boolean immortality = true;
     private int immortalityTick;
     private boolean walkOver;
+
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
         bombs = new ArrayList<>();

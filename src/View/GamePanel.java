@@ -21,6 +21,8 @@ public class GamePanel extends JPanel {
     private StateGraphics activeState;
     public GamePanel(StateGraphics activeState){
         setPreferredSize(new Dimension(272 * 3, 272* 3));
+        setFocusable(true);
+        requestFocusInWindow();
         this.activeState = activeState;
     }
 
