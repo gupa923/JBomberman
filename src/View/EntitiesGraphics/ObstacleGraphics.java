@@ -10,31 +10,60 @@ import java.awt.image.BufferedImage;
 public class ObstacleGraphics extends EntityGraphics {
     private BufferedImage sprite, explosionSprite;
     private boolean exploading = false;
+    private BufferedImage[] sprites, explosionSprites;
+    private int animationIndex, animationTick, animatioSpeed = 20;
+
 
     public ObstacleGraphics(int x, int y){
         super(x, y, 16, 16);
-        BufferedImage temp = loadImg("/provaSpritesTemp.png");
-        sprite = temp.getSubimage(69, 0, 16, 16);
-        explosionSprite = temp.getSubimage(1, 16*8 + 8, 16, 16 );
+        sprite = loadImg("/entitySprites/obstacleSprite/Sprite_Ostacolo.png");
+        explosionSprite = loadImg("/entitySprites/obstacleSprite/Sprite_Esplosione_Ostacolo.png");
+        loadAnimations();
     }
 
     @Override
     public void draw(Graphics g) {
+        updateAnimation();
         if(!exploading)
-            g.drawImage(sprite, x*3, y*3, h*3, w*3, null);
+            g.drawImage(sprites[animationIndex], x*3, y*3, h*3, w*3, null);
         else{
-            g.drawImage(explosionSprite, x*3, y*3, w*3, h*3, null);
+            g.drawImage(explosionSprites[animationIndex], x*3, y*3, w*3, h*3, null);
         }
     }
 
     @Override
     public void loadAnimations() {
-
+        sprites = new BufferedImage[4];
+        for (int i = 0; i < 4; i++) {
+            sprites[i] = sprite.getSubimage(i*16, 0, 16, 16);
+        }
+        explosionSprites = new BufferedImage[6];
+        for (int i = 0; i < 6; i++) {
+            explosionSprites[i] = explosionSprite.getSubimage(i*16, 0, 16,16);
+        }
     }
 
     @Override
     public void updateAnimation() {
-
+        if (!exploading){
+            animationTick++;
+            if (animationTick >= animatioSpeed){
+                animationIndex++;
+                animationTick = 0;
+            }
+            if (animationIndex >= sprites.length){
+                animationIndex = 0;
+            }
+        }else{
+            animationTick++;
+            if (animationTick >= animatioSpeed){
+                animationIndex++;
+                animationTick = 0;
+            }
+            if (animationIndex >= explosionSprites.length){
+                animationIndex = 0;
+            }
+        }
     }
 
     public int getX() {
@@ -47,5 +76,8 @@ public class ObstacleGraphics extends EntityGraphics {
 
     public void setExploading(boolean exploading) {
         this.exploading = exploading;
+        animatioSpeed = 10;
+        animationTick = 0;
+        animationIndex = 0;
     }
 }

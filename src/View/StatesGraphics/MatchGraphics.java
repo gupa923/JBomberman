@@ -76,8 +76,6 @@ public class MatchGraphics extends StateGraphics {
                 actualLevel = 0;
             }
         }
-
-
     }
 
     private void resetALL() {
