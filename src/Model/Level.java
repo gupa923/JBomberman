@@ -72,10 +72,11 @@ public class Level extends Observable {
         }
         //powerUps.add(new PowerUp(7*16,5*16, PowerUpType.BOMB_UP ));
         //powerUps.add(new PowerUp(11*16, 5*16, PowerUpType.LIVE_UP));
-        int[][] message = new int[powerUps.size()][3];
-        for (int i = 0; i< powerUps.size(); i++){
-            message[i] = powerUps.get(i).toArr();
-        }
+//        int[][] message = new int[powerUps.size()][3];
+//        for (int i = 0; i< powerUps.size(); i++){
+//            message[i] = powerUps.get(i).toArr();
+//        }
+        int[][] message = powerUps.stream().map(PowerUp::toArr).toArray(int[][]::new);
         setChanged();
         notifyObservers(message);
     }
@@ -91,12 +92,13 @@ public class Level extends Observable {
     }
 
     public int[][] obsToArr(){
-        ArrayList<int[]> res = new ArrayList<>();
-        for (Obstacle o : obstacles){
-            res.add(new int[] {o.getX(), o.getY()});
-        }
-
-        return res.stream().toArray(int[][] :: new);
+//        ArrayList<int[]> res = new ArrayList<>();
+//        for (Obstacle o : obstacles){
+//            res.add(new int[] {o.getX(), o.getY()});
+//        }
+//
+//        return res.stream().toArray(int[][] :: new);
+        return obstacles.stream().map(o -> new int[]{o.getX(), o.getY()}).toArray(int[][]::new);
     }
 
     public void setData(int[][] data) {
