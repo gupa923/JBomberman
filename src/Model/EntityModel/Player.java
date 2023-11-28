@@ -18,7 +18,7 @@ public class Player extends Entity{
     private ArrayList<Bomb> bombs;
     private int speed = 1;
     private boolean moving;
-    public static int MAX_BOMB_NUMS = 3;
+    public static int MAX_BOMB_NUMS = 1;
     private boolean alive = true;
     public static int HP = 1;
     private boolean immortality = true;
@@ -255,6 +255,7 @@ public class Player extends Entity{
         immortality = true;
         immortalityTick = 0;
         action = "STAY";
+        MAX_BOMB_NUMS = 1;
         HP = 1;
     }
 
