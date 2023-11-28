@@ -33,15 +33,11 @@ public class Hitbox {
     }
 
     /**
-     * avendo data che è una matrice dei interi che rappresenta le diverse tile presenti nella mappa.
-     * se il valore è 1 vuol dire che non si può camminare su questa tile.
-     * per calcolare ciò viene preso il valore di x e di y e viene effettuata la divisione intera per 16,
-     * poi si controlla il valore di data alla posizione della nuova x e della nuova y e se il valore NON è 1
-     * restituisce true, cioè che il giocatore può camminare in questa tile.
+     * questo metodo gestisce la collisione con i muri della mappa e con gli ostacoli
      *
-     * @param x
-     * @param y
-     * @return boolean
+     * @param x: coordinata x del player
+     * @param y: coordinata y del player
+     * @return boolean: restituisce true se il giocatore può spostarsi su x, y
      */
     public boolean checkCollision(int x, int y){
         int nx = x / 16;

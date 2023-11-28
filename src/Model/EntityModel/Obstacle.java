@@ -1,6 +1,10 @@
 package Model.EntityModel;
 import Model.Level;
-
+/**
+ * questa classe rappresenta gli ostacoli. Estende Entity. gestisce gli ostacoli e la loro distruzione.
+ * @see Model.EntityModel.Entity
+ * @author gupa9
+ */
 public class Obstacle extends Entity{
     private boolean hit;
     private Level level;

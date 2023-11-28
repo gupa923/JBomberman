@@ -7,6 +7,9 @@ import java.util.Random;
 
 import static Model.Level.pTypes;
 
+/**
+ * questa classe rappresenta i Power Up. estende la classe Entity. Gestisce gli effetti del power up sullo stato del gioco.
+ */
 public class PowerUp extends Entity{
     public static Player player;
     private Random r = new Random();
@@ -30,6 +33,9 @@ public class PowerUp extends Entity{
 
     }
 
+    /**
+     * se il power up è attivo controola se il player gli è passato sopra e attiva il suo effetto, per poi rimuoverlo.
+     */
     @Override
     public void update() {
         if (active) {
@@ -45,6 +51,9 @@ public class PowerUp extends Entity{
         }
     }
 
+    /**
+     * in base al tipo di power up applicail suo effetto
+     */
     private void applyPowerUP() {
         if (name.equals("RANDOM")){
             PowerUpType p = pTypes[r.nextInt(6)];

@@ -3,7 +3,7 @@ package Model.EntityModel;
 import java.util.ArrayList;
 
 /**
- *
+ * questa classe rappresenta il giocatore nel gioco. Estende la classe Entity. Gestisce le azioni e lo stato del giocatore
  *
  * @see Entity
  * @author gupa9
@@ -42,10 +42,7 @@ public class Player extends Entity{
     }
 
     /**
-     * questo metodo update permette di controllare il numero di notifiche mandate agli observer
-     * il metodo controlla se il campo moving è true, quindi se il player si sta muovendo, poi in base al
-     * valore del campo direction, in primo luogo controlla se il player può muoversi in quella tile, in caso affermativo cambia le coordinate e manda una notifica agli osservatori
-     * se non si sta muovendo si dice agli osservatori che il giocatore si sta muovendo.
+     * questo metodo gestisce le azioni del giocatore. in particolare il movimento e la creazione delle bombe.
      */
     //TODO invece che usare +1 e -1 salvare tale valore in un campo speed, in modo da poterla aumentare con i power up
     @Override
@@ -145,6 +142,11 @@ public class Player extends Entity{
 
     }
 
+    /**
+     * itera sull'array di bomb e restituisce true se il giocatore collide con una bomba
+     * @param dir: direzione verso cui si sta muovendo il giocatore
+     * @return: restituisce true se il giocatore colpisce una bomba
+     */
     private boolean intersect(String dir) {
         for (Bomb b : bombs){
             if (b.intersect(dir)){
@@ -155,8 +157,7 @@ public class Player extends Entity{
     }
 
     /**
-     * controllo inizialmente se il numero di bombe in gioco è minore del numero massimo di bombe consentito.
-     * se ciò è vero creo una nuova bomba e mando una notifica all'observer
+     * questo metodo permette al giocatore di generare una bomba
      */
     private void spawnBomb() {
         if (Bomb.BOMB_COUNTER < MAX_BOMB_NUMS) {
@@ -182,8 +183,8 @@ public class Player extends Entity{
     }
 
     /**
-     * crea l'esplosione
-     * @param b
+     * cerca la bomba all'interno dell'array e la fa esplodere
+     * @param b: la bomba che deve esplodere
      */
     public void explodeBomb(Bomb b) {
 
@@ -196,7 +197,7 @@ public class Player extends Entity{
     /**
      * rimuove la bomba dall'array
      *
-     * @param b
+     * @param b: bomba da rimuovere dall'array
      */
     public void removeBomb(Bomb b) {
         b.setExploding(false);
@@ -206,6 +207,10 @@ public class Player extends Entity{
         sendMessage(new String[] {m1, m2});
     }
 
+    /**
+     * invia una notifica all'observer
+     * @param arg:argomento da mandare come notifica all'observer
+     */
     public void sendMessage(Object arg){
         setChanged();
         notifyObservers(arg);

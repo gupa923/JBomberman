@@ -1,8 +1,7 @@
 package Model.EntityModel;
 
 /**
- * questa classe gestisce le cose che fanno le bombe.
- * ci sta un counter che contiene il numero di bombe attive nel gioco
+ * questa classe rappresenta la bomba. estende la classe Entity. gestisce la bomba, la sua esplosione e la collisione con il giocatore
  * @see Model.EntityModel.Entity
  */
 public class Bomb extends Entity{
@@ -47,8 +46,7 @@ public class Bomb extends Entity{
     }
 
     /**
-     * sto metodo controlla la collisione tra il giocatore e la bomba
-     *
+     * questo metodo controlla la collisione tra il giocatore e la bomba. se la bomba sta esplodendo e la collisione avviene allora il giocatore viene colpito e perde un HP
      *
      * @param dir: la direzione in cui il player si sta muovendo
      * @return
