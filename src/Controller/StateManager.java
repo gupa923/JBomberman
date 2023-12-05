@@ -72,7 +72,9 @@ public class StateManager {
             case COMMAND_INFO -> {
                 gamePanel.setActiveState(commandInfoGraphics);
             }
-
+            case LOGIN -> {
+                gamePanel.setActiveState(null);
+            }
         }
     }
 

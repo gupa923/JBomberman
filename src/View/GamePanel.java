@@ -19,10 +19,13 @@ public class GamePanel extends JPanel {
     private MatchGraphics matchGraphics;
     private MenuGraphics menuGraphics;
     private StateGraphics activeState;
+    private LoginPanel loginPanel;
     public GamePanel(StateGraphics activeState){
         setPreferredSize(new Dimension(272 * 3, 272* 3));
         setFocusable(true);
         requestFocusInWindow();
+        loginPanel = new LoginPanel();
+        add(loginPanel);
         this.activeState = activeState;
     }
 
@@ -40,11 +43,16 @@ public class GamePanel extends JPanel {
        // }else if (matchGraphics.isActive()){
          //   matchGraphics.draw(g);
         //}
-        if (activeState instanceof PauseGraphics){
-            matchGraphics.getPlayerGraphics().setMoving(false);
-            matchGraphics.draw(g);
+        if(activeState == null){
+            loginPanel.setVisible(true);
+        }else {
+            loginPanel.setVisible(false);
+            if (activeState instanceof PauseGraphics) {
+                matchGraphics.getPlayerGraphics().setMoving(false);
+                matchGraphics.draw(g);
+            }
+            activeState.draw(g);
         }
-        activeState.draw(g);
     }
 
     public void setMatchGraphics(MatchGraphics matchGraphics) {
