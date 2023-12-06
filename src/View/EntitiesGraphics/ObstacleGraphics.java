@@ -76,7 +76,7 @@ public class ObstacleGraphics extends EntityGraphics {
 
     public void setExploading(boolean exploading) {
         this.exploading = exploading;
-        animatioSpeed = 10;
+        animatioSpeed = 11;
         animationTick = 0;
         animationIndex = 0;
     }
