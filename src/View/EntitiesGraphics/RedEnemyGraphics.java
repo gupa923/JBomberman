@@ -11,6 +11,8 @@ public class RedEnemyGraphics extends EnemyGraphics {
     private BufferedImage sprite;
     private BufferedImage[][] sprites;
     private int typeAnimation, animationIndexUpdate, animationIndex, animationSpeed = 10;
+    private boolean moving = true;
+
     public RedEnemyGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
         loadAnimations();
@@ -68,6 +70,10 @@ public class RedEnemyGraphics extends EnemyGraphics {
 
     @Override
     public void updateAnimation() {
+        if (!moving){
+            animationIndex = 0;
+            animationIndexUpdate = 0;
+        }
         animationIndexUpdate++;
         if (animationIndexUpdate >= animationSpeed) {
             animationIndexUpdate = 0;
@@ -90,20 +96,28 @@ public class RedEnemyGraphics extends EnemyGraphics {
             String dir = (String) arg;
             switch (dir){
                 case "LEFT" -> {
+                    moving = true;
                     x-= 1;
                     typeAnimation = 2;
                 }
                 case "RIGHT" -> {
+                    moving = true;
                     x += 1;
                     typeAnimation = 3;
                 }
                 case "UP" -> {
+                    moving = true;
                     y -= 1;
                     typeAnimation = 1;
                 }
                 case "DOWN" -> {
+                    moving = true;
                     y += 1;
                     typeAnimation = 0;
+                }
+                case "STAY" -> {
+                    typeAnimation = 0;
+                    moving = false;
                 }
             }
         }
