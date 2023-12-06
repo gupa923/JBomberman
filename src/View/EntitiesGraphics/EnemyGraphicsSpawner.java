@@ -27,4 +27,8 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
             e.draw(g);
         }
     }
+
+    public ArrayList<EnemyGraphics> getEnemyGraphics() {
+        return enemyGraphics;
+    }
 }
