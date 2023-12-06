@@ -4,6 +4,7 @@ import Controller.EntityManagers.PlayerManager;
 import Controller.InputManagers.KeyManager;
 import Controller.InputManagers.MouseManager;
 import Model.GameModel;
+import View.EntitiesGraphics.EnemyGraphicsSpawner;
 import View.GameFrame;
 import View.GamePanel;
 
@@ -26,6 +27,7 @@ public class Game implements Runnable{
     private StateManager stateManager;
     private PlayerManager playerManager;
     private LevelManager levelManager;
+    private EnemySpawnerManager enemySpawnerManager;
 
     private int FPS = 60;
     private int UPS = 120;
@@ -38,12 +40,14 @@ public class Game implements Runnable{
         this.stateManager = new StateManager();
         this.playerManager = PlayerManager.getInstance();
         this.levelManager = LevelManager.getInstance();
+        enemySpawnerManager = new EnemySpawnerManager();
 
         //creazione view
         this.gamePanel = new GamePanel(stateManager.getMenuGraphics());
         this.gameFrame = new GameFrame(gamePanel);
 
         stateManager.setGamePanel(gamePanel);
+
         gamePanel.setMatchGraphics(stateManager.getMatchGraphics());
         gamePanel.setMenuGraphics(stateManager.getMenuGraphics());
         //aggiungo alla view le varie cose grafiche

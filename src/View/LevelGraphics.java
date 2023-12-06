@@ -2,6 +2,7 @@ package View;
 
 import Model.EntityModel.Obstacle;
 import Model.EntityModel.PowerUpType;
+import View.EntitiesGraphics.EnemyGraphicsSpawner;
 import View.EntitiesGraphics.ObstacleGraphics;
 import View.EntitiesGraphics.PowerUpGraphics;
 import View.UtilityInterfaces.Drawable;
@@ -23,6 +24,7 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     private BufferedImage lvl1Bg;
     private ArrayList<ObstacleGraphics> obstacleGraphics, exploadingObstacles;
     private ArrayList<PowerUpGraphics> powerUps;
+    private EnemyGraphicsSpawner enemyGraphicsSpawner;
 
     public LevelGraphics(String filename) {
         this.lvl1Bg = loadImg(filename);
@@ -46,6 +48,9 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
 //        for (PowerUpGraphics p : powerUps){
 //            p.draw(g);
 //        }
+        if (enemyGraphicsSpawner != null){
+            enemyGraphicsSpawner.draw(g);
+        }
     }
 
     public void initObstacleGraphics(int[][] pos) {
@@ -106,5 +111,9 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
                 return;
             }
         }
+    }
+
+    public void setEnemyGraphicsSpawner(EnemyGraphicsSpawner enemyGraphicsSpawner) {
+        this.enemyGraphicsSpawner = enemyGraphicsSpawner;
     }
 }

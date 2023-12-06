@@ -95,4 +95,8 @@ public class LevelManager {
     public ArrayList<LevelGraphics> getLevelGraphicsArrayList() {
         return levelGraphicsArrayList;
     }
+
+    public ArrayList<Level> getLevels() {
+        return levels;
+    }
 }

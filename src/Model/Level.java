@@ -1,9 +1,6 @@
 package Model;
 
-import Model.EntityModel.Obstacle;
-import Model.EntityModel.Player;
-import Model.EntityModel.PowerUp;
-import Model.EntityModel.PowerUpType;
+import Model.EntityModel.*;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -25,6 +22,7 @@ public class Level extends Observable {
     private int[][] data;
     private ArrayList<Obstacle> obstacles;
     private boolean firstUpdate = true;
+    private EnemySpawner enemySpawner;
 
     /**
      * costruttore della classe level.
@@ -60,6 +58,7 @@ public class Level extends Observable {
                 despawnPowerUp(i);
             }
         }
+        enemySpawner.update();
     }
 
     /**
@@ -165,5 +164,14 @@ public class Level extends Observable {
 
         createPowerUp();
 
+    }
+
+    public EnemySpawner getEnemySpawner() {
+        return enemySpawner;
+    }
+
+    public void setEnemySpawner(EnemySpawner enemySpawner) {
+        this.enemySpawner = enemySpawner;
+        this.enemySpawner.firstNotify();
     }
 }
