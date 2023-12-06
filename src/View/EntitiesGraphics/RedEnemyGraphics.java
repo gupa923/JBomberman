@@ -9,6 +9,8 @@ import java.util.Observable;
 
 public class RedEnemyGraphics extends EnemyGraphics {
     private BufferedImage sprite;
+    private BufferedImage[][] sprites;
+    private int typeAnimation, animationIndexUpdate, animationIndex, animationSpeed = 10;
     public RedEnemyGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
         loadAnimations();
@@ -17,18 +19,68 @@ public class RedEnemyGraphics extends EnemyGraphics {
     @Override
     public void loadAnimations() {
         BufferedImage temp = loadImg("/entitySprites/enemySprite/Nemico_Rosso_Down.png");
+        BufferedImage temp2 = loadImg("/entitySprites/enemySprite/Nemico_Rosso_Up.png");
+        BufferedImage temp3 = loadImg("/entitySprites/enemySprite/Nemico_Rosso_SX.png");
+        BufferedImage temp4 = loadImg("/entitySprites/enemySprite/Nemico_Rosso_DX.png");
 
-        sprite = temp.getSubimage(0, 0, 16, 24);
+        BufferedImage[] left = new BufferedImage[4];
+        for (int i = 0; i < 4; i++){
+            if (i == 3) {
+                left[i] = temp3.getSubimage(i*16 + 1, 0, 16, 24);
+            }else {
+                left[i] = temp3.getSubimage(i*16, 0, 16, 24);
+
+            }
+        }
+
+        BufferedImage[] up = new BufferedImage[4];
+        for (int i = 0; i < 4; i++){
+            if (i == 3) {
+                up[i] = temp2.getSubimage(i*16 , 0, 15, 24);
+            }else {
+                up[i] = temp2.getSubimage(i*16, 0, 16, 24);
+
+            }
+        }
+
+        BufferedImage[] down = new BufferedImage[4];
+        for (int i = 0; i < 4; i++){
+            if (i == 3) {
+                down[i] = temp.getSubimage(i*16, 0, 15, 24);
+            }else {
+                down[i] = temp.getSubimage(i*16, 0, 16, 24);
+
+            }
+        }
+
+        BufferedImage[] right = new BufferedImage[4];
+        for (int i = 0; i < 4; i++){
+            if (i == 0) {
+                right[i] = temp4.getSubimage(i*16, 0, 16, 24);
+            }else {
+                right[i] = temp4.getSubimage(i*16 + 1, 0, 16, 24);
+
+            }
+        }
+        sprites = new BufferedImage[][] {down, up, left, right};
+
     }
 
     @Override
     public void updateAnimation() {
-
+        animationIndexUpdate++;
+        if (animationIndexUpdate >= animationSpeed) {
+            animationIndexUpdate = 0;
+            animationIndex++;
+            if (animationIndex >= sprites[typeAnimation].length)
+                animationIndex = 0;
+        }
     }
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(sprite, x*3, y*3, w*3, h*3, null);
+        updateAnimation();
+        g.drawImage(sprites[typeAnimation][animationIndex], x*3, y*3, w*3, h*3, null);
         g.drawRect(hitbox.x*3, hitbox.y*3, hitbox.w*3, hitbox.h*3);
     }
 
@@ -39,15 +91,19 @@ public class RedEnemyGraphics extends EnemyGraphics {
             switch (dir){
                 case "LEFT" -> {
                     x-= 1;
+                    typeAnimation = 2;
                 }
                 case "RIGHT" -> {
                     x += 1;
+                    typeAnimation = 3;
                 }
                 case "UP" -> {
                     y -= 1;
+                    typeAnimation = 1;
                 }
                 case "DOWN" -> {
                     y += 1;
+                    typeAnimation = 0;
                 }
             }
         }
