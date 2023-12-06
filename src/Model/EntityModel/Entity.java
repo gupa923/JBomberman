@@ -46,4 +46,8 @@ public abstract class Entity extends Observable {
     public Hitbox getHitbox() {
         return hitbox;
     }
+
+    public void hit() {
+
+    }
 }

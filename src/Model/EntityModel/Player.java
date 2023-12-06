@@ -15,7 +15,7 @@ public class Player extends Entity{
     public static int VITE = 4;
     private String action = "STAY";
     private Bomb bomb;
-    private ArrayList<Bomb> bombs;
+    public static ArrayList<Bomb> BOMBS = new ArrayList<>();
     private int speed = 1;
     private boolean moving;
     public static int MAX_BOMB_NUMS = 1;
@@ -27,7 +27,6 @@ public class Player extends Entity{
 
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
-        bombs = new ArrayList<>();
         initHitbox();
     }
 
@@ -55,7 +54,7 @@ public class Player extends Entity{
                     if ((hitbox.checkCollision(hitbox.x - speed, hitbox.y) && hitbox.checkCollision(hitbox.x - speed, hitbox.y + hitbox.h - 1))) {
                         x -= speed;
                         hitbox.update(-speed, 0);
-                        if (bombs.isEmpty() || !intersect( "LEFT"))
+                        if (BOMBS.isEmpty() || !intersect( "LEFT"))
                             sendMessage(action);
                         else{
                             x += speed;
@@ -71,7 +70,7 @@ public class Player extends Entity{
                     if (hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y) && hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y + hitbox.h -1 )) {
                         x += speed;
                         hitbox.update(speed, 0);
-                        if (bombs.isEmpty() || !intersect("RIGHT"))
+                        if (BOMBS.isEmpty() || !intersect("RIGHT"))
                             sendMessage(action);
                         else{
                             x -= speed;
@@ -87,7 +86,7 @@ public class Player extends Entity{
                     if(hitbox.checkCollision(hitbox.x, hitbox.y - speed) && hitbox.checkCollision(hitbox.x + hitbox.w -1, hitbox.y- speed)){
                         y -= speed;
                         hitbox.update(0, -speed);
-                        if (bombs.isEmpty() || !intersect( "UP"))
+                        if (BOMBS.isEmpty() || !intersect( "UP"))
                             sendMessage(action);
                         else{
                             y += speed;
@@ -103,7 +102,7 @@ public class Player extends Entity{
                     if ( hitbox.checkCollision(hitbox.x, hitbox.y  + hitbox.h) && hitbox.checkCollision(hitbox.x + hitbox.w - 1, hitbox.y + hitbox.h )){
                         y += speed;
                         hitbox.update(0, speed);
-                        if (bombs.isEmpty() || !intersect( "DOWN"))
+                        if (BOMBS.isEmpty() || !intersect( "DOWN"))
                             sendMessage(action);
                         else{
                             y -= speed;
@@ -128,8 +127,8 @@ public class Player extends Entity{
                 }
             }
         }
-        for (int x = 0; x < bombs.size(); x++){
-            bombs.get(x).update();
+        for (int x = 0; x < BOMBS.size(); x++){
+            BOMBS.get(x).update();
         }
 
         if (immortality){
@@ -148,7 +147,7 @@ public class Player extends Entity{
      * @return: restituisce true se il giocatore colpisce una bomba
      */
     private boolean intersect(String dir) {
-        for (Bomb b : bombs){
+        for (Bomb b : BOMBS){
             if (b.intersect(dir)){
                 return true;
             }
@@ -161,7 +160,7 @@ public class Player extends Entity{
      */
     private void spawnBomb() {
         if (Bomb.BOMB_COUNTER < MAX_BOMB_NUMS) {
-            for (Bomb b : bombs){
+            for (Bomb b : BOMBS){
                 if (b.getX() == (x/16)*16 && b.getY() == ((y+8)/16)*16){
                     return;
                 }
@@ -175,7 +174,7 @@ public class Player extends Entity{
             }
             bomb = new Bomb(this,x/16, (y+8)/16);
 
-            bombs.add(bomb);
+            BOMBS.add(bomb);
 
             sendMessage("BOMB");
             action = "STAY";
@@ -201,7 +200,7 @@ public class Player extends Entity{
      */
     public void removeBomb(Bomb b) {
         b.setExploding(false);
-        bombs.remove(b);
+        BOMBS.remove(b);
         String m1 = String.valueOf(b.getX());
         String m2 = String.valueOf(b.getY());
         sendMessage(new String[] {m1, m2});
@@ -237,7 +236,7 @@ public class Player extends Entity{
         HP = 1;
         hitbox.x = x;
         hitbox.y = y + 8;
-        bombs.clear();
+        BOMBS.clear();
         walkOver = false;
         hitbox.setWalkOver(false);
         Bomb.BOMB_COUNTER = 0;
@@ -264,7 +263,7 @@ public class Player extends Entity{
         HP = 1;
     }
 
-
+    @Override
     public void hit(){
         if (!immortality) {
             HP--;
