@@ -124,5 +124,12 @@ public class RedEnemyGraphics extends EnemyGraphics {
 
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof RedEnemyGraphics){
+            RedEnemyGraphics r = (RedEnemyGraphics) obj;
+            return r.x == x && r.y == y;
+        }
+        return false;
+    }
 }

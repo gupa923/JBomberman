@@ -7,6 +7,7 @@ import static Model.EntityModel.Player.BOMBS;
 public class RedEnemy extends Enemy{
 
     private boolean moving = true;
+
     private int updateTick;
     private int HP = 1;
     public RedEnemy(int x, int y, int w, int h) {
@@ -118,10 +119,15 @@ public class RedEnemy extends Enemy{
     }
     @Override
     public void hit(){
-
+        HP--;
+        if (HP <= 0){
+            alive = false;
+        }
     }
     @Override
     public Hitbox getHitbox() {
         return super.getHitbox();
     }
+
+
 }
