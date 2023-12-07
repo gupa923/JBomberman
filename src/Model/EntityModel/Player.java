@@ -256,6 +256,7 @@ public class Player extends Entity{
         hitbox.x = x;
         hitbox.y = y + 8;
         alive = true;
+        walkOver = false;
         immortality = true;
         immortalityTick = 0;
         action = "STAY";
