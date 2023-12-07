@@ -17,10 +17,12 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
     public void update(Observable o, Object arg) {
         if (arg instanceof int[]){
             int[] t = (int[]) arg;
-            if (t[4] == 666){
-                EnemyGraphics e = new RedEnemyGraphics(t[0], t[1], t[2], t[3]);
-                enemyGraphics.remove(e);
-            }else {
+            EnemyGraphics e = new RedEnemyGraphics(t[0], t[1], t[2], t[3]);
+            enemyGraphics.remove(e);
+        }else if (arg instanceof int[][]) {
+            int[][] tm = (int[][] ) arg;
+            for (int i = 0; i < tm.length; i++){
+                int[] t = tm[i];
                 enemyGraphics.add(new RedEnemyGraphics(t[0], t[1], t[2], t[3]));
             }
         }

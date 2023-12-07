@@ -75,6 +75,8 @@ public class LevelManager {
                     lvlData[y][x] = 3;
                 else if (color.equals(Color.YELLOW))
                     lvlData[y][x] = 4;
+                else if (color.equals(Color.GREEN))
+                    lvlData[y][x] = 5;
                 else
                     lvlData[y][x] = 0;
             }
