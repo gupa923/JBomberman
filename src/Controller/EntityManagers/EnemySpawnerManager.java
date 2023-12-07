@@ -29,8 +29,8 @@ public class EnemySpawnerManager {
 
     private void addEnemyObs(EnemySpawner lvl1Spawner, EnemyGraphicsSpawner lvl1GSpawner) {
          for (int i = 0; i < lvl1Spawner.getEnemies().size(); i++){
-             System.out.println(lvl1Spawner.getEnemies().size());
-             System.out.println(lvl1GSpawner.getEnemyGraphics().size());
+            // System.out.println(lvl1Spawner.getEnemies().size());
+           //  System.out.println(lvl1GSpawner.getEnemyGraphics().size());
              lvl1Spawner.getEnemies().get(i).addObserver(lvl1GSpawner.getEnemyGraphics().get(i));
              lvl1GSpawner.getEnemyGraphics().get(i).setHitbox(lvl1Spawner.getEnemies().get(i).getHitbox());
          }

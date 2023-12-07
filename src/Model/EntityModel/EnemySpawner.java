@@ -10,14 +10,29 @@ import java.util.Observable;
 public class EnemySpawner extends Observable {
     private int[][] data;
     private boolean firstUpdate = true;
-
+    private Level level;
     private ArrayList<Enemy> enemies;
 
     public EnemySpawner(Level level){
-        this.data = data;
+        this.level = level;
+        this.data = this.level.getData();
         enemies = new ArrayList<>();
-        enemies.add(new RedEnemy(5*16,(4*16) + 8, 16, 24));
-        enemies.get(0).getHitbox().setLevel(level);
+        createEnemies();
+        //enemies.add(new RedEnemy(5*16,(4*16) + 8, 16, 24));
+        //enemies.get(0).getHitbox().setLevel(level);
+    }
+
+    private void createEnemies() {
+        int size = 0;
+        for (int y = 0; y < data.length; y++){
+            for (int x = 0; x < data[y].length; x++){
+                if (data[y][x] == 5){
+                    enemies.add(new RedEnemy(x*16, y*16, 16, 24));
+                    enemies.get(size).getHitbox().setLevel(level);
+                    size++;
+                }
+            }
+        }
     }
 
     public void update(){
@@ -40,12 +55,13 @@ public class EnemySpawner extends Observable {
         Enemy t = enemies.get(i);
         enemies.remove(t);
         setChanged();
-        notifyObservers(new int[] {t.getX(), t.getY(), t.getW(), t.getH(), 666});
+        notifyObservers(new int[] {t.getX(), t.getY(), t.getW(), t.getH()});
     }
 
     public void firstNotify(){
+        int[][] message = enemies.stream().map(e -> e.toArr()).toArray(int[][]::new);
         setChanged();
-        notifyObservers(enemies.get(0).toArr());
+        notifyObservers(message);
     }
 
     public ArrayList<Enemy> getEnemies() {
