@@ -1,10 +1,10 @@
 package Controller;
 
+import Controller.EntityManagers.EnemySpawnerManager;
 import Controller.EntityManagers.PlayerManager;
 import Controller.InputManagers.KeyManager;
 import Controller.InputManagers.MouseManager;
 import Model.GameModel;
-import View.EntitiesGraphics.EnemyGraphicsSpawner;
 import View.GameFrame;
 import View.GamePanel;
 

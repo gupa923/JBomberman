@@ -30,6 +30,12 @@ public class EnemySpawner extends Observable {
         }
     }
 
+    public void checkPlayerHit(Player player){
+        for (Enemy e : enemies){
+            e.playerHit(player);
+        }
+    }
+
     private void despawnEnemy(int i) {
         Enemy t = enemies.get(i);
         enemies.remove(t);

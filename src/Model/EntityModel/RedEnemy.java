@@ -24,10 +24,12 @@ public class RedEnemy extends Enemy{
                     if ((hitbox.checkCollision(hitbox.x - 1, hitbox.y) && hitbox.checkCollision(hitbox.x - 1, hitbox.y + hitbox.h - 1))) {
                         x -= 1;
                         hitbox.update(-1, 0);
+                        bounds.x --;
                         moving = true;
                         if (!BOMBS.isEmpty() && intersect("LEFT")) {
                             x += 1;
                             hitbox.update(+1, 0);
+                            bounds.x++;
                             defaultDirection = "RIGHT";
                             sendMessage("STAY");
                             moving = false;
@@ -42,10 +44,12 @@ public class RedEnemy extends Enemy{
                     if (hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y) && hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y + hitbox.h - 1)) {
                         x += 1;
                         hitbox.update(1, 0);
+                        bounds.x++;
                         moving = true;
                         if (!BOMBS.isEmpty() && intersect("RIGHT")) {
                             x -= 1;
                             hitbox.update(-1, 0);
+                            bounds.x--;
                             defaultDirection = "UP";
                             sendMessage("STAY");
                             moving = false;
@@ -60,10 +64,12 @@ public class RedEnemy extends Enemy{
                     if (hitbox.checkCollision(hitbox.x, hitbox.y - 1) && hitbox.checkCollision(hitbox.x + hitbox.w - 1, hitbox.y - 1)) {
                         y -= 1;
                         hitbox.update(0, -1);
+                        bounds.y --;
                         moving = true;
                         if (!BOMBS.isEmpty() && intersect("UP")) {
                             y += 1;
                             hitbox.update(0, 1);
+                            bounds.y++;
                             defaultDirection = "DOWN";
                             sendMessage("STAY");
                             moving = false;
@@ -78,10 +84,12 @@ public class RedEnemy extends Enemy{
                     if (hitbox.checkCollision(hitbox.x, hitbox.y + hitbox.h) && hitbox.checkCollision(hitbox.x + hitbox.w - 1, hitbox.y + hitbox.h)) {
                         y += 1;
                         hitbox.update(0, 1);
+                        bounds.y++;
                         moving = true;
                         if (!BOMBS.isEmpty() && intersect("DOWN")) {
                             y -= 1;
                             hitbox.update(0, -1);
+                            bounds.y--;
                             defaultDirection = "LEFT";
                             sendMessage("STAY");
                             moving = false;
@@ -98,6 +106,16 @@ public class RedEnemy extends Enemy{
             }
         }
         updateTick++;
+    }
+
+    @Override
+    public void playerHit(Player player){
+        Hitbox pHitbox = player.getHitbox();
+     //   boolean a = bounds.contains(pHitbox.x, pHitbox.y);
+       // boolean b = bounds.contains(p.)
+        if (bounds.intersects(new Rectangle2D.Float(pHitbox.x, pHitbox.y, pHitbox.w, pHitbox.h))){
+            player.hit();
+        }
     }
 
     private boolean intersect(String dir) {
