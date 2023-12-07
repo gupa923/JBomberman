@@ -270,6 +270,7 @@ public class Player extends Entity{
             HP--;
             if (HP == 0) {
                 alive = false;
+                walkOver = false;
             }
             immortality = true;
             immortalityTick = 0;

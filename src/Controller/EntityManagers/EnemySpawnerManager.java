@@ -25,6 +25,13 @@ public class EnemySpawnerManager {
          lvls.get(0).setEnemySpawner(lvl1Spawner);
          lvlsG.get(0).setEnemyGraphicsSpawner(lvl1GSpawner);
          addEnemyObs(lvl1Spawner, lvl1GSpawner);
+
+         EnemySpawner lvl2Spawner = new EnemySpawner(lvls.get(1));
+         EnemyGraphicsSpawner lvl2GSPawner = new EnemyGraphicsSpawner();
+         lvl2Spawner.addObserver(lvl2GSPawner);
+         lvls.get(1).setEnemySpawner(lvl2Spawner);
+         lvlsG.get(1).setEnemyGraphicsSpawner(lvl2GSPawner);
+         addEnemyObs(lvl2Spawner, lvl2GSPawner);
      }
 
     private void addEnemyObs(EnemySpawner lvl1Spawner, EnemyGraphicsSpawner lvl1GSpawner) {
