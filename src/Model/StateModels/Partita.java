@@ -7,6 +7,7 @@ import Model.GameModel;
 import Model.Level;
 import Model.Stati;
 
+import javax.swing.text.AbstractDocument;
 import java.util.ArrayList;
 
 /**
@@ -102,6 +103,9 @@ public class Partita extends Stato{
     public void setLevels(ArrayList<Level> levels) {
         this.levels = levels;
         player.getHitbox().setLevel(this.levels.get(actuaLevel));
+        for (Level l : levels){
+            l.setPlayer(player);
+        }
     }
 
     /**

@@ -1,5 +1,6 @@
-package Controller;
+package Controller.EntityManagers;
 
+import Controller.LevelManager;
 import Model.EntityModel.EnemySpawner;
 import Model.Level;
 import View.EntitiesGraphics.EnemyGraphicsSpawner;

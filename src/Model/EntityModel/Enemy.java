@@ -18,4 +18,6 @@ public abstract class Enemy extends Entity{
     public boolean isAlive() {
         return alive;
     }
+
+    public abstract void playerHit(Player player);
 }

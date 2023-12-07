@@ -23,6 +23,7 @@ public class Level extends Observable {
     private ArrayList<Obstacle> obstacles;
     private boolean firstUpdate = true;
     private EnemySpawner enemySpawner;
+    private Player player;
 
     /**
      * costruttore della classe level.
@@ -59,6 +60,8 @@ public class Level extends Observable {
             }
         }
         enemySpawner.update();
+        enemySpawner.checkPlayerHit(player);
+
     }
 
     /**
@@ -173,5 +176,9 @@ public class Level extends Observable {
     public void setEnemySpawner(EnemySpawner enemySpawner) {
         this.enemySpawner = enemySpawner;
         this.enemySpawner.firstNotify();
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }
