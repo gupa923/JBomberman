@@ -239,6 +239,7 @@ public class Player extends Entity{
         action = "STAY";
         HP = 1;
         hitbox.x = x;
+        speedClock = 3;
         hitbox.y = y + 8;
         BOMBS.clear();
         walkOver = false;
@@ -261,6 +262,8 @@ public class Player extends Entity{
         hitbox.y = y + 8;
         alive = true;
         walkOver = false;
+        hitbox.setWalkOver(false);
+        speedClock = 3;
         immortality = true;
         immortalityTick = 0;
         action = "STAY";
