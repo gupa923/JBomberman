@@ -55,11 +55,11 @@ public class PowerUp extends Entity{
      * in base al tipo di power up applicail suo effetto
      */
     private void applyPowerUP() {
-        if (name.equals("RANDOM")){
-            PowerUpType p = pTypes[r.nextInt(6)];
-            name = p.getName();
-            val = p.getVal();
-        }
+//        if (name.equals("RANDOM")){
+//            PowerUpType p = pTypes[r.nextInt(6)];
+//            name = p.getName();
+//            val = p.getVal();
+//        }
         switch (name){
             case "LIVE_UP" -> {
                 Player.VITE += val;
@@ -86,6 +86,9 @@ public class PowerUp extends Entity{
                 }
             }case "WALK_OVER" -> {
                 player.setWalkOver(true);
+            }
+            case "SPEED" -> {
+                player.moreSpeed();
             }
 
         }

@@ -31,8 +31,8 @@ public class PowerUpGraphics extends EntityGraphics{
         imgs[5][1] = temp.getSubimage(6*16, 1*16, 16, 16);
         imgs[6][0] = temp.getSubimage(0*16, 2*16, 16, 16);
         imgs[6][1] = temp.getSubimage(0*16, 3*16, 16, 16);
-        imgs[7][0] = temp.getSubimage(2*16, 4*16, 16, 16);
-        imgs[7][1] = temp.getSubimage(2*16,5*16, 16, 16);
+        imgs[7][0] = temp.getSubimage(1*16, 2*16, 16, 16);
+        imgs[7][1] = temp.getSubimage(1*16,3*16, 16, 16);
     }
 
     @Override

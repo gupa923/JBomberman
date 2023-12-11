@@ -17,6 +17,8 @@ public class Player extends Entity{
     private Bomb bomb;
     public static ArrayList<Bomb> BOMBS = new ArrayList<>();
     private int speed = 1;
+    private int speedTick, speedClock = 3;
+
     private boolean moving;
     public static int MAX_BOMB_NUMS = 1;
     private boolean alive = true;
@@ -49,72 +51,74 @@ public class Player extends Entity{
         if (walkOver)
             hitbox.setWalkOver(true);
         if (moving) {
-            switch (action) {
-                case "LEFT" -> {
-                    if ((hitbox.checkCollision(hitbox.x - speed, hitbox.y) && hitbox.checkCollision(hitbox.x - speed, hitbox.y + hitbox.h - 1))) {
-                        x -= speed;
-                        hitbox.update(-speed, 0);
-                        if (BOMBS.isEmpty() || !intersect( "LEFT"))
-                            sendMessage(action);
-                        else{
-                            x += speed;
-                            hitbox.update(+speed, 0);
-                            sendMessage("STAY");
-                        }
-                    } else {
-                        moving = false;
-                        sendMessage("STAY");
-                    }
-                }
-                case "RIGHT" -> {
-                    if (hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y) && hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y + hitbox.h -1 )) {
-                        x += speed;
-                        hitbox.update(speed, 0);
-                        if (BOMBS.isEmpty() || !intersect("RIGHT"))
-                            sendMessage(action);
-                        else{
+            if (speedTick % speedClock == 0) {
+                switch (action) {
+                    case "LEFT" -> {
+                        if ((hitbox.checkCollision(hitbox.x - speed, hitbox.y) && hitbox.checkCollision(hitbox.x - speed, hitbox.y + hitbox.h - 1))) {
                             x -= speed;
                             hitbox.update(-speed, 0);
+                            if (BOMBS.isEmpty() || !intersect("LEFT"))
+                                sendMessage(action);
+                            else {
+                                x += speed;
+                                hitbox.update(+speed, 0);
+                                sendMessage("STAY");
+                            }
+                        } else {
+                            moving = false;
                             sendMessage("STAY");
                         }
-                    }else {
-                        moving = false;
-                        sendMessage("STAY");
                     }
-                }
-                case "UP" -> {
-                    if(hitbox.checkCollision(hitbox.x, hitbox.y - speed) && hitbox.checkCollision(hitbox.x + hitbox.w -1, hitbox.y- speed)){
-                        y -= speed;
-                        hitbox.update(0, -speed);
-                        if (BOMBS.isEmpty() || !intersect( "UP"))
-                            sendMessage(action);
-                        else{
-                            y += speed;
-                            hitbox.update(0, +speed);
+                    case "RIGHT" -> {
+                        if (hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y) && hitbox.checkCollision(hitbox.x + hitbox.w, hitbox.y + hitbox.h - 1)) {
+                            x += speed;
+                            hitbox.update(speed, 0);
+                            if (BOMBS.isEmpty() || !intersect("RIGHT"))
+                                sendMessage(action);
+                            else {
+                                x -= speed;
+                                hitbox.update(-speed, 0);
+                                sendMessage("STAY");
+                            }
+                        } else {
+                            moving = false;
                             sendMessage("STAY");
                         }
-                    }else {
-                        moving = false;
-                        sendMessage("STAY");
                     }
-                }
-                case "DOWN" -> {
-                    if ( hitbox.checkCollision(hitbox.x, hitbox.y  + hitbox.h) && hitbox.checkCollision(hitbox.x + hitbox.w - 1, hitbox.y + hitbox.h )){
-                        y += speed;
-                        hitbox.update(0, speed);
-                        if (BOMBS.isEmpty() || !intersect( "DOWN"))
-                            sendMessage(action);
-                        else{
+                    case "UP" -> {
+                        if (hitbox.checkCollision(hitbox.x, hitbox.y - speed) && hitbox.checkCollision(hitbox.x + hitbox.w - 1, hitbox.y - speed)) {
                             y -= speed;
                             hitbox.update(0, -speed);
+                            if (BOMBS.isEmpty() || !intersect("UP"))
+                                sendMessage(action);
+                            else {
+                                y += speed;
+                                hitbox.update(0, +speed);
+                                sendMessage("STAY");
+                            }
+                        } else {
+                            moving = false;
                             sendMessage("STAY");
                         }
-                    }else {
-                        moving = false;
-                        sendMessage("STAY");
                     }
+                    case "DOWN" -> {
+                        if (hitbox.checkCollision(hitbox.x, hitbox.y + hitbox.h) && hitbox.checkCollision(hitbox.x + hitbox.w - 1, hitbox.y + hitbox.h)) {
+                            y += speed;
+                            hitbox.update(0, speed);
+                            if (BOMBS.isEmpty() || !intersect("DOWN"))
+                                sendMessage(action);
+                            else {
+                                y -= speed;
+                                hitbox.update(0, -speed);
+                                sendMessage("STAY");
+                            }
+                        } else {
+                            moving = false;
+                            sendMessage("STAY");
+                        }
+                    }
+                    default -> sendMessage("STAY");
                 }
-                default -> sendMessage("STAY");
             }
         }else{
             switch (action){
@@ -138,7 +142,7 @@ public class Player extends Entity{
                 immortalityTick = 0;
             }
         }
-
+        speedTick++;
     }
 
     /**
@@ -274,6 +278,12 @@ public class Player extends Entity{
             }
             immortality = true;
             immortalityTick = 0;
+        }
+    }
+    public void moreSpeed(){
+        speedClock--;
+        if (speedClock < 1){
+            speedClock = 1;
         }
     }
 

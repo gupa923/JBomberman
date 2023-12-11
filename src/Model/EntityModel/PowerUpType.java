@@ -37,7 +37,7 @@ public enum PowerUpType {
     /**
      * quando viene preso dal giocatore attiva casualmente l'effetto di uno degli altri power up
      */
-    RANDOM("RANDOM", 0, 7);
+    RANDOM("SPEED", 1, 7);
     private final String name;
     private final int val;
     private final int id;
