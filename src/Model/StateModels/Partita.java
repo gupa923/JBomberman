@@ -90,7 +90,7 @@ public class Partita extends Stato{
     }
 
 
-    private void nextLevel() {
+    public void nextLevel() {
         actuaLevel ++;
         player.getHitbox().setLevel(levels.get(actuaLevel));
         player.resetPos();

@@ -74,6 +74,9 @@ public class KeyManager implements KeyListener {
                     case KeyEvent.VK_ENTER -> {
                         gameModel.getPartita().getPlayer().setAction("BOMB");
                     }
+                    case KeyEvent.VK_N -> {
+                        gameModel.getPartita().nextLevel();
+                    }
                 }
             }
             case PAUSE -> {
