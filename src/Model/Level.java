@@ -166,6 +166,7 @@ public class Level extends Observable {
         notifyObservers(obsToArr());
 
         createPowerUp();
+        enemySpawner.reset();
 
     }
 

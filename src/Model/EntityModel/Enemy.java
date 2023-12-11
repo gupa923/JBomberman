@@ -19,5 +19,9 @@ public abstract class Enemy extends Entity{
         return alive;
     }
 
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+
     public abstract void playerHit(Player player);
 }

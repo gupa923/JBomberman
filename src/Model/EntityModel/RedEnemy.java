@@ -147,5 +147,12 @@ public class RedEnemy extends Enemy{
         return super.getHitbox();
     }
 
-
+    @Override
+    public boolean equals(Object obj){
+        if (obj instanceof RedEnemy){
+            RedEnemy e = (RedEnemy) obj;
+            return e.x == this.x && e.y == this.y;
+        }
+        return false;
+    }
 }
