@@ -18,7 +18,7 @@ public class RedEnemy extends Enemy{
 
     @Override
     public void update() {
-        if (updateTick %2 == 0) {
+        if (updateTick %4 == 0) {
             switch (defaultDirection) {
                 case "LEFT" -> {
                     if ((hitbox.checkCollision(hitbox.x - 1, hitbox.y) && hitbox.checkCollision(hitbox.x - 1, hitbox.y + hitbox.h - 1))) {
