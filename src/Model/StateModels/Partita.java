@@ -63,6 +63,9 @@ public class Partita extends Stato{
     }
 
     private boolean levelCompleted() {
+        if (!levels.get(actuaLevel).getEnemySpawner().getEnemies().isEmpty()){
+            return false;
+        }
         if (levels.get(actuaLevel).getData()[player.getHitbox().y/16][player.getHitbox().x/16] == 2){
             for (Obstacle o : levels.get(actuaLevel).getObstacles()){
                 if (o.getX()/16 == player.getHitbox().x /16 && o.getY()/16 == player.getHitbox().y/16){
