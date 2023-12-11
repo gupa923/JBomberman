@@ -10,6 +10,7 @@ import java.util.Observable;
 public class EnemySpawner extends Observable {
     private int[][] data;
     private boolean firstUpdate = true;
+    private ArrayList<Enemy> inactiveEnemies;
     private Level level;
     private ArrayList<Enemy> enemies;
 
@@ -17,6 +18,7 @@ public class EnemySpawner extends Observable {
         this.level = level;
         this.data = this.level.getData();
         enemies = new ArrayList<>();
+        inactiveEnemies = new ArrayList<>();
         createEnemies();
         //enemies.add(new RedEnemy(5*16,(4*16) + 8, 16, 24));
         //enemies.get(0).getHitbox().setLevel(level);
@@ -53,6 +55,7 @@ public class EnemySpawner extends Observable {
 
     private void despawnEnemy(int i) {
         Enemy t = enemies.get(i);
+        inactiveEnemies.add(t);
         enemies.remove(t);
         setChanged();
         notifyObservers(new int[] {t.getX(), t.getY(), t.getW(), t.getH()});
@@ -69,4 +72,13 @@ public class EnemySpawner extends Observable {
     }
 
 
+    public void reset() {
+        for (Enemy e: inactiveEnemies){
+            e.setAlive(true);
+            enemies.add(e);
+        }
+        inactiveEnemies.clear();
+        setChanged();
+        notifyObservers("RESET");
+    }
 }
