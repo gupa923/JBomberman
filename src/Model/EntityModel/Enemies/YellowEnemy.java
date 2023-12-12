@@ -9,11 +9,9 @@ import java.awt.geom.Rectangle2D;
 import static Model.EntityModel.Player.BOMBS;
 
 public class YellowEnemy extends Enemy{
-    private int HP = 2;
+    private int HP = 1;
     private int updateTick;
     private boolean moving = true;
-    private boolean immortality = true;
-    private int immortalityTick;
 
     public YellowEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -129,13 +127,6 @@ public class YellowEnemy extends Enemy{
                 sendMessage(defaultDirection);
             }
         }
-        if (immortality){
-            immortalityTick++;
-            if (immortalityTick >= 1200){
-                immortality = false;
-                immortalityTick = 0;
-            }
-        }
         updateTick++;
     }
 
@@ -164,14 +155,9 @@ public class YellowEnemy extends Enemy{
 
     @Override
     public void hit(){
-        if (!immortality) {
-            HP--;
-            if (HP == 0) {
-                alive = false;
-
-            }
-            immortality = true;
-            immortalityTick = 0;
+        HP--;
+        if (HP <= 0){
+            alive = false;
         }
     }
 }
