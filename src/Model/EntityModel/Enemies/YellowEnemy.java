@@ -131,7 +131,7 @@ public class YellowEnemy extends Enemy{
         }
         if (immortality){
             immortalityTick++;
-            if (immortalityTick >= 1200){
+            if (immortalityTick >= 120){
                 immortality = false;
                 immortalityTick = 0;
             }
