@@ -15,6 +15,8 @@ public class RedEnemyGraphics extends EnemyGraphics {
 
     public RedEnemyGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
+        sx = x;
+        sy = y;
         loadAnimations();
     }
 

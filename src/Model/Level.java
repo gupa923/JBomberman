@@ -1,6 +1,7 @@
 package Model;
 
 import Model.EntityModel.*;
+import Model.EntityModel.Enemies.EnemySpawner;
 
 import java.util.ArrayList;
 import java.util.Observable;

@@ -1,12 +1,11 @@
 package Controller.EntityManagers;
 
 import Controller.LevelManager;
-import Model.EntityModel.EnemySpawner;
+import Model.EntityModel.Enemies.EnemySpawner;
 import Model.Level;
 import View.EntitiesGraphics.EnemyGraphicsSpawner;
 import View.LevelGraphics;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class EnemySpawnerManager {

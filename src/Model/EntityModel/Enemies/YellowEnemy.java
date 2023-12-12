@@ -1,19 +1,41 @@
-package Model.EntityModel;
+package Model.EntityModel.Enemies;
+
+import Model.EntityModel.Bomb;
+import Model.EntityModel.Hitbox;
+import Model.EntityModel.Player;
 
 import java.awt.geom.Rectangle2D;
 
 import static Model.EntityModel.Player.BOMBS;
 
-public class RedEnemy extends Enemy{
-
-    private boolean moving = true;
-    private int updateTick;
+public class YellowEnemy extends Enemy{
     private int HP = 1;
-    public RedEnemy(int x, int y, int w, int h) {
+    private int updateTick;
+    private boolean moving = true;
+
+    public YellowEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
-        score = 150;
-        type = 1;
+        sx = x;
+        sy = y;
+        score = 300;
+        type = 2;
         initHitbox();
+    }
+
+    @Override
+    public void playerHit(Player player) {
+        Hitbox pHitbox = player.getHitbox();
+        //   boolean a = bounds.contains(pHitbox.x, pHitbox.y);
+        // boolean b = bounds.contains(p.)
+        if (bounds.intersects(new Rectangle2D.Float(pHitbox.x, pHitbox.y, pHitbox.w, pHitbox.h))){
+            player.hit();
+        }
+    }
+
+    @Override
+    public void initHitbox() {
+        hitbox = new Hitbox(x, y + 8, 16, 16);
+        bounds = new Rectangle2D.Float(x, y + 8, 16, 16);
     }
 
     @Override
@@ -108,16 +130,6 @@ public class RedEnemy extends Enemy{
         updateTick++;
     }
 
-    @Override
-    public void playerHit(Player player){
-        Hitbox pHitbox = player.getHitbox();
-     //   boolean a = bounds.contains(pHitbox.x, pHitbox.y);
-       // boolean b = bounds.contains(p.)
-        if (bounds.intersects(new Rectangle2D.Float(pHitbox.x, pHitbox.y, pHitbox.w, pHitbox.h))){
-            player.hit();
-        }
-    }
-
     private boolean intersect(String dir) {
         for (Bomb b : BOMBS){
             if (b.intersect(this, dir)){
@@ -126,33 +138,26 @@ public class RedEnemy extends Enemy{
         }
         return false;
     }
-    @Override
-    public void initHitbox() {
-        hitbox = new Hitbox(x, y + 8, 16, 16);
-        bounds = new Rectangle2D.Float(x, y + 8, 16, 16);
-    }
+
     public void sendMessage(Object arg){
         setChanged();
         notifyObservers(arg);
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if (obj instanceof YellowEnemy){
+            YellowEnemy e = (YellowEnemy) obj;
+            return e.x == this.x && e.y == this.y;
+        }
+        return false;
+    }
+
     @Override
     public void hit(){
         HP--;
         if (HP <= 0){
             alive = false;
         }
-    }
-    @Override
-    public Hitbox getHitbox() {
-        return super.getHitbox();
-    }
-
-    @Override
-    public boolean equals(Object obj){
-        if (obj instanceof RedEnemy){
-            RedEnemy e = (RedEnemy) obj;
-            return e.x == this.x && e.y == this.y;
-        }
-        return false;
     }
 }

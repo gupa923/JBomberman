@@ -1,11 +1,13 @@
 package Model.EntityModel;
 
+import Model.EntityModel.Enemies.Enemy;
+
 /**
  * questa classe rappresenta la bomba. estende la classe Entity. gestisce la bomba, la sua esplosione e la collisione con il giocatore
  * @see Model.EntityModel.Entity
  */
 public class
-Bomb extends Entity{
+Bomb extends Entity {
     /**
      * questo counter contiene il numero di bombe attive nel gioco in preciso momento
      */
