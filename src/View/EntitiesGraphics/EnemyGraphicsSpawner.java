@@ -1,6 +1,7 @@
 package View.EntitiesGraphics;
 
-import Model.EntityModel.Enemy;
+import Model.EntityModel.Enemies.RedEnemy;
+import Model.EntityModel.Enemies.YellowEnemy;
 import View.UtilityInterfaces.Drawable;
 
 import java.awt.*;
@@ -19,23 +20,41 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
     public void update(Observable o, Object arg) {
         if (arg instanceof int[]){
             int[] t = (int[]) arg;
-            EnemyGraphics e = new RedEnemyGraphics(t[0], t[1], t[2], t[3]);
-            for (int i = 0; i < enemyGraphics.size(); i++){
-                if (enemyGraphics.get(i).equals(e)){
-                    inactiveEnemies.add(enemyGraphics.get(i));
-                    enemyGraphics.remove(e);
+            if (t[4] == 1) {
+                RedEnemyGraphics e = new RedEnemyGraphics(t[0], t[1], t[2], t[3]);
+                for (int i = 0; i < enemyGraphics.size(); i++){
+                    if (enemyGraphics.get(i).equals(e)){
+                        inactiveEnemies.add(enemyGraphics.get(i));
+                        enemyGraphics.remove(e);
+                    }
+                }
+            }else if (t[4] == 2){
+                YellowEnemyGraphics e = new YellowEnemyGraphics(t[0], t[1], t[2], t[3]);
+                for (int i = 0; i < enemyGraphics.size(); i++){
+                    if (enemyGraphics.get(i).equals(e)){
+                        inactiveEnemies.add(enemyGraphics.get(i));
+                        enemyGraphics.remove(e);
+                    }
                 }
             }
+
 
         }else if (arg instanceof int[][]) {
             int[][] tm = (int[][] ) arg;
             for (int i = 0; i < tm.length; i++){
                 int[] t = tm[i];
-                enemyGraphics.add(new RedEnemyGraphics(t[0], t[1], t[2], t[3]));
+                int type = t[4];
+                if (type == 1) {
+                    enemyGraphics.add(new RedEnemyGraphics(t[0], t[1], t[2], t[3]));
+                }
+                else if (type == 2){
+                    enemyGraphics.add(new YellowEnemyGraphics(t[0], t[1], t[2], t[3]));
+                }
             }
         }else if (arg instanceof String){
             String temp = (String) arg;
             for (EnemyGraphics e: inactiveEnemies){
+                e.resetPos();
                 enemyGraphics.add(e);
             }
             inactiveEnemies.clear();

@@ -1,10 +1,11 @@
-package Model.EntityModel;
+package Model.EntityModel.Enemies;
 
+import Model.EntityModel.Enemies.Enemy;
+import Model.EntityModel.Enemies.RedEnemy;
+import Model.EntityModel.Player;
 import Model.Level;
 import Model.StateModels.Partita;
-import View.EntitiesGraphics.RedEnemyGraphics;
 
-import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -31,6 +32,10 @@ public class EnemySpawner extends Observable {
             for (int x = 0; x < data[y].length; x++){
                 if (data[y][x] == 5){
                     enemies.add(new RedEnemy(x*16, y*16, 16, 24));
+                    enemies.get(size).getHitbox().setLevel(level);
+                    size++;
+                }else if (data[y][x] == 6){
+                    enemies.add(new YellowEnemy(x*16, y*16, 16, 24));
                     enemies.get(size).getHitbox().setLevel(level);
                     size++;
                 }
@@ -61,7 +66,7 @@ public class EnemySpawner extends Observable {
         Partita.SCORE += t.getScore();
         System.out.println(Partita.SCORE);
         setChanged();
-        notifyObservers(new int[] {t.getX(), t.getY(), t.getW(), t.getH()});
+        notifyObservers(t.toArr());
     }
 
     public void firstNotify(){
@@ -78,6 +83,7 @@ public class EnemySpawner extends Observable {
     public void reset() {
         for (Enemy e: inactiveEnemies){
             e.setAlive(true);
+            e.resetPos();
             enemies.add(e);
         }
         inactiveEnemies.clear();
