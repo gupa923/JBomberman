@@ -5,6 +5,7 @@ import java.awt.geom.Rectangle2D;
 public abstract class Enemy extends Entity{
     protected Rectangle2D.Float bounds;
     protected String defaultDirection = "LEFT";
+    protected int score;
     protected int type;
     protected boolean alive = true;
     public Enemy(int x, int y, int w, int h) {
@@ -24,4 +25,8 @@ public abstract class Enemy extends Entity{
     }
 
     public abstract void playerHit(Player player);
+
+    public int getScore() {
+        return score;
+    }
 }

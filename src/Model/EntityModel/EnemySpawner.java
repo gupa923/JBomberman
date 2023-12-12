@@ -1,6 +1,7 @@
 package Model.EntityModel;
 
 import Model.Level;
+import Model.StateModels.Partita;
 import View.EntitiesGraphics.RedEnemyGraphics;
 
 import java.nio.file.attribute.UserPrincipalNotFoundException;
@@ -57,6 +58,8 @@ public class EnemySpawner extends Observable {
         Enemy t = enemies.get(i);
         inactiveEnemies.add(t);
         enemies.remove(t);
+        Partita.SCORE += t.getScore();
+        System.out.println(Partita.SCORE);
         setChanged();
         notifyObservers(new int[] {t.getX(), t.getY(), t.getW(), t.getH()});
     }

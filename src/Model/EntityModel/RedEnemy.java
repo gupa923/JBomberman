@@ -7,11 +7,11 @@ import static Model.EntityModel.Player.BOMBS;
 public class RedEnemy extends Enemy{
 
     private boolean moving = true;
-
     private int updateTick;
     private int HP = 1;
     public RedEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
+        score = 150;
         type = 1;
         initHitbox();
     }
