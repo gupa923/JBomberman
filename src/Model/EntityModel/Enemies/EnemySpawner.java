@@ -64,6 +64,8 @@ public class EnemySpawner extends Observable {
         inactiveEnemies.add(t);
         enemies.remove(t);
         Partita.SCORE += t.getScore();
+        setChanged();
+        notifyObservers(t.getScore());
         System.out.println(Partita.SCORE);
         setChanged();
         notifyObservers(t.toArr());

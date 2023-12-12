@@ -1,7 +1,6 @@
-package View.EntitiesGraphics;
+package View.EntitiesGraphics.EnemyGraphics;
 
-import Model.EntityModel.Enemies.RedEnemy;
-import Model.EntityModel.Enemies.YellowEnemy;
+import View.StatesGraphics.MatchGraphics;
 import View.UtilityInterfaces.Drawable;
 
 import java.awt.*;
@@ -59,6 +58,9 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
             }
             inactiveEnemies.clear();
 
+        }else if (arg instanceof Integer){
+            int i = (Integer ) arg;
+            MatchGraphics.SCORE_VIEW += i;
         }
     }
 

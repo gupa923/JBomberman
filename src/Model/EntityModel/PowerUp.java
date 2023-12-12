@@ -70,6 +70,7 @@ public class PowerUp extends Entity{
             }
             case "CAKE" -> {
                 Partita.SCORE += val;
+                player.sendMessage(val);
                 System.out.println(Partita.SCORE);
             }
             case "HP_PLUS" -> {

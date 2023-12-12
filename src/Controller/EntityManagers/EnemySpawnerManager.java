@@ -3,7 +3,7 @@ package Controller.EntityManagers;
 import Controller.LevelManager;
 import Model.EntityModel.Enemies.EnemySpawner;
 import Model.Level;
-import View.EntitiesGraphics.EnemyGraphicsSpawner;
+import View.EntitiesGraphics.EnemyGraphics.EnemyGraphicsSpawner;
 import View.LevelGraphics;
 
 import java.util.ArrayList;

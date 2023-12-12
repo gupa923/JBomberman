@@ -1,6 +1,4 @@
-package View.EntitiesGraphics;
-
-import Model.EntityModel.Enemies.YellowEnemy;
+package View.EntitiesGraphics.EnemyGraphics;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

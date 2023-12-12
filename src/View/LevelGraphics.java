@@ -1,10 +1,10 @@
 package View;
 
-import Model.EntityModel.Obstacle;
-import Model.EntityModel.PowerUpType;
-import View.EntitiesGraphics.EnemyGraphicsSpawner;
+import Model.StateModels.Partita;
+import View.EntitiesGraphics.EnemyGraphics.EnemyGraphicsSpawner;
 import View.EntitiesGraphics.ObstacleGraphics;
 import View.EntitiesGraphics.PowerUpGraphics;
+import View.StatesGraphics.MatchGraphics;
 import View.UtilityInterfaces.Drawable;
 import View.UtilityInterfaces.ImgImporter;
 
@@ -84,6 +84,10 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
             }else {
                 removeObstacle(temp2);
             }
+        } else if (arg instanceof Integer) {
+            int i = (Integer) arg;
+            MatchGraphics.SCORE_VIEW += i;
+
         }
     }
 
