@@ -9,7 +9,7 @@ import java.util.Observable;
 public class YellowEnemyGraphics extends EnemyGraphics{
     private BufferedImage[] sprites;
     private int rem = 1;
-    private int animationIndexUpdate, animationIndex, animationSpeed = 10;
+    private int animationIndexUpdate, animationIndex, animationSpeed = 8;
     private boolean moving = true;
     public YellowEnemyGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -35,10 +35,6 @@ public class YellowEnemyGraphics extends EnemyGraphics{
     @Override
     public void updateAnimation() {
 
-        if (!moving){
-            animationIndex = 0;
-            animationIndexUpdate = 0;
-        }
         animationIndexUpdate++;
         if (animationIndexUpdate >= animationSpeed) {
             animationIndexUpdate = 0;

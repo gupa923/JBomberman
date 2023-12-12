@@ -92,6 +92,10 @@ public class Partita extends Stato{
 
     public void nextLevel() {
         actuaLevel ++;
+        if (actuaLevel >= levels.size()){
+            checkGameCompleted();
+            return;
+        }
         player.getHitbox().setLevel(levels.get(actuaLevel));
         player.resetPos();
         setChanged();
