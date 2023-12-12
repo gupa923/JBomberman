@@ -260,15 +260,15 @@ public class Player extends Entity{
         y = 8;
         hitbox.x = x;
         hitbox.y = y + 8;
-        alive = true;
-        walkOver = false;
-        hitbox.setWalkOver(false);
-        speedClock = 3;
+        //alive = true;
+        //walkOver = false;
+        //hitbox.setWalkOver(false);
+        //speedClock = 3;
         immortality = true;
         immortalityTick = 0;
         action = "STAY";
-        MAX_BOMB_NUMS = 1;
-        HP = 1;
+        //MAX_BOMB_NUMS = 1;
+        //HP = 1;
     }
 
     @Override

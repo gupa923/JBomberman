@@ -116,7 +116,7 @@ public class Partita extends Stato{
      */
     public void reset(){
         gameModel.setStatoAttuale(Stati.PARTITA);
-        player.resetPos();
+        player.reset();
 
         setChanged();
         notifyObservers("RESET");
