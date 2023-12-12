@@ -22,6 +22,7 @@ public class MatchGraphics extends StateGraphics {
     private GameOverScreen gameOverScreen;
     private boolean win, playing = true;
     private WinGraphics winGraphics;
+    public static int SCORE_VIEW = 0;
 
     public MatchGraphics(){
         gameOverScreen = new GameOverScreen();
@@ -29,6 +30,7 @@ public class MatchGraphics extends StateGraphics {
     }
     @Override
     public void draw(Graphics g) {
+        g.setFont(new Font("serif", 1, 30));
         if(win){
             winGraphics.draw(g);
         }else {
@@ -37,6 +39,8 @@ public class MatchGraphics extends StateGraphics {
                 playerGraphics.draw(g);
                 g.setColor(new Color(240, 128, 0));
                 g.fillRect(0, 208 * 3, 272 * 3, 64 * 3);
+                g.setColor(Color.BLACK);
+                g.drawString("SCORE = " + String.valueOf(SCORE_VIEW), 272, 208*3 + 64);
             } else {
                 gameOverScreen.draw(g);
             }

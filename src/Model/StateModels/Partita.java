@@ -150,4 +150,9 @@ public class Partita extends Stato{
             l.reset();
         }
     }
+
+    public void sendMessage(Object arg){
+        setChanged();
+        notifyObservers(arg);
+    }
 }

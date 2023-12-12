@@ -131,6 +131,8 @@ public class Level extends Observable {
                 if (Player.OBSTACLE_DESTROYED%10 == 0 && Player.OBSTACLE_DESTROYED != 0) {
                     SCORE += 50;
                     System.out.println(SCORE);
+                    setChanged();
+                    notifyObservers(50);
                 }
 
                 setChanged();

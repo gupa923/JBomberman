@@ -1,7 +1,5 @@
-package View.EntitiesGraphics;
+package View.EntitiesGraphics.EnemyGraphics;
 
-
-import Model.EntityModel.Hitbox;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

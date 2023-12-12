@@ -2,6 +2,7 @@ package View.EntitiesGraphics;
 
 
 import Model.EntityModel.Hitbox;
+import View.StatesGraphics.MatchGraphics;
 import View.UtilityInterfaces.Animatable;
 import View.UtilityInterfaces.Drawable;
 import View.UtilityInterfaces.ImgImporter;
@@ -124,6 +125,10 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         else if (arg instanceof String[]){
             String[] a = (String[] ) arg;
             despawnBomb(a);
+        } else if (arg instanceof Integer) {
+            int i = (Integer) arg;
+            MatchGraphics.SCORE_VIEW += i;
+
         }
     }
 

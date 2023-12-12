@@ -17,7 +17,7 @@ public enum PowerUpType {
     /**
      * aggiunge il valore contentuto nel campoval allo score della partita
      */
-    CAKE ("CAKE", 100, 2),
+    CAKE ("CAKE", 500, 2),
     /**
      * aggiunge il valore del campo val al numreo di HP del giocatore
      */
