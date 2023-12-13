@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
  * gestisce la rappresentazione grafica di una bomba
  */
 public class BombGraphics extends EntityGraphics {
-    private BufferedImage[] imgs;
+    private BufferedImage[] imgs, explosionImgs;
     private BufferedImage explosionImg;
     private int animationIndex;
     private int numFrames;
@@ -30,11 +30,19 @@ public class BombGraphics extends EntityGraphics {
     public void loadAnimations(){
         BufferedImage temp = loadImg("/entitySprites/bombSprites/bomb.png");
         explosionImg = loadImg("/entitySprites/bombSprites/esplosione0.png");
+        BufferedImage temp1 = loadImg("/provaSpritesTemp.png");
 
         imgs = new BufferedImage[3];
         imgs[0] = temp.getSubimage(0, 0, 16, 16);
         imgs[1] = temp.getSubimage(16, 0, 16, 16);
         imgs[2] = temp.getSubimage(32, 0, 16, 16);
+
+        explosionImgs = new BufferedImage[5];
+        explosionImgs[0] = temp1.getSubimage(4*16 + 5, 5*16 + 5, 16, 16);
+        explosionImgs[1] = temp1.getSubimage(7*16 + 8, 4*16 + 4, 16, 16);
+        explosionImgs[2] = temp1.getSubimage(6*16 + 7, 7*16 + 7, 16, 16);
+        explosionImgs[3] = temp1.getSubimage(3*16 + 4, 3*16 + 3, 16, 16);
+        explosionImgs[4] = temp1.getSubimage(1*16 + 2, 6*16 + 6, 16, 16);
     }
 
     @Override
@@ -60,9 +68,13 @@ public class BombGraphics extends EntityGraphics {
 
                     int tx = explosion[c][0];
                     int ty = explosion[c][1];
+
+                    if (ty == 0 && tx == 0){
+                        continue;
+                    }
                     //g.setColor(Color.RED);
                     //g.fillRect(tx *3, ty *3, w*3, h*3);
-                    g.drawImage(explosionImg, tx*3, ty*3, w*3, h*3, null);
+                    g.drawImage(explosionImgs[c], tx*3, ty*3, w*3, h*3, null);
                 }
             }
         }
@@ -96,4 +108,5 @@ public class BombGraphics extends EntityGraphics {
     public void setExplosion(int[][] explosion) {
         this.explosion = explosion;
     }
+
 }

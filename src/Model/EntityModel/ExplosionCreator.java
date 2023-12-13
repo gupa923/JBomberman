@@ -51,9 +51,10 @@ public class ExplosionCreator {
      */
     private static void AddValidTiles(ArrayList<int[]> l, ArrayList<int[]> result, Level lvl){
         for (int[] p: l){
-            if (!CheckValidity(p, lvl))
+            if (!CheckValidity(p, lvl)) {
+                result.add(new int[]{0, 0});
                 return;
-            else{
+            }else{
                 result.add(p);
             }
         }
