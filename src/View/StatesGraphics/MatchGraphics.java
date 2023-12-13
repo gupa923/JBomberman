@@ -37,6 +37,15 @@ public class MatchGraphics extends StateGraphics {
     public void draw(Graphics g) {
         g.setFont(new Font("serif", 1, 30));
         if(win){
+            levelGraphics.get(actualLevel).draw(g);
+            playerGraphics.draw(g);
+            g.drawImage(matchUI, 0, 0, 272*3, 272*3, null);
+            g.setColor(Color.BLACK);
+            g.drawString("SCORE" , 272 + 40, 208*3 + 64);
+            g.drawString("RECORD", 544 + 40, 208*3 + 64);
+            g.drawString(String.valueOf(SCORE_VIEW) , 272 + 40, 208*3 + 64 + 64 + 20);
+            g.drawString(String.valueOf(LIFE_VIEW) ,  128 + 32 + 16, 208*3 + 64 + 40 );
+            g.drawImage(lifeUI, 36, 208*3 + 64, 64, 64, null);
             winGraphics.draw(g);
         }else {
             if (playing) {
@@ -50,6 +59,15 @@ public class MatchGraphics extends StateGraphics {
                 g.drawString(String.valueOf(LIFE_VIEW) ,  128 + 32 + 16, 208*3 + 64 + 40 );
                 g.drawImage(lifeUI, 36, 208*3 + 64, 64, 64, null);
             } else {
+                levelGraphics.get(actualLevel).draw(g);
+                playerGraphics.draw(g);
+                g.drawImage(matchUI, 0, 0, 272*3, 272*3, null);
+                g.setColor(Color.BLACK);
+                g.drawString("SCORE" , 272 + 40, 208*3 + 64);
+                g.drawString("RECORD", 544 + 40, 208*3 + 64);
+                g.drawString(String.valueOf(SCORE_VIEW) , 272 + 40, 208*3 + 64 + 64 + 20);
+                g.drawString(String.valueOf(LIFE_VIEW) ,  128 + 32 + 16, 208*3 + 64 + 40 );
+                g.drawImage(lifeUI, 36, 208*3 + 64, 64, 64, null);
                 gameOverScreen.draw(g);
             }
         }
@@ -99,5 +117,9 @@ public class MatchGraphics extends StateGraphics {
 
     public GameOverScreen getGameOverScreen() {
         return gameOverScreen;
+    }
+
+    public WinGraphics getWinGraphics() {
+        return winGraphics;
     }
 }

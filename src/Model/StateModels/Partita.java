@@ -155,4 +155,8 @@ public class Partita extends Stato{
         setChanged();
         notifyObservers(arg);
     }
+
+    public Win getWin() {
+        return win;
+    }
 }

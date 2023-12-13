@@ -34,7 +34,7 @@ public class GameModel{
     public void update(){
         switch(statoAttuale){
             case MENU -> menu.update();
-            case PARTITA -> partita.update();
+            case PARTITA, WIN, GAME_OVER -> partita.update();
             case PAUSE -> pause.update();
             case SETTINGS -> settings.update();
             case COMMAND_INFO -> commandInfo.update();

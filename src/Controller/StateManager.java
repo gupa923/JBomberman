@@ -47,6 +47,7 @@ public class StateManager {
         pause.addObserver(pauseGraphics);
         settings.addObserver(settingsGraphics);
         commandInfo.addObserver(commandInfoGraphics);
+        gameModel.getPartita().getWin().addObserver(matchGraphics.getWinGraphics());
         gameModel.getPartita().getGameOver().addObserver(matchGraphics.getGameOverScreen());
     }
 
