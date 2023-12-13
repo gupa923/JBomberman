@@ -63,6 +63,7 @@ public class PowerUp extends Entity{
         switch (name){
             case "LIVE_UP" -> {
                 Player.VITE += val;
+                player.sendMessage(+1);
                 System.out.println(Player.VITE);
             }
             case "BOMB_UP" -> {

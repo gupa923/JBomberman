@@ -12,7 +12,7 @@ import java.util.ArrayList;
 //TODO istanziare una nuova hitbox chiamata damageBox per quando gestiremo il danno.
 public class Player extends Entity{
     public static int OBSTACLE_DESTROYED = 0;
-    public static int VITE = 4;
+    public static int VITE = 7;
     private String action = "STAY";
     private Bomb bomb;
     public static ArrayList<Bomb> BOMBS = new ArrayList<>();

@@ -25,6 +25,7 @@ public class MatchGraphics extends StateGraphics {
     private WinGraphics winGraphics;
     private BufferedImage matchUI, lifeUI;
     public static int SCORE_VIEW = 0;
+    public static int LIFE_VIEW = 7;
 
     public MatchGraphics(){
         gameOverScreen = new GameOverScreen();
@@ -46,7 +47,7 @@ public class MatchGraphics extends StateGraphics {
                 g.drawString("SCORE" , 272 + 40, 208*3 + 64);
                 g.drawString("RECORD", 544 + 40, 208*3 + 64);
                 g.drawString(String.valueOf(SCORE_VIEW) , 272 + 40, 208*3 + 64 + 64 + 20);
-                g.drawString("0" ,  128 + 32 + 16, 208*3 + 64 + 40 );
+                g.drawString(String.valueOf(LIFE_VIEW) ,  128 + 32 + 16, 208*3 + 64 + 40 );
                 g.drawImage(lifeUI, 36, 208*3 + 64, 64, 64, null);
             } else {
                 gameOverScreen.draw(g);
@@ -72,9 +73,11 @@ public class MatchGraphics extends StateGraphics {
             String message = (String) arg;
             if (message.equals("RESET")){
                 resetALL();
+                LIFE_VIEW--;
             } else if (message.equals("PLAYING")){
                 playing = true;
             } else if (message.equals("DEAD")){
+                LIFE_VIEW = 7;
                 playing = false;
             } else if (message.equals("NEW LEVEL")){
                 playerGraphics.resetPos();

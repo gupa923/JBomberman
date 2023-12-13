@@ -127,7 +127,11 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
             despawnBomb(a);
         } else if (arg instanceof Integer) {
             int i = (Integer) arg;
-            MatchGraphics.SCORE_VIEW += i;
+            if (i == +1){
+                MatchGraphics.LIFE_VIEW++;
+            }else {
+                MatchGraphics.SCORE_VIEW += i;
+            }
 
         }
     }

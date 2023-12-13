@@ -49,7 +49,7 @@ public class Partita extends Stato{
                 notifyObservers("PLAYING");
             } else {
                 if (Player.VITE <= 0) {
-                    Player.VITE = 4;
+                    Player.VITE = 7;
                     gameModel.setStatoAttuale(Stati.GAME_OVER);
                     gameOver.update();
                     setChanged();
