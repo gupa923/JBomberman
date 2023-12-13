@@ -4,6 +4,7 @@ import View.EntitiesGraphics.PlayerGraphics;
 import View.LevelGraphics;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -22,11 +23,13 @@ public class MatchGraphics extends StateGraphics {
     private GameOverScreen gameOverScreen;
     private boolean win, playing = true;
     private WinGraphics winGraphics;
+    private BufferedImage matchUI;
     public static int SCORE_VIEW = 0;
 
     public MatchGraphics(){
         gameOverScreen = new GameOverScreen();
         winGraphics = new WinGraphics();
+        matchUI = loadImg("/UI PARTITA.png");
     }
     @Override
     public void draw(Graphics g) {
@@ -37,10 +40,12 @@ public class MatchGraphics extends StateGraphics {
             if (playing) {
                 levelGraphics.get(actualLevel).draw(g);
                 playerGraphics.draw(g);
-                g.setColor(new Color(240, 128, 0));
-                g.fillRect(0, 208 * 3, 272 * 3, 64 * 3);
+                g.drawImage(matchUI, 0, 0, 272*3, 272*3, null);
                 g.setColor(Color.BLACK);
-                g.drawString("SCORE = " + String.valueOf(SCORE_VIEW), 272, 208*3 + 64);
+                g.drawString("SCORE" , 272 + 40, 208*3 + 64);
+                g.drawString("RECORD", 544 + 40, 208*3 + 64);
+                g.drawString(String.valueOf(SCORE_VIEW) , 272 + 40, 208*3 + 64 + 64 + 20);
+                g.drawString("0" ,  128 + 32 + 16, 208*3 + 64 + 40 );
             } else {
                 gameOverScreen.draw(g);
             }
