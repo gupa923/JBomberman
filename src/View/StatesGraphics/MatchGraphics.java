@@ -23,13 +23,14 @@ public class MatchGraphics extends StateGraphics {
     private GameOverScreen gameOverScreen;
     private boolean win, playing = true;
     private WinGraphics winGraphics;
-    private BufferedImage matchUI;
+    private BufferedImage matchUI, lifeUI;
     public static int SCORE_VIEW = 0;
 
     public MatchGraphics(){
         gameOverScreen = new GameOverScreen();
         winGraphics = new WinGraphics();
         matchUI = loadImg("/UI PARTITA.png");
+        lifeUI = loadImg("/UI.png").getSubimage(1,39,16, 16);
     }
     @Override
     public void draw(Graphics g) {
@@ -46,6 +47,7 @@ public class MatchGraphics extends StateGraphics {
                 g.drawString("RECORD", 544 + 40, 208*3 + 64);
                 g.drawString(String.valueOf(SCORE_VIEW) , 272 + 40, 208*3 + 64 + 64 + 20);
                 g.drawString("0" ,  128 + 32 + 16, 208*3 + 64 + 40 );
+                g.drawImage(lifeUI, 36, 208*3 + 64, 64, 64, null);
             } else {
                 gameOverScreen.draw(g);
             }
