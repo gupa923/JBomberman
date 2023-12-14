@@ -23,6 +23,8 @@ public class Partita extends Stato{
     private GameOver gameOver;
     private Win win;
     private boolean gameCompleted;
+    private boolean cheat = false;
+
     public Partita(GameModel gameModel) {
         super(gameModel);
         gameOver = new GameOver(this.gameModel);
@@ -39,11 +41,16 @@ public class Partita extends Stato{
                 player.update();
 
                 if (levelCompleted()) {
-                    if (checkGameCompleted()){
+                    player.setTransition(true);
+                    player.sendMessage("NEXT LEVEL");
+                    if (player.getTransitionTick() >= 180) {
+                        if (checkGameCompleted()) {
+                            return;
+                        }
+                        nextLevel();
+                        cheat = false;
                         return;
                     }
-                    nextLevel();
-                    return;
                 }
                 setChanged();
                 notifyObservers("PLAYING");
@@ -63,6 +70,9 @@ public class Partita extends Stato{
     }
 
     private boolean levelCompleted() {
+        if (cheat){
+            return true;
+        }
         if (!levels.get(actuaLevel).getEnemySpawner().getEnemies().isEmpty()){
             return false;
         }
@@ -159,5 +169,9 @@ public class Partita extends Stato{
 
     public Win getWin() {
         return win;
+    }
+
+    public void setCheat(boolean cheat) {
+        this.cheat = cheat;
     }
 }

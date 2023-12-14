@@ -75,7 +75,7 @@ public class KeyManager implements KeyListener {
                         gameModel.getPartita().getPlayer().setAction("BOMB");
                     }
                     case KeyEvent.VK_N -> {
-                        gameModel.getPartita().nextLevel();
+                        gameModel.getPartita().setCheat(true);
                     }
                 }
             }

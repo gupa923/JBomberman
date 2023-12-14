@@ -99,6 +99,7 @@ public class MatchGraphics extends StateGraphics {
                 playing = false;
             } else if (message.equals("NEW LEVEL")){
                 playerGraphics.resetPos();
+                playerGraphics.setChangeLevel(false);
                 actualLevel++;
             }else if (message.equals("WIN")){
                 win = true;

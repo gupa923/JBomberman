@@ -24,11 +24,11 @@ import java.util.Observer;
 //TODO forse è il caso di creare una superclasse
 public class PlayerGraphics extends EntityGraphics implements Observer {
     private int speed = 1;
-    private boolean moving;
+    private boolean moving, changeLevel;
     private BufferedImage right, left, up, down;
-    private BufferedImage[] imgAmount;
+    private BufferedImage[] imgAmount, nextLevel;
     private BufferedImage[][] movingAnimations;
-    private int animationIndex, animationIndexUpdate, typeAnimation, animationSpeed = 7;
+    private int animationIndex, cLevelIndex, cLevelIndexUpdate, animationIndexUpdate, typeAnimation, animationSpeed = 10;
     private BombGraphics bombGraphics;
     private ArrayList<BombGraphics> bombViews;
 
@@ -54,6 +54,8 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         down = loadImg("/entitySprites/playerSprites/down.png");
 
         imgAmount = new BufferedImage[] { down, left, up, right};
+
+
     }
 
     /**
@@ -68,6 +70,18 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
                 movingAnimations[y][x] = temp;
             }
         }
+
+        BufferedImage temp = loadImg("/entitySprites/playerSprites/Sprite_NEW_LEVEL.png");
+        nextLevel = new BufferedImage[9];
+        nextLevel[0] = temp.getSubimage(0, 0, 15, 22);
+        nextLevel[1] = temp.getSubimage(15, 0, 15, 22);
+        nextLevel[2] = temp.getSubimage(30, 0, 16, 22);
+        nextLevel[3] = temp.getSubimage(46, 0, 15, 22);
+        nextLevel[4] = temp.getSubimage(61, 0, 15, 22);
+        nextLevel[5] = temp.getSubimage(76, 0, 16, 22);
+        nextLevel[6] = temp.getSubimage(92, 0, 16, 22);
+        nextLevel[7] = temp.getSubimage(108, 0, 15, 22);
+        nextLevel[8] = temp.getSubimage(123, 0, 9, 22);
     }
 
     /**
@@ -115,6 +129,9 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
                 }
                 case "SPEED" -> {
                     speed++;
+                }
+                case "NEXT LEVEL" -> {
+                    changeLevel = true;
                 }
             }
         }
@@ -187,19 +204,28 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
      */
     @Override
     public void updateAnimation(){
-        if (!moving){
-            animationIndex = 1;
-        }
-        else {
-            animationIndexUpdate++;
-            if (animationIndexUpdate >= animationSpeed) {
-                animationIndexUpdate = 0;
-                animationIndex++;
-                if (animationIndex >= movingAnimations[typeAnimation].length)
-                    animationIndex = 0;
+        if (changeLevel){
+            cLevelIndexUpdate++;
+            if (cLevelIndexUpdate >= 10){
+                cLevelIndex++;
+                cLevelIndexUpdate = 0;
+                if (cLevelIndex >= 9){
+                    cLevelIndex = 0;
+                }
+            }
+        }else {
+            if (!moving) {
+                animationIndex = 1;
+            } else {
+                animationIndexUpdate++;
+                if (animationIndexUpdate >= animationSpeed) {
+                    animationIndexUpdate = 0;
+                    animationIndex++;
+                    if (animationIndex >= movingAnimations[typeAnimation].length)
+                        animationIndex = 0;
+                }
             }
         }
-
     }
 
     /**
@@ -209,14 +235,16 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     @Override
     public void draw(Graphics g){
         updateAnimation();
-
-        for (BombGraphics b : bombViews){
-            b.draw(g);
+        if (changeLevel){
+            g.drawImage(nextLevel[cLevelIndex], (x/16)* 16*3, y*3, w*3, h*3, null);
+        }else {
+            for (BombGraphics b : bombViews) {
+                b.draw(g);
+            }
+            g.setColor(Color.RED);
+            g.drawRect(hitbox.x * 3, hitbox.y * 3, hitbox.w * 3, hitbox.h * 3);
+            g.drawImage(movingAnimations[typeAnimation][animationIndex], x * 3, y * 3, w * 3, h * 3, null);
         }
-        g.setColor(Color.RED);
-        g.drawRect(hitbox.x * 3, hitbox.y * 3, hitbox.w * 3, hitbox.h * 3);
-        g.drawImage(movingAnimations[typeAnimation][animationIndex], x*3, y*3, w*3, h*3, null);
-
     }
 
     public void setHitbox(Hitbox hitbox) {
@@ -244,5 +272,9 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         hitbox.y = 16;
         typeAnimation = 0;
         animationIndex = 1;
+    }
+
+    public void setChangeLevel(boolean changeLevel) {
+        this.changeLevel = changeLevel;
     }
 }
