@@ -116,6 +116,18 @@ public class MouseManager implements MouseListener, MouseMotionListener {
                     stateManager.changeState(Stati.MENU);
                 }
             }
+            case GAME_OVER -> {
+                if (gameModel.getPartita().getGameOver().getbRetry().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getPartita().restartGame();
+                    gameModel.setStatoAttuale(Stati.PARTITA);
+                    stateManager.changeState(Stati.PARTITA);
+                }
+                if (gameModel.getPartita().getGameOver().getbQuit().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getPartita().restartGame();
+                    gameModel.setStatoAttuale(Stati.MENU);
+                    stateManager.changeState(Stati.MENU);
+                }
+            }
         }
 
     }
@@ -225,6 +237,18 @@ public class MouseManager implements MouseListener, MouseMotionListener {
                     gameModel.getPartita().getWin().getbMenuIniziale().setMousePressed(true);
                 }else {
                     gameModel.getPartita().getWin().getbMenuIniziale().setMousePressed(false);
+                }
+            }
+            case GAME_OVER -> {
+                if (gameModel.getPartita().getGameOver().getbRetry().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getPartita().getGameOver().getbRetry().setMousePressed(true);
+                } else{
+                    gameModel.getPartita().getGameOver().getbRetry().setMousePressed(false);
+                }
+                if (gameModel.getPartita().getGameOver().getbQuit().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getPartita().getGameOver().getbQuit().setMousePressed(true);
+                }else {
+                    gameModel.getPartita().getGameOver().getbQuit().setMousePressed(false);
                 }
             }
         }
