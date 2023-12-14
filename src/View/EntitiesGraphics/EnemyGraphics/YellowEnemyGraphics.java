@@ -32,17 +32,28 @@ public class YellowEnemyGraphics extends EnemyGraphics{
 
     @Override
     public void updateAnimation() {
+        if (death){
+            deathTick++;
+            if (deathTick > deathSpeed){
+                deathIndex ++;
+                deathTick = 0;
+                if (deathIndex >= 8){
+                    deathIndex = 0;
+                }
+            }
+        }else {
 
-        animationIndexUpdate++;
-        if (animationIndexUpdate >= animationSpeed) {
-            animationIndexUpdate = 0;
-            animationIndex += rem;
-            if (animationIndex >= sprites.length) {
-                rem = -1;
+            animationIndexUpdate++;
+            if (animationIndexUpdate >= animationSpeed) {
+                animationIndexUpdate = 0;
                 animationIndex += rem;
-            }else if (animationIndex < 0){
-                rem = +1;
-                animationIndex += rem;
+                if (animationIndex >= sprites.length) {
+                    rem = -1;
+                    animationIndex += rem;
+                } else if (animationIndex < 0) {
+                    rem = +1;
+                    animationIndex += rem;
+                }
             }
         }
     }
@@ -50,9 +61,13 @@ public class YellowEnemyGraphics extends EnemyGraphics{
     @Override
     public void draw(Graphics g) {
         updateAnimation();
-        g.drawImage(sprites[animationIndex], x*3, y*3, w*3, h*3, null);
-        g.drawRect(hitbox.x*3, hitbox.y*3, hitbox.w*3, hitbox.h*3);
-
+        if (death){
+            g.drawImage(deathAnimation[deathIndex], x*3, y*3, w*3, h*3, null);
+        }
+        else {
+            g.drawImage(sprites[animationIndex], x * 3, y * 3, w * 3, h * 3, null);
+            g.drawRect(hitbox.x * 3, hitbox.y * 3, hitbox.w * 3, hitbox.h * 3);
+        }
     }
 
     @Override
@@ -82,6 +97,9 @@ public class YellowEnemyGraphics extends EnemyGraphics{
                 }
                 case "STAY" -> {
                     moving = false;
+                }
+                case "DYING" -> {
+                    death = true;
                 }
             }
         }

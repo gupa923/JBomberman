@@ -42,6 +42,15 @@ public class YellowEnemy extends Enemy{
 
     @Override
     public void update() {
+        if (dying){
+            dynigTick++;
+            if (dynigTick >= 160){
+                dynigTick = 0;
+                dying = false;
+                alive = false;
+            }
+            return;
+        }
         if (updateTick %4 == 0) {
             switch (defaultDirection) {
                 case "LEFT" -> {
@@ -167,7 +176,8 @@ public class YellowEnemy extends Enemy{
         if (!immortality) {
             HP--;
             if (HP == 0) {
-                alive = false;
+                dying = true;
+                sendMessage("DYING");
             }
             immortality = true;
             immortalityTick = 0;
