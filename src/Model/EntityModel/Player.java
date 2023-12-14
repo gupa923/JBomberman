@@ -27,6 +27,11 @@ public class Player extends Entity{
     private int immortalityTick;
     private boolean walkOver;
 
+    private int tSpeedClock = speedClock;
+    private boolean tWalkOver = walkOver;
+    private int tMaxBombs = MAX_BOMB_NUMS;
+    private int tHP = HP;
+
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
         initHitbox();
@@ -247,6 +252,13 @@ public class Player extends Entity{
         Bomb.BOMB_COUNTER = 0;
     }
 
+    private void bufferPowerUp(){
+         tSpeedClock = speedClock;
+        tWalkOver = walkOver;
+         tMaxBombs = MAX_BOMB_NUMS;
+         tHP = HP;
+    }
+
     public boolean isAlive() {
         return alive;
     }
@@ -256,6 +268,7 @@ public class Player extends Entity{
     }
 
     public void resetPos() {
+        bufferPowerUp();
         x = 32;
         y = 8;
         hitbox.x = x;
@@ -308,5 +321,13 @@ public class Player extends Entity{
 
     public void setWalkOver(boolean walkOver) {
         this.walkOver = walkOver;
+    }
+
+    public void loadBufferPUps() {
+        HP = tHP;
+        MAX_BOMB_NUMS = tMaxBombs;
+        walkOver = tWalkOver;
+        hitbox.setWalkOver(walkOver);
+        speedClock = tSpeedClock;
     }
 }

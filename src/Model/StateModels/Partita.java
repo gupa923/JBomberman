@@ -98,6 +98,7 @@ public class Partita extends Stato{
         }
         player.getHitbox().setLevel(levels.get(actuaLevel));
         player.resetPos();
+        player.loadBufferPUps();
         setChanged();
         notifyObservers("NEW LEVEL");
     }
