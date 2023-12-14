@@ -12,6 +12,8 @@ public abstract class Enemy extends Entity {
     protected int score;
     protected int type;
     protected boolean alive = true;
+    protected boolean dying = false;
+    protected int dynigTick;
     protected int sx, sy;
     public Enemy(int x, int y, int w, int h) {
         super(x, y, w, h);
