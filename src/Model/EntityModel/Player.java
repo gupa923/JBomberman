@@ -31,6 +31,8 @@ public class Player extends Entity{
     private boolean tWalkOver = walkOver;
     private int tMaxBombs = MAX_BOMB_NUMS;
     private int tHP = HP;
+    private boolean transition;
+    private int transitionTick;
 
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -53,6 +55,10 @@ public class Player extends Entity{
     //TODO invece che usare +1 e -1 salvare tale valore in un campo speed, in modo da poterla aumentare con i power up
     @Override
     public void update() {
+        if (transition){
+            transitionTick++;
+            return;
+        }
         if (walkOver)
             hitbox.setWalkOver(true);
         if (moving) {
@@ -236,6 +242,8 @@ public class Player extends Entity{
      * resetta tutti i valori del player ai valori iniziali
      */
     public void reset() {
+        transition = false;
+        transitionTick = 0;
         x = 32;
         y = 8;
         alive = true;
@@ -269,6 +277,8 @@ public class Player extends Entity{
 
     public void resetPos() {
         bufferPowerUp();
+        transition = false;
+        transitionTick = 0;
         x = 32;
         y = 8;
         hitbox.x = x;
@@ -329,5 +339,13 @@ public class Player extends Entity{
         walkOver = tWalkOver;
         hitbox.setWalkOver(walkOver);
         speedClock = tSpeedClock;
+    }
+
+    public void setTransition(boolean b) {
+        transition = b;
+    }
+
+    public int getTransitionTick() {
+        return transitionTick;
     }
 }
