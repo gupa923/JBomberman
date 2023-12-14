@@ -15,7 +15,7 @@ public class Win extends Stato{
 
     @Override
     public void update() {
-        System.out.println(countObservers());
+
         bNewGame.update();
         bMenuIniziale.update();
         if (allNotPressed()){
