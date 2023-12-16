@@ -18,7 +18,7 @@ public class YellowEnemyGraphics extends EnemyGraphics{
 
     @Override
     public void loadAnimations() {
-        BufferedImage temp = loadImg("/entitySprites/enemySprite/Nemico_Giallo.png");
+        BufferedImage temp = loadImg("/entitySprites/enemySprite/yellow_enemy/Nemico_Giallo.png");
 
         sprites = new BufferedImage[6];
         sprites[0] = temp.getSubimage(0, 0, 17, 23);

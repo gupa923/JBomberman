@@ -3,7 +3,6 @@ package View.EntitiesGraphics.EnemyGraphics;
 import Model.EntityModel.Hitbox;
 import View.EntitiesGraphics.EntityGraphics;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Observer;
 
@@ -21,8 +20,8 @@ public abstract class EnemyGraphics extends EntityGraphics implements Observer {
     }
 
     private void loadDeathAnimation() {
-        BufferedImage temp = loadImg("/entitySprites/morte_nemici/Morte_Nemici_DOWN.png");
-        BufferedImage temp1 = loadImg("/entitySprites/morte_nemici/Morte_Nemici_UP.png");
+        BufferedImage temp = loadImg("/entitySprites/enemySprite/morte_nemici/Morte_Nemici_DOWN.png");
+        BufferedImage temp1 = loadImg("/entitySprites/enemySprite/morte_nemici/Morte_Nemici_UP.png");
 
         deathAnimation = new BufferedImage[8];
 
