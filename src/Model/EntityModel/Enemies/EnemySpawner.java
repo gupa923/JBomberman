@@ -38,6 +38,10 @@ public class EnemySpawner extends Observable {
                     enemies.add(new YellowEnemy(x*16, y*16, 16, 24));
                     enemies.get(size).getHitbox().setLevel(level);
                     size++;
+                }else if (data[y][x] == 7){
+                    enemies.add(new BrownEnemy(x*16, y*16, 16, 24));
+                    enemies.get(size).getHitbox().setLevel(level);
+                    size++;
                 }
             }
         }
