@@ -1,8 +1,5 @@
 package View.StatesGraphics;
 
-import Model.StateModels.Win;
-import Model.UI.Button;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Observable;

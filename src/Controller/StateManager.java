@@ -1,8 +1,9 @@
 package Controller;
 
-import Model.*;
+import Model.GameModel;
 import Model.StateModels.*;
-import View.*;
+import Model.Stati;
+import View.GamePanel;
 import View.StatesGraphics.*;
 
 /**

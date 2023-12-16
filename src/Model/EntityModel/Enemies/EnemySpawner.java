@@ -1,7 +1,5 @@
 package Model.EntityModel.Enemies;
 
-import Model.EntityModel.Enemies.Enemy;
-import Model.EntityModel.Enemies.RedEnemy;
 import Model.EntityModel.Player;
 import Model.Level;
 import Model.StateModels.Partita;

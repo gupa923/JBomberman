@@ -18,20 +18,6 @@ public class EnemySpawnerManager {
          lvls = levelManager.getLevels();
          lvlsG = levelManager.getLevelGraphicsArrayList();
 
-//         EnemySpawner lvl1Spawner = new EnemySpawner(lvls.get(0));
-//         EnemyGraphicsSpawner lvl1GSpawner = new EnemyGraphicsSpawner();
-//         lvl1Spawner.addObserver(lvl1GSpawner);
-//         lvls.get(0).setEnemySpawner(lvl1Spawner);
-//         lvlsG.get(0).setEnemyGraphicsSpawner(lvl1GSpawner);
-//         addEnemyObs(lvl1Spawner, lvl1GSpawner);
-//
-//         EnemySpawner lvl2Spawner = new EnemySpawner(lvls.get(1));
-//         EnemyGraphicsSpawner lvl2GSPawner = new EnemyGraphicsSpawner();
-//         lvl2Spawner.addObserver(lvl2GSPawner);
-//         lvls.get(1).setEnemySpawner(lvl2Spawner);
-//         lvlsG.get(1).setEnemyGraphicsSpawner(lvl2GSPawner);
-//         addEnemyObs(lvl2Spawner, lvl2GSPawner);
-//
          createEnemySpawners(lvls, lvlsG);
      }
 

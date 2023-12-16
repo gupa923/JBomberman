@@ -1,9 +1,5 @@
 package View.EntitiesGraphics;
 
-import View.UtilityInterfaces.Animatable;
-import View.UtilityInterfaces.Drawable;
-import View.UtilityInterfaces.ImgImporter;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

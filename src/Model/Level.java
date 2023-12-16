@@ -1,7 +1,10 @@
 package Model;
 
-import Model.EntityModel.*;
 import Model.EntityModel.Enemies.EnemySpawner;
+import Model.EntityModel.Obstacle;
+import Model.EntityModel.Player;
+import Model.EntityModel.PowerUp;
+import Model.EntityModel.PowerUpType;
 
 import java.util.ArrayList;
 import java.util.Observable;

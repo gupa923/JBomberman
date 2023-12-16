@@ -1,6 +1,5 @@
 package View;
 
-import Model.StateModels.Partita;
 import View.EntitiesGraphics.EnemyGraphics.EnemyGraphicsSpawner;
 import View.EntitiesGraphics.ObstacleGraphics;
 import View.EntitiesGraphics.PowerUpGraphics;

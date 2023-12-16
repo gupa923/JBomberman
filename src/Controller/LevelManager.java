@@ -110,10 +110,6 @@ public class LevelManager {
         return instance;
     }
 
-    public LevelGraphics getLevelGraphics() {
-        return levelGraphics;
-    }
-
     public ArrayList<LevelGraphics> getLevelGraphicsArrayList() {
         return levelGraphicsArrayList;
     }

@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Observable;
-import java.util.Observer;
 
 /**
  * questa classe gestisce la rappresentazione grafica della partita vera e propria

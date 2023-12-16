@@ -3,9 +3,6 @@ package Model.EntityModel;
 import Model.StateModels.Partita;
 
 import java.awt.geom.Rectangle2D;
-import java.util.Random;
-
-import static Model.Level.pTypes;
 
 /**
  * questa classe rappresenta i Power Up. estende la classe Entity. Gestisce gli effetti del power up sullo stato del gioco.

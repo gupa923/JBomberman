@@ -3,8 +3,6 @@ package View.EntitiesGraphics;
 
 import Model.EntityModel.Hitbox;
 import View.StatesGraphics.MatchGraphics;
-import View.UtilityInterfaces.Animatable;
-import View.UtilityInterfaces.Drawable;
 import View.UtilityInterfaces.ImgImporter;
 
 import java.awt.*;

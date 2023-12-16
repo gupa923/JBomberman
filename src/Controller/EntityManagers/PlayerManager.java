@@ -1,7 +1,7 @@
 package Controller.EntityManagers;
 
-import Model.GameModel;
 import Model.EntityModel.Player;
+import Model.GameModel;
 import View.EntitiesGraphics.PlayerGraphics;
 
 /**
