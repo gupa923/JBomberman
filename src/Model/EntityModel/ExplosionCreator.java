@@ -19,8 +19,6 @@ public class ExplosionCreator {
         Level lvl = bomb.getHitbox().getLevel();
         int x = bomb.getX()/16;
         int y = bomb.getY()/16;
-        //result[0][0] = x;
-        //result[0][1] = y;
         ArrayList<int[]> temp = new ArrayList<>();
         ArrayList<int[]> u = new ArrayList<>();
         ArrayList<int[]> d = new ArrayList<>();
@@ -38,9 +36,7 @@ public class ExplosionCreator {
         AddValidTiles(l, temp, lvl);
         AddValidTiles(r, temp, lvl);
 
-        return temp.stream()
-                //.filter(p -> CheckOutOfBounds(p))
-                .map(c -> MulTimes16(c)).toArray(int[][] :: new);
+        return temp.stream().map(c -> MulTimes16(c)).toArray(int[][] :: new);
     }
 
     /**
@@ -59,14 +55,6 @@ public class ExplosionCreator {
             }
         }
     }
-
-//    private static boolean CheckOutOfBounds(int[] c){
-//        if (c[0] < 0 || c[0] >= 17)
-//            return false;
-//        if (c[1] < 0 || c[1] >= 13)
-//            return false;
-//        return true;
-//    }
 
     /**
      * controlla se la tile non è un muro

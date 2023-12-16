@@ -16,7 +16,6 @@ import java.util.ArrayList;
  */
 public class Partita extends Stato{
     public static int SCORE = 0;
-    private boolean firstUpdate = true;
     private Player player;
     private int actuaLevel;
     private ArrayList<Level> levels;

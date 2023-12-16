@@ -22,8 +22,6 @@ public class EnemySpawner extends Observable {
         enemies = new ArrayList<>();
         inactiveEnemies = new ArrayList<>();
         createEnemies();
-        //enemies.add(new RedEnemy(5*16,(4*16) + 8, 16, 24));
-        //enemies.get(0).getHitbox().setLevel(level);
     }
 
     private void createEnemies() {

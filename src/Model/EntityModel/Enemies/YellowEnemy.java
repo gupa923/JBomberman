@@ -27,8 +27,6 @@ public class YellowEnemy extends Enemy{
     @Override
     public void playerHit(Player player) {
         Hitbox pHitbox = player.getHitbox();
-        //   boolean a = bounds.contains(pHitbox.x, pHitbox.y);
-        // boolean b = bounds.contains(p.)
         if (bounds.intersects(new Rectangle2D.Float(pHitbox.x, pHitbox.y, pHitbox.w, pHitbox.h))){
             player.hit();
         }

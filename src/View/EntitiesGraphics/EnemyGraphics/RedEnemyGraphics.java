@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import java.util.Observable;
 
 public class RedEnemyGraphics extends EnemyGraphics {
-    private BufferedImage sprite;
     private BufferedImage[][] sprites;
     private int typeAnimation, animationIndexUpdate, animationIndex, animationSpeed = 10;
     private boolean moving = true;

@@ -7,12 +7,8 @@ import java.util.Observer;
 
 public abstract class StateGraphics implements Drawable, Observer, ImgImporter {
 
-    private Boolean active;
+    public StateGraphics(){
 
-
-    public boolean isActive(){return active;}
-
-    public void setActive(Boolean active) {
-        this.active = active;
     }
+
 }

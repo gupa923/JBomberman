@@ -31,10 +31,6 @@ public class Obstacle extends Entity{
         }
     }
 
-    public boolean isHit() {
-        return hit;
-    }
-
     public void setHit(boolean hit) {
         this.hit = hit;
     }

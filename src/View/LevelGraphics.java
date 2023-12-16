@@ -45,9 +45,6 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
         for (ObstacleGraphics o : exploadingObstacles){
             o.draw(g);
         }
-//        for (PowerUpGraphics p : powerUps){
-//            p.draw(g);
-//        }
         if (enemyGraphicsSpawner != null){
             enemyGraphicsSpawner.draw(g);
         }

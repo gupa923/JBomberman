@@ -271,10 +271,6 @@ public class Player extends Entity{
         return alive;
     }
 
-    public void setAlive(boolean alive) {
-        this.alive = alive;
-    }
-
     public void resetPos() {
         bufferPowerUp();
         transition = false;

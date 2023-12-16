@@ -21,10 +21,6 @@ public class SettingsGraphics extends StateGraphics{
     }
     @Override
     public void draw(Graphics g) {
-        /*g.setColor(Color.BLUE);
-        g.fillRect(0, 0, 272*3, 272*3);
-        g.setColor(Color.BLACK);
-        g.drawString("STOCAZZO", 300, 300);*/
         g.drawImage(imgs[imgIndex], 0, 0, 816, 816, null);
     }
 

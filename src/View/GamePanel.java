@@ -34,12 +34,6 @@ public class GamePanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-       // if (menuGraphics.isActive()){
-         //   menuGraphics.draw(g);
-       // }else if (matchGraphics.isActive()){
-         //   matchGraphics.draw(g);
-        //}
         if (activeState instanceof PauseGraphics){
             matchGraphics.getPlayerGraphics().setMoving(false);
             matchGraphics.draw(g);
@@ -50,19 +44,12 @@ public class GamePanel extends JPanel {
     public void setMatchGraphics(MatchGraphics matchGraphics) {
         this.matchGraphics = matchGraphics;
     }
-
     public void setMenuGraphics(MenuGraphics menuGraphics) {
         this.menuGraphics = menuGraphics;
     }
-
-    public MenuGraphics getMenuGraphics() {
-        return menuGraphics;
-    }
-
     public MatchGraphics getMatchGraphics() {
         return matchGraphics;
     }
-
     public void setActiveState(StateGraphics activeState) {
         this.activeState = activeState;
     }

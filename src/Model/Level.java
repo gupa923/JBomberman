@@ -109,10 +109,6 @@ public class Level extends Observable {
         return obstacles.stream().map(o -> new int[]{o.getX(), o.getY()}).toArray(int[][]::new);
     }
 
-    public void setData(int[][] data) {
-        this.data = data;
-    }
-
     public ArrayList<Obstacle> getObstacles() {
         return obstacles;
     }

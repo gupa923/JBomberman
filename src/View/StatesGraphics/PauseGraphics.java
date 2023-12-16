@@ -24,8 +24,6 @@ public class PauseGraphics extends StateGraphics{
         g.setColor(new Color(0, 0, 0, 150));
         g.fillRect(0, 0, 272*3, 272*3);
         g.drawImage(imgs[imgIndex], 0, 0, 816, 816, null);
-        //g.setColor(Color.LIGHT_GRAY);
-        //g.drawString("E' PAUSA DIO CANE", 300, 300);
     }
 
     @Override

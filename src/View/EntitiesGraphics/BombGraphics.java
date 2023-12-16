@@ -72,8 +72,6 @@ public class BombGraphics extends EntityGraphics {
                     if (ty == 0 && tx == 0){
                         continue;
                     }
-                    //g.setColor(Color.RED);
-                    //g.fillRect(tx *3, ty *3, w*3, h*3);
                     g.drawImage(explosionImgs[c], tx*3, ty*3, w*3, h*3, null);
                 }
             }
@@ -84,27 +82,12 @@ public class BombGraphics extends EntityGraphics {
     public int getX() {
         return x;
     }
-
     public int getY() {
         return y;
     }
-
-    public boolean isExploding() {
-        return exploding;
-    }
-
     public void setExploding(boolean exploding) {
         this.exploding = exploding;
     }
-
-    public void setCanDraw(boolean canDraw) {
-        this.canDraw = canDraw;
-    }
-
-    public boolean isCanDraw() {
-        return canDraw;
-    }
-
     public void setExplosion(int[][] explosion) {
         this.explosion = explosion;
     }

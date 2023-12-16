@@ -114,8 +114,6 @@ Bomb extends Entity {
             }
             return false;
         }
-        //return checkPoints(hitbox.x + hitbox.w, hitbox.y, pHitbox.x, pHitbox.h) || checkPoints(hitbox.x + hitbox.w, hitbox.y+ hitbox.h, pHitbox.x, pHitbox.y+ pHitbox.h);
-
     }
 
     public boolean intersect(Enemy enemy, String dir){
@@ -197,10 +195,6 @@ Bomb extends Entity {
         return false;
     }
 
-    public boolean isExploding() {
-        return exploding;
-    }
-
     public void setExploding(boolean exploding) {
         this.exploding = exploding;
     }
@@ -211,14 +205,5 @@ Bomb extends Entity {
 
     public int[][] getExplosionTiles() {
         return explosionTiles;
-    }
-
-    /**
-     * metodo creato solo a fini di debug. stampa solamente il contenuto dell'arrylist explosionTiles
-     */
-    public void printExplosion(){
-        for (int y = 0; y < explosionTiles.length; y++){
-            System.out.println(explosionTiles[y][0] + " " + explosionTiles[y][1]);
-        }
     }
 }

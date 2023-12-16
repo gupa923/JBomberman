@@ -12,7 +12,6 @@ import static Model.Level.pTypes;
  */
 public class PowerUp extends Entity{
     public static Player player;
-    private Random r = new Random();
     private String name;
     private int val;
     private int id;
@@ -55,11 +54,6 @@ public class PowerUp extends Entity{
      * in base al tipo di power up applicail suo effetto
      */
     private void applyPowerUP() {
-//        if (name.equals("RANDOM")){
-//            PowerUpType p = pTypes[r.nextInt(6)];
-//            name = p.getName();
-//            val = p.getVal();
-//        }
         switch (name){
             case "LIVE_UP" -> {
                 Player.VITE += val;
@@ -99,18 +93,12 @@ public class PowerUp extends Entity{
     public boolean isActive() {
         return active;
     }
-
     public int getId() {
         return id;
     }
     public int[] toArr(){
         return new int[]{x, y, id};
     }
-
-    public boolean isOver() {
-        return over;
-    }
-
     public void setOver(boolean over) {
         this.over = over;
     }
