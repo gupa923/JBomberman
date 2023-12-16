@@ -37,6 +37,15 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
                         enemyGraphics.remove(e);
                     }
                 }
+            }else if (t[4] == 3){
+                BrownEnemyGraphics e = new BrownEnemyGraphics(t[0], t[1], t[2], t[3]);
+                for (int i = 0; i < enemyGraphics.size(); i++){
+                    if (enemyGraphics.get(i).equals(e)){
+                        enemyGraphics.get(i).setDeath(false);
+                        inactiveEnemies.add(enemyGraphics.get(i));
+                        enemyGraphics.remove(e);
+                    }
+                }
             }
 
 
@@ -50,6 +59,9 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
                 }
                 else if (type == 2){
                     enemyGraphics.add(new YellowEnemyGraphics(t[0], t[1], t[2], t[3]));
+                }
+                else if (type == 3){
+                    enemyGraphics.add(new BrownEnemyGraphics(t[0], t[1], t[2], t[3]));
                 }
             }
         }else if (arg instanceof String){
