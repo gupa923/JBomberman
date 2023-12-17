@@ -19,7 +19,6 @@ import java.util.Observer;
  * @see Observer
  * @author gupa9
  */
-//TODO forse è il caso di creare una superclasse
 public class PlayerGraphics extends EntityGraphics implements Observer {
     private int speed = 1;
     private boolean moving, changeLevel;
@@ -44,7 +43,6 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
      * questo metodo importa attraverso l'interfaccia ImgImporte le immagini relative alle varie animazioni e le salva in un array
      * @see ImgImporter
      */
-    //TODO aggiungi animazione morte, immortalità e livello successivo.
     private void loadSprites() {
         right = loadImg("/entitySprites/playerSprites/right.png");
         left = loadImg("/entitySprites/playerSprites/left.png");
@@ -89,7 +87,6 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.
      */
-    //TODO salvare in una variabile la speed del player.
     @Override
     public void update(Observable o, Object arg) {
         if (arg instanceof String){

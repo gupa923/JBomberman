@@ -5,7 +5,6 @@ package Model;
  * in base a determinate azioni fatte dall'utente
  */
 
-//TODO avremo una classe per ogni stato (una nel model e una nella view) in base allo stato attuale verra aggiornata solo una parte del codice
 public enum Stati {
 
     PARTITA,

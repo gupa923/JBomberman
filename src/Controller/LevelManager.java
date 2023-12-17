@@ -16,8 +16,6 @@ import java.util.ArrayList;
  *
  * @author gupa9
  */
-
-//TODO quando si aggiungeranno più livelli qua bisognerà avere un array di Level non solo un level. probabilmente creerò un'altra classe
 public class LevelManager {
     private static LevelManager instance;
 
@@ -66,8 +64,6 @@ public class LevelManager {
      *
      * @return
      */
-
-    //TODO da modificare quando avremo più livelli da gestire.
     private int[][] getLvlData(String name){
         InputStream is = LevelManager.class.getResourceAsStream(name);
 

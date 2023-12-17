@@ -32,7 +32,6 @@ public class Game implements Runnable{
     private int FPS = 60;
     private int UPS = 120;
 
-    //TODO fare un po' di pulizia in questo costruttore è veramente incasinato: spostare un po' di codice in nuovi metodi che vengono chiamati dal costruttore.
     private Game() {
 
         //creazione model

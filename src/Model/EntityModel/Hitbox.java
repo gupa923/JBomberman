@@ -7,8 +7,6 @@ import Model.Level;
  *
  * @author gupa9
  */
-//TODO pensare ad un modo per vedere la collisione con un'altra hitbox.
-//TODO creare una classe figlia damageBox per la collisione con i nemici e con le esplosioni.
 public class Hitbox {
     public int x, y, w, h;
     private Level level;

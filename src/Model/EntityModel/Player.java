@@ -8,8 +8,6 @@ import java.util.ArrayList;
  * @see Entity
  * @author gupa9
  */
-//TODO improve the movement system fa veramente schifo. Forse si può risolvere diminuendo la hitbox.
-//TODO istanziare una nuova hitbox chiamata damageBox per quando gestiremo il danno.
 public class Player extends Entity{
     public static int OBSTACLE_DESTROYED = 0;
     public static int VITE = 7;
@@ -43,7 +41,6 @@ public class Player extends Entity{
      * inizializza la hitbox
      *
      */
-    //TODO prova a cambiare i valori di h e w per vedere se il movimento migliora.
     @Override
     public void initHitbox() {
         hitbox = new Hitbox(x, y + 8, 15, 15);
@@ -52,7 +49,6 @@ public class Player extends Entity{
     /**
      * questo metodo gestisce le azioni del giocatore. in particolare il movimento e la creazione delle bombe.
      */
-    //TODO invece che usare +1 e -1 salvare tale valore in un campo speed, in modo da poterla aumentare con i power up
     @Override
     public void update() {
         if (transition){
