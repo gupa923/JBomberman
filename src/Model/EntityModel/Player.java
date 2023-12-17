@@ -31,6 +31,8 @@ public class Player extends Entity{
     private int tHP = HP;
     private boolean transition;
     private int transitionTick;
+    private boolean dying;
+    private int dynigTick;
 
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -51,6 +53,15 @@ public class Player extends Entity{
      */
     @Override
     public void update() {
+        if (dying){
+            dynigTick++;
+            if (dynigTick >= 160){
+                dynigTick = 0;
+                dying = false;
+                alive = false;
+            }
+            return;
+        }
         if (transition){
             transitionTick++;
             return;
@@ -291,8 +302,10 @@ public class Player extends Entity{
         if (!immortality) {
             HP--;
             if (HP == 0) {
-                alive = false;
-                walkOver = false;
+                //alive = false;
+                //walkOver = false;
+                dying = true;
+                sendMessage("DYING");
             }
             immortality = true;
             immortalityTick = 0;
