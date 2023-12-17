@@ -23,11 +23,13 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     private int speed = 1;
     private boolean moving, changeLevel;
     private BufferedImage right, left, up, down;
-    private BufferedImage[] imgAmount, nextLevel;
+    private BufferedImage[] imgAmount, nextLevel, deathSprites;
     private BufferedImage[][] movingAnimations;
     private int animationIndex, cLevelIndex, cLevelIndexUpdate, animationIndexUpdate, typeAnimation, animationSpeed = 10;
     private BombGraphics bombGraphics;
     private ArrayList<BombGraphics> bombViews;
+    private int deathTick, deathIndex;
+    private boolean death;
 
     //TODO ricordati di eliminare questa variabile perchè ci serve solo a fini di debug.
     private Hitbox hitbox;
@@ -78,6 +80,18 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         nextLevel[6] = temp.getSubimage(92, 0, 16, 22);
         nextLevel[7] = temp.getSubimage(108, 0, 15, 22);
         nextLevel[8] = temp.getSubimage(123, 0, 9, 22);
+
+        BufferedImage temp1 = loadImg("/entitySprites/playerSprites/player_death.png");
+        deathSprites = new BufferedImage[8];
+        for (int i = 0; i < 8; i++) {
+            if (i == 1) {
+                deathSprites[i] = temp1.getSubimage(15, 0, 15, 32);
+            }else if (i == 0){
+                deathSprites[i] = temp1.getSubimage(0,0, 15, 32 );
+            }else{
+                deathSprites[i] = temp1.getSubimage(15*i + 1*i - 1,0, 15, 32 );
+            }
+        }
     }
 
     /**
@@ -127,6 +141,11 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
                 }
                 case "NEXT LEVEL" -> {
                     changeLevel = true;
+                }
+                case "DYING" -> {
+                    death = true;
+                    deathIndex = 0;
+                    deathTick = 0;
                 }
             }
         }
@@ -199,7 +218,17 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
      */
     @Override
     public void updateAnimation(){
-        if (changeLevel){
+        if (death){
+            deathTick++;
+            if (deathTick > 10){
+                deathIndex ++;
+                deathTick = 0;
+                if (deathIndex >= 8){
+                    deathIndex = 0;
+                }
+            }
+        }
+        else if (changeLevel){
             cLevelIndexUpdate++;
             if (cLevelIndexUpdate >= 10){
                 cLevelIndex++;
@@ -232,7 +261,10 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         updateAnimation();
         if (changeLevel){
             g.drawImage(nextLevel[cLevelIndex], (x/16)* 16*3, y*3, w*3, h*3, null);
-        }else {
+        }else if (death){
+            g.drawImage(deathSprites[deathIndex],x*3, (y-8)*3, 16*3, 32*3, null );
+        }
+        else {
             for (BombGraphics b : bombViews) {
                 b.draw(g);
             }
@@ -255,6 +287,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         y = 8;
         hitbox.x = 32;
         hitbox.y = 16;
+        death = false;
         bombViews.clear();
         typeAnimation = 0;
         animationIndex = 1;
@@ -265,6 +298,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         y = 8;
         hitbox.x = 32;
         hitbox.y = 16;
+        death = false;
         typeAnimation = 0;
         animationIndex = 1;
     }
