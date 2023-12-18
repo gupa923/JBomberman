@@ -4,14 +4,16 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class ObstacleGraphics extends EntityGraphics {
-    private BufferedImage sprite, explosionSprite;
+    private BufferedImage sprite, explosionSprite, t1Sprite;
     private boolean exploading = false;
-    private BufferedImage[] sprites, explosionSprites;
+    private BufferedImage[] sprites, explosionSprites, t1ExplosionSprites;
     private int animationIndex, animationTick, animatioSpeed = 20;
+    private int type;
 
 
-    public ObstacleGraphics(int x, int y){
+    public ObstacleGraphics(int x, int y, int type){
         super(x, y, 16, 16);
+        this.type = type;
         sprite = loadImg("/entitySprites/obstacleSprite/Sprite_Ostacolo.png");
         explosionSprite = loadImg("/entitySprites/obstacleSprite/Sprite_Esplosione_Ostacolo.png");
         loadAnimations();
@@ -20,10 +22,18 @@ public class ObstacleGraphics extends EntityGraphics {
     @Override
     public void draw(Graphics g) {
         updateAnimation();
-        if(!exploading)
-            g.drawImage(sprites[animationIndex], x*3, y*3, h*3, w*3, null);
-        else{
-            g.drawImage(explosionSprites[animationIndex], x*3, y*3, w*3, h*3, null);
+        if (type == 0) {
+            if (!exploading)
+                g.drawImage(sprites[animationIndex], x * 3, y * 3, h * 3, w * 3, null);
+            else {
+                g.drawImage(explosionSprites[animationIndex], x * 3, y * 3, w * 3, h * 3, null);
+            }
+        }else {
+            if (!exploading){
+                g.drawImage(t1Sprite, x*3, y*3, w*3, h*3, null);
+            }else{
+                g.drawImage(t1ExplosionSprites[animationIndex], x*3, y*3, w*3, h*3, null);
+            }
         }
     }
 
@@ -36,6 +46,12 @@ public class ObstacleGraphics extends EntityGraphics {
         explosionSprites = new BufferedImage[6];
         for (int i = 0; i < 6; i++) {
             explosionSprites[i] = explosionSprite.getSubimage(i*16, 0, 16,16);
+        }
+        t1Sprite = loadImg("/entitySprites/obstacleSprite/Sprite_Tronco.png").getSubimage(19, 0, 16, 16);
+        t1ExplosionSprites = new BufferedImage[6];
+        BufferedImage t = loadImg("/entitySprites/obstacleSprite/Sprite_Buco.png");
+        for (int i = 0; i < 6; i++) {
+            t1ExplosionSprites[i] = t.getSubimage(i*16+ 1*i, 0, 16,16);
         }
     }
 

@@ -24,8 +24,12 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     private ArrayList<ObstacleGraphics> obstacleGraphics, exploadingObstacles;
     private ArrayList<PowerUpGraphics> powerUps;
     private EnemyGraphicsSpawner enemyGraphicsSpawner;
+    private int type;
 
     public LevelGraphics(String filename) {
+        if (filename.equals("/livelli/livello2/Stage2.png")){
+            type = 1;
+        }
         this.lvl1Bg = loadImg(filename);
         obstacleGraphics = new ArrayList<>();
         exploadingObstacles = new ArrayList<>();
@@ -53,7 +57,7 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
         obstacleGraphics.clear();
         exploadingObstacles.clear();
         for (int y = 0; y < pos.length; y ++){
-            obstacleGraphics.add(new ObstacleGraphics(pos[y][0], pos[y][1]));
+            obstacleGraphics.add(new ObstacleGraphics(pos[y][0], pos[y][1], type));
         }
 
     }
