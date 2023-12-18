@@ -8,19 +8,18 @@ import java.awt.geom.Rectangle2D;
 
 import static Model.EntityModel.Player.BOMBS;
 
-public class YellowEnemy extends Enemy{
+public class BlueEnemy extends Enemy{
     private int HP = 2;
-    private int updateTick;
-    private boolean moving = true;
-    private boolean immortality = false;
-    private int immortalityTick;
+    private int updateTick, immortalityTick;
+    private boolean immortality = true, moving = true;
 
-    public YellowEnemy(int x, int y, int w, int h) {
+
+    public BlueEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
         sx = x;
         sy = y;
-        score = 300;
-        type = 2;
+        score = 500;
+        type = 4;
         initHitbox();
     }
 
@@ -34,8 +33,8 @@ public class YellowEnemy extends Enemy{
 
     @Override
     public void initHitbox() {
-        hitbox = new Hitbox(x, y + 8, 16, 16);
-        bounds = new Rectangle2D.Float(x, y + 8, 16, 16);
+        hitbox = new Hitbox(x, y , 16, 16);
+        bounds = new Rectangle2D.Float(x, y , 16, 16);
     }
 
     @Override
@@ -147,19 +146,10 @@ public class YellowEnemy extends Enemy{
     }
 
     private boolean intersect(String dir) {
-        for (Bomb b : BOMBS){
-            if (b.intersect(this, dir)){
+        for (int i = 0; i < BOMBS.size(); i++){
+            if (BOMBS.get(i).intersect(this, dir)){
                 return true;
             }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean equals(Object obj){
-        if (obj instanceof YellowEnemy){
-            YellowEnemy e = (YellowEnemy) obj;
-            return e.x == this.x && e.y == this.y;
         }
         return false;
     }
@@ -175,5 +165,14 @@ public class YellowEnemy extends Enemy{
             immortality = true;
             immortalityTick = 0;
         }
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (obj instanceof BlueEnemy){
+            BlueEnemy e = (BlueEnemy) obj;
+            return e.x == this.x && e.y == this.y;
+        }
+        return false;
     }
 }

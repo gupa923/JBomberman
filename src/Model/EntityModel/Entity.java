@@ -50,4 +50,9 @@ public abstract class Entity extends Observable {
     public void hit() {
 
     }
+
+    public void sendMessage(Object arg){
+        setChanged();
+        notifyObservers(arg);
+    }
 }

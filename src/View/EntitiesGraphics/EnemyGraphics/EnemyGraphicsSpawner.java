@@ -46,8 +46,16 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
                         enemyGraphics.remove(e);
                     }
                 }
+            }else if (t[4] == 4) {
+                BlueEnemyGraphics e = new BlueEnemyGraphics(t[0], t[1], t[2], t[3]);
+                for (int i = 0; i < enemyGraphics.size(); i++) {
+                    if (enemyGraphics.get(i).equals(e)) {
+                        enemyGraphics.get(i).setDeath(false);
+                        inactiveEnemies.add(enemyGraphics.get(i));
+                        enemyGraphics.remove(e);
+                    }
+                }
             }
-
 
         }else if (arg instanceof int[][]) {
             int[][] tm = (int[][] ) arg;
@@ -62,6 +70,10 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
                 }
                 else if (type == 3){
                     enemyGraphics.add(new BrownEnemyGraphics(t[0], t[1], t[2], t[3]));
+                }
+                else if (type == 4){
+                    enemyGraphics.add(new BlueEnemyGraphics(t[0], t[1], t[2], t[3]));
+
                 }
             }
         }else if (arg instanceof String){

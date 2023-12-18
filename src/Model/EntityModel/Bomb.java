@@ -1,5 +1,6 @@
 package Model.EntityModel;
 
+import Model.EntityModel.Enemies.BlueEnemy;
 import Model.EntityModel.Enemies.Enemy;
 
 /**
@@ -116,6 +117,73 @@ Bomb extends Entity {
         }
     }
 
+    public boolean intersect(BlueEnemy enemy, String dir){
+        Hitbox pHitbox = enemy.getHitbox();
+        if (notCollideTick <= collideTickLim)
+            return false;
+        if (!exploding) {
+            switch (dir) {
+                case "LEFT", "UP" -> {
+                    if( checkPoints((hitbox.x) / 16, hitbox.y / 16, pHitbox.x / 16, pHitbox.y / 16)){
+                        player.removeBomb(this);
+                        return false;
+                    }
+                }
+                case "RIGHT" -> {
+                    if( checkPoints((hitbox.x) / 16, hitbox.y / 16, (pHitbox.x + pHitbox.w - 1) / 16, pHitbox.y / 16)){
+                        player.removeBomb(this);
+                        return false;
+                    }
+                }
+                case "DOWN" -> {
+                    if( checkPoints((hitbox.x) / 16, (hitbox.y) / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)){
+                        player.removeBomb(this);
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }else{
+            switch (dir) {
+                case "LEFT", "UP" -> {
+                    for (int[] p : explosionTiles) {
+                        if (checkPoints((p[0]) / 16, p[1] / 16, pHitbox.x / 16, pHitbox.y / 16)) {
+                            enemy.hit();
+                            break;
+                        }
+                    }
+                }
+                case "RIGHT" -> {
+                    for (int[] p : explosionTiles) {
+                        if (checkPoints(p[0] / 16, p[1] / 16, (pHitbox.x + pHitbox.w - 1) / 16, pHitbox.y / 16)) {
+                            enemy.hit();
+                            break;
+                        }
+                    }
+                }
+                case "DOWN" -> {
+                    for (int[] p : explosionTiles) {
+                        if (checkPoints(p[0] / 16, p[1] / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)) {
+                            enemy.hit();
+                            break;
+                        }
+                    }
+                }
+                case "STAY" -> {
+                    if (explosionTiles != null) {
+                        for (int[] p : explosionTiles) {
+                            if (checkPoints(p[0] / 16, p[1] / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)) {
+                                enemy.hit();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+    }
+
     public boolean intersect(Enemy enemy, String dir){
         Hitbox pHitbox = enemy.getHitbox();
         if (notCollideTick <= collideTickLim)
@@ -173,7 +241,6 @@ Bomb extends Entity {
             return false;
         }
     }
-
     /**
      * è un metodo che controlla se due punti sono uguali
      * @param x1: la x del primo punto
