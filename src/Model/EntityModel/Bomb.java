@@ -126,18 +126,21 @@ Bomb extends Entity {
                 case "LEFT", "UP" -> {
                     if( checkPoints((hitbox.x) / 16, hitbox.y / 16, pHitbox.x / 16, pHitbox.y / 16)){
                         player.removeBomb(this);
+                        BOMB_COUNTER--;
                         return false;
                     }
                 }
                 case "RIGHT" -> {
                     if( checkPoints((hitbox.x) / 16, hitbox.y / 16, (pHitbox.x + pHitbox.w - 1) / 16, pHitbox.y / 16)){
                         player.removeBomb(this);
+                        BOMB_COUNTER--;
                         return false;
                     }
                 }
                 case "DOWN" -> {
                     if( checkPoints((hitbox.x) / 16, (hitbox.y) / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)){
                         player.removeBomb(this);
+                        BOMB_COUNTER--;
                         return false;
                     }
                 }
