@@ -48,7 +48,7 @@ public class BlueEnemy extends Enemy{
             }
             return;
         }
-        if (updateTick %4 == 0) {
+        if (updateTick %5 == 0) {
             switch (defaultDirection) {
                 case "LEFT" -> {
                     if ((hitbox.checkCollision(hitbox.x - 1, hitbox.y) && hitbox.checkCollision(hitbox.x - 1, hitbox.y + hitbox.h - 1))) {
