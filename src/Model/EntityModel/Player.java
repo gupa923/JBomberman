@@ -3,16 +3,26 @@ package Model.EntityModel;
 import java.util.ArrayList;
 
 /**
- * questa classe rappresenta il giocatore nel gioco. Estende la classe Entity. Gestisce le azioni e lo stato del giocatore
+ * questa classe rappresenta il giocatore nel gioco. Estende la classe Entity. Gestisce le azioni e lo stato del giocatore. Al Giocatore è associato un array di Bomb, che contiene tutte le bombe presenti nel gioco in un determinato momento.
+ *
  *
  * @see Entity
  * @author gupa9
  */
 public class Player extends Entity{
+    /**
+     * Contatore che mantiene il numero di ostacoli distrutti
+     */
     public static int OBSTACLE_DESTROYED = 0;
+    /**
+     * contatore che contiene il numero di vite rimanenti al Player
+     */
     public static int VITE = 7;
     private String action = "STAY";
     private Bomb bomb;
+    /**
+     * ArrayList che contiene le bombe attive
+     */
     public static ArrayList<Bomb> BOMBS = new ArrayList<>();
     private int speed = 1;
     private int speedTick, speedClock = 3;
@@ -20,6 +30,9 @@ public class Player extends Entity{
     private boolean moving;
     public static int MAX_BOMB_NUMS = 1;
     private boolean alive = true;
+    /**
+     * COntiene il numero di HP del Player
+     */
     public static int HP = 1;
     private boolean immortality = true;
     private int immortalityTick;
@@ -34,6 +47,13 @@ public class Player extends Entity{
     private boolean dying;
     private int dynigTick;
 
+    /**
+     * Viene chiamato il costruttore della superclasse e viene inizializzata l'hitbox.
+     * @param x: ascissa del punto di spawn del Player
+     * @param y: ordinata del punto di spawn del Player
+     * @param w; larghezza del Player
+     * @param h: altezza del Player
+     */
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
         initHitbox();
@@ -41,7 +61,7 @@ public class Player extends Entity{
 
     /**
      * inizializza la hitbox
-     *
+     * @see Hitbox
      */
     @Override
     public void initHitbox() {
@@ -49,7 +69,7 @@ public class Player extends Entity{
     }
 
     /**
-     * questo metodo gestisce le azioni del giocatore. in particolare il movimento e la creazione delle bombe.
+     * questo metodo gestisce le azioni del giocatore. in particolare il movimento e la creazione, l'esplosione e la rimozione delle bombe
      */
     @Override
     public void update() {
@@ -179,7 +199,8 @@ public class Player extends Entity{
     }
 
     /**
-     * questo metodo permette al giocatore di generare una bomba
+     * questo metodo crea un bomba. In primo luogo viene controllato se il giocatore ha raggiunto il massimo numero di bombe possibile, che è dato dal campo statico MAX_BOMB_NUMS. A questo punto vede se la posizione in cui si vuole posizionare questa bomba è lecita o meno: per non esserlo basta che una bomba si già posizionata in quel punto oppure che il giocatore si trovi sopraun ostacolo.
+     * Se la posizione è legale allore viene generata una bomba e viene incrementato il valore di BOMB_COUNTER, campo statico che contiene il numero di bombe attualmente in gioco.
      */
     private void spawnBomb() {
         if (Bomb.BOMB_COUNTER < MAX_BOMB_NUMS) {
@@ -205,7 +226,7 @@ public class Player extends Entity{
     }
 
     /**
-     * cerca la bomba all'interno dell'array e la fa esplodere
+     * Data una bomba che deve eplodere il metodo trova la bomba passata come parametro e la fa esplodere, cioè viene settata a true il campo exploding della bomba.
      * @param b: la bomba che deve esplodere
      */
     public void explodeBomb(Bomb b) {
@@ -217,7 +238,7 @@ public class Player extends Entity{
     }
 
     /**
-     * rimuove la bomba dall'array
+     * Data una bomba che deve essere rimossa dal gioco il metodo cerca la bomba nell'array BOMBS e la rimuove dall'array stesso.
      *
      * @param b: bomba da rimuovere dall'array
      */
@@ -298,6 +319,9 @@ public class Player extends Entity{
         HP = 1;
     }
 
+    /**
+     * Questo metodo viene chiamato quando il player collide con un'entità che può causare danno cioè l'espplosione di una bomba o un nemico
+     */
     @Override
     public void hit(){
         if (!immortality) {
