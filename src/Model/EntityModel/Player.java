@@ -326,6 +326,7 @@ public class Player extends Entity{
 
     public void setImmortality(boolean immortality) {
         this.immortality = immortality;
+        sendMessage("IMMORTALITY");
     }
 
     public void resetImmortalityTick(){

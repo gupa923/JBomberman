@@ -153,8 +153,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
                 }
                 case "NEXT LEVEL" -> {
                     changeLevel = true;
-                    cLevelIndex = 0;
-                    cLevelIndexUpdate = 0;
+                    immortality = false;
                 }
                 case "DYING" -> {
                     death = true;
