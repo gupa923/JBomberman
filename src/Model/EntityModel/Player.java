@@ -157,6 +157,7 @@ public class Player extends Entity{
             immortalityTick++;
             if (immortalityTick >= 1200){
                 immortality = false;
+                sendMessage("NO IMMORTALITY");
                 immortalityTick = 0;
             }
         }
@@ -309,6 +310,7 @@ public class Player extends Entity{
             }
             immortality = true;
             immortalityTick = 0;
+            sendMessage("IMMORTALITY");
         }
     }
     public void moreSpeed(){

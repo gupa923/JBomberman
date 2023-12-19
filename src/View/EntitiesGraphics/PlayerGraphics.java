@@ -21,10 +21,11 @@ import java.util.Observer;
  */
 public class PlayerGraphics extends EntityGraphics implements Observer {
     private int speed = 1;
+    private boolean immortality = true;
     private boolean moving, changeLevel;
-    private BufferedImage right, left, up, down;
-    private BufferedImage[] imgAmount, nextLevel, deathSprites;
-    private BufferedImage[][] movingAnimations;
+    private BufferedImage right, left, up, down, iRight, iLeft, iUp, iDown;
+    private BufferedImage[] imgAmount, immortailtyImgAmount, nextLevel, deathSprites;
+    private BufferedImage[][] movingAnimations, immortalityMovingAnimations;
     private int animationIndex, cLevelIndex, cLevelIndexUpdate, animationIndexUpdate, typeAnimation, animationSpeed = 10;
     private BombGraphics bombGraphics;
     private ArrayList<BombGraphics> bombViews;
@@ -53,7 +54,12 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
 
         imgAmount = new BufferedImage[] { down, left, up, right};
 
+        iRight = loadImg("/entitySprites/playerSprites/ImmortalitySprites/ImRight.png");
+        iLeft = loadImg("/entitySprites/playerSprites/ImmortalitySprites/ImLeft.png");
+        iUp = loadImg("/entitySprites/playerSprites/ImmortalitySprites/ImUp.png");
+        iDown = loadImg("/entitySprites/playerSprites/ImmortalitySprites/ImDown.png");
 
+        immortailtyImgAmount = new BufferedImage[] {iDown, iLeft, iUp, iRight};
     }
 
     /**
@@ -69,6 +75,12 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
             }
         }
 
+        immortalityMovingAnimations = new BufferedImage[4][3];
+        for (int y = 0; y < immortalityMovingAnimations.length; y++){
+            for (int x = 0; x< immortalityMovingAnimations[y].length; x++){
+                immortalityMovingAnimations[y][x] = immortailtyImgAmount[y].getSubimage(x * 16, 0, w, h);
+            }
+        }
         BufferedImage temp = loadImg("/entitySprites/playerSprites/Sprite_NEW_LEVEL.png");
         nextLevel = new BufferedImage[9];
         nextLevel[0] = temp.getSubimage(0, 0, 15, 22);
@@ -141,11 +153,21 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
                 }
                 case "NEXT LEVEL" -> {
                     changeLevel = true;
+                    cLevelIndex = 0;
+                    cLevelIndexUpdate = 0;
                 }
                 case "DYING" -> {
                     death = true;
                     deathIndex = 0;
                     deathTick = 0;
+                }
+                case "IMMORTAILTY"->{
+                    immortality = true;
+                    animationIndex = animationIndex*2;
+                }
+                case "NO IMMORTALITY"->{
+                    immortality = false;
+                    animationIndex = animationIndex/2;
                 }
             }
         }
@@ -237,7 +259,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
                     cLevelIndex = 0;
                 }
             }
-        }else {
+        } else {
             if (!moving) {
                 animationIndex = 1;
             } else {
@@ -259,15 +281,20 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     @Override
     public void draw(Graphics g){
         updateAnimation();
+        for (BombGraphics b : bombViews) {
+            b.draw(g);
+        }
         if (changeLevel){
             g.drawImage(nextLevel[cLevelIndex], (x/16)* 16*3, y*3, w*3, h*3, null);
         }else if (death){
             g.drawImage(deathSprites[deathIndex],x*3, (y-8)*3, 16*3, 32*3, null );
+        }else if (immortality){
+            g.setColor(Color.RED);
+            g.drawRect(hitbox.x * 3, hitbox.y * 3, hitbox.w * 3, hitbox.h * 3);
+            g.drawImage(immortalityMovingAnimations[typeAnimation][animationIndex],x * 3, y * 3, w * 3, h * 3, null);
         }
         else {
-            for (BombGraphics b : bombViews) {
-                b.draw(g);
-            }
+
             g.setColor(Color.RED);
             g.drawRect(hitbox.x * 3, hitbox.y * 3, hitbox.w * 3, hitbox.h * 3);
             g.drawImage(movingAnimations[typeAnimation][animationIndex], x * 3, y * 3, w * 3, h * 3, null);
@@ -287,6 +314,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         y = 8;
         hitbox.x = 32;
         hitbox.y = 16;
+        immortality = true;
         death = false;
         bombViews.clear();
         typeAnimation = 0;
@@ -299,6 +327,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         hitbox.x = 32;
         hitbox.y = 16;
         death = false;
+        immortality = true;
         typeAnimation = 0;
         animationIndex = 1;
     }
