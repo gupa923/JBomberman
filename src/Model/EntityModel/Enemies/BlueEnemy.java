@@ -138,6 +138,16 @@ public class BlueEnemy extends Enemy{
     }
 
     @Override
+    protected boolean intersect(String dir) {
+        for (Bomb b : BOMBS){
+            if (b.intersect(this, dir)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public boolean equals(Object obj){
         if (obj instanceof BlueEnemy){
             BlueEnemy e = (BlueEnemy) obj;

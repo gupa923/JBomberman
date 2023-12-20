@@ -8,7 +8,6 @@ import java.awt.image.BufferedImage;
  */
 public class BombGraphics extends EntityGraphics {
     private BufferedImage[] imgs, explosionImgs;
-    private BufferedImage explosionImg;
     private int animationIndex;
     private int numFrames;
     private int animationSpeed = 12;
@@ -25,7 +24,6 @@ public class BombGraphics extends EntityGraphics {
     @Override
     public void loadAnimations(){
         BufferedImage temp = loadImg("/entitySprites/bombSprites/bomb.png");
-        explosionImg = loadImg("/entitySprites/bombSprites/esplosione0.png");
         BufferedImage temp1 = loadImg("/provaSpritesTemp.png");
 
         imgs = new BufferedImage[3];
