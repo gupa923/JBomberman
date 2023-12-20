@@ -17,6 +17,13 @@ public abstract class Entity extends Observable {
     protected int x, y, w, h;
     protected Hitbox hitbox;
 
+    /**
+     * Ogni Entity viene creata a partire da 4 interi
+     * @param x: ascissa punto di spawn
+     * @param y: ordinata del punto di spawn
+     * @param w: larghezza
+     * @param h: altezza
+     */
     public Entity(int x, int y, int w, int h) {
         this.x = x;
         this.y = y;
@@ -24,7 +31,14 @@ public abstract class Entity extends Observable {
         this.h = h;
     }
 
+    /**
+     * inizializza la hitbox dell'Entity
+     */
     public abstract void initHitbox();
+
+    /**
+     * Aggiorna i campi dell'Entity ogni volta che viene chiamato
+     */
     public abstract void update();
 
     public int getX() {
@@ -51,6 +65,10 @@ public abstract class Entity extends Observable {
 
     }
 
+    /**
+     * invia una notifica all'observer
+     * @param arg:argomento da mandare come notifica all'observer
+     */
     public void sendMessage(Object arg){
         setChanged();
         notifyObservers(arg);

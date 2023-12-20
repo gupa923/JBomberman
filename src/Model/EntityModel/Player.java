@@ -250,15 +250,6 @@ public class Player extends Entity{
         sendMessage(new String[] {m1, m2});
     }
 
-    /**
-     * invia una notifica all'observer
-     * @param arg:argomento da mandare come notifica all'observer
-     */
-    public void sendMessage(Object arg){
-        setChanged();
-        notifyObservers(arg);
-    }
-
     public void setMoving(boolean moving) {
         this.moving = moving;
     }

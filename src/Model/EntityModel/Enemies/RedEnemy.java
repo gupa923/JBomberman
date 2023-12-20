@@ -12,13 +12,13 @@ public class RedEnemy extends Enemy {
 
     private boolean moving = true;
     private int updateTick;
-    private int HP = 1;
     public RedEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
         sx = x;
         sy = y;
         score = 150;
         type = 1;
+        HP = 1;
         initHitbox();
     }
 
@@ -124,38 +124,11 @@ public class RedEnemy extends Enemy {
     }
 
     @Override
-    public void playerHit(Player player){
-        Hitbox pHitbox = player.getHitbox();
-        if (bounds.intersects(new Rectangle2D.Float(pHitbox.x, pHitbox.y, pHitbox.w, pHitbox.h))){
-            player.hit();
-        }
-    }
-
-    private boolean intersect(String dir) {
-        for (Bomb b : BOMBS){
-            if (b.intersect(this, dir)){
-                return true;
-            }
-        }
-        return false;
-    }
-    @Override
     public void initHitbox() {
         hitbox = new Hitbox(x, y + 8, 16, 16);
         bounds = new Rectangle2D.Float(x, y + 8, 16, 16);
     }
-    public void sendMessage(Object arg){
-        setChanged();
-        notifyObservers(arg);
-    }
-    @Override
-    public void hit(){
-        HP--;
-        if (HP <= 0){
-            dying = true;
-            sendMessage("DYING");
-        }
-    }
+
     @Override
     public Hitbox getHitbox() {
         return super.getHitbox();

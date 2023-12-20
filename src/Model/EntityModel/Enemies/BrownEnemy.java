@@ -11,39 +11,20 @@ import static Model.EntityModel.Player.BOMBS;
 public class BrownEnemy extends Enemy{
     private boolean moving  = true;
     private int updateTick;
-    private boolean immortality = false;
-    private int immortalityTick;
-    private int HP = 2;
     public BrownEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
         sx = x;
         sy = y;
         score = 400;
         type = 3;
+        HP = 2;
         initHitbox();
-    }
-
-    @Override
-    public void playerHit(Player player) {
-        Hitbox pHitbox = player.getHitbox();
-        if (bounds.intersects(new Rectangle2D.Float(pHitbox.x, pHitbox.y, pHitbox.w, pHitbox.h))){
-            player.hit();
-        }
     }
 
     @Override
     public void initHitbox() {
         hitbox = new Hitbox(x, y + 8, 16, 16);
         bounds = new Rectangle2D.Float(x, y + 8, 16, 16);
-    }
-
-    private boolean intersect(String dir) {
-        for (Bomb b : BOMBS){
-            if (b.intersect(this, dir)){
-                return true;
-            }
-        }
-        return false;
     }
     @Override
     public void update() {
@@ -153,23 +134,6 @@ public class BrownEnemy extends Enemy{
         updateTick++;
     }
 
-    public void sendMessage(Object arg){
-        setChanged();
-        notifyObservers(arg);
-    }
-
-    @Override
-    public void hit(){
-        if (!immortality) {
-            HP--;
-            if (HP == 0) {
-                dying = true;
-                sendMessage("DYING");
-            }
-            immortality = true;
-            immortalityTick = 0;
-        }
-    }
     @Override
     public boolean equals(Object obj){
         if (obj instanceof BrownEnemy){

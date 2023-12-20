@@ -9,7 +9,6 @@ import java.awt.geom.Rectangle2D;
 import static Model.EntityModel.Player.BOMBS;
 
 public class YellowEnemy extends Enemy{
-    private int HP = 2;
     private int updateTick;
     private boolean moving = true;
     private boolean immortality = false;
@@ -21,15 +20,8 @@ public class YellowEnemy extends Enemy{
         sy = y;
         score = 300;
         type = 2;
+        HP = 2;
         initHitbox();
-    }
-
-    @Override
-    public void playerHit(Player player) {
-        Hitbox pHitbox = player.getHitbox();
-        if (bounds.intersects(new Rectangle2D.Float(pHitbox.x, pHitbox.y, pHitbox.w, pHitbox.h))){
-            player.hit();
-        }
     }
 
     @Override
@@ -146,14 +138,7 @@ public class YellowEnemy extends Enemy{
         updateTick++;
     }
 
-    private boolean intersect(String dir) {
-        for (Bomb b : BOMBS){
-            if (b.intersect(this, dir)){
-                return true;
-            }
-        }
-        return false;
-    }
+
 
     @Override
     public boolean equals(Object obj){
@@ -164,16 +149,4 @@ public class YellowEnemy extends Enemy{
         return false;
     }
 
-    @Override
-    public void hit(){
-        if (!immortality) {
-            HP--;
-            if (HP == 0) {
-                dying = true;
-                sendMessage("DYING");
-            }
-            immortality = true;
-            immortalityTick = 0;
-        }
-    }
 }
