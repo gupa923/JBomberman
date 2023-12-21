@@ -14,8 +14,8 @@ public class ObstacleGraphics extends EntityGraphics {
     public ObstacleGraphics(int x, int y, int type){
         super(x, y, 16, 16);
         this.type = type;
-        sprite = loadImg("/entitySprites/obstacleSprite/Sprite_Ostacolo.png");
-        explosionSprite = loadImg("/entitySprites/obstacleSprite/Sprite_Esplosione_Ostacolo.png");
+        sprite = loadImg("/Imgs/entitySprites/obstacleSprite/Sprite_Ostacolo.png");
+        explosionSprite = loadImg("/Imgs/entitySprites/obstacleSprite/Sprite_Esplosione_Ostacolo.png");
         loadAnimations();
     }
 
@@ -47,9 +47,9 @@ public class ObstacleGraphics extends EntityGraphics {
         for (int i = 0; i < 6; i++) {
             explosionSprites[i] = explosionSprite.getSubimage(i*16, 0, 16,16);
         }
-        t1Sprite = loadImg("/entitySprites/obstacleSprite/Sprite_Tronco.png").getSubimage(19, 0, 16, 16);
+        t1Sprite = loadImg("/Imgs/entitySprites/obstacleSprite/Sprite_Tronco.png").getSubimage(19, 0, 16, 16);
         t1ExplosionSprites = new BufferedImage[6];
-        BufferedImage t = loadImg("/entitySprites/obstacleSprite/Sprite_Buco.png");
+        BufferedImage t = loadImg("/Imgs/entitySprites/obstacleSprite/Sprite_Buco.png");
         for (int i = 0; i < 6; i++) {
             t1ExplosionSprites[i] = t.getSubimage(i*16+ 1*i, 0, 16,16);
         }

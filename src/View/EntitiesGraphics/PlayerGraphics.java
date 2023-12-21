@@ -2,6 +2,7 @@ package View.EntitiesGraphics;
 
 
 import Model.EntityModel.Hitbox;
+import View.AudioPlayer;
 import View.StatesGraphics.MatchGraphics;
 import View.UtilityInterfaces.ImgImporter;
 
@@ -31,6 +32,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     private ArrayList<BombGraphics> bombViews;
     private int deathTick, deathIndex;
     private boolean death;
+    private AudioPlayer audioPlayer;
 
     //TODO ricordati di eliminare questa variabile perchè ci serve solo a fini di debug.
     private Hitbox hitbox;
@@ -38,6 +40,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     public PlayerGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
         bombViews = new ArrayList<>();
+        audioPlayer = new AudioPlayer();
         loadSprites();
         loadAnimations();
     }
@@ -47,17 +50,17 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
      * @see ImgImporter
      */
     private void loadSprites() {
-        right = loadImg("/entitySprites/playerSprites/right.png");
-        left = loadImg("/entitySprites/playerSprites/left.png");
-        up = loadImg("/entitySprites/playerSprites/up.png");
-        down = loadImg("/entitySprites/playerSprites/down.png");
+        right = loadImg("/Imgs/entitySprites/playerSprites/right.png");
+        left = loadImg("/Imgs/entitySprites/playerSprites/left.png");
+        up = loadImg("/Imgs/entitySprites/playerSprites/up.png");
+        down = loadImg("/Imgs/entitySprites/playerSprites/down.png");
 
         imgAmount = new BufferedImage[] { down, left, up, right};
 
-        iRight = loadImg("/entitySprites/playerSprites/ImmortalitySprites/ImRight.png");
-        iLeft = loadImg("/entitySprites/playerSprites/ImmortalitySprites/ImLeft.png");
-        iUp = loadImg("/entitySprites/playerSprites/ImmortalitySprites/ImUp.png");
-        iDown = loadImg("/entitySprites/playerSprites/ImmortalitySprites/ImDown.png");
+        iRight = loadImg("/Imgs/entitySprites/playerSprites/ImmortalitySprites/ImRight.png");
+        iLeft = loadImg("/Imgs/entitySprites/playerSprites/ImmortalitySprites/ImLeft.png");
+        iUp = loadImg("/Imgs/entitySprites/playerSprites/ImmortalitySprites/ImUp.png");
+        iDown = loadImg("/Imgs/entitySprites/playerSprites/ImmortalitySprites/ImDown.png");
 
         immortailtyImgAmount = new BufferedImage[] {iDown, iLeft, iUp, iRight};
     }
@@ -81,7 +84,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
                 immortalityMovingAnimations[y][x] = immortailtyImgAmount[y].getSubimage(x * 16, 0, w, h);
             }
         }
-        BufferedImage temp = loadImg("/entitySprites/playerSprites/Sprite_NEW_LEVEL.png");
+        BufferedImage temp = loadImg("/Imgs/entitySprites/playerSprites/Sprite_NEW_LEVEL.png");
         nextLevel = new BufferedImage[9];
         nextLevel[0] = temp.getSubimage(0, 0, 15, 22);
         nextLevel[1] = temp.getSubimage(15, 0, 15, 22);
@@ -93,7 +96,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         nextLevel[7] = temp.getSubimage(108, 0, 15, 22);
         nextLevel[8] = temp.getSubimage(123, 0, 9, 22);
 
-        BufferedImage temp1 = loadImg("/entitySprites/playerSprites/player_death.png");
+        BufferedImage temp1 = loadImg("/Imgs/entitySprites/playerSprites/player_death.png");
         deathSprites = new BufferedImage[8];
         for (int i = 0; i < 8; i++) {
             if (i == 1) {
@@ -157,6 +160,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
                 }
                 case "DYING" -> {
                     death = true;
+                    audioPlayer.playEffects(0);
                     deathIndex = 0;
                     deathTick = 0;
                 }
@@ -213,6 +217,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
             if (temp.getX() == pos[0][0] && temp.getY() == pos[0][1]){
                 temp.setExplosion(pos);
                 temp.setExploding(true);
+                temp.playExplosion();
 
             }
         }
@@ -226,6 +231,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         int ny = (y+8)/16;
 
         bombGraphics = new BombGraphics(nx, ny);
+        bombGraphics.playSpawn();
         bombViews.add(bombGraphics);
     }
 

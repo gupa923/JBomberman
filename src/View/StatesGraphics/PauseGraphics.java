@@ -13,10 +13,10 @@ public class PauseGraphics extends StateGraphics{
 
     private void loadImgs() {
         imgs = new BufferedImage[4];
-        imgs[0] = loadImg("/pause_menu/JBomberman_menù_pausa.png");
-        imgs[1] = loadImg("/pause_menu/JBomberman_menù_pausa_close_premuto.png");
-        imgs[2] = loadImg("/pause_menu/JBomberman_menù_pausa_quit_premuto.png");
-        imgs[3] = loadImg("/pause_menu/JBomberman_menù_pausa_resume_premuto.png");
+        imgs[0] = loadImg("/Imgs/pause_menu/JBomberman_menù_pausa.png");
+        imgs[1] = loadImg("/Imgs/pause_menu/JBomberman_menù_pausa_close_premuto.png");
+        imgs[2] = loadImg("/Imgs/pause_menu/JBomberman_menù_pausa_quit_premuto.png");
+        imgs[3] = loadImg("/Imgs/pause_menu/JBomberman_menù_pausa_resume_premuto.png");
     }
 
     @Override

@@ -1,6 +1,8 @@
 package View.EntitiesGraphics.EnemyGraphics;
 
+import Controller.AudioManager;
 import Model.EntityModel.Hitbox;
+import View.AudioPlayer;
 import View.EntitiesGraphics.EntityGraphics;
 
 import java.awt.image.BufferedImage;
@@ -12,16 +14,18 @@ public abstract class EnemyGraphics extends EntityGraphics implements Observer {
     protected boolean death;
     protected int deathIndex, deathTick, deathSpeed =  10;
     protected int sx, sy;
+    protected AudioPlayer audioPlayer;
     public EnemyGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
+        audioPlayer = new AudioPlayer();
         this.sx= x;
         this.sy = y;
         loadDeathAnimation();
     }
 
     private void loadDeathAnimation() {
-        BufferedImage temp = loadImg("/entitySprites/enemySprite/morte_nemici/Morte_Nemici_DOWN.png");
-        BufferedImage temp1 = loadImg("/entitySprites/enemySprite/morte_nemici/Morte_Nemici_UP.png");
+        BufferedImage temp = loadImg("/Imgs/entitySprites/enemySprite/morte_nemici/Morte_Nemici_DOWN.png");
+        BufferedImage temp1 = loadImg("/Imgs/entitySprites/enemySprite/morte_nemici/Morte_Nemici_UP.png");
 
         deathAnimation = new BufferedImage[8];
 
