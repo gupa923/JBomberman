@@ -10,6 +10,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import static View.AudioPlayer.PLAY_EFFECTS;
+
 /**
  *
  * classico mouse listener
@@ -95,6 +97,7 @@ public class MouseManager implements MouseListener, MouseMotionListener {
             }
             case SETTINGS -> {
                 if (gameModel.getSettings().getbAudio() .getBounds().contains(e.getX(), e.getY())){
+                    PLAY_EFFECTS = !PLAY_EFFECTS;
                 }
                 else if (gameModel.getSettings().getbComandi().getBounds().contains(e.getX(), e.getY())){
                     gameModel.setStatoAttuale(Stati.COMMAND_INFO);

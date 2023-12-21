@@ -73,6 +73,9 @@ public class Player extends Entity{
      */
     @Override
     public void update() {
+        for (int x = 0; x < BOMBS.size(); x++){
+            BOMBS.get(x).update();
+        }
         if (dying){
             dynigTick++;
             if (dynigTick >= 160){
@@ -168,9 +171,6 @@ public class Player extends Entity{
                     sendMessage("STAY");
                 }
             }
-        }
-        for (int x = 0; x < BOMBS.size(); x++){
-            BOMBS.get(x).update();
         }
 
         if (immortality){
