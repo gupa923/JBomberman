@@ -14,10 +14,10 @@ public class SettingsGraphics extends StateGraphics{
 
     private void loadImgs() {
         imgs = new BufferedImage[4];
-        imgs[0] = loadImg("/settings_menu/JBomberman_menù_impostazioni_audio_premuto.png");
-        imgs[1] = loadImg("/settings_menu/JBomberman_menù_impostazioni_comandi_premuto.png");
-        imgs[2] = loadImg("/settings_menu/JBomberman_menù_impostazioni_non_premuti.png");
-        imgs[3] = loadImg("/settings_menu/JBomberman_menù_impostazioni_start_page_premuto.png");
+        imgs[0] = loadImg("/Imgs/settings_menu/JBomberman_menù_impostazioni_audio_premuto.png");
+        imgs[1] = loadImg("/Imgs/settings_menu/JBomberman_menù_impostazioni_comandi_premuto.png");
+        imgs[2] = loadImg("/Imgs/settings_menu/JBomberman_menù_impostazioni_non_premuti.png");
+        imgs[3] = loadImg("/Imgs/settings_menu/JBomberman_menù_impostazioni_start_page_premuto.png");
     }
     @Override
     public void draw(Graphics g) {

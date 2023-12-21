@@ -15,9 +15,9 @@ public class GameOverScreen extends StateGraphics{
 
     private void loadImgs() {
         imgs = new BufferedImage[3];
-        imgs[0] = loadImg("/menu_game_over/Menù_GameOver.png");
-        imgs[1] = loadImg("/menu_game_over/Menù_GameOver_QUIT_premuto.png");
-        imgs[2] = loadImg("/menu_game_over/Menù_GameOver_RETRY_premuto.png");
+        imgs[0] = loadImg("/Imgs/menu_game_over/Menù_GameOver.png");
+        imgs[1] = loadImg("/Imgs/menu_game_over/Menù_GameOver_QUIT_premuto.png");
+        imgs[2] = loadImg("/Imgs/menu_game_over/Menù_GameOver_RETRY_premuto.png");
     }
 
     @Override

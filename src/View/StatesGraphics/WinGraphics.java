@@ -13,9 +13,9 @@ public class WinGraphics extends StateGraphics{
 
     private void loadImgs() {
         imgs = new BufferedImage[3];
-        imgs[0] = loadImg("/menu_vittoria/Menù_Vittoria.png");
-        imgs[1] = loadImg("/menu_vittoria/Menù_Vittoria_menù_iniziale_premuto.png");
-        imgs[2] = loadImg("/menu_vittoria/Menù_Vittoria_new_game_premuto.png");
+        imgs[0] = loadImg("/Imgs/menu_vittoria/Menù_Vittoria.png");
+        imgs[1] = loadImg("/Imgs/menu_vittoria/Menù_Vittoria_menù_iniziale_premuto.png");
+        imgs[2] = loadImg("/Imgs/menu_vittoria/Menù_Vittoria_new_game_premuto.png");
     }
 
     @Override

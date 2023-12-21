@@ -1,5 +1,7 @@
 package View.EntitiesGraphics;
 
+import View.AudioPlayer;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -14,17 +16,19 @@ public class BombGraphics extends EntityGraphics {
     private boolean exploding;
     private boolean canDraw = true;
     private int[][] explosion;
+    private AudioPlayer audioPlayer;
 
     public BombGraphics(int x, int y){
         super (x*16, y*16, 16, 16);
+        audioPlayer = new AudioPlayer();
         loadAnimations();
     }
 
 
     @Override
     public void loadAnimations(){
-        BufferedImage temp = loadImg("/entitySprites/bombSprites/bomb.png");
-        BufferedImage temp1 = loadImg("/provaSpritesTemp.png");
+        BufferedImage temp = loadImg("/Imgs/entitySprites/bombSprites/bomb.png");
+        BufferedImage temp1 = loadImg("/Imgs/provaSpritesTemp.png");
 
         imgs = new BufferedImage[3];
         imgs[0] = temp.getSubimage(0, 0, 16, 16);
@@ -86,4 +90,11 @@ public class BombGraphics extends EntityGraphics {
         this.explosion = explosion;
     }
 
+    public void playExplosion(){
+        audioPlayer.playEffects(2);
+    }
+
+    public void playSpawn(){
+        audioPlayer.playEffects(3);
+    }
 }

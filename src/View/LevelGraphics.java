@@ -27,7 +27,7 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     private int type;
 
     public LevelGraphics(String filename) {
-        if (filename.equals("/livelli/livello2/Stage2.png")){
+        if (filename.equals("/Imgs/livelli/livello2/Stage2.png")){
             type = 1;
         }
         this.lvl1Bg = loadImg(filename);

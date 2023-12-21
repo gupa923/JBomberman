@@ -28,12 +28,14 @@ public class Game implements Runnable{
     private PlayerManager playerManager;
     private LevelManager levelManager;
     private EnemySpawnerManager enemySpawnerManager;
+    private AudioManager audioManager;
 
     private int FPS = 60;
     private int UPS = 120;
 
     private Game() {
 
+        this.audioManager = new AudioManager();
         //creazione model
         this.gameModel = GameModel.getInstance();
         this.stateManager = new StateManager();

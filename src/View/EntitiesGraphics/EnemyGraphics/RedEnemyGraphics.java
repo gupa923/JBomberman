@@ -19,10 +19,10 @@ public class RedEnemyGraphics extends EnemyGraphics {
 
     @Override
     public void loadAnimations() {
-        BufferedImage temp = loadImg("/entitySprites/enemySprite/red_enemy/Nemico_Rosso_Down.png");
-        BufferedImage temp2 = loadImg("/entitySprites/enemySprite/red_enemy/Nemico_Rosso_Up.png");
-        BufferedImage temp3 = loadImg("/entitySprites/enemySprite/red_enemy/Nemico_Rosso_SX.png");
-        BufferedImage temp4 = loadImg("/entitySprites/enemySprite/red_enemy/Nemico_Rosso_DX.png");
+        BufferedImage temp = loadImg("/Imgs/entitySprites/enemySprite/red_enemy/Nemico_Rosso_Down.png");
+        BufferedImage temp2 = loadImg("/Imgs/entitySprites/enemySprite/red_enemy/Nemico_Rosso_Up.png");
+        BufferedImage temp3 = loadImg("/Imgs/entitySprites/enemySprite/red_enemy/Nemico_Rosso_SX.png");
+        BufferedImage temp4 = loadImg("/Imgs/entitySprites/enemySprite/red_enemy/Nemico_Rosso_DX.png");
 
         BufferedImage[] left = new BufferedImage[4];
         for (int i = 0; i < 4; i++){
@@ -136,6 +136,7 @@ public class RedEnemyGraphics extends EnemyGraphics {
                 }
                 case "DYING" -> {
                     death = true;
+                    audioPlayer.playEffects(1);
                 }
             }
         }

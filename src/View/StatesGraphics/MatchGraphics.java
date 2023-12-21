@@ -29,8 +29,8 @@ public class MatchGraphics extends StateGraphics {
     public MatchGraphics(){
         gameOverScreen = new GameOverScreen();
         winGraphics = new WinGraphics();
-        matchUI = loadImg("/UI PARTITA.png");
-        lifeUI = loadImg("/UI.png").getSubimage(1,39,16, 16);
+        matchUI = loadImg("/Imgs/UI PARTITA.png");
+        lifeUI = loadImg("/Imgs/UI.png").getSubimage(1,39,16, 16);
     }
     @Override
     public void draw(Graphics g) {
