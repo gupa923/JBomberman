@@ -1,29 +1,42 @@
 package Model.EntityModel.Enemies;
 
+import Model.EntityModel.Bomb;
 import Model.EntityModel.Hitbox;
 
 import java.awt.geom.Rectangle2D;
 
 import static Model.EntityModel.Player.BOMBS;
 
-public class BrownEnemy extends Enemy{
-    private boolean moving  = true;
+public class ClownBoss extends Enemy{
+    private boolean moving = true;
     private int updateTick;
-    public BrownEnemy(int x, int y, int w, int h) {
+
+
+    /**
+     * Costruisce un nemico a partire da quattro interi e inizializza la hitbox
+     *
+     * @param x : ascissa punto di spawn
+     * @param y : ordinata del punto di spawn
+     * @param w : larghezza
+     * @param h : altezza
+     */
+    public ClownBoss(int x, int y, int w, int h) {
         super(x, y, w, h);
         sx = x;
         sy = y;
-        score = 400;
-        type = 3;
-        HP = 2;
+        score = 2000;
+        type = 66;
+        HP = 7;
+        immortality = false;
         initHitbox();
     }
 
     @Override
     public void initHitbox() {
-        hitbox = new Hitbox(x, y + 8, 16, 16);
-        bounds = new Rectangle2D.Float(x, y + 8, 16, 16);
+        hitbox = new Hitbox(x, y, 16, 16);
+        bounds = new Rectangle2D.Float(x-47, y-44, 110, 105);
     }
+
     @Override
     public void update() {
         if (dying){
@@ -133,9 +146,23 @@ public class BrownEnemy extends Enemy{
     }
 
     @Override
+    protected boolean intersect(String dir) {
+        for (Bomb b : BOMBS){
+            if (b.intersect(this, dir)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getHP() {
+        return HP;
+    }
+
+    @Override
     public boolean equals(Object obj){
-        if (obj instanceof BrownEnemy){
-            BrownEnemy e = (BrownEnemy) obj;
+        if (obj instanceof ClownBoss){
+            ClownBoss e = (ClownBoss) obj;
             return e.x == this.x && e.y == this.y;
         }
         return false;

@@ -101,4 +101,8 @@ public abstract class Enemy extends Entity {
             immortalityTick = 0;
         }
     }
+
+    public Rectangle2D.Float getBounds() {
+        return bounds;
+    }
 }

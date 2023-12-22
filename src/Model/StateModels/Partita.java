@@ -71,18 +71,29 @@ public class Partita extends Stato{
         if (cheat){
             return true;
         }
-        if (!levels.get(actuaLevel).getEnemySpawner().getEnemies().isEmpty()){
-            return false;
-        }
-        if (levels.get(actuaLevel).getData()[player.getHitbox().y/16][player.getHitbox().x/16] == 2){
-            for (Obstacle o : levels.get(actuaLevel).getObstacles()){
-                if (o.getX()/16 == player.getHitbox().x /16 && o.getY()/16 == player.getHitbox().y/16){
-                    return false;
+        if (actuaLevel == 3){
+            if (!levels.get(actuaLevel).getEnemySpawner().getEnemies().isEmpty()){
+                return false;
+            }else {
+                if (player.getHitbox().x / 16 == 11 && player.getHitbox().y/16 == 7){
+                    return true;
                 }
             }
-            return true;
+        } else {
+            if (!levels.get(actuaLevel).getEnemySpawner().getEnemies().isEmpty()) {
+                return false;
+            }
+            if (levels.get(actuaLevel).getData()[player.getHitbox().y / 16][player.getHitbox().x / 16] == 2) {
+                for (Obstacle o : levels.get(actuaLevel).getObstacles()) {
+                    if (o.getX() / 16 == player.getHitbox().x / 16 && o.getY() / 16 == player.getHitbox().y / 16) {
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
         return false;
+
     }
 
     private boolean checkGameCompleted(){

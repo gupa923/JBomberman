@@ -1,7 +1,10 @@
 package Model.EntityModel;
 
 import Model.EntityModel.Enemies.BlueEnemy;
+import Model.EntityModel.Enemies.ClownBoss;
 import Model.EntityModel.Enemies.Enemy;
+
+import java.awt.geom.Rectangle2D;
 
 /**
  * questa classe rappresenta la bomba. estende la classe Entity. gestisce la bomba, la sua esplosione e la collisione con il giocatore
@@ -186,6 +189,25 @@ Bomb extends Entity {
             return false;
         }
     }
+
+    public boolean intersect(ClownBoss enemy, String dir){
+        //Hitbox pHitbox = enemy.getDamageBox();
+        if (notCollideTick <= collideTickLim)
+            return false;
+        if (!exploding) {
+            return false;
+        }else{
+            for (int[] p: explosionTiles) {
+                if (enemy.getBounds().contains(p[0], p[1])){
+                    enemy.hit();
+                    System.out.println(enemy.getHP());
+                    break;
+                }
+            }
+            return false;
+        }
+    }
+
 
     public boolean intersect(Enemy enemy, String dir){
         Hitbox pHitbox = enemy.getHitbox();
