@@ -67,12 +67,16 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     @Override
     public void update(Observable o, Object arg) {
         if (arg instanceof int[][]){
-            int[][] temp = (int[][]) arg;
-            if (temp[0].length == 2) {
-                initObstacleGraphics(temp);
-                audioPlayer.playEffects(5);
-            }else{
-                initPowerUpsGraphics(temp);
+            try {
+                int[][] temp = (int[][]) arg;
+                if (temp[0].length == 2) {
+                    initObstacleGraphics(temp);
+                    audioPlayer.playEffects(5);
+                } else {
+                    initPowerUpsGraphics(temp);
+                }
+            }catch (ArrayIndexOutOfBoundsException e ){
+                System.out.println("BOSS LEVEL");
             }
         }else if (arg instanceof int[]){
             int[] temp2 = (int[]) arg;

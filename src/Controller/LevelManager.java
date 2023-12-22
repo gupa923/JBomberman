@@ -44,6 +44,11 @@ public class LevelManager {
         level.addObserver(levelGraphics);
         levels.add(level);
         levelGraphicsArrayList.add(levelGraphics);
+        level = new Level(getLvlData("/Imgs/livelli/livello1/bossLvl1.png"));
+        levelGraphics = new LevelGraphics("/Imgs/livelli/livello1/Stage1.png");
+        level.addObserver(levelGraphics);
+        levels.add(level);
+        levelGraphicsArrayList.add(levelGraphics);
         level = new Level(getLvlData("/Imgs/livelli/livello2/lvl4Data.png"));
         levelGraphics = new LevelGraphics("/Imgs/livelli/livello2/Stage2.png");
         level.addObserver(levelGraphics);
@@ -94,6 +99,8 @@ public class LevelManager {
                     lvlData[y][x] = 7;
                 }else if (color.equals(new Color(125,125, 125))){
                     lvlData[y][x] = 8;
+                }else if (color.equals(new Color(0, 255, 255))){
+                    lvlData[y][x] = 66;
                 }
                 else
                     lvlData[y][x] = 0;
