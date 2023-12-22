@@ -12,6 +12,9 @@ public class AudioManager {
         EFFECTS.add(getClip("/audio/Enemy Dies.wav"));
         EFFECTS.add(getClip("/audio/Bomb Explodes.wav"));
         EFFECTS.add(getClip("/audio/Place Bomb.wav"));
+        EFFECTS.add(getClip("/audio/Item Get.wav"));
+        EFFECTS.add(getClip("/audio/Stage Start.wav"));
+        EFFECTS.add(getClip("/audio/Stage Clear.wav"));
     }
 
     private Clip getClip(String name){

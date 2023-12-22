@@ -25,11 +25,13 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     private ArrayList<PowerUpGraphics> powerUps;
     private EnemyGraphicsSpawner enemyGraphicsSpawner;
     private int type;
+    private AudioPlayer audioPlayer;
 
     public LevelGraphics(String filename) {
         if (filename.equals("/Imgs/livelli/livello2/Stage2.png")){
             type = 1;
         }
+        audioPlayer = new AudioPlayer();
         this.lvl1Bg = loadImg(filename);
         obstacleGraphics = new ArrayList<>();
         exploadingObstacles = new ArrayList<>();
@@ -68,6 +70,7 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
             int[][] temp = (int[][]) arg;
             if (temp[0].length == 2) {
                 initObstacleGraphics(temp);
+                audioPlayer.playEffects(5);
             }else{
                 initPowerUpsGraphics(temp);
             }
@@ -77,6 +80,7 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
                 PowerUpGraphics g = new PowerUpGraphics(temp2[0], temp2[1], temp2[2]);
                 for (int i = 0; i < powerUps.size(); i++){
                     if (powerUps.get(i).equals(g)){
+                        audioPlayer.playEffects(4);
                         powerUps.remove(g);
                         break;
                     }

@@ -1,5 +1,6 @@
 package View.EntitiesGraphics.EnemyGraphics;
 
+import View.AudioPlayer;
 import View.StatesGraphics.MatchGraphics;
 import View.UtilityInterfaces.Drawable;
 
@@ -10,8 +11,10 @@ import java.util.Observer;
 
 public class EnemyGraphicsSpawner implements Observer , Drawable {
     private ArrayList<EnemyGraphics> enemyGraphics, inactiveEnemies;
+    private AudioPlayer audioPlayer;
 
     public EnemyGraphicsSpawner(){
+        audioPlayer = new AudioPlayer();
         enemyGraphics = new ArrayList<>();
         inactiveEnemies = new ArrayList<>();
     }
@@ -87,6 +90,9 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
         }else if (arg instanceof Integer){
             int i = (Integer ) arg;
             MatchGraphics.SCORE_VIEW += i;
+        }
+        if (enemyGraphics.isEmpty()){
+            audioPlayer.playEffects(6);
         }
     }
 
