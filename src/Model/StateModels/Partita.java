@@ -75,9 +75,10 @@ public class Partita extends Stato{
             if (!levels.get(actuaLevel).getEnemySpawner().getEnemies().isEmpty()){
                 return false;
             }else {
-                if (player.getHitbox().x / 16 == 11 && player.getHitbox().y/16 == 7){
-                    return true;
-                }
+//                if (player.getHitbox().x / 16 == 11 && player.getHitbox().y/16 == 7){
+//                    return true;
+//                }
+                return true;
             }
         } else {
             if (!levels.get(actuaLevel).getEnemySpawner().getEnemies().isEmpty()) {
