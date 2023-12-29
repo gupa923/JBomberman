@@ -45,7 +45,7 @@ public class LevelManager {
         levels.add(level);
         levelGraphicsArrayList.add(levelGraphics);
         level = new Level(getLvlData("/Imgs/livelli/livello1/bossLvl1.png"));
-        levelGraphics = new LevelGraphics("/Imgs/livelli/livello1/Stage1.png");
+        levelGraphics = new LevelGraphics("/Imgs/livelli/livello1/stageBoss1.png");
         level.addObserver(levelGraphics);
         levels.add(level);
         levelGraphicsArrayList.add(levelGraphics);
