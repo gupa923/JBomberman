@@ -41,7 +41,7 @@ public class ClownBoss extends Enemy{
     public void update() {
         if (dying){
             dynigTick++;
-            if (dynigTick >= 160){
+            if (dynigTick >= 120){
                 dynigTick = 0;
                 dying = false;
                 alive = false;
