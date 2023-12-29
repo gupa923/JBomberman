@@ -1,8 +1,11 @@
 package Controller.EntityManagers;
 
 import Controller.LevelManager;
+import Model.EntityModel.Enemies.ClownBoss;
 import Model.EntityModel.Enemies.EnemySpawner;
 import Model.Level;
+import View.EntitiesGraphics.EnemyGraphics.ClownBossGraphics;
+import View.EntitiesGraphics.EnemyGraphics.EnemyGraphics;
 import View.EntitiesGraphics.EnemyGraphics.EnemyGraphicsSpawner;
 import View.LevelGraphics;
 
@@ -35,9 +38,16 @@ public class EnemySpawnerManager {
 
     private void addEnemyObs(EnemySpawner lvl1Spawner, EnemyGraphicsSpawner lvl1GSpawner) {
          for (int i = 0; i < lvl1Spawner.getEnemies().size(); i++){
-
-             lvl1Spawner.getEnemies().get(i).addObserver(lvl1GSpawner.getEnemyGraphics().get(i));
-             lvl1GSpawner.getEnemyGraphics().get(i).setHitbox(lvl1Spawner.getEnemies().get(i).getHitbox());
+            if (lvl1Spawner.getEnemies().get(i) instanceof ClownBoss) {
+                lvl1Spawner.getEnemies().get(i).addObserver(lvl1GSpawner.getEnemyGraphics().get(i));
+                lvl1GSpawner.getEnemyGraphics().get(i).setHitbox(lvl1Spawner.getEnemies().get(i).getHitbox());
+                ClownBoss temp = (ClownBoss) lvl1Spawner.getEnemies().get(i);
+                ClownBossGraphics tg = (ClownBossGraphics) lvl1GSpawner.getEnemyGraphics().get(i);
+                tg.setDamageBox(temp.getBounds());
+            }else{
+                lvl1Spawner.getEnemies().get(i).addObserver(lvl1GSpawner.getEnemyGraphics().get(i));
+                lvl1GSpawner.getEnemyGraphics().get(i).setHitbox(lvl1Spawner.getEnemies().get(i).getHitbox());
+            }
          }
     }
 
