@@ -19,7 +19,11 @@ public class GamePanel extends JPanel {
     private MatchGraphics matchGraphics;
     private MenuGraphics menuGraphics;
     private StateGraphics activeState;
+    private LoginPanel loginPanel;
+
     public GamePanel(StateGraphics activeState){
+        loginPanel = new LoginPanel();
+        add(loginPanel);
         setPreferredSize(new Dimension(272 * 3, 272* 3));
         setFocusable(true);
         requestFocusInWindow();
@@ -52,5 +56,9 @@ public class GamePanel extends JPanel {
     }
     public void setActiveState(StateGraphics activeState) {
         this.activeState = activeState;
+    }
+
+    public LoginPanel getLoginPanel() {
+        return loginPanel;
     }
 }
