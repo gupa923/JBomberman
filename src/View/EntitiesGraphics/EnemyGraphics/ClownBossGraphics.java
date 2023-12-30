@@ -42,7 +42,7 @@ public class ClownBossGraphics extends EnemyGraphics{
 
 
         deathAnimation = new BufferedImage[2];
-        deathAnimation[0] = temp.getSubimage(0, 118, 110,105);
+        deathAnimation[0] = temp.getSubimage(0, 117, 110,100);
         deathAnimation[1] = temp.getSubimage( 111, 216, 110, 105);
 
     }
@@ -82,6 +82,8 @@ public class ClownBossGraphics extends EnemyGraphics{
             g.drawRect((int) (damageBox.x * 3), (int) (damageBox.y * 3), (int) (damageBox.width * 3), (int) (damageBox.height * 3));
         }else{
             g.drawImage(deathAnimation[deathIndex], x * 3, y * 3, w * 3, h * 3, null);
+            g.drawRect(hitbox.x * 3, hitbox.y * 3, hitbox.w * 3, hitbox.h * 3);
+            g.drawRect((int) (damageBox.x * 3), (int) (damageBox.y * 3), (int) (damageBox.width * 3), (int) (damageBox.height * 3));
 
         }
     }

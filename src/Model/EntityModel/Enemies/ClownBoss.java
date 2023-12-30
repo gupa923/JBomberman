@@ -51,6 +51,9 @@ public class ClownBoss extends Enemy{
             return;
         }
         if (updateTick %3 == 0) {
+            if (updateTick%132 == 0) {
+                changeDirection();
+            }
             switch (defaultDirection) {
                 case "LEFT" -> {
                     if ((hitbox.checkCollision(hitbox.x - 1, hitbox.y) && hitbox.checkCollision(hitbox.x - 1, hitbox.y + hitbox.h - 1))) {
@@ -145,6 +148,12 @@ public class ClownBoss extends Enemy{
             }
         }
         updateTick++;
+    }
+
+    private void changeDirection() {
+        if ((hitbox.x/16)% 2 == 0 && (hitbox.y/16)%2 == 1){
+            defaultDirection = dirs[r.nextInt(4)];
+        }
     }
 
     @Override
