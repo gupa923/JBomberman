@@ -13,7 +13,7 @@ public class GameModel{
 
 
     private GameModel(){
-        this.statoAttuale = Stati.MENU;
+        this.statoAttuale = Stati.LOGIN;
         partita = new Partita(this);
         menu = new Menu(this);
         pause = new Pause(this);

@@ -93,4 +93,8 @@ public class StateManager {
         this.gamePanel = gamePanel;
         loginManager = new LoginManager(gamePanel);
     }
+
+    public void removeLoginPanel() {
+        gamePanel.remove(loginManager.getLoginPanel());
+    }
 }

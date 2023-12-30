@@ -27,4 +27,8 @@ public class LoginManager {
             }
         });
     }
+
+    public LoginPanel getLoginPanel() {
+        return loginPanel;
+    }
 }
