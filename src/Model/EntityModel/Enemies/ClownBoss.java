@@ -11,8 +11,8 @@ import static Model.EntityModel.Player.BOMBS;
 public class ClownBoss extends Enemy{
     private boolean moving = true;
     private int updateTick;
-    private String[] dirs = new String[] {"LEFT", "RIGHT", "UP", "DOWN"};
-    private Random r = new Random();
+
+
 
     /**
      * Costruisce un nemico a partire da quattro interi e inizializza la hitbox

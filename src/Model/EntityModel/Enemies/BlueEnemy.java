@@ -52,12 +52,12 @@ public class BlueEnemy extends Enemy{
                             x += 1;
                             hitbox.update(+1, 0);
                             bounds.x++;
-                            defaultDirection = "RIGHT";
+                            defaultDirection = dirs[r.nextInt(4)];
                             sendMessage("STAY");
                             moving = false;
                         }
                     } else {
-                        defaultDirection = "RIGHT";
+                        defaultDirection = dirs[r.nextInt(4)];
                         sendMessage("STAY");
                         moving = false;
                     }
@@ -72,12 +72,12 @@ public class BlueEnemy extends Enemy{
                             x -= 1;
                             hitbox.update(-1, 0);
                             bounds.x--;
-                            defaultDirection = "UP";
+                            defaultDirection = dirs[r.nextInt(4)];
                             sendMessage("STAY");
                             moving = false;
                         }
                     } else {
-                        defaultDirection = "UP";
+                        defaultDirection = dirs[r.nextInt(4)];
                         sendMessage("STAY");
                         moving = false;
                     }
@@ -92,12 +92,12 @@ public class BlueEnemy extends Enemy{
                             y += 1;
                             hitbox.update(0, 1);
                             bounds.y++;
-                            defaultDirection = "DOWN";
+                            defaultDirection = dirs[r.nextInt(4)];
                             sendMessage("STAY");
                             moving = false;
                         }
                     } else {
-                        defaultDirection = "DOWN";
+                        defaultDirection = dirs[r.nextInt(4)];
                         sendMessage("STAY");
                         moving = false;
                     }
@@ -112,12 +112,12 @@ public class BlueEnemy extends Enemy{
                             y -= 1;
                             hitbox.update(0, -1);
                             bounds.y--;
-                            defaultDirection = "LEFT";
+                            defaultDirection = dirs[r.nextInt(4)];
                             sendMessage("STAY");
                             moving = false;
                         }
                     } else {
-                        defaultDirection = "LEFT";
+                        defaultDirection = dirs[r.nextInt(4)];
                         sendMessage("STAY");
                         moving = false;
                     }

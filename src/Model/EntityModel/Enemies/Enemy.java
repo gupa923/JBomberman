@@ -6,6 +6,7 @@ import Model.EntityModel.Hitbox;
 import Model.EntityModel.Player;
 
 import java.awt.geom.Rectangle2D;
+import java.util.Random;
 
 import static Model.EntityModel.Player.BOMBS;
 
@@ -18,6 +19,8 @@ public abstract class Enemy extends Entity {
     protected int immortalityTick;
     protected Rectangle2D.Float bounds;
     protected String defaultDirection = "LEFT";
+    protected String[] dirs = new String[] {"LEFT", "RIGHT", "UP", "DOWN"};
+    protected Random r = new Random();
     protected int score;
     protected int type;
     protected boolean alive = true;
