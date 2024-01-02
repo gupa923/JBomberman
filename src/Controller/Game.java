@@ -38,7 +38,7 @@ public class Game implements Runnable{
         this.audioManager = new AudioManager();
         //creazione model
         this.gameModel = GameModel.getInstance();
-        this.stateManager = new StateManager();
+        this.stateManager = StateManager.getInstance();
         this.playerManager = PlayerManager.getInstance();
         this.levelManager = LevelManager.getInstance();
         enemySpawnerManager = new EnemySpawnerManager();

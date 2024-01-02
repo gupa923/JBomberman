@@ -26,8 +26,10 @@ public class StateManager {
     private SettingsGraphics settingsGraphics;
     private CommandInfoGraphics commandInfoGraphics;
     private GamePanel gamePanel;
+    private LoginManager loginManager;
+    private static StateManager instance;
 
-    public StateManager(){
+    private StateManager(){
         gameModel = GameModel.getInstance();
         partita = gameModel.getPartita();
         menu = gameModel.getMenu();
@@ -50,6 +52,8 @@ public class StateManager {
         commandInfo.addObserver(commandInfoGraphics);
         gameModel.getPartita().getWin().addObserver(matchGraphics.getWinGraphics());
         gameModel.getPartita().getGameOver().addObserver(matchGraphics.getGameOverScreen());
+
+
     }
 
     /**
@@ -88,5 +92,17 @@ public class StateManager {
 
     public void setGamePanel(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
+        loginManager = new LoginManager(gamePanel);
+    }
+
+    public void removeLoginPanel() {
+        gamePanel.remove(loginManager.getLoginPanel());
+    }
+
+    public static StateManager getInstance() {
+        if (instance == null){
+            instance = new StateManager();
+        }
+        return instance;
     }
 }

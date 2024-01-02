@@ -137,6 +137,15 @@ public class KeyManager implements KeyListener {
                     }
                 }
             }
+            case LOGIN -> {
+                switch (e.getKeyCode()){
+                    case KeyEvent.VK_M -> {
+                        stateManager.removeLoginPanel();
+                        gameModel.setStatoAttuale(Stati.MENU);
+                        stateManager.changeState(Stati.MENU);
+                    }
+                }
+            }
         }
 
     }

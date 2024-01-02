@@ -19,11 +19,15 @@ public class GamePanel extends JPanel {
     private MatchGraphics matchGraphics;
     private MenuGraphics menuGraphics;
     private StateGraphics activeState;
+    private LoginPanel loginPanel;
+
     public GamePanel(StateGraphics activeState){
+        loginPanel = new LoginPanel();
+        add(loginPanel);
         setPreferredSize(new Dimension(272 * 3, 272* 3));
         setFocusable(true);
         requestFocusInWindow();
-        this.activeState = activeState;
+        this.activeState = null;
     }
 
     /**
@@ -34,11 +38,16 @@ public class GamePanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if (activeState instanceof PauseGraphics){
-            matchGraphics.getPlayerGraphics().setMoving(false);
-            matchGraphics.draw(g);
+        if (activeState != null) {
+            if (activeState instanceof PauseGraphics) {
+                matchGraphics.getPlayerGraphics().setMoving(false);
+                matchGraphics.draw(g);
+            }
+            activeState.draw(g);
+        }else {
+            g.setColor(new Color(255,207, 151));
+            g.fillRect(0,0,272*3, 272*3);
         }
-        activeState.draw(g);
     }
 
     public void setMatchGraphics(MatchGraphics matchGraphics) {
@@ -52,5 +61,9 @@ public class GamePanel extends JPanel {
     }
     public void setActiveState(StateGraphics activeState) {
         this.activeState = activeState;
+    }
+
+    public LoginPanel getLoginPanel() {
+        return loginPanel;
     }
 }

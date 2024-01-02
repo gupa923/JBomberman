@@ -10,10 +10,11 @@ public class GameModel{
     private Pause pause;
     private Settings settings;
     private CommandInfo commandInfo;
+    public static User USER;
 
 
     private GameModel(){
-        this.statoAttuale = Stati.MENU;
+        this.statoAttuale = Stati.LOGIN;
         partita = new Partita(this);
         menu = new Menu(this);
         pause = new Pause(this);
