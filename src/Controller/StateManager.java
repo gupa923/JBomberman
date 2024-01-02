@@ -27,8 +27,9 @@ public class StateManager {
     private CommandInfoGraphics commandInfoGraphics;
     private GamePanel gamePanel;
     private LoginManager loginManager;
+    private static StateManager instance;
 
-    public StateManager(){
+    private StateManager(){
         gameModel = GameModel.getInstance();
         partita = gameModel.getPartita();
         menu = gameModel.getMenu();
@@ -96,5 +97,12 @@ public class StateManager {
 
     public void removeLoginPanel() {
         gamePanel.remove(loginManager.getLoginPanel());
+    }
+
+    public static StateManager getInstance() {
+        if (instance == null){
+            instance = new StateManager();
+        }
+        return instance;
     }
 }

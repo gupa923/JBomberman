@@ -10,6 +10,7 @@ public class GameModel{
     private Pause pause;
     private Settings settings;
     private CommandInfo commandInfo;
+    public static User USER;
 
 
     private GameModel(){

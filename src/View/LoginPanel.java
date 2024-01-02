@@ -26,9 +26,11 @@ public class LoginPanel extends JPanel {
         passwordField = new JPasswordField();
         usernameField.setFont(new Font("SansSerif", 0, 20));
         passwordField.setFont(new Font("SansSerif", 0, 20));
+        usernameField.setText("");
+        passwordField.setText("");
 
-         loginButton = new JButton("Login");
-         registerButton = new JButton("Register");
+        loginButton = new JButton("Login");
+        registerButton = new JButton("Register");
         loginButton.setFont(new Font("SansSerif", 0, 20));
         registerButton.setFont(new Font("SansSerif", 0, 20));
 
@@ -53,4 +55,16 @@ public class LoginPanel extends JPanel {
     public JButton getRegisterButton() {
         return registerButton;
     }
+
+    public JTextField getUsernameField() {
+        return usernameField;
+    }
+
+
+
+
+    public JPasswordField getPasswordField() {
+        return passwordField;
+    }
+
 }

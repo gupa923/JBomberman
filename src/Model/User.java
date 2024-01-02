@@ -18,13 +18,14 @@ public class User {
         avatarIndex = r.nextInt();
     }
 
-    public User(String nickname, String password, int avatarIndex, int gamePlayed, int victories, int record) {
-        this.nickname = nickname;
-        this.password = password;
-        this.avatarIndex = avatarIndex;
-        this.gamePlayed = gamePlayed;
-        this.victories = victories;
-        this.record = record;
+    public User(String[] usersCredential) {
+        nickname = usersCredential[0];
+        password = usersCredential[1];
+        avatarIndex = Integer.parseInt(usersCredential[2]);
+        gamePlayed = Integer.parseInt(usersCredential[3]);
+        victories = Integer.parseInt(usersCredential[4]);
+        record = Integer.parseInt(usersCredential[5]);
+
     }
 
     public void setRecord(int record) {
@@ -47,5 +48,16 @@ public class User {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return nickname + ' ' + password + ' ' + avatarIndex + " " + gamePlayed + " " + record;
+    }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
