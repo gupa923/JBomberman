@@ -4,18 +4,18 @@ import java.util.Objects;
 import java.util.Random;
 
 public class User {
-    private String nickname;
-    private String password;
-    private int avatarIndex;
+    private final String nickname;
+    private final String password;
+    private final int avatarIndex;
     private int gamePlayed;
     private int victories;
     private int record;
-    private Random r = new Random();
+    private final Random r = new Random();
 
     public User(String nickname, String password){
         this.nickname = nickname;
         this.password = password;
-        avatarIndex = r.nextInt();
+        avatarIndex = 0;
     }
 
     public User(String[] usersCredential) {
@@ -41,8 +41,7 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof User){
-            User u  = (User) o;
+        if (o instanceof User u){
             return this.nickname.equals(u.nickname) && this.password.equals(u.password);
         }
         return false;
@@ -50,7 +49,7 @@ public class User {
 
     @Override
     public String toString() {
-        return nickname + ' ' + password + ' ' + avatarIndex + " " + gamePlayed + " " + record;
+        return nickname + ' ' + password + ' ' + avatarIndex + " " + gamePlayed + " " + victories + " " + record;
     }
 
     public String getNickname() {

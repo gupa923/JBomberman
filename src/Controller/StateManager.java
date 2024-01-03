@@ -96,7 +96,10 @@ public class StateManager {
     }
 
     public void removeLoginPanel() {
+        gameModel.setStatoAttuale(Stati.MENU);
         gamePanel.remove(loginManager.getLoginPanel());
+        loginManager.getLoginPanel().getLoginButton().removeActionListener(loginManager.getLoginListener());
+        loginManager.getLoginPanel().getRegisterButton().removeActionListener(loginManager.getRegisterListener());
     }
 
     public static StateManager getInstance() {
