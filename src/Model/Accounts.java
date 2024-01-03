@@ -33,6 +33,18 @@ public class Accounts {
         return false;
     }
 
-    public void register(String text) {
+    public boolean register(String[] credential) {
+        for (User u: users){
+            if (u.getNickname().equals(credential[0]) || u.getPassword().equals(credential[1])){
+                return false;
+            }
+        }
+        USER = new User(credential[0], credential[1]);
+        users.add(USER);
+        return true;
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
     }
 }
