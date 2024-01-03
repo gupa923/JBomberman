@@ -108,4 +108,8 @@ public class StateManager {
         }
         return instance;
     }
+
+    public LoginManager getLoginManager() {
+        return loginManager;
+    }
 }

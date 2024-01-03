@@ -77,6 +77,7 @@ public class MouseManager implements MouseListener, MouseMotionListener {
                     System.out.println("LOGIN");
                     //gameModel.getMenu().getbLogin().setMousePressed(true);
                 }else if(gameModel.getMenu().getbExit().getBounds().contains(e.getX(), e.getY())){
+                    stateManager.getLoginManager().saveUsers();
                     System.exit(0);
                 }
             }

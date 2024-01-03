@@ -64,7 +64,6 @@ public class LoginManager {
                 loginPanel.getUsernameField().setText("");
                 loginPanel.getPasswordField().setText("");
                 JOptionPane.showMessageDialog(loginPanel, "registration successful!");
-                saveUsers();
                 stateManager.removeLoginPanel();
                 stateManager.changeState(Stati.MENU);
             }else {
@@ -75,7 +74,7 @@ public class LoginManager {
         }
     }
 
-    private void saveUsers() {
+    public void saveUsers() {
         StringBuilder sb = new StringBuilder();
         for (User u : accounts.getUsers()){
             sb.append(u.toString() + "\n");
