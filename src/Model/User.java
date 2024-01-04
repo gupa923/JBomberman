@@ -29,7 +29,9 @@ public class User {
     }
 
     public void setRecord(int record) {
-        this.record = record;
+        if (record >= this.record) {
+            this.record = record;
+        }
     }
     public void setGamePlayed(){
         gamePlayed++;
