@@ -9,6 +9,8 @@ import Model.Stati;
 
 import java.util.ArrayList;
 
+import static Model.GameModel.USER;
+
 /**
  * la classe partita gestisce la logica della partita
  *
@@ -55,6 +57,8 @@ public class Partita extends Stato{
             } else {
                 if (Player.VITE <= 0) {
                     //Player.VITE = 7;
+                    USER.setRecord(SCORE);
+                    SCORE = 0;
                     gameModel.setStatoAttuale(Stati.GAME_OVER);
                     gameOver.update();
                     setChanged();
@@ -102,6 +106,8 @@ public class Partita extends Stato{
             gameCompleted = true;
             gameModel.setStatoAttuale(Stati.WIN);
 
+            USER.setVictories();
+            USER.setRecord(SCORE);
             setChanged();
             notifyObservers("WIN");
             return true;
@@ -160,6 +166,7 @@ public class Partita extends Stato{
         Player.VITE = 7;
         resetLevels();
         actuaLevel = 0;
+        SCORE = 0;
         gameCompleted = false;
         player.getHitbox().setLevel(levels.get(actuaLevel));
         setChanged();

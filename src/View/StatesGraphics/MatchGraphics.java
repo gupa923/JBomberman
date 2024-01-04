@@ -106,6 +106,7 @@ public class MatchGraphics extends StateGraphics {
                 win = false;
                 playerGraphics.reset();
                 actualLevel = 0;
+                SCORE_VIEW = 0;
             }
         }
     }
