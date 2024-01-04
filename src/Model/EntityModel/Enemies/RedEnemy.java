@@ -19,6 +19,8 @@ public class RedEnemy extends Enemy {
         score = 150;
         type = 1;
         HP = 1;
+        defaultHP = HP;
+
         initHitbox();
     }
 
@@ -127,6 +129,19 @@ public class RedEnemy extends Enemy {
     public void initHitbox() {
         hitbox = new Hitbox(x, y + 8, 16, 16);
         bounds = new Rectangle2D.Float(x, y + 8, 16, 16);
+    }
+
+    @Override
+    public void hit() {
+        if (!immortality) {
+            HP--;
+            if (HP == 0) {
+                dying = true;
+                sendMessage("DYING");
+            }
+            immortality = true;
+            immortalityTick = 0;
+        }
     }
 
     @Override

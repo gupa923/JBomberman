@@ -21,6 +21,8 @@ public class YellowEnemy extends Enemy{
         score = 300;
         type = 2;
         HP = 2;
+        defaultHP = HP;
+
         initHitbox();
     }
 
@@ -149,4 +151,17 @@ public class YellowEnemy extends Enemy{
         return false;
     }
 
+    @Override
+    public void hit() {
+        System.out.println("PORCO DIO");
+        if (!immortality) {
+            HP--;
+            if (HP == 0) {
+                dying = true;
+                sendMessage("DYING");
+            }
+            immortality = true;
+            immortalityTick = 0;
+        }
+    }
 }

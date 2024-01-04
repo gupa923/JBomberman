@@ -16,6 +16,7 @@ public class BrownEnemy extends Enemy{
         score = 400;
         type = 3;
         HP = 2;
+        defaultHP = HP;
         initHitbox();
     }
 
@@ -130,6 +131,19 @@ public class BrownEnemy extends Enemy{
             }
         }
         updateTick++;
+    }
+
+    @Override
+    public void hit() {
+        if (!immortality) {
+            HP--;
+            if (HP == 0) {
+                dying = true;
+                sendMessage("DYING");
+            }
+            immortality = true;
+            immortalityTick = 0;
+        }
     }
 
     @Override

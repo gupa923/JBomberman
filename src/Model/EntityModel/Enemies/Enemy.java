@@ -27,7 +27,7 @@ public abstract class Enemy extends Entity {
     protected boolean dying = false;
     protected int dynigTick;
     protected int sx, sy;
-    protected int HP;
+    protected int HP, defaultHP;
 
     /**
      * Costruisce un nemico a partire da quattro interi e inizializza la hitbox
@@ -92,20 +92,11 @@ public abstract class Enemy extends Entity {
         bounds.y = y + 8;
     }
 
-    @Override
-    public void hit(){
-        if (!immortality) {
-            HP--;
-            if (HP == 0) {
-                dying = true;
-                sendMessage("DYING");
-            }
-            immortality = true;
-            immortalityTick = 0;
-        }
-    }
-
     public Rectangle2D.Float getBounds() {
         return bounds;
+    }
+
+    public void resetHP() {
+        HP = defaultHP;
     }
 }

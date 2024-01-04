@@ -278,6 +278,7 @@ Bomb extends Entity {
         return (x1 == x2) && (y1 == y2);
     }
 
+
     @Override
     public boolean equals(Object o){
         if (o instanceof Bomb){

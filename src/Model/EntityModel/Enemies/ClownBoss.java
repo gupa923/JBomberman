@@ -29,6 +29,8 @@ public class ClownBoss extends Enemy{
         score = 2000;
         type = 66;
         HP = 2;
+        defaultHP = HP;
+
         immortality = false;
         initHitbox();
     }
@@ -164,6 +166,19 @@ public class ClownBoss extends Enemy{
             }
         }
         return false;
+    }
+
+    @Override
+    public void hit() {
+        if (!immortality) {
+            HP--;
+            if (HP == 0) {
+                dying = true;
+                sendMessage("DYING");
+            }
+            immortality = true;
+            immortalityTick = 0;
+        }
     }
 
     public int getHP() {

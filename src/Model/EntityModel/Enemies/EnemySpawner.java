@@ -89,6 +89,8 @@ public class EnemySpawner extends Observable {
      */
     private void despawnEnemy(int i) {
         Enemy t = enemies.get(i);
+        t.setAlive(true);
+        t.resetHP();
         inactiveEnemies.add(t);
         enemies.remove(t);
         Partita.SCORE += t.getScore();
@@ -119,6 +121,7 @@ public class EnemySpawner extends Observable {
         for (Enemy e: inactiveEnemies){
             e.setAlive(true);
             e.resetPos();
+            e.resetHP();
             enemies.add(e);
         }
         inactiveEnemies.clear();
