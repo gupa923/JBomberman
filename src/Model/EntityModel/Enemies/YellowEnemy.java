@@ -153,7 +153,6 @@ public class YellowEnemy extends Enemy{
 
     @Override
     public void hit() {
-        System.out.println("PORCO DIO");
         if (!immortality) {
             HP--;
             if (HP == 0) {

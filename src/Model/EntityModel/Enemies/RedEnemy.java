@@ -122,6 +122,13 @@ public class RedEnemy extends Enemy {
                 sendMessage(defaultDirection);
             }
         }
+        if (immortality){
+            immortalityTick++;
+            if (immortalityTick >= 120){
+                immortality = false;
+                immortalityTick = 0;
+            }
+        }
         updateTick++;
     }
 
@@ -133,6 +140,7 @@ public class RedEnemy extends Enemy {
 
     @Override
     public void hit() {
+        System.out.println(immortality);
         if (!immortality) {
             HP--;
             if (HP == 0) {

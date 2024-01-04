@@ -86,6 +86,7 @@ public abstract class Enemy extends Entity {
     public void resetPos() {
         this.x = sx;
         this.y = sy;
+        dying = false;
         hitbox.x = x;
         hitbox.y = y + 8;
         bounds.x = x;
