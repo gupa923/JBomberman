@@ -20,6 +20,7 @@ public class StateManager {
     private Pause pause;
     private Settings settings;
     private CommandInfo commandInfo;
+    private StatsMenu statsMenu;
     private MatchGraphics matchGraphics;
     private MenuGraphics menuGraphics;
     private PauseGraphics pauseGraphics;
@@ -27,6 +28,7 @@ public class StateManager {
     private CommandInfoGraphics commandInfoGraphics;
     private GamePanel gamePanel;
     private LoginManager loginManager;
+    private StatsMenuGraphics statsMenuGraphics;
     private static StateManager instance;
 
     private StateManager(){
@@ -36,20 +38,23 @@ public class StateManager {
         pause = gameModel.getPause();
         settings = gameModel.getSettings();
         commandInfo = gameModel.getCommandInfo();
+        statsMenu = gameModel.getStatsMenu();
         menuGraphics = new MenuGraphics();
         menuGraphics.setbExit(menu.getbExit());
         menuGraphics.setbPlay(menu.getbPlay());
         menuGraphics.setbSetting(menu.getbSettings());
-        menuGraphics.setbLogin(menu.getbLogin());
+        menuGraphics.setbLogin(menu.getbStats());
         matchGraphics = new MatchGraphics();
         pauseGraphics = new PauseGraphics();
         settingsGraphics = new SettingsGraphics();
         commandInfoGraphics = new CommandInfoGraphics();
+        statsMenuGraphics = new StatsMenuGraphics();
         partita.addObserver(matchGraphics);
         menu.addObserver(menuGraphics);
         pause.addObserver(pauseGraphics);
         settings.addObserver(settingsGraphics);
         commandInfo.addObserver(commandInfoGraphics);
+        statsMenu.addObserver(statsMenuGraphics);
         gameModel.getPartita().getWin().addObserver(matchGraphics.getWinGraphics());
         gameModel.getPartita().getGameOver().addObserver(matchGraphics.getGameOverScreen());
 
@@ -78,7 +83,9 @@ public class StateManager {
             case COMMAND_INFO -> {
                 gamePanel.setActiveState(commandInfoGraphics);
             }
-
+            case STATS -> {
+                gamePanel.setActiveState(statsMenuGraphics);
+            }
         }
     }
 
