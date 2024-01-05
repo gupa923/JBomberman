@@ -45,7 +45,7 @@ public class MenuGraphics extends StateGraphics{
                 imgIndex = 3;
             }else if (message.equals("EXIT PRESSED")){
                 imgIndex = 1;
-            }else if (message.equals("LOGIN PRESSED")){
+            }else if (message.equals("STATS PRESSED")){
                 imgIndex = 2;
             }else if (message.equals("NOT PRESSED")){
                 imgIndex = 0;

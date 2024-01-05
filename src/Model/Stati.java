@@ -14,7 +14,7 @@ public enum Stati {
     COMMAND_INFO,
     GAME_OVER,
     WIN,
-    QUIT,
+    STATS,
     PAUSE;
 
     public static Stati stato = MENU;

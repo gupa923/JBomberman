@@ -73,8 +73,9 @@ public class MouseManager implements MouseListener, MouseMotionListener {
                     //gameModel.getMenu().getbSettings().setMousePressed(true);
                     gameModel.setStatoAttuale(Stati.SETTINGS);
                     stateManager.changeState(Stati.SETTINGS);
-                }else if (gameModel.getMenu().getbLogin().getBounds().contains(e.getX(), e.getY())){
-                    System.out.println("LOGIN");
+                }else if (gameModel.getMenu().getbStats().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.setStatoAttuale(Stati.STATS);
+                    stateManager.changeState(Stati.STATS);
                     //gameModel.getMenu().getbLogin().setMousePressed(true);
                 }else if(gameModel.getMenu().getbExit().getBounds().contains(e.getX(), e.getY())){
                     stateManager.getLoginManager().saveUsers();
@@ -104,6 +105,12 @@ public class MouseManager implements MouseListener, MouseMotionListener {
                     gameModel.setStatoAttuale(Stati.COMMAND_INFO);
                     stateManager.changeState(Stati.COMMAND_INFO);
                 }else if (gameModel.getSettings().getbStartPage().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.setStatoAttuale(Stati.MENU);
+                    stateManager.changeState(Stati.MENU);
+                }
+            }
+            case STATS -> {
+                if(gameModel.getStatsMenu().getbBack().getBounds().contains(e.getX(), e.getY())){
                     gameModel.setStatoAttuale(Stati.MENU);
                     stateManager.changeState(Stati.MENU);
                 }
@@ -144,7 +151,7 @@ public class MouseManager implements MouseListener, MouseMotionListener {
                     //gameModel.getMenu().getbPlay().setMousePressed(false);
                 }else if (gameModel.getMenu().getbSettings().getBounds().contains(e.getX(), e.getY())){
                     //gameModel.getMenu().getbPlay().setMousePressed(false);
-                }else if (gameModel.getMenu().getbLogin().getBounds().contains(e.getX(), e.getY())){
+                }else if (gameModel.getMenu().getbStats().getBounds().contains(e.getX(), e.getY())){
                    // gameModel.getMenu().getbLogin().setMousePressed(false);
                 }
             }
@@ -186,10 +193,10 @@ public class MouseManager implements MouseListener, MouseMotionListener {
                 }else {
                     gameModel.getMenu().getbSettings().setMousePressed(false);
                 }
-                 if (gameModel.getMenu().getbLogin().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getMenu().getbLogin().setMousePressed(true);
+                 if (gameModel.getMenu().getbStats().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getMenu().getbStats().setMousePressed(true);
                 }else{
-                     gameModel.getMenu().getbLogin().setMousePressed(false);
+                     gameModel.getMenu().getbStats().setMousePressed(false);
                  }
                  if(gameModel.getMenu().getbExit().getBounds().contains(e.getX(), e.getY())){
                     gameModel.getMenu().getbExit().setMousePressed(true);
@@ -229,6 +236,13 @@ public class MouseManager implements MouseListener, MouseMotionListener {
                     gameModel.getSettings().getbStartPage().setMousePressed(true);
                 }else{
                     gameModel.getSettings().getbStartPage().setMousePressed(false);
+                }
+            }
+            case STATS -> {
+                if(gameModel.getStatsMenu().getbBack().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getStatsMenu().getbBack().setMousePressed(true);
+                }else{
+                    gameModel.getStatsMenu().getbBack().setMousePressed(false);
                 }
             }
             case WIN -> {

@@ -10,6 +10,7 @@ public class GameModel{
     private Pause pause;
     private Settings settings;
     private CommandInfo commandInfo;
+    private StatsMenu statsMenu;
     public static User USER;
 
 
@@ -20,6 +21,7 @@ public class GameModel{
         pause = new Pause(this);
         settings = new Settings(this);
         commandInfo = new CommandInfo(this);
+        statsMenu = new StatsMenu(this);
     }
 
     public static GameModel getInstance() {
@@ -39,6 +41,7 @@ public class GameModel{
             case PAUSE -> pause.update();
             case SETTINGS -> settings.update();
             case COMMAND_INFO -> commandInfo.update();
+            case STATS -> statsMenu.update();
         }
     }
 
@@ -69,5 +72,9 @@ public class GameModel{
 
     public CommandInfo getCommandInfo() {
         return commandInfo;
+    }
+
+    public StatsMenu getStatsMenu() {
+        return statsMenu;
     }
 }

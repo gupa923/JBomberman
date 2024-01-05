@@ -5,16 +5,16 @@ import Model.UI.Button;
 
 
 public class Menu extends Stato {
-    private Button bPlay, bSettings, bLogin, bExit;
+    private Button bPlay, bSettings, bStats, bExit;
     public Menu(GameModel gameModel) {
         super(gameModel);
         bPlay = new Button(272, 104,272, 64, "PLAY");
         bSettings = new Button(272, 272,272, 64, "SETTINGS");
-        bLogin = new Button(272, 480, 272, 64, "LOGIN");
+        bStats = new Button(272, 480, 272, 64, "STATS");
         bExit = new Button(272, 648, 272, 64, "EXIT");
         bPlay.setStato(this);
         bSettings.setStato(this);
-        bLogin.setStato(this);
+        bStats.setStato(this);
         bExit.setStato(this);
     }
 
@@ -22,7 +22,7 @@ public class Menu extends Stato {
     public void update() {
         bPlay.update();
         bSettings.update();
-        bLogin.update();
+        bStats.update();
         bExit.update();
         if (allNotPressed()){
             sendMessage("NOT PRESSED");
@@ -30,7 +30,7 @@ public class Menu extends Stato {
     }
 
     private boolean allNotPressed() {
-        return !bPlay.isMousePressed() && !bSettings.isMousePressed() && !bExit.isMousePressed() && !bLogin.isMousePressed();
+        return !bPlay.isMousePressed() && !bSettings.isMousePressed() && !bExit.isMousePressed() && !bStats.isMousePressed();
     }
 
     public Button getbExit() {
@@ -41,8 +41,8 @@ public class Menu extends Stato {
         return bPlay;
     }
 
-    public Button getbLogin() {
-        return bLogin;
+    public Button getbStats() {
+        return bStats;
     }
 
     public Button getbSettings() {
