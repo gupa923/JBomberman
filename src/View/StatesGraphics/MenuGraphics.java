@@ -21,7 +21,7 @@ public class MenuGraphics extends StateGraphics{
         imgs = new BufferedImage[5];
         imgs[0] = loadImg("/Imgs/menu_iniziale/JBomberman_menù_iniziale.png");
         imgs[1] = loadImg("/Imgs/menu_iniziale/JBomberman_menù_iniziale_exit_premuto.png");
-        imgs[2] = loadImg("/Imgs/menu_iniziale/JBomberman_menù_iniziale_login_premuto.png");
+        imgs[2] = loadImg("/Imgs/menu_iniziale/JBomberman_menù_iniziale_stats_premuto.png");
         imgs[3] = loadImg("/Imgs/menu_iniziale/JBomberman_menù_iniziale_settings_premuto.png");
         imgs[4] = loadImg("/Imgs/menu_iniziale/JBomberman_menù_iniziale_play_premuto.png");
     }
