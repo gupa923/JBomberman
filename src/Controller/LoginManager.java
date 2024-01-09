@@ -48,6 +48,7 @@ public class LoginManager {
                 loginPanel.getPasswordField().setText("");
                 User t = accounts.getActiveUser();
                 uv = new UserView(t.getNickname(), t.getGamePlayed(), t.getVictories(), t.getRecord(), t.getAvatarIndex());
+                t.addObserver(uv);
                 stateManager.removeLoginPanel();
                 stateManager.changeState(Stati.MENU);
             }else {
@@ -68,6 +69,7 @@ public class LoginManager {
                 JOptionPane.showMessageDialog(loginPanel, "registration successful!");
                 User t = accounts.getActiveUser();
                 uv = new UserView(t.getNickname(), t.getGamePlayed(), t.getVictories(), t.getRecord(), t.getAvatarIndex());
+                t.addObserver(uv);
                 stateManager.removeLoginPanel();
                 stateManager.changeState(Stati.MENU);
             }else {

@@ -27,7 +27,14 @@ public class UserView implements Observer, Drawable, ImgImporter {
 
     @Override
     public void update(Observable o, Object arg) {
-
+        if (arg instanceof String){
+            String s = (String) arg;
+            if (s.equals("GAME")){
+                games++;
+            }else if (s.equals("VICTORY")){
+                victories++;
+            }
+        }
     }
 
     @Override
@@ -38,6 +45,7 @@ public class UserView implements Observer, Drawable, ImgImporter {
         g.drawString(String.valueOf(games), 565, 427);
         g.drawString(String.valueOf(victories), 565, 566);
         g.drawString(String.valueOf(record), 492, 696);
+        System.out.println(victories);
     }
 
     public BufferedImage getAvatar() {

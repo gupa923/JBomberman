@@ -37,10 +37,14 @@ public class User extends Observable {
     }
     public void setGamePlayed(){
         gamePlayed++;
+        setChanged();
+        notifyObservers("GAME");
     }
 
     public void setVictories(){
         victories++;
+        setChanged();
+        notifyObservers("VICTORY");
     }
 
     @Override
