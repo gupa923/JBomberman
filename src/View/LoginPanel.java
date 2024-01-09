@@ -22,20 +22,20 @@ public class LoginPanel extends JPanel implements ImgImporter {
 
         JLabel usernameLabel = new JLabel("Username:");
         JLabel passwordLabel = new JLabel("Password:");
-        usernameLabel.setFont(new Font("SansSerif", 0, 20));
-        passwordLabel.setFont(new Font("SansSerif", 0, 20));
+        usernameLabel.setFont(new Font("SansSerif", 0, 30));
+        passwordLabel.setFont(new Font("SansSerif", 0, 30));
 
         usernameField = new JTextField();
         passwordField = new JPasswordField();
-        usernameField.setFont(new Font("SansSerif", 0, 20));
-        passwordField.setFont(new Font("SansSerif", 0, 20));
+        usernameField.setFont(new Font("SansSerif", 0, 30));
+        passwordField.setFont(new Font("SansSerif", 0, 30));
         usernameField.setText("");
         passwordField.setText("");
 
         loginButton = new JButton("Login");
         registerButton = new JButton("Register");
-        loginButton.setFont(new Font("SansSerif", 0, 20));
-        registerButton.setFont(new Font("SansSerif", 0, 20));
+        loginButton.setFont(new Font("SansSerif", 0, 30));
+        registerButton.setFont(new Font("SansSerif", 0, 30));
 
         add(usernameLabel);
         add(usernameField);
