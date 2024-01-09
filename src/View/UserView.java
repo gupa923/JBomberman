@@ -38,8 +38,6 @@ public class UserView implements Observer, Drawable, ImgImporter {
         g.drawString(String.valueOf(games), 565, 427);
         g.drawString(String.valueOf(victories), 565, 566);
         g.drawString(String.valueOf(record), 492, 696);
-        //g.drawString(String.valueOf(victories), 302, 287);
-        //g.drawString(String.valueOf(avatar), 302, 287);
     }
 
     public BufferedImage getAvatar() {
