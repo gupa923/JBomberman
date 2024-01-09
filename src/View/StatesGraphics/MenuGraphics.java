@@ -3,6 +3,7 @@ package View.StatesGraphics;
 
 
 import Model.UI.Button;
+import View.UserView;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -12,6 +13,7 @@ public class MenuGraphics extends StateGraphics{
     private BufferedImage[] imgs;
     private Model.UI.Button bPlay, bSetting, bLogin, bExit;
     private int imgIndex = 0;
+    private UserView uv;
 
     public MenuGraphics(){
         loadImgs();
@@ -29,10 +31,8 @@ public class MenuGraphics extends StateGraphics{
     @Override
     public void draw(Graphics g) {
         g.drawImage(imgs[imgIndex], 0, 0, 816, 816, null);
-        g.drawRect(bPlay.x, bPlay.y, bPlay.w, bPlay.h);
-        g.drawRect(bExit.x, bExit.y, bExit.w, bExit.h);
-        g.drawRect(bSetting.x, bSetting.y, bSetting.w, bSetting.h);
-        g.drawRect(bLogin.x, bLogin.y, bLogin.w, bLogin.h);
+        g.drawImage(uv.getAvatar(), 0, 816-64, 64, 64, null);
+
     }
 
     @Override
@@ -53,19 +53,7 @@ public class MenuGraphics extends StateGraphics{
         }
     }
 
-    public void setbPlay(Button bPlay) {
-        this.bPlay = bPlay;
-    }
-
-    public void setbSetting(Button bSetting) {
-        this.bSetting = bSetting;
-    }
-
-    public void setbLogin(Button bLogin) {
-        this.bLogin = bLogin;
-    }
-
-    public void setbExit(Button bExit) {
-        this.bExit = bExit;
+    public void setUv(UserView uv) {
+        this.uv = uv;
     }
 }

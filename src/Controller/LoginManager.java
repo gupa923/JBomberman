@@ -5,6 +5,7 @@ import Model.Stati;
 import Model.User;
 import View.GamePanel;
 import View.LoginPanel;
+import View.UserView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,6 +23,7 @@ public class LoginManager {
     private StateManager stateManager;
     private LoginListener loginListener;
     private RegisterListener registerListener;
+    private UserView uv;
     public LoginManager(GamePanel gamePanel){
         this.gamePanel = gamePanel;
         loginPanel = this.gamePanel.getLoginPanel();
@@ -40,11 +42,12 @@ public class LoginManager {
         @Override
         public void actionPerformed(ActionEvent e) {
             boolean flag = accounts.login(new String[] {loginPanel.getUsernameField().getText(), loginPanel.getPasswordField().getText()});
-            System.out.println(flag);
             if (flag){
                 JOptionPane.showMessageDialog(loginPanel, "Login successful!");
                 loginPanel.getUsernameField().setText("");
                 loginPanel.getPasswordField().setText("");
+                User t = accounts.getActiveUser();
+                uv = new UserView(t.getNickname(), t.getGamePlayed(), t.getVictories(), t.getRecord(), t.getAvatarIndex());
                 stateManager.removeLoginPanel();
                 stateManager.changeState(Stati.MENU);
             }else {
@@ -58,12 +61,13 @@ public class LoginManager {
     private class RegisterListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("VAFFANCULO");
             boolean flag = accounts.register(new String[] {loginPanel.getUsernameField().getText(), loginPanel.getPasswordField().getText()});
             if (flag){
                 loginPanel.getUsernameField().setText("");
                 loginPanel.getPasswordField().setText("");
                 JOptionPane.showMessageDialog(loginPanel, "registration successful!");
+                User t = accounts.getActiveUser();
+                uv = new UserView(t.getNickname(), t.getGamePlayed(), t.getVictories(), t.getRecord(), t.getAvatarIndex());
                 stateManager.removeLoginPanel();
                 stateManager.changeState(Stati.MENU);
             }else {
@@ -109,6 +113,10 @@ public class LoginManager {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public UserView getUv() {
+        return uv;
     }
 
     public LoginListener getLoginListener() {

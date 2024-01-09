@@ -1,5 +1,7 @@
 package View.StatesGraphics;
 
+import View.UserView;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
@@ -7,6 +9,7 @@ import java.util.Observable;
 public class SettingsGraphics extends StateGraphics{
     private BufferedImage[] imgs;
     private int imgIndex;
+    private UserView uv;
 
     public SettingsGraphics(){
         loadImgs();
@@ -22,6 +25,7 @@ public class SettingsGraphics extends StateGraphics{
     @Override
     public void draw(Graphics g) {
         g.drawImage(imgs[imgIndex], 0, 0, 816, 816, null);
+        g.drawImage(uv.getAvatar(), 0, 816-64, 64, 64, null);
     }
 
     @Override
@@ -38,5 +42,9 @@ public class SettingsGraphics extends StateGraphics{
                 imgIndex = 0;
             }
         }
+    }
+
+    public void setUv(UserView uv) {
+        this.uv = uv;
     }
 }

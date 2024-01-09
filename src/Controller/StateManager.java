@@ -40,10 +40,6 @@ public class StateManager {
         commandInfo = gameModel.getCommandInfo();
         statsMenu = gameModel.getStatsMenu();
         menuGraphics = new MenuGraphics();
-        menuGraphics.setbExit(menu.getbExit());
-        menuGraphics.setbPlay(menu.getbPlay());
-        menuGraphics.setbSetting(menu.getbSettings());
-        menuGraphics.setbLogin(menu.getbStats());
         matchGraphics = new MatchGraphics();
         pauseGraphics = new PauseGraphics();
         settingsGraphics = new SettingsGraphics();
@@ -107,6 +103,9 @@ public class StateManager {
         gamePanel.remove(loginManager.getLoginPanel());
         loginManager.getLoginPanel().getLoginButton().removeActionListener(loginManager.getLoginListener());
         loginManager.getLoginPanel().getRegisterButton().removeActionListener(loginManager.getRegisterListener());
+        statsMenuGraphics.setUv(loginManager.getUv());
+        menuGraphics.setUv(loginManager.getUv());
+        settingsGraphics.setUv(loginManager.getUv());
     }
 
     public static StateManager getInstance() {

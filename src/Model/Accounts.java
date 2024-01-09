@@ -48,4 +48,8 @@ public class Accounts {
     public ArrayList<User> getUsers() {
         return users;
     }
+
+    public User getActiveUser(){
+        return USER;
+    }
 }
