@@ -24,6 +24,7 @@ public class Partita extends Stato{
     private Win win;
     private boolean gameCompleted;
     private boolean cheat = false;
+    private boolean restarted = true;
 
     public Partita(GameModel gameModel) {
         super(gameModel);
@@ -190,5 +191,13 @@ public class Partita extends Stato{
 
     public void setCheat(boolean cheat) {
         this.cheat = cheat;
+    }
+
+    public boolean isRestarted() {
+        return restarted;
+    }
+
+    public void setRestarted(boolean restarted) {
+        this.restarted = restarted;
     }
 }

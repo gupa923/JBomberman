@@ -66,11 +66,13 @@ public class MouseManager implements MouseListener, MouseMotionListener {
             }
             case MENU -> {
                 if (gameModel.getMenu().getbPlay().getBounds().contains(e.getX(), e.getY())){
-                    //gameModel.getMenu().getbPlay().setMousePressed(true);
+                    if (gameModel.getPartita().isRestarted()) {
+                        stateManager.getLoginManager().getAccounts().getActiveUser().setGamePlayed();
+                        gameModel.getPartita().setRestarted(false);
+                    }
                     gameModel.setStatoAttuale(Stati.PARTITA);
                     stateManager.changeState(Stati.PARTITA);
                 }else if (gameModel.getMenu().getbSettings().getBounds().contains(e.getX(), e.getY())){
-                    //gameModel.getMenu().getbSettings().setMousePressed(true);
                     gameModel.setStatoAttuale(Stati.SETTINGS);
                     stateManager.changeState(Stati.SETTINGS);
                 }else if (gameModel.getMenu().getbStats().getBounds().contains(e.getX(), e.getY())){
@@ -117,11 +119,14 @@ public class MouseManager implements MouseListener, MouseMotionListener {
             }
             case WIN -> {
                 if (gameModel.getPartita().getWin().getbNewGame().getBounds().contains(e.getX(), e.getY())){
+                    stateManager.getLoginManager().getAccounts().getActiveUser().setGamePlayed();
+                    gameModel.getPartita().setRestarted(false);
                     gameModel.getPartita().restartGame();
                     gameModel.setStatoAttuale(Stati.PARTITA);
                     stateManager.changeState(Stati.PARTITA);
                 }
                 if (gameModel.getPartita().getWin().getbMenuIniziale().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.getPartita().setRestarted(true);
                     gameModel.getPartita().restartGame();
                     gameModel.setStatoAttuale(Stati.MENU);
                     stateManager.changeState(Stati.MENU);
@@ -129,6 +134,7 @@ public class MouseManager implements MouseListener, MouseMotionListener {
             }
             case GAME_OVER -> {
                 if (gameModel.getPartita().getGameOver().getbRetry().getBounds().contains(e.getX(), e.getY())){
+                    stateManager.getLoginManager().getAccounts().getActiveUser().setGamePlayed();
                     gameModel.getPartita().restartGame();
                     gameModel.setStatoAttuale(Stati.PARTITA);
                     stateManager.changeState(Stati.PARTITA);

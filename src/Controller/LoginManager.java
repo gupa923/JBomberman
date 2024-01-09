@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.lang.reflect.AccessFlag;
+import java.lang.reflect.GenericArrayType;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -119,6 +120,10 @@ public class LoginManager {
 
     public UserView getUv() {
         return uv;
+    }
+
+    public Accounts getAccounts() {
+        return accounts;
     }
 
     public LoginListener getLoginListener() {

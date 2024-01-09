@@ -27,7 +27,6 @@ public class Accounts {
         for (User u: users){
             if (u.getNickname().equals(credential[0]) && u.getPassword().equals(credential[1])){
                 USER = u;
-                USER.setGamePlayed();
                 return true;
             }
         }
