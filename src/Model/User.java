@@ -1,9 +1,11 @@
 package Model;
 
 import java.util.Objects;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Random;
 
-public class User {
+public class User extends Observable {
     private final String nickname;
     private final String password;
     private final int avatarIndex;
@@ -60,5 +62,21 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public int getAvatarIndex() {
+        return avatarIndex;
+    }
+
+    public int getGamePlayed() {
+        return gamePlayed;
+    }
+
+    public int getRecord() {
+        return record;
+    }
+
+    public int getVictories() {
+        return victories;
     }
 }
