@@ -33,6 +33,13 @@ public class UserView implements Observer, Drawable, ImgImporter {
     @Override
     public void draw(Graphics g) {
         g.drawImage(avatar, 666, 237, 64, 64, null);
+        g.setFont(new Font("SansSerif", 0, 40));
+        g.drawString(nickname, 302, 287);
+        g.drawString(String.valueOf(games), 565, 427);
+        g.drawString(String.valueOf(victories), 565, 566);
+        g.drawString(String.valueOf(record), 492, 696);
+        //g.drawString(String.valueOf(victories), 302, 287);
+        //g.drawString(String.valueOf(avatar), 302, 287);
     }
 
     public BufferedImage getAvatar() {
