@@ -4,7 +4,8 @@ import Model.GameModel;
 import Model.UI.Button;
 
 public class Win extends Stato{
-    private Button bNewGame, bMenuIniziale;
+    private final Button bNewGame;
+    private final Button bMenuIniziale;
     public Win(GameModel gameModel) {
         super(gameModel);
         bNewGame = new Button(275, 304 + 41, 272, 64, "NEW GAME");

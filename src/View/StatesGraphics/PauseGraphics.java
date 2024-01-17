@@ -28,8 +28,7 @@ public class PauseGraphics extends StateGraphics{
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof String){
-            String message = (String) arg;
+        if (arg instanceof String message){
             if (message.equals("RESUME PRESSED")){
                 imgIndex = 3;
             }else if (message.equals("CLOSE PRESSED")){

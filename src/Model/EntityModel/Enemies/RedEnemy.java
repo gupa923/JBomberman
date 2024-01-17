@@ -159,8 +159,7 @@ public class RedEnemy extends Enemy {
 
     @Override
     public boolean equals(Object obj){
-        if (obj instanceof RedEnemy){
-            RedEnemy e = (RedEnemy) obj;
+        if (obj instanceof RedEnemy e){
             return e.x == this.x && e.y == this.y;
         }
         return false;

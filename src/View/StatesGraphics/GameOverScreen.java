@@ -29,8 +29,7 @@ public class GameOverScreen extends StateGraphics{
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof String){
-            String message = (String) arg;
+        if (arg instanceof String message){
             if (message.equals("RETRY PRESSED")){
                 imgIndex = 2;
             }else if (message.equals("QUIT PRESSED")){

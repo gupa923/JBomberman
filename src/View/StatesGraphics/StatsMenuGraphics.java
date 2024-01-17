@@ -29,8 +29,7 @@ public class StatsMenuGraphics extends StateGraphics {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof String){
-            String message = (String) arg;
+        if (arg instanceof String message){
             if (message.equals("BACK PRESSED")){
                 imgIndex = 1;
             }else if (message.equals("NOT PRESSED")){

@@ -4,11 +4,13 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class ObstacleGraphics extends EntityGraphics {
-    private BufferedImage sprite, explosionSprite, t1Sprite;
+    private final BufferedImage sprite;
+    private final BufferedImage explosionSprite;
+    private BufferedImage t1Sprite;
     private boolean exploading = false;
     private BufferedImage[] sprites, explosionSprites, t1ExplosionSprites;
     private int animationIndex, animationTick, animatioSpeed = 20;
-    private int type;
+    private final int type;
 
 
     public ObstacleGraphics(int x, int y, int type){
@@ -51,7 +53,7 @@ public class ObstacleGraphics extends EntityGraphics {
         t1ExplosionSprites = new BufferedImage[6];
         BufferedImage t = loadImg("/Imgs/entitySprites/obstacleSprite/Sprite_Buco.png");
         for (int i = 0; i < 6; i++) {
-            t1ExplosionSprites[i] = t.getSubimage(i*16+ 1*i, 0, 16,16);
+            t1ExplosionSprites[i] = t.getSubimage(i*16+ i, 0, 16,16);
         }
     }
 

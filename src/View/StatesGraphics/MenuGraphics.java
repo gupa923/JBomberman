@@ -37,8 +37,7 @@ public class MenuGraphics extends StateGraphics{
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof String){
-            String message = (String) arg;
+        if (arg instanceof String message){
             if (message.equals("PLAY PRESSED")){
                 imgIndex = 4;
             }else if (message.equals("SETTINGS PRESSED")){

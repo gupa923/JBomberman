@@ -19,11 +19,11 @@ import java.util.ArrayList;
 public class LevelManager {
     private static LevelManager instance;
 
-    private GameModel gameModel;
+    private final GameModel gameModel;
     private Level level;
-    private ArrayList<Level> levels;
+    private final ArrayList<Level> levels;
     private LevelGraphics levelGraphics;
-    private ArrayList<LevelGraphics> levelGraphicsArrayList;
+    private final ArrayList<LevelGraphics> levelGraphicsArrayList;
 
     private LevelManager(){
         levels = new ArrayList<>();

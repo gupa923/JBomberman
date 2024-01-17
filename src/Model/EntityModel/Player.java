@@ -24,7 +24,7 @@ public class Player extends Entity{
      * ArrayList che contiene le bombe attive
      */
     public static ArrayList<Bomb> BOMBS = new ArrayList<>();
-    private int speed = 1;
+    private final int speed = 1;
     private int speedTick, speedClock = 3;
 
     private boolean moving;

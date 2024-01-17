@@ -8,9 +8,10 @@ import java.awt.image.BufferedImage;
 
 public class LoginPanel extends JPanel implements ImgImporter {
 
-    private JTextField usernameField;
-    private JPasswordField passwordField;
-    private JButton loginButton, registerButton;
+    private final JTextField usernameField;
+    private final JPasswordField passwordField;
+    private final JButton loginButton;
+    private final JButton registerButton;
 
     public LoginPanel(){
         //setSize(272, 272);

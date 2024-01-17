@@ -6,7 +6,10 @@ import java.util.Observable;
 
 public class BlueEnemyGraphics extends EnemyGraphics{
     private BufferedImage[][] sprites;
-    private int typeAnimation, animationIndexUpdate, animationIndex, animationSpeed = 10;
+    private int typeAnimation;
+    private int animationIndexUpdate;
+    private int animationIndex;
+    private final int animationSpeed = 10;
     private boolean moving = true;
     public BlueEnemyGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -24,22 +27,22 @@ public class BlueEnemyGraphics extends EnemyGraphics{
 
         BufferedImage[] up = new BufferedImage[4];
         for (int i = 0; i < 4;i++){
-            up[i] = temp.getSubimage(i*16 + 1*i, 0, 16, 16);
+            up[i] = temp.getSubimage(i*16 + i, 0, 16, 16);
         }
 
         BufferedImage[] sx = new BufferedImage[6];
         for (int i = 0; i < 6;i++){
-            sx[i] = temp2.getSubimage(i*16 + 1*i, 0, 16, 16);
+            sx[i] = temp2.getSubimage(i*16 + i, 0, 16, 16);
         }
 
         BufferedImage[] dx = new BufferedImage[6];
         for (int i = 0; i < 6;i++){
-            dx[i] = temp3.getSubimage(i*16 + 1*i, 0, 16, 16);
+            dx[i] = temp3.getSubimage(i*16 + i, 0, 16, 16);
         }
 
         BufferedImage[] down = new BufferedImage[10];
         for (int i = 0; i < 10;i++){
-            down[i] = temp4.getSubimage(i*16 + 1*i, 0, 16, 16);
+            down[i] = temp4.getSubimage(i*16 + i, 0, 16, 16);
         }
 
         sprites = new BufferedImage[][]{up, sx, dx, down};
@@ -85,8 +88,7 @@ public class BlueEnemyGraphics extends EnemyGraphics{
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof String){
-            String dir = (String) arg;
+        if (arg instanceof String dir){
             switch (dir){
                 case "LEFT" -> {
                     moving = true;
@@ -121,8 +123,7 @@ public class BlueEnemyGraphics extends EnemyGraphics{
     }
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof BlueEnemyGraphics){
-            BlueEnemyGraphics r = (BlueEnemyGraphics) obj;
+        if (obj instanceof BlueEnemyGraphics r){
             return r.x == x && r.y == y;
         }
         return false;

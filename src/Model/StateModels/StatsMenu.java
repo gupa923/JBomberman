@@ -5,7 +5,7 @@ import Model.GameModel;
 import Model.UI.Button;
 
 public class StatsMenu extends Stato {
-    private Button bBack;
+    private final Button bBack;
 
     public StatsMenu(GameModel gameModel) {
         super(gameModel);

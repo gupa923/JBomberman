@@ -27,8 +27,7 @@ public class WinGraphics extends StateGraphics{
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof String){
-            String message = (String) arg;
+        if (arg instanceof String message){
             if (message.equals("NEW GAME PRESSED")){
                 imgIndex = 2;
             }else if (message.equals("MENU INIZIALE PRESSED")){

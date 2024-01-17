@@ -8,8 +8,8 @@ public class Button {
     public int x, y, w, h;
     private boolean mousePressed;
     private Stato stato;
-    private String text;
-    private Rectangle2D.Float bounds;
+    private final String text;
+    private final Rectangle2D.Float bounds;
 
     public Button(int x, int y, int w, int h,String text) {
         this.x = x;

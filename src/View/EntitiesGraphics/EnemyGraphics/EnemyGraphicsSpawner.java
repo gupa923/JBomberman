@@ -10,8 +10,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class EnemyGraphicsSpawner implements Observer , Drawable {
-    private ArrayList<EnemyGraphics> enemyGraphics, inactiveEnemies;
-    private AudioPlayer audioPlayer;
+    private final ArrayList<EnemyGraphics> enemyGraphics;
+    private final ArrayList<EnemyGraphics> inactiveEnemies;
+    private final AudioPlayer audioPlayer;
 
     public EnemyGraphicsSpawner(){
         audioPlayer = new AudioPlayer();
@@ -20,8 +21,7 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
     }
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof int[]){
-            int[] t = (int[]) arg;
+        if (arg instanceof int[] t){
             if (t[4] == 1) {
                 RedEnemyGraphics e = new RedEnemyGraphics(t[0], t[1], t[2], t[3]);
                 for (int i = 0; i < enemyGraphics.size(); i++){
@@ -69,8 +69,7 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
                 }
             }
 
-        }else if (arg instanceof int[][]) {
-            int[][] tm = (int[][] ) arg;
+        }else if (arg instanceof int[][] tm) {
             for (int i = 0; i < tm.length; i++){
                 int[] t = tm[i];
                 int type = t[4];
@@ -89,8 +88,7 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
                     enemyGraphics.add(new ClownBossGraphics(t[0], t[1], t[2], t[3]));
                 }
             }
-        }else if (arg instanceof String){
-            String temp = (String) arg;
+        }else if (arg instanceof String temp){
             for (EnemyGraphics e: inactiveEnemies){
                 e.resetPos();
                 enemyGraphics.add(e);

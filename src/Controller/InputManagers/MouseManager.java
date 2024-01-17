@@ -19,8 +19,8 @@ import static View.AudioPlayer.PLAY_EFFECTS;
  */
 public class MouseManager implements MouseListener, MouseMotionListener {
 
-    private GameModel gameModel;
-    private StateManager stateManager;
+    private final GameModel gameModel;
+    private final StateManager stateManager;
 
     public MouseManager(GameModel gameModel, StateManager stateManager) {
         this.gameModel = gameModel;
@@ -189,91 +189,31 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     public void mouseMoved(MouseEvent e) {
         switch (gameModel.getStatoAttuale()){
             case MENU -> {
-                if (gameModel.getMenu().getbPlay().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getMenu().getbPlay().setMousePressed(true);
-                } else{
-                    gameModel.getMenu().getbPlay().setMousePressed(false);
-                }
-                if (gameModel.getMenu().getbSettings().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getMenu().getbSettings().setMousePressed(true);
-                }else {
-                    gameModel.getMenu().getbSettings().setMousePressed(false);
-                }
-                 if (gameModel.getMenu().getbStats().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getMenu().getbStats().setMousePressed(true);
-                }else{
-                     gameModel.getMenu().getbStats().setMousePressed(false);
-                 }
-                 if(gameModel.getMenu().getbExit().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getMenu().getbExit().setMousePressed(true);
-                }else{
-                    gameModel.getMenu().getbExit().setMousePressed(false);
-                }
+                gameModel.getMenu().getbPlay().setMousePressed(gameModel.getMenu().getbPlay().getBounds().contains(e.getX(), e.getY()));
+                gameModel.getMenu().getbSettings().setMousePressed(gameModel.getMenu().getbSettings().getBounds().contains(e.getX(), e.getY()));
+                gameModel.getMenu().getbStats().setMousePressed(gameModel.getMenu().getbStats().getBounds().contains(e.getX(), e.getY()));
+                gameModel.getMenu().getbExit().setMousePressed(gameModel.getMenu().getbExit().getBounds().contains(e.getX(), e.getY()));
             }
             case PAUSE -> {
-                if (gameModel.getPause().getbResume().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getPause().getbResume().setMousePressed(true);
-                } else{
-                    gameModel.getPause().getbResume().setMousePressed(false);
-                }
-                if (gameModel.getPause().getbClose().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getPause().getbClose().setMousePressed(true);
-                }else {
-                    gameModel.getPause().getbClose().setMousePressed(false);
-                }
-                if (gameModel.getPause().getbQuit().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getPause().getbQuit().setMousePressed(true);
-                }else{
-                    gameModel.getPause().getbQuit().setMousePressed(false);
-                }
+                gameModel.getPause().getbResume().setMousePressed(gameModel.getPause().getbResume().getBounds().contains(e.getX(), e.getY()));
+                gameModel.getPause().getbClose().setMousePressed(gameModel.getPause().getbClose().getBounds().contains(e.getX(), e.getY()));
+                gameModel.getPause().getbQuit().setMousePressed(gameModel.getPause().getbQuit().getBounds().contains(e.getX(), e.getY()));
             }
             case SETTINGS -> {
-                if (gameModel.getSettings().getbAudio() .getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getSettings().getbAudio().setMousePressed(true);
-                } else{
-                    gameModel.getSettings().getbAudio().setMousePressed(false);
-                }
-                if (gameModel.getSettings().getbComandi().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getSettings().getbComandi().setMousePressed(true);
-                }else {
-                    gameModel.getSettings().getbComandi().setMousePressed(false);
-                }
-                if (gameModel.getSettings().getbStartPage().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getSettings().getbStartPage().setMousePressed(true);
-                }else{
-                    gameModel.getSettings().getbStartPage().setMousePressed(false);
-                }
+                gameModel.getSettings().getbAudio().setMousePressed(gameModel.getSettings().getbAudio().getBounds().contains(e.getX(), e.getY()));
+                gameModel.getSettings().getbComandi().setMousePressed(gameModel.getSettings().getbComandi().getBounds().contains(e.getX(), e.getY()));
+                gameModel.getSettings().getbStartPage().setMousePressed(gameModel.getSettings().getbStartPage().getBounds().contains(e.getX(), e.getY()));
             }
             case STATS -> {
-                if(gameModel.getStatsMenu().getbBack().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getStatsMenu().getbBack().setMousePressed(true);
-                }else{
-                    gameModel.getStatsMenu().getbBack().setMousePressed(false);
-                }
+                gameModel.getStatsMenu().getbBack().setMousePressed(gameModel.getStatsMenu().getbBack().getBounds().contains(e.getX(), e.getY()));
             }
             case WIN -> {
-                if (gameModel.getPartita().getWin().getbNewGame().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getPartita().getWin().getbNewGame().setMousePressed(true);
-                } else{
-                    gameModel.getPartita().getWin().getbNewGame().setMousePressed(false);
-                }
-                if (gameModel.getPartita().getWin().getbMenuIniziale().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getPartita().getWin().getbMenuIniziale().setMousePressed(true);
-                }else {
-                    gameModel.getPartita().getWin().getbMenuIniziale().setMousePressed(false);
-                }
+                gameModel.getPartita().getWin().getbNewGame().setMousePressed(gameModel.getPartita().getWin().getbNewGame().getBounds().contains(e.getX(), e.getY()));
+                gameModel.getPartita().getWin().getbMenuIniziale().setMousePressed(gameModel.getPartita().getWin().getbMenuIniziale().getBounds().contains(e.getX(), e.getY()));
             }
             case GAME_OVER -> {
-                if (gameModel.getPartita().getGameOver().getbRetry().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getPartita().getGameOver().getbRetry().setMousePressed(true);
-                } else{
-                    gameModel.getPartita().getGameOver().getbRetry().setMousePressed(false);
-                }
-                if (gameModel.getPartita().getGameOver().getbQuit().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.getPartita().getGameOver().getbQuit().setMousePressed(true);
-                }else {
-                    gameModel.getPartita().getGameOver().getbQuit().setMousePressed(false);
-                }
+                gameModel.getPartita().getGameOver().getbRetry().setMousePressed(gameModel.getPartita().getGameOver().getbRetry().getBounds().contains(e.getX(), e.getY()));
+                gameModel.getPartita().getGameOver().getbQuit().setMousePressed(gameModel.getPartita().getGameOver().getbQuit().getBounds().contains(e.getX(), e.getY()));
             }
         }
     }

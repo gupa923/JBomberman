@@ -17,13 +17,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LoginManager {
-    private LoginPanel loginPanel;
-    private GamePanel gamePanel;
-    private Accounts accounts;
+    private final LoginPanel loginPanel;
+    private final GamePanel gamePanel;
+    private final Accounts accounts;
     private ArrayList<String> userStrings;
-    private StateManager stateManager;
-    private LoginListener loginListener;
-    private RegisterListener registerListener;
+    private final StateManager stateManager;
+    private final LoginListener loginListener;
+    private final RegisterListener registerListener;
     private UserView uv;
     public LoginManager(GamePanel gamePanel){
         this.gamePanel = gamePanel;

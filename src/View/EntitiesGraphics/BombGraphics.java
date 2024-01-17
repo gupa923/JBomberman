@@ -12,11 +12,11 @@ public class BombGraphics extends EntityGraphics {
     private BufferedImage[] imgs, explosionImgs;
     private int animationIndex;
     private int numFrames;
-    private int animationSpeed = 12;
+    private final int animationSpeed = 12;
     private boolean exploding;
-    private boolean canDraw = true;
+    private final boolean canDraw = true;
     private int[][] explosion;
-    private AudioPlayer audioPlayer;
+    private final AudioPlayer audioPlayer;
 
     public BombGraphics(int x, int y){
         super (x*16, y*16, 16, 16);
@@ -40,7 +40,7 @@ public class BombGraphics extends EntityGraphics {
         explosionImgs[1] = temp1.getSubimage(7*16 + 8, 4*16 + 4, 16, 16);
         explosionImgs[2] = temp1.getSubimage(6*16 + 7, 7*16 + 7, 16, 16);
         explosionImgs[3] = temp1.getSubimage(3*16 + 4, 3*16 + 3, 16, 16);
-        explosionImgs[4] = temp1.getSubimage(1*16 + 2, 6*16 + 6, 16, 16);
+        explosionImgs[4] = temp1.getSubimage(16 + 2, 6*16 + 6, 16, 16);
     }
 
     @Override

@@ -7,7 +7,9 @@ import java.util.Observable;
 public class YellowEnemyGraphics extends EnemyGraphics{
     private BufferedImage[] sprites;
     private int rem = 1;
-    private int animationIndexUpdate, animationIndex, animationSpeed = 8;
+    private int animationIndexUpdate;
+    private int animationIndex;
+    private final int animationSpeed = 8;
     private boolean moving = true;
     public YellowEnemyGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -72,8 +74,7 @@ public class YellowEnemyGraphics extends EnemyGraphics{
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof String){
-            String dir = (String) arg;
+        if (arg instanceof String dir){
             switch (dir){
                 case "LEFT" -> {
                     moving = true;
@@ -109,8 +110,7 @@ public class YellowEnemyGraphics extends EnemyGraphics{
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof YellowEnemyGraphics){
-            YellowEnemyGraphics r = (YellowEnemyGraphics) obj;
+        if (obj instanceof YellowEnemyGraphics r){
             return r.x == x && r.y == y;
         }
         return false;

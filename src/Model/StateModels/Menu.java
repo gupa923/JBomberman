@@ -5,7 +5,10 @@ import Model.UI.Button;
 
 
 public class Menu extends Stato {
-    private Button bPlay, bSettings, bStats, bExit;
+    private final Button bPlay;
+    private final Button bSettings;
+    private final Button bStats;
+    private final Button bExit;
     public Menu(GameModel gameModel) {
         super(gameModel);
         bPlay = new Button(272, 104,272, 64, "PLAY");

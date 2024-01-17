@@ -14,21 +14,21 @@ import View.StatesGraphics.*;
  */
 public class StateManager {
 
-    private GameModel gameModel;
-    private Menu menu;
-    private Partita partita;
-    private Pause pause;
-    private Settings settings;
-    private CommandInfo commandInfo;
-    private StatsMenu statsMenu;
-    private MatchGraphics matchGraphics;
-    private MenuGraphics menuGraphics;
-    private PauseGraphics pauseGraphics;
-    private SettingsGraphics settingsGraphics;
-    private CommandInfoGraphics commandInfoGraphics;
+    private final GameModel gameModel;
+    private final Menu menu;
+    private final Partita partita;
+    private final Pause pause;
+    private final Settings settings;
+    private final CommandInfo commandInfo;
+    private final StatsMenu statsMenu;
+    private final MatchGraphics matchGraphics;
+    private final MenuGraphics menuGraphics;
+    private final PauseGraphics pauseGraphics;
+    private final SettingsGraphics settingsGraphics;
+    private final CommandInfoGraphics commandInfoGraphics;
     private GamePanel gamePanel;
     private LoginManager loginManager;
-    private StatsMenuGraphics statsMenuGraphics;
+    private final StatsMenuGraphics statsMenuGraphics;
     private static StateManager instance;
 
     private StateManager(){

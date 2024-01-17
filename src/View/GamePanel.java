@@ -19,7 +19,7 @@ public class GamePanel extends JPanel {
     private MatchGraphics matchGraphics;
     private MenuGraphics menuGraphics;
     private StateGraphics activeState;
-    private LoginPanel loginPanel;
+    private final LoginPanel loginPanel;
 
     public GamePanel(StateGraphics activeState){
         loginPanel = new LoginPanel();

@@ -13,8 +13,8 @@ import java.awt.event.KeyListener;
  */
 public class KeyManager implements KeyListener {
 
-    private GameModel gameModel;
-    private StateManager stateManager;
+    private final GameModel gameModel;
+    private final StateManager stateManager;
 
     public KeyManager(GameModel gameModel, StateManager stateManager) {
         this.gameModel = gameModel;

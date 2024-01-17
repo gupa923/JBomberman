@@ -4,7 +4,8 @@ import Model.GameModel;
 import Model.UI.Button;
 
 public class GameOver extends Stato{
-    private Button bRetry, bQuit;
+    private final Button bRetry;
+    private final Button bQuit;
 
     public GameOver(GameModel gameModel) {
         super(gameModel);

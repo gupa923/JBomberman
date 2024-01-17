@@ -187,8 +187,7 @@ public class ClownBoss extends Enemy{
 
     @Override
     public boolean equals(Object obj){
-        if (obj instanceof ClownBoss){
-            ClownBoss e = (ClownBoss) obj;
+        if (obj instanceof ClownBoss e){
             return e.x == this.x && e.y == this.y;
         }
         return false;

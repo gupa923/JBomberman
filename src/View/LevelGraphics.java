@@ -20,12 +20,13 @@ import java.util.Observer;
  * @author gupa9
  */
 public class LevelGraphics implements ImgImporter, Drawable, Observer {
-    private BufferedImage lvl1Bg;
-    private ArrayList<ObstacleGraphics> obstacleGraphics, exploadingObstacles;
-    private ArrayList<PowerUpGraphics> powerUps;
+    private final BufferedImage lvl1Bg;
+    private final ArrayList<ObstacleGraphics> obstacleGraphics;
+    private final ArrayList<ObstacleGraphics> exploadingObstacles;
+    private final ArrayList<PowerUpGraphics> powerUps;
     private EnemyGraphicsSpawner enemyGraphicsSpawner;
     private int type;
-    private AudioPlayer audioPlayer;
+    private final AudioPlayer audioPlayer;
 
     public LevelGraphics(String filename) {
         if (filename.equals("/Imgs/livelli/livello2/Stage2.png")){
@@ -78,8 +79,7 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
             }catch (ArrayIndexOutOfBoundsException e ){
                 System.out.println("BOSS LEVEL");
             }
-        }else if (arg instanceof int[]){
-            int[] temp2 = (int[]) arg;
+        }else if (arg instanceof int[] temp2){
             if (temp2.length == 3){
                 PowerUpGraphics g = new PowerUpGraphics(temp2[0], temp2[1], temp2[2]);
                 for (int i = 0; i < powerUps.size(); i++){

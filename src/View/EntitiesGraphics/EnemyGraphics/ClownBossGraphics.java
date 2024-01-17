@@ -15,7 +15,7 @@ public class ClownBossGraphics extends EnemyGraphics{
     private Rectangle2D.Float damageBox;
     private int animationIndex;
     private int animationIndexUpdate;
-    private int animationSpeed = 15;
+    private final int animationSpeed = 15;
 
     public ClownBossGraphics(int x, int y, int w, int h) {
         super(x-47, y-44, w, h);
@@ -90,8 +90,7 @@ public class ClownBossGraphics extends EnemyGraphics{
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof String){
-            String dir = (String) arg;
+        if (arg instanceof String dir){
             switch (dir){
                 case "LEFT" -> {
                     moving = true;
@@ -126,8 +125,7 @@ public class ClownBossGraphics extends EnemyGraphics{
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof ClownBossGraphics){
-            ClownBossGraphics r = (ClownBossGraphics) obj;
+        if (obj instanceof ClownBossGraphics r){
             return r.x == x && r.y == y;
         }
         return false;

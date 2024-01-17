@@ -11,7 +11,7 @@ import java.io.InputStream;
  */
 public interface ImgImporter {
 
-    public default BufferedImage loadImg(String filename){
+    default BufferedImage loadImg(String filename){
         InputStream is = ImgImporter.class.getResourceAsStream(filename);
 
         BufferedImage temp = null;

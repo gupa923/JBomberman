@@ -4,7 +4,9 @@ import Model.GameModel;
 import Model.UI.Button;
 
 public class Settings extends Stato{
-    private Button bComandi, bAudio, bStartPage;
+    private final Button bComandi;
+    private final Button bAudio;
+    private final Button bStartPage;
 
     public Settings(GameModel gameModel) {
         super(gameModel);

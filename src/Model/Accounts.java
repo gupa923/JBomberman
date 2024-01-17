@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import static Model.GameModel.USER;
 
 public class Accounts {
-    private ArrayList<User> users = new ArrayList<>();
+    private final ArrayList<User> users = new ArrayList<>();
 
 
     public Accounts(ArrayList<String> usersStrings) {

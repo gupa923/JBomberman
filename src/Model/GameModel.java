@@ -5,12 +5,12 @@ import Model.StateModels.*;
 public class GameModel{
     private static GameModel instance;
     private Stati statoAttuale;
-    private Menu menu;
-    private Partita partita;
-    private Pause pause;
-    private Settings settings;
-    private CommandInfo commandInfo;
-    private StatsMenu statsMenu;
+    private final Menu menu;
+    private final Partita partita;
+    private final Pause pause;
+    private final Settings settings;
+    private final CommandInfo commandInfo;
+    private final StatsMenu statsMenu;
     public static User USER;
 
 

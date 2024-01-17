@@ -19,10 +19,11 @@ public class MatchGraphics extends StateGraphics {
     private PlayerGraphics playerGraphics;
     private int actualLevel;
     private ArrayList<LevelGraphics> levelGraphics;
-    private GameOverScreen gameOverScreen;
+    private final GameOverScreen gameOverScreen;
     private boolean win, playing = true;
-    private WinGraphics winGraphics;
-    private BufferedImage matchUI, lifeUI;
+    private final WinGraphics winGraphics;
+    private final BufferedImage matchUI;
+    private final BufferedImage lifeUI;
     public static int SCORE_VIEW = 0;
     public static int LIFE_VIEW = 7;
 
@@ -86,8 +87,7 @@ public class MatchGraphics extends StateGraphics {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof String){
-            String message = (String) arg;
+        if (arg instanceof String message){
             if (message.equals("RESET")){
                 resetALL();
                 LIFE_VIEW--;

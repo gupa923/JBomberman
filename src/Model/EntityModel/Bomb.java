@@ -17,7 +17,7 @@ Bomb extends Entity {
      */
     public static int BOMB_COUNTER = 0;
     private int notCollideTick = 0;
-    private Player player;
+    private final Player player;
     private final int collideTickLim = 180;
     private final int explosionTick = 480;
     private final int explosionEnd = 600;
@@ -281,8 +281,7 @@ Bomb extends Entity {
 
     @Override
     public boolean equals(Object o){
-        if (o instanceof Bomb){
-            Bomb b = (Bomb) o;
+        if (o instanceof Bomb b){
             return this.x == b.x && this.y == b.y;
         }
         return false;

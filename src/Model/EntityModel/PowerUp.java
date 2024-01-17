@@ -9,12 +9,12 @@ import java.awt.geom.Rectangle2D;
  */
 public class PowerUp extends Entity{
     public static Player player;
-    private String name;
-    private int val;
-    private int id;
+    private final String name;
+    private final int val;
+    private final int id;
     private boolean collision, active = true;
     private boolean over = true;
-    private Rectangle2D.Float bounds;
+    private final Rectangle2D.Float bounds;
     public PowerUp(int x, int y, PowerUpType pType) {
         super(x, y, 16, 16);
         name = pType.getName();

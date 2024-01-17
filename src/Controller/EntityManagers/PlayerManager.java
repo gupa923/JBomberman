@@ -11,9 +11,9 @@ import View.EntitiesGraphics.PlayerGraphics;
  */
 public class PlayerManager {
     private static PlayerManager instance;
-    private GameModel gameModel;
-    private Player player;
-    private PlayerGraphics playerGraphics;
+    private final GameModel gameModel;
+    private final Player player;
+    private final PlayerGraphics playerGraphics;
 
     //TODO alla fine ricordati di togliere la hitbox dal playerGraphics
     private PlayerManager(){

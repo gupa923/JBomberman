@@ -27,12 +27,17 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     private BufferedImage right, left, up, down, iRight, iLeft, iUp, iDown;
     private BufferedImage[] imgAmount, immortailtyImgAmount, nextLevel, deathSprites;
     private BufferedImage[][] movingAnimations, immortalityMovingAnimations;
-    private int animationIndex, cLevelIndex, cLevelIndexUpdate, animationIndexUpdate, typeAnimation, animationSpeed = 10;
+    private int animationIndex;
+    private int cLevelIndex;
+    private int cLevelIndexUpdate;
+    private int animationIndexUpdate;
+    private int typeAnimation;
+    private final int animationSpeed = 10;
     private BombGraphics bombGraphics;
-    private ArrayList<BombGraphics> bombViews;
+    private final ArrayList<BombGraphics> bombViews;
     private int deathTick, deathIndex;
     private boolean death;
-    private AudioPlayer audioPlayer;
+    private final AudioPlayer audioPlayer;
 
     //TODO ricordati di eliminare questa variabile perchè ci serve solo a fini di debug.
     private Hitbox hitbox;
@@ -104,7 +109,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
             }else if (i == 0){
                 deathSprites[i] = temp1.getSubimage(0,0, 15, 32 );
             }else{
-                deathSprites[i] = temp1.getSubimage(15*i + 1*i - 1,0, 15, 32 );
+                deathSprites[i] = temp1.getSubimage(15*i + i - 1,0, 15, 32 );
             }
         }
     }
@@ -118,8 +123,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
      */
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof String){
-            String direction = (String) arg;
+        if (arg instanceof String direction){
             switch (direction){
                 case "RIGHT" -> {
                     x += speed;
@@ -174,12 +178,10 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
                 }
             }
         }
-        if (arg instanceof int[][]){
-            int[][] pos = (int[][]) arg;
+        if (arg instanceof int[][] pos){
             explodBomb(pos);
         }
-        else if (arg instanceof String[]){
-            String[] a = (String[] ) arg;
+        else if (arg instanceof String[] a){
             despawnBomb(a);
         } else if (arg instanceof Integer) {
             int i = (Integer) arg;

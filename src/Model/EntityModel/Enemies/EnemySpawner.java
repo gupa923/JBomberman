@@ -11,10 +11,10 @@ import java.util.Observable;
  * Questa classe crea e gestisce i nemici all'interno di un livello della partita. I nemici vengono creati a partire dalla matrice di interi data. questa classe contiene due array di nemici. Uno è quello dei nemici attivi nel gioco, mentre l'altro contiene i nemici inattivi.
  */
 public class EnemySpawner extends Observable {
-    private int[][] data;
-    private ArrayList<Enemy> inactiveEnemies;
-    private Level level;
-    private ArrayList<Enemy> enemies;
+    private final int[][] data;
+    private final ArrayList<Enemy> inactiveEnemies;
+    private final Level level;
+    private final ArrayList<Enemy> enemies;
 
     /**
      * dato il parametro level, al campo data viene assegnato il valore della matrice data del level. Tremite il metodo createEnemies() vengono creati i nemici e vengono aggiunti all'ArrayList enemy

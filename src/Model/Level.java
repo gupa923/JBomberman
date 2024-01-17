@@ -22,9 +22,9 @@ import static Model.StateModels.Partita.SCORE;
 // TODO fare classe figlia che gestisce i livelli con i Boss.
 public class Level extends Observable {
     public static PowerUpType[] pTypes = PowerUpType.values();
-    private ArrayList<PowerUp> powerUps = new ArrayList<>();
-    private int[][] data;
-    private ArrayList<Obstacle> obstacles;
+    private final ArrayList<PowerUp> powerUps = new ArrayList<>();
+    private final int[][] data;
+    private final ArrayList<Obstacle> obstacles;
     private boolean firstUpdate = true;
     private EnemySpawner enemySpawner;
     private Player player;

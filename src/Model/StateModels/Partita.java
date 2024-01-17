@@ -20,8 +20,8 @@ public class Partita extends Stato{
     private Player player;
     private int actuaLevel;
     private ArrayList<Level> levels;
-    private GameOver gameOver;
-    private Win win;
+    private final GameOver gameOver;
+    private final Win win;
     private boolean gameCompleted;
     private boolean cheat = false;
     private boolean restarted = true;
@@ -77,14 +77,10 @@ public class Partita extends Stato{
             return true;
         }
         if (actuaLevel == 3){
-            if (!levels.get(actuaLevel).getEnemySpawner().getEnemies().isEmpty()){
-                return false;
-            }else {
-//                if (player.getHitbox().x / 16 == 11 && player.getHitbox().y/16 == 7){
-//                    return true;
-//                }
-                return true;
-            }
+            //                if (player.getHitbox().x / 16 == 11 && player.getHitbox().y/16 == 7){
+            //                    return true;
+            //                }
+            return levels.get(actuaLevel).getEnemySpawner().getEnemies().isEmpty();
         } else {
             if (!levels.get(actuaLevel).getEnemySpawner().getEnemies().isEmpty()) {
                 return false;

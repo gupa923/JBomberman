@@ -12,7 +12,7 @@ import javax.swing.*;
  */
 public class GameFrame extends JFrame {
 
-    private GamePanel gamePanel;
+    private final GamePanel gamePanel;
 
     /**
      * ha campo GamePanel

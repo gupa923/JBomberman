@@ -9,8 +9,10 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class UserView implements Observer, Drawable, ImgImporter {
-    private String nickname;
-    private int games, victories, record;
+    private final String nickname;
+    private int games;
+    private int victories;
+    private final int record;
     private BufferedImage avatar;
 
     public UserView(String nickname, int games, int victories, int record, int avatarIndex) {
@@ -27,8 +29,7 @@ public class UserView implements Observer, Drawable, ImgImporter {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof String){
-            String s = (String) arg;
+        if (arg instanceof String s){
             if (s.equals("GAME")){
                 games++;
             }else if (s.equals("VICTORY")){

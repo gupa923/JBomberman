@@ -148,8 +148,7 @@ public class BrownEnemy extends Enemy{
 
     @Override
     public boolean equals(Object obj){
-        if (obj instanceof BrownEnemy){
-            BrownEnemy e = (BrownEnemy) obj;
+        if (obj instanceof BrownEnemy e){
             return e.x == this.x && e.y == this.y;
         }
         return false;

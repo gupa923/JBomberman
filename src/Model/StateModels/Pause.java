@@ -8,7 +8,9 @@ import Model.UI.Button;
  *
  */
 public class Pause extends Stato{
-    private Button bResume, bQuit, bClose;
+    private final Button bResume;
+    private final Button bQuit;
+    private final Button bClose;
     public Pause(GameModel gameModel) {
         super(gameModel);
         bResume = new Button(272, 208, 272, 64, "RESUME");
