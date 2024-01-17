@@ -68,7 +68,6 @@ public class YellowEnemyGraphics extends EnemyGraphics{
         }
         else {
             g.drawImage(sprites[animationIndex], x * 3, y * 3, w * 3, h * 3, null);
-            g.drawRect(hitbox.x * 3, hitbox.y * 3, hitbox.w * 3, hitbox.h * 3);
         }
     }
 

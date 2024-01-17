@@ -9,8 +9,6 @@ public class ClownBossGraphics extends EnemyGraphics{
     private BufferedImage temp;
     private BufferedImage[] sprites;
     private boolean moving = true;
-    private int typeAnimation;
-    private Rectangle2D.Float damageBox;
     private int animationIndex;
     private int animationIndexUpdate;
     private final int animationSpeed = 15;
@@ -76,13 +74,8 @@ public class ClownBossGraphics extends EnemyGraphics{
         updateAnimation();
         if (!death) {
             g.drawImage(sprites[animationIndex], x * 3, y * 3, w * 3, h * 3, null);
-            g.drawRect(hitbox.x * 3, hitbox.y * 3, hitbox.w * 3, hitbox.h * 3);
-            g.drawRect((int) (damageBox.x * 3), (int) (damageBox.y * 3), (int) (damageBox.width * 3), (int) (damageBox.height * 3));
         }else{
             g.drawImage(deathAnimation[deathIndex], x * 3, y * 3, w * 3, h * 3, null);
-            g.drawRect(hitbox.x * 3, hitbox.y * 3, hitbox.w * 3, hitbox.h * 3);
-            g.drawRect((int) (damageBox.x * 3), (int) (damageBox.y * 3), (int) (damageBox.width * 3), (int) (damageBox.height * 3));
-
         }
     }
 
@@ -129,7 +122,4 @@ public class ClownBossGraphics extends EnemyGraphics{
         return false;
     }
 
-    public void setDamageBox(Rectangle2D.Float damageBox) {
-        this.damageBox = damageBox;
-    }
 }

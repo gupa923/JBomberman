@@ -39,12 +39,8 @@ public class EnemySpawnerManager {
          for (int i = 0; i < lvl1Spawner.getEnemies().size(); i++){
             if (lvl1Spawner.getEnemies().get(i) instanceof ClownBoss temp) {
                 lvl1Spawner.getEnemies().get(i).addObserver(lvl1GSpawner.getEnemyGraphics().get(i));
-                lvl1GSpawner.getEnemyGraphics().get(i).setHitbox(lvl1Spawner.getEnemies().get(i).getHitbox());
-                ClownBossGraphics tg = (ClownBossGraphics) lvl1GSpawner.getEnemyGraphics().get(i);
-                tg.setDamageBox(temp.getBounds());
             }else{
                 lvl1Spawner.getEnemies().get(i).addObserver(lvl1GSpawner.getEnemyGraphics().get(i));
-                lvl1GSpawner.getEnemyGraphics().get(i).setHitbox(lvl1Spawner.getEnemies().get(i).getHitbox());
             }
          }
     }

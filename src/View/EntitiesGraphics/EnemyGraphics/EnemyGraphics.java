@@ -38,11 +38,6 @@ public abstract class EnemyGraphics extends EntityGraphics implements Observer {
         deathAnimation[7] = temp.getSubimage(81,0, 16, 32);
 
     }
-
-    public void setHitbox(Hitbox hitbox) {
-        this.hitbox = hitbox;
-    }
-
     public void resetPos() {
         x = sx;
         y = sy;

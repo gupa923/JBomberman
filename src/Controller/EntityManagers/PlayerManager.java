@@ -21,7 +21,6 @@ public class PlayerManager {
         player = new Player(32, 8, 16, 24);
         gameModel.getPartita().setPlayer(player);
         playerGraphics = new PlayerGraphics(player.getX(), player.getY(), player.getW(), player.getH());
-        playerGraphics.setHitbox(player.getHitbox());
         player.addObserver(playerGraphics);
     }
 
