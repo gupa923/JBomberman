@@ -4,7 +4,6 @@ import View.UtilityInterfaces.ImgImporter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class LoginPanel extends JPanel implements ImgImporter {
 

@@ -1,8 +1,6 @@
 package Model;
 
-import java.util.Objects;
 import java.util.Observable;
-import java.util.Observer;
 import java.util.Random;
 
 public class User extends Observable {

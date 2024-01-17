@@ -5,7 +5,6 @@ import Model.EntityModel.Enemies.ClownBoss;
 import Model.EntityModel.Enemies.EnemySpawner;
 import Model.Level;
 import View.EntitiesGraphics.EnemyGraphics.ClownBossGraphics;
-import View.EntitiesGraphics.EnemyGraphics.EnemyGraphics;
 import View.EntitiesGraphics.EnemyGraphics.EnemyGraphicsSpawner;
 import View.LevelGraphics;
 

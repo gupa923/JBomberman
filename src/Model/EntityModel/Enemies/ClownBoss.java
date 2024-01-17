@@ -4,7 +4,6 @@ import Model.EntityModel.Bomb;
 import Model.EntityModel.Hitbox;
 
 import java.awt.geom.Rectangle2D;
-import java.util.Random;
 
 import static Model.EntityModel.Player.BOMBS;
 

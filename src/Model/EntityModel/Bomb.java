@@ -4,8 +4,6 @@ import Model.EntityModel.Enemies.BlueEnemy;
 import Model.EntityModel.Enemies.ClownBoss;
 import Model.EntityModel.Enemies.Enemy;
 
-import java.awt.geom.Rectangle2D;
-
 /**
  * questa classe rappresenta la bomba. estende la classe Entity. gestisce la bomba, la sua esplosione e la collisione con il giocatore
  * @see Model.EntityModel.Entity

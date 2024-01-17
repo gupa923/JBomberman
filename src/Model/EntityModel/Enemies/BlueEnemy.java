@@ -2,7 +2,6 @@ package Model.EntityModel.Enemies;
 
 import Model.EntityModel.Bomb;
 import Model.EntityModel.Hitbox;
-import Model.EntityModel.Player;
 
 import java.awt.geom.Rectangle2D;
 

@@ -10,9 +10,9 @@ import View.UserView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
-import java.lang.reflect.AccessFlag;
-import java.lang.reflect.GenericArrayType;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 

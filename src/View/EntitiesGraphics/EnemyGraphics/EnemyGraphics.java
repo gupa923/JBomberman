@@ -1,6 +1,5 @@
 package View.EntitiesGraphics.EnemyGraphics;
 
-import Controller.AudioManager;
 import Model.EntityModel.Hitbox;
 import View.AudioPlayer;
 import View.EntitiesGraphics.EntityGraphics;

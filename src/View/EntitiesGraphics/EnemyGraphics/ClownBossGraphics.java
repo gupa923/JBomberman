@@ -3,8 +3,6 @@ package View.EntitiesGraphics.EnemyGraphics;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.nio.Buffer;
 import java.util.Observable;
 
 public class ClownBossGraphics extends EnemyGraphics{

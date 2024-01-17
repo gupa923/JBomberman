@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+
 import static Model.GameModel.USER;
 
 public class Accounts {
