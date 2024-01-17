@@ -140,8 +140,8 @@ public class BlueEnemy extends Enemy{
 
     @Override
     protected boolean intersect(String dir) {
-        for (Bomb b : BOMBS){
-            if (b.intersect(this, dir)){
+        for (int i = 0; i < BOMBS.size(); i++){
+            if (BOMBS.get(i).intersect(this, dir)){
                 return true;
             }
         }

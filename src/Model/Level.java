@@ -126,10 +126,8 @@ public class Level extends Observable {
             if (obstacles.get(j).getX() == x && obstacles.get(j).getY() == y){
                 obstacles.get(j).setHit(true);
                 Player.OBSTACLE_DESTROYED ++;
-                System.out.println(Player.OBSTACLE_DESTROYED);
                 if (Player.OBSTACLE_DESTROYED%10 == 0 && Player.OBSTACLE_DESTROYED != 0) {
                     SCORE += 50;
-                    System.out.println(SCORE);
                     setChanged();
                     notifyObservers(50);
                 }

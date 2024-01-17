@@ -77,7 +77,6 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
                     initPowerUpsGraphics(temp);
                 }
             }catch (ArrayIndexOutOfBoundsException e ){
-                System.out.println("BOSS LEVEL");
             }
         }else if (arg instanceof int[] temp2){
             if (temp2.length == 3){

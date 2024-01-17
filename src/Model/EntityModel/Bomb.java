@@ -198,7 +198,6 @@ Bomb extends Entity {
             for (int[] p: explosionTiles) {
                 if (enemy.getBounds().contains(p[0], p[1])){
                     enemy.hit();
-                    System.out.println(enemy.getHP());
                     break;
                 }
             }

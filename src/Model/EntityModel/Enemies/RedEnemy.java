@@ -138,7 +138,6 @@ public class RedEnemy extends Enemy {
 
     @Override
     public void hit() {
-        System.out.println(immortality);
         if (!immortality) {
             HP--;
             if (HP == 0) {

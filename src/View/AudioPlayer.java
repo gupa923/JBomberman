@@ -17,7 +17,6 @@ public class AudioPlayer {
                 EFFECTS.get(i).setMicrosecondPosition(0);
                 EFFECTS.get(i).start();
             } catch (IndexOutOfBoundsException e) {
-                System.out.println("SEI UN COGLIONE");
             }
         }
     }

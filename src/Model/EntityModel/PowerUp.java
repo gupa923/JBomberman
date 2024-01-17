@@ -55,7 +55,6 @@ public class PowerUp extends Entity{
             case "LIVE_UP" -> {
                 Player.VITE += val;
                 player.sendMessage(+1);
-                System.out.println(Player.VITE);
             }
             case "BOMB_UP" -> {
                 Player.MAX_BOMB_NUMS += val;
@@ -63,7 +62,6 @@ public class PowerUp extends Entity{
             case "CAKE" -> {
                 Partita.SCORE += val;
                 player.sendMessage(val);
-                System.out.println(Partita.SCORE);
             }
             case "HP_PLUS" -> {
                 Player.HP += val;
