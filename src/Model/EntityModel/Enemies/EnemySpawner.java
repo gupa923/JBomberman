@@ -55,6 +55,10 @@ public class EnemySpawner extends Observable {
                 }else if (data[y][x] == 66){
                     enemies.add(new ClownBoss(x*16, y*16, 110, 105));
                     enemies.get(size).getHitbox().setLevel(level);
+                }else if (data[y][x] == 9){
+                    enemies.add(new LastEnemy(x*16, y*16, 16, 22));
+                    enemies.get(size).getHitbox().setLevel(level);
+                    size++;
                 }
             }
         }

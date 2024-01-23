@@ -1,17 +1,14 @@
 package Model.EntityModel.Enemies;
 
-import Model.EntityModel.Bomb;
 import Model.EntityModel.Hitbox;
 
 import java.awt.geom.Rectangle2D;
 
 import static Model.EntityModel.Player.BOMBS;
 
-public class ClownBoss extends Enemy{
-    private boolean moving = true;
+public class LastEnemy extends Enemy {
     private int updateTick;
-
-
+    private boolean moving;
 
     /**
      * Costruisce un nemico a partire da quattro interi e inizializza la hitbox
@@ -21,38 +18,38 @@ public class ClownBoss extends Enemy{
      * @param w : larghezza
      * @param h : altezza
      */
-    public ClownBoss(int x, int y, int w, int h) {
+    public LastEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
         sx = x;
         sy = y;
-        score = 2000;
-        type = 66;
-        HP = 5;
+        score = 750;
+        type = 5;
+        HP = 1;
         defaultHP = HP;
 
-        immortality = false;
         initHitbox();
     }
 
     @Override
     public void initHitbox() {
-        hitbox = new Hitbox(x, y, 16, 16);
-        bounds = new Rectangle2D.Float(x-47, y-44, 110, 105);
+        hitbox = new Hitbox(x, y + 8, 16, 16);
+        hitbox.setWalkOver(true);
+        bounds = new Rectangle2D.Float(x, y + 8, 16, 16);
     }
 
     @Override
     public void update() {
         if (dying){
             dynigTick++;
-            if (dynigTick >= 120){
+            if (dynigTick >= 160){
                 dynigTick = 0;
                 dying = false;
                 alive = false;
             }
             return;
         }
-        if (updateTick %3 == 0) {
-            if (updateTick%240 == 0) {
+        if (updateTick %5 == 0) {
+            if (updateTick%500 == 0) {
                 changeDirection();
             }
             switch (defaultDirection) {
@@ -156,11 +153,10 @@ public class ClownBoss extends Enemy{
             defaultDirection = dirs[r.nextInt(4)];
         }
     }
-
     @Override
     protected boolean intersect(String dir) {
-        for (Bomb b : BOMBS){
-            if (b.intersect(this, dir)){
+        for (int i = 0; i < BOMBS.size(); i++){
+            if (BOMBS.get(i).intersect(this, dir)){
                 return true;
             }
         }
@@ -180,13 +176,9 @@ public class ClownBoss extends Enemy{
         }
     }
 
-    public int getHP() {
-        return HP;
-    }
-
     @Override
     public boolean equals(Object obj){
-        if (obj instanceof ClownBoss e){
+        if (obj instanceof LastEnemy e){
             return e.x == this.x && e.y == this.y;
         }
         return false;
