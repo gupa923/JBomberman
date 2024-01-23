@@ -145,6 +145,12 @@ public class MouseManager implements MouseListener, MouseMotionListener {
                     stateManager.changeState(Stati.MENU);
                 }
             }
+            case COMMAND_INFO -> {
+                if(gameModel.getCommandInfo().getbBack().getBounds().contains(e.getX(), e.getY())){
+                    gameModel.setStatoAttuale(Stati.MENU);
+                    stateManager.changeState(Stati.MENU);
+                }
+            }
         }
 
     }
@@ -214,6 +220,9 @@ public class MouseManager implements MouseListener, MouseMotionListener {
             case GAME_OVER -> {
                 gameModel.getPartita().getGameOver().getbRetry().setMousePressed(gameModel.getPartita().getGameOver().getbRetry().getBounds().contains(e.getX(), e.getY()));
                 gameModel.getPartita().getGameOver().getbQuit().setMousePressed(gameModel.getPartita().getGameOver().getbQuit().getBounds().contains(e.getX(), e.getY()));
+            }
+            case COMMAND_INFO -> {
+                gameModel.getCommandInfo().getbBack().setMousePressed(gameModel.getStatsMenu().getbBack().getBounds().contains(e.getX(), e.getY()));
             }
         }
     }
