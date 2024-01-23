@@ -101,6 +101,8 @@ public class LevelManager {
                     lvlData[y][x] = 8;
                 }else if (color.equals(new Color(0, 255, 255))){
                     lvlData[y][x] = 66;
+                }else if (color.equals(new Color(255, 125, 125))){
+                    lvlData[y][x] = 9;
                 }
                 else
                     lvlData[y][x] = 0;

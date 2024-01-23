@@ -3,6 +3,7 @@ package Model.EntityModel;
 import Model.EntityModel.Enemies.BlueEnemy;
 import Model.EntityModel.Enemies.ClownBoss;
 import Model.EntityModel.Enemies.Enemy;
+import Model.EntityModel.Enemies.LastEnemy;
 
 /**
  * questa classe rappresenta la bomba. estende la classe Entity. gestisce la bomba, la sua esplosione e la collisione con il giocatore
@@ -187,6 +188,51 @@ Bomb extends Entity {
             return false;
         }
     }
+
+    public boolean intersect(LastEnemy enemy, String dir){
+        Hitbox pHitbox = enemy.getHitbox();
+        if (exploding){
+            switch (dir) {
+                case "LEFT", "UP" -> {
+                    for (int[] p : explosionTiles) {
+                        if (checkPoints((p[0]) / 16, p[1] / 16, pHitbox.x / 16, pHitbox.y / 16)) {
+                            enemy.hit();
+                            break;
+                        }
+                    }
+                }
+                case "RIGHT" -> {
+                    for (int[] p : explosionTiles) {
+                        if (checkPoints(p[0] / 16, p[1] / 16, (pHitbox.x + pHitbox.w - 1) / 16, pHitbox.y / 16)) {
+                            enemy.hit();
+                            break;
+                        }
+                    }
+                }
+                case "DOWN" -> {
+                    for (int[] p : explosionTiles) {
+                        if (checkPoints(p[0] / 16, p[1] / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)) {
+                            enemy.hit();
+                            break;
+                        }
+                    }
+                }
+                case "STAY" -> {
+                    if (explosionTiles != null) {
+                        for (int[] p : explosionTiles) {
+                            if (checkPoints(p[0] / 16, p[1] / 16, pHitbox.x / 16, (pHitbox.y + pHitbox.h - 1) / 16)) {
+                                enemy.hit();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+        return false;
+    }
+
 
     public boolean intersect(ClownBoss enemy, String dir){
         //Hitbox pHitbox = enemy.getDamageBox();
