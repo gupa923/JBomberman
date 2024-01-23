@@ -65,9 +65,11 @@ public class PowerUp extends Entity{
             }
             case "HP_PLUS" -> {
                 Player.HP += val;
+                player.sendMessage("IMMORTALITY");
             }
             case "HP_MEN" -> {
                 player.hit();
+
             }
             case "IMMORTALITY" -> {
                 if (player.isImmortality()){

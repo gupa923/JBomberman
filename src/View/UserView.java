@@ -12,7 +12,7 @@ public class UserView implements Observer, Drawable, ImgImporter {
     private final String nickname;
     private int games;
     private int victories;
-    private final int record;
+    private int record;
     private BufferedImage avatar;
 
     public UserView(String nickname, int games, int victories, int record, int avatarIndex) {
@@ -34,8 +34,11 @@ public class UserView implements Observer, Drawable, ImgImporter {
                 games++;
             }else if (s.equals("VICTORY")){
                 victories++;
+            }else {
+                record = Integer.parseInt(s);
             }
         }
+
     }
 
     @Override

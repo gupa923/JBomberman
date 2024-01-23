@@ -346,6 +346,7 @@ public class Player extends Entity{
 
     public void resetImmortalityTick(){
         immortalityTick = 0;
+        sendMessage("IMMORTALITY");
     }
 
     public boolean isWalkOver() {

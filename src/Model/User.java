@@ -31,6 +31,7 @@ public class User extends Observable {
     public void setRecord(int record) {
         if (record >= this.record) {
             this.record = record;
+            notifyObservers(String.valueOf(this.record));
         }
     }
     public void setGamePlayed(){
