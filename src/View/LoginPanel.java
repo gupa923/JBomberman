@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class LoginPanel extends JPanel implements ImgImporter {
 
-    private final JTextField usernameField;
+    private  JTextField usernameField, avatarField;
     private final JPasswordField passwordField;
     private final JButton loginButton;
     private final JButton registerButton;
@@ -18,19 +18,24 @@ public class LoginPanel extends JPanel implements ImgImporter {
         requestFocusInWindow();
         setVisible(true);
 
-        setLayout(new GridLayout(3, 2));
+        setLayout(new GridLayout(4, 4));
 
         JLabel usernameLabel = new JLabel("Username:");
         JLabel passwordLabel = new JLabel("Password:");
+        JLabel avatarLabel = new JLabel("Avatar");
         usernameLabel.setFont(new Font("SansSerif", 0, 30));
         passwordLabel.setFont(new Font("SansSerif", 0, 30));
+        avatarLabel.setFont(new Font("SansSerif", 0, 30));
 
         usernameField = new JTextField();
         passwordField = new JPasswordField();
+        avatarField = new JTextField();
         usernameField.setFont(new Font("SansSerif", 0, 30));
         passwordField.setFont(new Font("SansSerif", 0, 30));
+        avatarField.setFont(new Font("SansSerif", 0, 30));
         usernameField.setText("");
         passwordField.setText("");
+        avatarField.setText("");
 
         loginButton = new JButton("Login");
         registerButton = new JButton("Register");
@@ -38,10 +43,16 @@ public class LoginPanel extends JPanel implements ImgImporter {
         registerButton.setFont(new Font("SansSerif", 0, 30));
 
         add(usernameLabel);
+        add(new JLabel());
         add(usernameField);
         add(passwordLabel);
+        add(new JLabel());
         add(passwordField);
+        add(avatarLabel);
+        add(new JLabel());
+        add(avatarField);
         add(loginButton);
+        add(new JLabel());
         add(registerButton);
     }
 
