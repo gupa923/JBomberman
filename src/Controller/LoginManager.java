@@ -42,42 +42,62 @@ public class LoginManager {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            boolean flag = accounts.login(new String[] {loginPanel.getUsernameField().getText(), loginPanel.getPasswordField().getText()});
-            if (flag){
-                JOptionPane.showMessageDialog(loginPanel, "Login successful!");
-                loginPanel.getUsernameField().setText("");
-                loginPanel.getPasswordField().setText("");
-                User t = accounts.getActiveUser();
-                uv = new UserView(t.getNickname(), t.getGamePlayed(), t.getVictories(), t.getRecord(), t.getAvatarIndex());
-                t.addObserver(uv);
-                stateManager.removeLoginPanel();
-                stateManager.changeState(Stati.MENU);
+            if (isTextValid()){
+                boolean flag = accounts.login(new String[] {loginPanel.getUsernameField().getText(), loginPanel.getPasswordField().getText()});
+                if (flag){
+                    JOptionPane.showMessageDialog(loginPanel, "Login successful!");
+                    loginPanel.getUsernameField().setText("");
+                    loginPanel.getPasswordField().setText("");
+                    User t = accounts.getActiveUser();
+                    uv = new UserView(t.getNickname(), t.getGamePlayed(), t.getVictories(), t.getRecord(), t.getAvatarIndex());
+                    t.addObserver(uv);
+                    stateManager.removeLoginPanel();
+                    stateManager.changeState(Stati.MENU);
+                }else {
+                    JOptionPane.showMessageDialog(loginPanel, "Invalid username or password");
+                    loginPanel.getUsernameField().setText("");
+                    loginPanel.getPasswordField().setText("");
+                }
             }else {
-                JOptionPane.showMessageDialog(loginPanel, "Invalid username or password");
+                JOptionPane.showMessageDialog(loginPanel, "username and password must not contain spaces");
                 loginPanel.getUsernameField().setText("");
                 loginPanel.getPasswordField().setText("");
             }
+
         }
+    }
+
+    private boolean isTextValid() {
+        String[] tNickname = loginPanel.getUsernameField().getText().split(" ");
+        String[] tPassword = loginPanel.getPasswordField().getText().split(" ");
+        return tNickname.length == 1 && tPassword.length== 1;
     }
 
     private class RegisterListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            boolean flag = accounts.register(new String[] {loginPanel.getUsernameField().getText(), loginPanel.getPasswordField().getText()});
-            if (flag){
-                loginPanel.getUsernameField().setText("");
-                loginPanel.getPasswordField().setText("");
-                JOptionPane.showMessageDialog(loginPanel, "registration successful!");
-                User t = accounts.getActiveUser();
-                uv = new UserView(t.getNickname(), t.getGamePlayed(), t.getVictories(), t.getRecord(), t.getAvatarIndex());
-                t.addObserver(uv);
-                stateManager.removeLoginPanel();
-                stateManager.changeState(Stati.MENU);
-            }else {
-                JOptionPane.showMessageDialog(loginPanel, "username or password already taken");
+            if (isTextValid()){
+                boolean flag = accounts.register(new String[] {loginPanel.getUsernameField().getText(), loginPanel.getPasswordField().getText()});
+                if (flag){
+                    loginPanel.getUsernameField().setText("");
+                    loginPanel.getPasswordField().setText("");
+                    JOptionPane.showMessageDialog(loginPanel, "registration successful!");
+                    User t = accounts.getActiveUser();
+                    uv = new UserView(t.getNickname(), t.getGamePlayed(), t.getVictories(), t.getRecord(), t.getAvatarIndex());
+                    t.addObserver(uv);
+                    stateManager.removeLoginPanel();
+                    stateManager.changeState(Stati.MENU);
+                }else {
+                    JOptionPane.showMessageDialog(loginPanel, "username or password already taken");
+                    loginPanel.getUsernameField().setText("");
+                    loginPanel.getPasswordField().setText("");
+                }
+            }else{
+                JOptionPane.showMessageDialog(loginPanel, "username and password must not contain spaces");
                 loginPanel.getUsernameField().setText("");
                 loginPanel.getPasswordField().setText("");
             }
+
         }
     }
 
