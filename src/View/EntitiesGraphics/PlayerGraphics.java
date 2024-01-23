@@ -168,13 +168,15 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
                     deathIndex = 0;
                     deathTick = 0;
                 }
-                case "IMMORTAILTY"->{
+                case "IMMORTALITY"->{
                     immortality = true;
-                    animationIndex = animationIndex*2;
+                    System.out.println(immortality + "DIO PORCO");
+
                 }
                 case "NO IMMORTALITY"->{
                     immortality = false;
-                    animationIndex = animationIndex/2;
+                    System.out.println(immortality);
+
                 }
             }
         }
