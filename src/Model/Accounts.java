@@ -36,7 +36,7 @@ public class Accounts {
                 return false;
             }
         }
-        USER = new User(credential[0], credential[1]);
+        USER = new User(credential[0], credential[1], Integer.parseInt(credential[2]));
         users.add(USER);
         return true;
     }
