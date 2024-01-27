@@ -74,8 +74,9 @@ public class LoginPanel extends JPanel implements ImgImporter {
         return usernameField;
     }
 
-
-
+    public JTextField getAvatarField() {
+        return avatarField;
+    }
 
     public JPasswordField getPasswordField() {
         return passwordField;
