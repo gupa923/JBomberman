@@ -65,6 +65,7 @@ public class LoginManager {
             }
 
         }
+
     }
 
     private boolean isTextValid() {
@@ -76,8 +77,17 @@ public class LoginManager {
     private class RegisterListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
+            if (loginPanel.getAvatarField().getText().equals("")){
+                JOptionPane.showMessageDialog(loginPanel, "Insert Avatar Index");
+                return;
+            }
+            int i = Integer.parseInt(loginPanel.getAvatarField().getText());
+            if (i < 1 || i > 4){
+                JOptionPane.showMessageDialog(loginPanel, "Invelid avatar index");
+                return;
+            }
             if (isTextValid()){
-                boolean flag = accounts.register(new String[] {loginPanel.getUsernameField().getText(), loginPanel.getPasswordField().getText()});
+                boolean flag = accounts.register(new String[] {loginPanel.getUsernameField().getText(), loginPanel.getPasswordField().getText(), loginPanel.getAvatarField().getText()});
                 if (flag){
                     loginPanel.getUsernameField().setText("");
                     loginPanel.getPasswordField().setText("");
@@ -85,20 +95,24 @@ public class LoginManager {
                     User t = accounts.getActiveUser();
                     uv = new UserView(t.getNickname(), t.getGamePlayed(), t.getVictories(), t.getRecord(), t.getAvatarIndex());
                     t.addObserver(uv);
+                    saveUsers();
                     stateManager.removeLoginPanel();
                     stateManager.changeState(Stati.MENU);
                 }else {
                     JOptionPane.showMessageDialog(loginPanel, "username or password already taken");
                     loginPanel.getUsernameField().setText("");
                     loginPanel.getPasswordField().setText("");
+                    loginPanel.getAvatarField().setText("");
                 }
             }else{
                 JOptionPane.showMessageDialog(loginPanel, "username and password must not contain spaces");
                 loginPanel.getUsernameField().setText("");
                 loginPanel.getPasswordField().setText("");
+                loginPanel.getAvatarField().setText("");
             }
 
         }
+
     }
 
     public void saveUsers() {

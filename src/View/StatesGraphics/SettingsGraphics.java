@@ -25,6 +25,8 @@ public class SettingsGraphics extends StateGraphics{
     @Override
     public void draw(Graphics g) {
         g.drawImage(imgs[imgIndex], 0, 0, 816, 816, null);
+        g.setColor(new Color(255,207, 151));
+        g.fillRect(0, 816-64, 64, 64);
         g.drawImage(uv.getAvatar(), 0, 816-64, 64, 64, null);
     }
 

@@ -25,7 +25,12 @@ public class User extends Observable {
         gamePlayed = Integer.parseInt(usersCredential[3]);
         victories = Integer.parseInt(usersCredential[4]);
         record = Integer.parseInt(usersCredential[5]);
+    }
 
+    public User(String nickname, String password, int avatarIndex) {
+        this.nickname = nickname;
+        this.password = password;
+        this.avatarIndex = avatarIndex;
     }
 
     public void setRecord(int record) {
