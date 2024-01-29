@@ -170,12 +170,10 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
                 }
                 case "IMMORTALITY"->{
                     immortality = true;
-                    System.out.println(immortality + "DIO PORCO");
 
                 }
                 case "NO IMMORTALITY"->{
                     immortality = false;
-                    System.out.println(immortality);
 
                 }
             }

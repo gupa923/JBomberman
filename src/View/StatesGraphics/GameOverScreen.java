@@ -1,5 +1,7 @@
 package View.StatesGraphics;
 
+import View.AudioPlayer;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
@@ -8,8 +10,12 @@ public class GameOverScreen extends StateGraphics{
 
     private BufferedImage[] imgs;
     private int imgIndex;
+    private AudioPlayer audioPlayer;
+    private boolean firstCall;
+    private int firstCallCounter = 0;
 
     public GameOverScreen(){
+        audioPlayer = new AudioPlayer();
         loadImgs();
     }
 
@@ -22,6 +28,13 @@ public class GameOverScreen extends StateGraphics{
 
     @Override
     public void draw(Graphics g) {
+        if (firstCallCounter == 1){
+            firstCall = true;
+        }
+        if (firstCall) {
+            audioPlayer.playEffects(8);
+            firstCall = false;
+        }
         g.setColor(new Color(0, 0, 0, 200));
         g.fillRect(0, 0, 272*3, 272*3);
         g.drawImage(imgs[imgIndex], 0, 0, 816, 816, null);
@@ -38,5 +51,14 @@ public class GameOverScreen extends StateGraphics{
                 imgIndex = 0;
             }
         }
+    }
+
+    public void setFirstCallCounter() {
+        this.firstCallCounter ++;
+    }
+
+    public void reset() {
+        firstCallCounter = 0;
+        firstCall = false;
     }
 }

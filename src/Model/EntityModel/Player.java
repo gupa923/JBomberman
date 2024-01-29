@@ -17,7 +17,7 @@ public class Player extends Entity{
     /**
      * contatore che contiene il numero di vite rimanenti al Player
      */
-    public static int VITE = 7;
+    public static int VITE = 1;
     private String action = "STAY";
     private Bomb bomb;
     /**

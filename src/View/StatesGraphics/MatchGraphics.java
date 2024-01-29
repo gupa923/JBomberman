@@ -99,6 +99,7 @@ public class MatchGraphics extends StateGraphics {
             } else if (message.equals("DEAD")){
                 LIFE_VIEW = 7;
                 playing = false;
+                gameOverScreen.setFirstCallCounter();
             } else if (message.equals("NEW LEVEL")){
                 playerGraphics.resetPos();
                 playerGraphics.setChangeLevel(false);
@@ -109,6 +110,7 @@ public class MatchGraphics extends StateGraphics {
             } else if ( message.equals("NEW GAME")){
                 win = false;
                 playerGraphics.reset();
+                gameOverScreen.reset();
                 actualLevel = 0;
                 SCORE_VIEW = 0;
             }

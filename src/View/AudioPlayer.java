@@ -17,6 +17,7 @@ public class AudioPlayer {
                 EFFECTS.get(i).setMicrosecondPosition(0);
                 EFFECTS.get(i).start();
             } catch (IndexOutOfBoundsException e) {
+
             }
         }
     }
