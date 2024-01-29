@@ -1,5 +1,6 @@
 package View.StatesGraphics;
 
+import View.AudioPlayer;
 import View.EntitiesGraphics.PlayerGraphics;
 import View.LevelGraphics;
 
@@ -26,8 +27,10 @@ public class MatchGraphics extends StateGraphics {
     private final BufferedImage lifeUI;
     public static int SCORE_VIEW = 0;
     public static int LIFE_VIEW = 7;
+    private AudioPlayer audioPlayer;
 
     public MatchGraphics(){
+        audioPlayer = new AudioPlayer();
         gameOverScreen = new GameOverScreen();
         winGraphics = new WinGraphics();
         matchUI = loadImg("/Imgs/UI PARTITA.png");
@@ -102,6 +105,7 @@ public class MatchGraphics extends StateGraphics {
                 actualLevel++;
             }else if (message.equals("WIN")){
                 win = true;
+                audioPlayer.playEffects(7);
             } else if ( message.equals("NEW GAME")){
                 win = false;
                 playerGraphics.reset();

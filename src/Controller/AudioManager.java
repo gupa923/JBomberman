@@ -15,6 +15,8 @@ public class AudioManager {
         EFFECTS.add(getClip("/audio/Item Get.wav"));
         EFFECTS.add(getClip("/audio/Stage Start.wav"));
         EFFECTS.add(getClip("/audio/Stage Clear.wav"));
+        EFFECTS.add(getClip("/audio/Audience.wav"));
+        EFFECTS.add(getClip("/audio/Ending - Bomberman Falling.wav"));
     }
 
     private Clip getClip(String name){
