@@ -3,6 +3,7 @@ package View.StatesGraphics;
 import View.AudioPlayer;
 import View.EntitiesGraphics.PlayerGraphics;
 import View.LevelGraphics;
+import View.UserView;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -65,6 +66,7 @@ public class MatchGraphics extends StateGraphics {
         g.drawString("RECORD", 544 + 40, 208*3 + 64);
         g.drawString(String.valueOf(SCORE_VIEW) , 272 + 40, 208*3 + 64 + 64 + 20);
         g.drawString(String.valueOf(LIFE_VIEW) ,  128 + 32 + 16, 208*3 + 64 + 40 );
+        g.drawString(String.valueOf(UserView.RECORD) ,  544 + 40, 208*3 + 64 + 64 + 20 );
         g.drawImage(lifeUI, 36, 208*3 + 64, 64, 64, null);
     }
 

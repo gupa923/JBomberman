@@ -1,5 +1,7 @@
 package View;
 
+import View.EntitiesGraphics.PlayerGraphics;
+import View.StatesGraphics.MatchGraphics;
 import View.UtilityInterfaces.Drawable;
 import View.UtilityInterfaces.ImgImporter;
 
@@ -12,7 +14,7 @@ public class UserView implements Observer, Drawable, ImgImporter {
     private final String nickname;
     private int games;
     private int victories;
-    private int record;
+    public static int RECORD;
     private int avatarIndex;
     private BufferedImage[] avatars;
     private BufferedImage avatar;
@@ -21,7 +23,7 @@ public class UserView implements Observer, Drawable, ImgImporter {
         this.nickname = nickname;
         this.games = games;
         this.victories = victories;
-        this.record = record;
+        this.RECORD = record;
         this.avatarIndex = avatarIndex;
         createAvatar();
         avatar = avatars[avatarIndex-1];
@@ -43,7 +45,7 @@ public class UserView implements Observer, Drawable, ImgImporter {
             }else if (s.equals("VICTORY")){
                 victories++;
             }else {
-                record = Integer.parseInt(s);
+                RECORD = Integer.parseInt(s);
             }
         }
 
@@ -59,7 +61,7 @@ public class UserView implements Observer, Drawable, ImgImporter {
         g.drawString(nickname, 302, 287);
         g.drawString(String.valueOf(games), 565, 427);
         g.drawString(String.valueOf(victories), 565, 566);
-        g.drawString(String.valueOf(record), 492, 696);
+        g.drawString(String.valueOf(RECORD), 492, 696);
     }
 
     public BufferedImage getAvatar() {
