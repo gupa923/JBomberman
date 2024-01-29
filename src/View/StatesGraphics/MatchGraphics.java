@@ -38,42 +38,34 @@ public class MatchGraphics extends StateGraphics {
     }
     @Override
     public void draw(Graphics g) {
-        g.setFont(new Font("serif", 1, 30));
         if(win){
-            levelGraphics.get(actualLevel).draw(g);
-            playerGraphics.draw(g);
-            g.drawImage(matchUI, 0, 0, 272*3, 272*3, null);
-            g.setColor(Color.BLACK);
-            g.drawString("SCORE" , 272 + 40, 208*3 + 64);
-            g.drawString("RECORD", 544 + 40, 208*3 + 64);
-            g.drawString(String.valueOf(SCORE_VIEW) , 272 + 40, 208*3 + 64 + 64 + 20);
-            g.drawString(String.valueOf(LIFE_VIEW) ,  128 + 32 + 16, 208*3 + 64 + 40 );
-            g.drawImage(lifeUI, 36, 208*3 + 64, 64, 64, null);
+            levelGraphics.get(actualLevel).freeze(g);
+            playerGraphics.freeze(g);
+            drawUI(g);
             winGraphics.draw(g);
         }else {
             if (playing) {
                 levelGraphics.get(actualLevel).draw(g);
                 playerGraphics.draw(g);
-                g.drawImage(matchUI, 0, 0, 272*3, 272*3, null);
-                g.setColor(Color.BLACK);
-                g.drawString("SCORE" , 272 + 40, 208*3 + 64);
-                g.drawString("RECORD", 544 + 40, 208*3 + 64);
-                g.drawString(String.valueOf(SCORE_VIEW) , 272 + 40, 208*3 + 64 + 64 + 20);
-                g.drawString(String.valueOf(LIFE_VIEW) ,  128 + 32 + 16, 208*3 + 64 + 40 );
-                g.drawImage(lifeUI, 36, 208*3 + 64, 64, 64, null);
+                drawUI(g);
             } else {
-                levelGraphics.get(actualLevel).draw(g);
-                playerGraphics.draw(g);
-                g.drawImage(matchUI, 0, 0, 272*3, 272*3, null);
-                g.setColor(Color.BLACK);
-                g.drawString("SCORE" , 272 + 40, 208*3 + 64);
-                g.drawString("RECORD", 544 + 40, 208*3 + 64);
-                g.drawString(String.valueOf(SCORE_VIEW) , 272 + 40, 208*3 + 64 + 64 + 20);
-                g.drawString(String.valueOf(LIFE_VIEW) ,  128 + 32 + 16, 208*3 + 64 + 40 );
-                g.drawImage(lifeUI, 36, 208*3 + 64, 64, 64, null);
+                levelGraphics.get(actualLevel).freeze(g);
+                drawUI(g);
+                playerGraphics.freeze(g);
                 gameOverScreen.draw(g);
             }
         }
+    }
+
+    public void drawUI(Graphics g){
+        g.setFont(new Font("serif", 1, 30));
+        g.drawImage(matchUI, 0, 0, 272*3, 272*3, null);
+        g.setColor(Color.BLACK);
+        g.drawString("SCORE" , 272 + 40, 208*3 + 64);
+        g.drawString("RECORD", 544 + 40, 208*3 + 64);
+        g.drawString(String.valueOf(SCORE_VIEW) , 272 + 40, 208*3 + 64 + 64 + 20);
+        g.drawString(String.valueOf(LIFE_VIEW) ,  128 + 32 + 16, 208*3 + 64 + 40 );
+        g.drawImage(lifeUI, 36, 208*3 + 64, 64, 64, null);
     }
 
     public void setLevelGraphics(ArrayList<LevelGraphics> levelGraphics) {
@@ -128,5 +120,13 @@ public class MatchGraphics extends StateGraphics {
 
     public WinGraphics getWinGraphics() {
         return winGraphics;
+    }
+
+    public void setPlaying(boolean playing) {
+        this.playing = playing;
+    }
+
+    public LevelGraphics actualLevelGraphics() {
+        return levelGraphics.get(actualLevel);
     }
 }

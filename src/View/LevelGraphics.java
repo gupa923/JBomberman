@@ -127,4 +127,20 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     public void setEnemyGraphicsSpawner(EnemyGraphicsSpawner enemyGraphicsSpawner) {
         this.enemyGraphicsSpawner = enemyGraphicsSpawner;
     }
+
+    public void freeze(Graphics g) {
+        g.drawImage(lvl1Bg, 0,0, 272 * 3, 208*3, null);
+        for (PowerUpGraphics p : powerUps){
+            p.freeze(g);
+        }
+        for (ObstacleGraphics o: obstacleGraphics){
+            o.freeze(g);
+        }
+        for (ObstacleGraphics o : exploadingObstacles){
+            o.freeze(g);
+        }
+        if (enemyGraphicsSpawner != null){
+            enemyGraphicsSpawner.freeze(g);
+        }
+    }
 }

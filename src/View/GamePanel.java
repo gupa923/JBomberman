@@ -41,7 +41,9 @@ public class GamePanel extends JPanel {
         if (activeState != null) {
             if (activeState instanceof PauseGraphics) {
                 matchGraphics.getPlayerGraphics().setMoving(false);
-                matchGraphics.draw(g);
+                matchGraphics.actualLevelGraphics().freeze(g);
+                matchGraphics.getPlayerGraphics().freeze(g);
+                matchGraphics.drawUI(g);
             }
             activeState.draw(g);
         }else {

@@ -94,4 +94,21 @@ public class ObstacleGraphics extends EntityGraphics {
         animationTick = 0;
         animationIndex = 0;
     }
+
+    public void freeze(Graphics g) {
+        if (type == 0) {
+            if (!exploading)
+                g.drawImage(sprites[animationIndex], x * 3, y * 3, h * 3, w * 3, null);
+            else {
+                g.drawImage(explosionSprites[animationIndex], x * 3, y * 3, w * 3, h * 3, null);
+            }
+        }else {
+            if (!exploading){
+                g.drawImage(t1Sprite, x*3, y*3, w*3, h*3, null);
+            }else{
+                g.drawImage(t1ExplosionSprites[animationIndex], x*3, y*3, w*3, h*3, null);
+            }
+        }
+    }
+
 }

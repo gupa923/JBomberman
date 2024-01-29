@@ -4,6 +4,7 @@ import Model.EntityModel.Hitbox;
 import View.AudioPlayer;
 import View.EntitiesGraphics.EntityGraphics;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Observer;
 
@@ -48,4 +49,6 @@ public abstract class EnemyGraphics extends EntityGraphics implements Observer {
         deathIndex = 0;
         deathTick = 0;
     }
+
+    public abstract void freeze(Graphics g);
 }

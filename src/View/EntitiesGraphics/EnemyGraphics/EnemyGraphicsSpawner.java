@@ -125,4 +125,10 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
     public ArrayList<EnemyGraphics> getEnemyGraphics() {
         return enemyGraphics;
     }
+
+    public void freeze(Graphics g) {
+        for (EnemyGraphics e : enemyGraphics){
+            e.freeze(g);
+        }
+    }
 }

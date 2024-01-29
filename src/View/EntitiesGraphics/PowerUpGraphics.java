@@ -66,4 +66,9 @@ public class PowerUpGraphics extends EntityGraphics{
         }
         return false;
     }
+
+    public void freeze(Graphics g) {
+        g.drawImage(imgs[id][0], x*3, y*3, w*3, h*3, null);
+
+    }
 }

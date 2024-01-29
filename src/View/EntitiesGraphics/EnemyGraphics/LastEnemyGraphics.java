@@ -84,6 +84,9 @@ public class LastEnemyGraphics extends EnemyGraphics{
             g.drawImage(sprites[typeAnimation][animationIndex], x * 3, y * 3, w * 3, h * 3, null);
         }
     }
+    public void freeze(Graphics g) {
+        g.drawImage(sprites[typeAnimation][animationIndex], x * 3, y * 3, w * 3, h * 3, null);
+    }
 
     @Override
     public void update(Observable o, Object arg) {

@@ -332,4 +332,11 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         cLevelIndexUpdate = 0;
         cLevelIndex = 0;
     }
+
+    public void freeze(Graphics g) {
+        g.drawImage(movingAnimations[0][1], x * 3, y * 3, w * 3, h * 3, null);
+        for (BombGraphics b : bombViews) {
+            b.freeze(g);
+        }
+    }
 }

@@ -97,4 +97,21 @@ public class BombGraphics extends EntityGraphics {
     public void playSpawn(){
         audioPlayer.playEffects(3);
     }
+
+    public void freeze(Graphics g) {
+        if (!exploding) {
+            g.drawImage(imgs[animationIndex], x * 3, (y) * 3, w * 3, h * 3, null);
+        } else {
+            for (int c = 0; c < explosion.length; c++){
+
+                int tx = explosion[c][0];
+                int ty = explosion[c][1];
+
+                if (ty == 0 && tx == 0){
+                    continue;
+                }
+                g.drawImage(explosionImgs[c], tx*3, ty*3, w*3, h*3, null);
+            }
+        }
+    }
 }
