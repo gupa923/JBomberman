@@ -1,7 +1,11 @@
 package View.EntitiesGraphics.EnemyGraphics;
 
+import Model.EntityModel.Rocket;
+import View.EntitiesGraphics.RocketGraphics;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Observable;
 
 public class FinalBossGraphics extends EnemyGraphics {
@@ -11,6 +15,7 @@ public class FinalBossGraphics extends EnemyGraphics {
     private int animationIndex;
     private int animationIndexUpdate;
     private final int animationSpeed = 15;
+    private ArrayList<RocketGraphics> rocketGraphics = new ArrayList<>();
     public FinalBossGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
         sx = x;
@@ -70,6 +75,9 @@ public class FinalBossGraphics extends EnemyGraphics {
         }else{
             g.drawImage(deathAnimation[deathIndex], x * 3, y * 3, w * 3, h * 3, null);
         }
+        for (RocketGraphics r : rocketGraphics){
+            r.draw(g);
+        }
     }
 
     @Override
@@ -104,6 +112,13 @@ public class FinalBossGraphics extends EnemyGraphics {
                     death = true;
                 }
             }
+        }
+        else if (arg instanceof int[] arr){
+            rocketGraphics.add(new RocketGraphics(arr[0], arr[1], arr[2],  arr[3], arr[4]));
+        }
+
+        for (int i = 0; i < rocketGraphics.size(); i++){
+            rocketGraphics.get(i).moveRocket();
         }
     }
 
