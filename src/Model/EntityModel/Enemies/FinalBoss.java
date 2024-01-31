@@ -2,14 +2,17 @@ package Model.EntityModel.Enemies;
 
 import Model.EntityModel.Bomb;
 import Model.EntityModel.Hitbox;
+import Model.EntityModel.Rocket;
 
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 
 import static Model.EntityModel.Player.BOMBS;
 
 public class FinalBoss extends Enemy{
     private boolean moving = true;
     private int updateTick;
+    private ArrayList<Rocket> rockets = new ArrayList<>();
     /**
      * Costruisce un nemico a partire da quattro interi e inizializza la hitbox
      *
@@ -48,9 +51,9 @@ public class FinalBoss extends Enemy{
             }
             return;
         }
-        //if (updateTick%60 == 0){
-            //shootRocket();
-        //}
+        if (updateTick%360 == 0){
+            shootRocket();
+        }
         if (updateTick %8 == 0) {
 
             switch (defaultDirection) {
@@ -150,14 +153,17 @@ public class FinalBoss extends Enemy{
     }
 
     private void shootRocket() {
-
+        int i = r.nextInt(4);
+        rockets.add(new Rocket(x+28, y + 20, 20, 20, dirs[i]));
+        setChanged();
+        notifyObservers(new int[] {x+28, y+20, 20, 20, i});
     }
 
-    private void changeDirection() {
-        if ((hitbox.x/16)% 2 == 0 && (hitbox.y/16)%2 == 1){
-            defaultDirection = dirs[r.nextInt(4)];
-        }
-    }
+//    private void changeDirection() {
+//        if ((hitbox.x/16)% 2 == 0 && (hitbox.y/16)%2 == 1){
+//            defaultDirection = dirs[r.nextInt(4)];
+//        }
+//    }
 
     @Override
     protected boolean intersect(String dir) {
