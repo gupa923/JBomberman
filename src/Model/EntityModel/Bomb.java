@@ -1,9 +1,6 @@
 package Model.EntityModel;
 
-import Model.EntityModel.Enemies.BlueEnemy;
-import Model.EntityModel.Enemies.ClownBoss;
-import Model.EntityModel.Enemies.Enemy;
-import Model.EntityModel.Enemies.LastEnemy;
+import Model.EntityModel.Enemies.*;
 
 /**
  * questa classe rappresenta la bomba. estende la classe Entity. gestisce la bomba, la sua esplosione e la collisione con il giocatore
@@ -236,6 +233,22 @@ Bomb extends Entity {
 
     public boolean intersect(ClownBoss enemy, String dir){
         //Hitbox pHitbox = enemy.getDamageBox();
+        if (notCollideTick <= collideTickLim)
+            return false;
+        if (!exploding) {
+            return false;
+        }else{
+            for (int[] p: explosionTiles) {
+                if (enemy.getBounds().contains(p[0], p[1])){
+                    enemy.hit();
+                    break;
+                }
+            }
+            return false;
+        }
+    }
+
+    public boolean intersect(FinalBoss enemy, String dir){
         if (notCollideTick <= collideTickLim)
             return false;
         if (!exploding) {
