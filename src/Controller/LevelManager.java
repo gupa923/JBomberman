@@ -59,6 +59,11 @@ public class LevelManager {
         level.addObserver(levelGraphics);
         levels.add(level);
         levelGraphicsArrayList.add(levelGraphics);
+        level = new Level(getLvlData("/Imgs/livelli/livello2/finalLvlData.png"));
+        levelGraphics = new LevelGraphics("/Imgs/livelli/livello2/finalLevelStage.png");
+        level.addObserver(levelGraphics);
+        levels.add(level);
+        levelGraphicsArrayList.add(levelGraphics);
         gameModel.getPartita().setLevels(levels);
     }
 
@@ -103,6 +108,8 @@ public class LevelManager {
                     lvlData[y][x] = 66;
                 }else if (color.equals(new Color(255, 125, 125))){
                     lvlData[y][x] = 9;
+                }else if (color.equals(new Color(120, 255, 120))){
+                    lvlData[y][x] = 10;
                 }
                 else
                     lvlData[y][x] = 0;

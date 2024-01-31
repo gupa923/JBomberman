@@ -3,6 +3,7 @@ package Controller.EntityManagers;
 import Controller.LevelManager;
 import Model.EntityModel.Enemies.ClownBoss;
 import Model.EntityModel.Enemies.EnemySpawner;
+import Model.EntityModel.Enemies.FinalBoss;
 import Model.Level;
 import View.EntitiesGraphics.EnemyGraphics.ClownBossGraphics;
 import View.EntitiesGraphics.EnemyGraphics.EnemyGraphicsSpawner;
@@ -39,7 +40,10 @@ public class EnemySpawnerManager {
          for (int i = 0; i < lvl1Spawner.getEnemies().size(); i++){
             if (lvl1Spawner.getEnemies().get(i) instanceof ClownBoss temp) {
                 lvl1Spawner.getEnemies().get(i).addObserver(lvl1GSpawner.getEnemyGraphics().get(i));
-            }else{
+            } else if (lvl1Spawner.getEnemies().get(i) instanceof FinalBoss temp){
+                lvl1Spawner.getEnemies().get(i).addObserver(lvl1GSpawner.getEnemyGraphics().get(i));
+            }
+            else{
                 lvl1Spawner.getEnemies().get(i).addObserver(lvl1GSpawner.getEnemyGraphics().get(i));
             }
          }

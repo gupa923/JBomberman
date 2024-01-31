@@ -4,42 +4,31 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
 
-public class ClownBossGraphics extends EnemyGraphics{
-    private BufferedImage temp;
+public class FinalBossGraphics extends EnemyGraphics {
+    private BufferedImage boss, temp;
     private BufferedImage[] sprites;
     private boolean moving = true;
     private int animationIndex;
     private int animationIndexUpdate;
     private final int animationSpeed = 15;
-
-    public ClownBossGraphics(int x, int y, int w, int h) {
-        super(x-47, y-44, w, h);
-        sx = x-47;
-        sy = y-44;
+    public FinalBossGraphics(int x, int y, int w, int h) {
+        super(x, y, w, h);
+        sx = x;
+        sy = y;
         loadAnimations();
     }
 
     @Override
+    public void freeze(Graphics g) {
+        g.drawImage(sprites[animationIndex], x * 3, y * 3, w * 3, h * 3, null);
+    }
+
+    @Override
     public void loadAnimations() {
-        temp = loadImg("/Imgs/entitySprites/enemySprite/Boos1.png");
-        sprites = new BufferedImage[10];
-        sprites[0] = temp.getSubimage(220 + 2, 4, 110, 100);
-        sprites[1] = temp.getSubimage(330+3, 0, 110, 100);
-        sprites[2] = temp.getSubimage(110 + 1, 113, 110, 105);
-        sprites[3] = temp.getSubimage(220 + 2, 104, 110, 105);
-        sprites[4] = temp.getSubimage(330 + 3, 100, 110, 105);
-        //sprites[5] = temp.getSubimage( 0, 216, 110, 105);
-        sprites[5] = temp.getSubimage(330 + 3, 100, 110, 105);
-        sprites[6] = temp.getSubimage(220 + 2, 104, 110, 105);
-        sprites[7] = temp.getSubimage(110 + 1, 113, 110, 105);
-        sprites[8] = temp.getSubimage(330+3, 0, 110, 100);
-        sprites[9] = temp.getSubimage(220 + 2, 4, 110, 100);
-
-
-        deathAnimation = new BufferedImage[2];
-        deathAnimation[0] = temp.getSubimage(0, 117, 110,100);
-        deathAnimation[1] = temp.getSubimage( 111, 216, 110, 105);
-
+        sprites = new BufferedImage[1];
+        temp = loadImg("/Imgs/entitySprites/enemySprite/Boss2.png" );
+        sprites[0] = temp.getSubimage(0, 25, 74, 74);
+        boss = temp.getSubimage(75,25,18,17);
     }
 
     @Override
@@ -73,13 +62,10 @@ public class ClownBossGraphics extends EnemyGraphics{
         updateAnimation();
         if (!death) {
             g.drawImage(sprites[animationIndex], x * 3, y * 3, w * 3, h * 3, null);
+            g.drawImage(boss, (x+29)*3, y*3, 18*3, 17*3,null);
         }else{
             g.drawImage(deathAnimation[deathIndex], x * 3, y * 3, w * 3, h * 3, null);
         }
-    }
-
-    public void freeze(Graphics g) {
-        g.drawImage(sprites[animationIndex], x * 3, y * 3, w * 3, h * 3, null);
     }
 
     @Override
@@ -119,7 +105,7 @@ public class ClownBossGraphics extends EnemyGraphics{
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof ClownBossGraphics r){
+        if (obj instanceof FinalBossGraphics r){
             return r.x == x && r.y == y;
         }
         return false;

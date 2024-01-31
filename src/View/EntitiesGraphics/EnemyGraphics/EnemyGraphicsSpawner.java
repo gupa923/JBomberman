@@ -97,6 +97,8 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
                     enemyGraphics.add(new ClownBossGraphics(t[0], t[1], t[2], t[3]));
                 }else if (type == 5){
                     enemyGraphics.add(new LastEnemyGraphics(t[0], t[1], t[2], t[3]));
+                }else if (type == 10){
+                    enemyGraphics.add(new FinalBossGraphics(t[0], t[1], t[2], t[3]));
                 }
             }
         }else if (arg instanceof String temp){
