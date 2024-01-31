@@ -22,9 +22,9 @@ public class FinalBoss extends Enemy{
         super(x, y, w, h);
         sx = x;
         sy = y;
-        score = 2000;
+        score = 10000;
         type = 10;
-        HP = 6;
+        HP = 5;
         defaultHP = HP;
 
         immortality = false;
@@ -41,7 +41,7 @@ public class FinalBoss extends Enemy{
     public void update() {
         if (dying){
             dynigTick++;
-            if (dynigTick >= 120){
+            if (dynigTick >= 240){
                 dynigTick = 0;
                 dying = false;
                 alive = false;
@@ -49,7 +49,7 @@ public class FinalBoss extends Enemy{
             return;
         }
         //if (updateTick%60 == 0){
-            shootRocket();
+            //shootRocket();
         //}
         if (updateTick %8 == 0) {
 

@@ -57,7 +57,6 @@ public class Partita extends Stato{
                 notifyObservers("PLAYING");
             } else {
                 if (Player.VITE <= 0) {
-                    //Player.VITE = 7;
                     USER.setRecord(SCORE);
                     SCORE = 0;
                     gameModel.setStatoAttuale(Stati.GAME_OVER);
@@ -76,10 +75,7 @@ public class Partita extends Stato{
         if (cheat){
             return true;
         }
-        if (actuaLevel == 3){
-            //                if (player.getHitbox().x / 16 == 11 && player.getHitbox().y/16 == 7){
-            //                    return true;
-            //                }
+        if (actuaLevel == 3 || actuaLevel == 6){
             return levels.get(actuaLevel).getEnemySpawner().getEnemies().isEmpty();
         } else {
             if (!levels.get(actuaLevel).getEnemySpawner().getEnemies().isEmpty()) {

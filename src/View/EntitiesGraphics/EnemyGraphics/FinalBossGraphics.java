@@ -29,6 +29,10 @@ public class FinalBossGraphics extends EnemyGraphics {
         temp = loadImg("/Imgs/entitySprites/enemySprite/Boss2.png" );
         sprites[0] = temp.getSubimage(0, 25, 74, 74);
         boss = temp.getSubimage(75,25,18,17);
+
+        deathAnimation = new BufferedImage[2];
+        deathAnimation[1] = temp.getSubimage(143, 25, 74,74);
+        deathAnimation[0] = sprites[0];
     }
 
     @Override

@@ -1,5 +1,6 @@
 package View.EntitiesGraphics.EnemyGraphics;
 
+import Model.EntityModel.Enemies.FinalBoss;
 import View.AudioPlayer;
 import View.StatesGraphics.MatchGraphics;
 import View.UtilityInterfaces.Drawable;
@@ -69,6 +70,15 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
                 }
             }else if (t[4] == 5){
                 LastEnemyGraphics e = new LastEnemyGraphics(t[0], t[1], t[2], t[3]);
+                for (int i = 0; i < enemyGraphics.size(); i++) {
+                    if (enemyGraphics.get(i).equals(e)) {
+                        enemyGraphics.get(i).setDeath(false);
+                        inactiveEnemies.add(enemyGraphics.get(i));
+                        enemyGraphics.remove(e);
+                    }
+                }
+            }else if (t[4] == 10) {
+                FinalBossGraphics e = new FinalBossGraphics(t[0], t[1], t[2], t[3]);
                 for (int i = 0; i < enemyGraphics.size(); i++) {
                     if (enemyGraphics.get(i).equals(e)) {
                         enemyGraphics.get(i).setDeath(false);

@@ -27,7 +27,7 @@ public class ClownBoss extends Enemy{
         sy = y;
         score = 2000;
         type = 66;
-        HP = 5;
+        HP = 3;
         defaultHP = HP;
 
         immortality = false;
