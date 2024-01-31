@@ -7,12 +7,9 @@ import java.awt.geom.Rectangle2D;
 
 import static Model.EntityModel.Player.BOMBS;
 
-public class ClownBoss extends Enemy{
+public class FinalBoss extends Enemy{
     private boolean moving = true;
     private int updateTick;
-
-
-
     /**
      * Costruisce un nemico a partire da quattro interi e inizializza la hitbox
      *
@@ -21,13 +18,13 @@ public class ClownBoss extends Enemy{
      * @param w : larghezza
      * @param h : altezza
      */
-    public ClownBoss(int x, int y, int w, int h) {
+    public FinalBoss(int x, int y, int w, int h) {
         super(x, y, w, h);
         sx = x;
         sy = y;
         score = 2000;
-        type = 66;
-        HP = 5;
+        type = 10;
+        HP = 6;
         defaultHP = HP;
 
         immortality = false;
@@ -37,7 +34,7 @@ public class ClownBoss extends Enemy{
     @Override
     public void initHitbox() {
         hitbox = new Hitbox(x, y, 16, 16);
-        bounds = new Rectangle2D.Float(x-47, y-44, 110, 105);
+        bounds = new Rectangle2D.Float(x, y, 74, 74);
     }
 
     @Override
@@ -51,10 +48,11 @@ public class ClownBoss extends Enemy{
             }
             return;
         }
-        if (updateTick %3 == 0) {
-            if (updateTick%480 == 0) {
-                changeDirection();
-            }
+        //if (updateTick%60 == 0){
+            shootRocket();
+        //}
+        if (updateTick %8 == 0) {
+
             switch (defaultDirection) {
                 case "LEFT" -> {
                     if ((hitbox.checkCollision(hitbox.x - 1, hitbox.y) && hitbox.checkCollision(hitbox.x - 1, hitbox.y + h - 1))) {
@@ -151,6 +149,10 @@ public class ClownBoss extends Enemy{
         updateTick++;
     }
 
+    private void shootRocket() {
+
+    }
+
     private void changeDirection() {
         if ((hitbox.x/16)% 2 == 0 && (hitbox.y/16)%2 == 1){
             defaultDirection = dirs[r.nextInt(4)];
@@ -186,7 +188,7 @@ public class ClownBoss extends Enemy{
 
     @Override
     public boolean equals(Object obj){
-        if (obj instanceof ClownBoss e){
+        if (obj instanceof FinalBoss e){
             return e.x == this.x && e.y == this.y;
         }
         return false;
