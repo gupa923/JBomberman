@@ -3,6 +3,8 @@ package Model.EntityModel;
 import java.awt.geom.Rectangle2D;
 
 public class Rocket extends Entity{
+    //famo la zozzata
+    //public static Player PLAYER;
     private String dir;
     private Rectangle2D.Float bounds;
     /**
@@ -28,19 +30,22 @@ public class Rocket extends Entity{
     public void update() {
         switch (dir){
             case "LEFT" -> {
-                x -= 3;
-                hitbox.x -= 3;
+                x -= 1;
+                bounds.x -= 1;
             }case "RIGHT" -> {
-                x += 3;
-                hitbox.x += 3;
+                x += 1;
+                bounds.x += 1;
             }case "UP" -> {
-                y -= 3;
-                hitbox.y -= 3;
+                y -= 1;
+                bounds.y -= 1;
             }case "DOWN" -> {
-                y += 3;
-                hitbox.y += 3;
+                y += 1;
+                bounds.y += 1;
             }
         }
     }
 
+    public Rectangle2D.Float getBounds() {
+        return bounds;
+    }
 }

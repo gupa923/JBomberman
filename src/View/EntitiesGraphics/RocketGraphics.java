@@ -31,19 +31,27 @@ public class RocketGraphics extends EntityGraphics {
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(sprites[dir][0], x*3, y*3, w*3, h*3, null);
+        if (dir == 0) {
+            g.drawImage(sprites[dir][0], x * 3, y * 3, 32 * 3, 22 * 3, null);
+        }else if (dir == 1){
+            g.drawImage(sprites[dir][0], x * 3, y * 3, 32 * 3, 22 * 3, null);
+        }else if (dir == 2){
+            g.drawImage(sprites[dir][0], x * 3, y * 3, 20 * 3, 32 * 3, null);
+        }else if (dir == 3){
+            g.drawImage(sprites[dir][0], x * 3, y * 3, 20 * 3, 32 * 3, null);
+        }
     }
 
 
     public void moveRocket() {
         if (dir == 0){
-            x -= 3;
+            x -= 2;
         }else if (dir == 1){
-            x += 3;
+            x += 2;
         }else if (dir == 2){
-            y -= 3;
+            y -= 2;
         }else if (dir == 3){
-            y += 3;
+            y += 2;
         }
     }
 }

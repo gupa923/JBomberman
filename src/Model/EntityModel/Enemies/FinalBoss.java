@@ -2,6 +2,7 @@ package Model.EntityModel.Enemies;
 
 import Model.EntityModel.Bomb;
 import Model.EntityModel.Hitbox;
+import Model.EntityModel.Player;
 import Model.EntityModel.Rocket;
 
 import java.awt.geom.Rectangle2D;
@@ -150,8 +151,25 @@ public class FinalBoss extends Enemy{
             }
         }
         updateTick++;
+
+        for (int i = 0; i < rockets.size(); i++){
+            rockets.get(i).update();
+        }
     }
 
+    @Override
+    public void playerHit(Player player){
+        Hitbox pHitbox = player.getHitbox();
+        if (bounds.intersects(new Rectangle2D.Float(pHitbox.x, pHitbox.y, pHitbox.w, pHitbox.h))){
+            player.hit();
+        }
+        for (Rocket r : rockets){
+            if (r.getBounds().intersects(new Rectangle2D.Float(pHitbox.x, pHitbox.y, pHitbox.w, pHitbox.h))){
+                player.hit();
+                return;
+            }
+        }
+    }
     private void shootRocket() {
         int i = r.nextInt(4);
         rockets.add(new Rocket(x+28, y + 20, 20, 20, dirs[i]));
@@ -167,8 +185,8 @@ public class FinalBoss extends Enemy{
 
     @Override
     protected boolean intersect(String dir) {
-        for (Bomb b : BOMBS){
-            if (b.intersect(this, dir)){
+        for (Bomb b : BOMBS) {
+            if (b.intersect(this, dir)) {
                 return true;
             }
         }

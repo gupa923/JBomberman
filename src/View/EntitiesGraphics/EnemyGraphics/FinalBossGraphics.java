@@ -8,6 +8,8 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import static Model.EntityModel.Enemies.FinalBoss.rockets;
+
 public class FinalBossGraphics extends EnemyGraphics {
     private BufferedImage boss, temp;
     private BufferedImage[] sprites;
@@ -76,6 +78,7 @@ public class FinalBossGraphics extends EnemyGraphics {
             g.drawImage(deathAnimation[deathIndex], x * 3, y * 3, w * 3, h * 3, null);
         }
         for (RocketGraphics r : rocketGraphics){
+            r.moveRocket();
             r.draw(g);
         }
     }
@@ -115,10 +118,6 @@ public class FinalBossGraphics extends EnemyGraphics {
         }
         else if (arg instanceof int[] arr){
             rocketGraphics.add(new RocketGraphics(arr[0], arr[1], arr[2],  arr[3], arr[4]));
-        }
-
-        for (int i = 0; i < rocketGraphics.size(); i++){
-            rocketGraphics.get(i).moveRocket();
         }
     }
 
