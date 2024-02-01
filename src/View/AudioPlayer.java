@@ -1,6 +1,7 @@
 package View;
 
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import java.util.ArrayList;
 
 public class AudioPlayer {
@@ -20,6 +21,17 @@ public class AudioPlayer {
 
             }
         }
+    }
+
+    public static void StopSong(){
+        if (EFFECTS.get(9).isActive()){
+            EFFECTS.get(9).stop();
+        }
+    }
+    public static void PlaySong(){
+        StopSong();
+        EFFECTS.get(9).setMicrosecondPosition(0);
+        EFFECTS.get(9).loop(Clip.LOOP_CONTINUOUSLY);
     }
 
 }

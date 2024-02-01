@@ -5,6 +5,7 @@ import Model.EntityModel.Hitbox;
 import Model.EntityModel.Player;
 import Model.GameModel;
 import Model.Stati;
+import View.AudioPlayer;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -101,6 +102,11 @@ public class MouseManager implements MouseListener, MouseMotionListener {
             }
             case SETTINGS -> {
                 if (gameModel.getSettings().getbAudio() .getBounds().contains(e.getX(), e.getY())){
+                    if(PLAY_EFFECTS == true){
+                        AudioPlayer.StopSong();
+                    }else {
+                        AudioPlayer.PlaySong();
+                    }
                     PLAY_EFFECTS = !PLAY_EFFECTS;
                 }
                 else if (gameModel.getSettings().getbComandi().getBounds().contains(e.getX(), e.getY())){

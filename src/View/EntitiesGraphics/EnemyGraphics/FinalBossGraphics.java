@@ -8,7 +8,6 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import static Model.EntityModel.Enemies.FinalBoss.rockets;
 
 public class FinalBossGraphics extends EnemyGraphics {
     private BufferedImage boss, temp;

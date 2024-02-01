@@ -5,6 +5,7 @@ import Controller.EntityManagers.PlayerManager;
 import Controller.InputManagers.KeyManager;
 import Controller.InputManagers.MouseManager;
 import Model.GameModel;
+import View.AudioPlayer;
 import View.GameFrame;
 import View.GamePanel;
 
@@ -36,6 +37,7 @@ public class Game implements Runnable{
     private Game() {
 
         this.audioManager = new AudioManager();
+
         //creazione model
         this.gameModel = GameModel.getInstance();
         this.stateManager = StateManager.getInstance();
@@ -65,7 +67,7 @@ public class Game implements Runnable{
         gamePanel.addMouseMotionListener(mouseManager);
         gamePanel.addKeyListener(keyManager);
         gamePanel.requestFocus();
-
+        AudioPlayer.PlaySong();
     }
 
     /**
