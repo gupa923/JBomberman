@@ -153,8 +153,25 @@ public class FinalBoss extends Enemy{
         updateTick++;
 
         for (int i = 0; i < rockets.size(); i++){
-            rockets.get(i).update();
+            Rocket t = rockets.get(i);
+            t.update();
+            if (checkRocketOutOfBoards(t)){
+                rockets.remove(t);
+            }
         }
+    }
+
+    private boolean checkRocketOutOfBoards(Rocket rocket) {
+        if (rocket.getX()+rocket.getW() < 0){
+            return true;
+        }else if (rocket.getX() > 272){
+            return true;
+        }else if (rocket.getY() + rocket.getH() < 0){
+            return true;
+        }else if (rocket.getY() > 208){
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -176,12 +193,6 @@ public class FinalBoss extends Enemy{
         setChanged();
         notifyObservers(new int[] {x+28, y+20, 20, 20, i});
     }
-
-//    private void changeDirection() {
-//        if ((hitbox.x/16)% 2 == 0 && (hitbox.y/16)%2 == 1){
-//            defaultDirection = dirs[r.nextInt(4)];
-//        }
-//    }
 
     @Override
     protected boolean intersect(String dir) {

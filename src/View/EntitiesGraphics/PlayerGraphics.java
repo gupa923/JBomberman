@@ -39,9 +39,6 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     private boolean death;
     private final AudioPlayer audioPlayer;
 
-    //TODO ricordati di eliminare questa variabile perchè ci serve solo a fini di debug.
-    private Hitbox hitbox;
-
     public PlayerGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
         bombViews = new ArrayList<>();

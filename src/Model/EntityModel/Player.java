@@ -57,7 +57,6 @@ public class Player extends Entity{
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
         initHitbox();
-        //Rocket.PLAYER = this;
     }
 
     /**
@@ -319,8 +318,6 @@ public class Player extends Entity{
         if (!immortality) {
             HP--;
             if (HP == 0) {
-                //alive = false;
-                //walkOver = false;
                 dying = true;
                 sendMessage("DYING");
             }

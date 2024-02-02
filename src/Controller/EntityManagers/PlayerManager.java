@@ -15,7 +15,6 @@ public class PlayerManager {
     private final Player player;
     private final PlayerGraphics playerGraphics;
 
-    //TODO alla fine ricordati di togliere la hitbox dal playerGraphics
     private PlayerManager(){
         gameModel = GameModel.getInstance();
         player = new Player(32, 8, 16, 24);

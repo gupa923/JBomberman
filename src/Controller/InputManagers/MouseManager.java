@@ -157,8 +157,8 @@ public class MouseManager implements MouseListener, MouseMotionListener {
             }
             case COMMAND_INFO -> {
                 if(gameModel.getCommandInfo().getbBack().getBounds().contains(e.getX(), e.getY())){
-                    gameModel.setStatoAttuale(Stati.MENU);
-                    stateManager.changeState(Stati.MENU);
+                    gameModel.setStatoAttuale(Stati.SETTINGS);
+                    stateManager.changeState(Stati.SETTINGS);
                 }
             }
         }
@@ -168,15 +168,6 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         switch (gameModel.getStatoAttuale()){
-            case MENU -> {
-                if (gameModel.getMenu().getbPlay().getBounds().contains(e.getX(), e.getY())){
-                    //gameModel.getMenu().getbPlay().setMousePressed(false);
-                }else if (gameModel.getMenu().getbSettings().getBounds().contains(e.getX(), e.getY())){
-                    //gameModel.getMenu().getbPlay().setMousePressed(false);
-                }else if (gameModel.getMenu().getbStats().getBounds().contains(e.getX(), e.getY())){
-                   // gameModel.getMenu().getbLogin().setMousePressed(false);
-                }
-            }
             case PARTITA -> {
                 if (e.getButton() == MouseEvent.BUTTON1){
                     gameModel.getPartita().getPlayer().setMoving(true);

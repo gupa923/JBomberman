@@ -1,6 +1,5 @@
 package Model.EntityModel.Enemies;
 
-import Model.EntityModel.Bomb;
 import Model.EntityModel.Hitbox;
 
 import java.awt.geom.Rectangle2D;

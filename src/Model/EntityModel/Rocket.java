@@ -3,8 +3,6 @@ package Model.EntityModel;
 import java.awt.geom.Rectangle2D;
 
 public class Rocket extends Entity{
-    //famo la zozzata
-    //public static Player PLAYER;
     private String dir;
     private Rectangle2D.Float bounds;
     /**

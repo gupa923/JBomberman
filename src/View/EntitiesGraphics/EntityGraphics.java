@@ -13,4 +13,20 @@ public abstract class EntityGraphics implements ImgImporter, Drawable, Animatabl
         this.w = w;
         this.h = h;
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getW() {
+        return w;
+    }
+
+    public int getH() {
+        return h;
+    }
 }

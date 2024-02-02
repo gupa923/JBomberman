@@ -76,10 +76,28 @@ public class FinalBossGraphics extends EnemyGraphics {
         }else{
             g.drawImage(deathAnimation[deathIndex], x * 3, y * 3, w * 3, h * 3, null);
         }
-        for (RocketGraphics r : rocketGraphics){
-            r.moveRocket();
-            r.draw(g);
+        for (int i = 0; i < rocketGraphics.size(); i++){
+            RocketGraphics t = rocketGraphics.get(i);
+            t.moveRocket();
+            if (checkRocketOutOfBoards(t)){
+                rocketGraphics.remove(t);
+            }else {
+                t.draw(g);
+            }
         }
+    }
+
+    private boolean checkRocketOutOfBoards(RocketGraphics rocket) {
+        if (rocket.getX()+rocket.getW() < 0){
+            return true;
+        }else if (rocket.getX() > 272){
+            return true;
+        }else if (rocket.getY() + rocket.getH() < 0){
+            return true;
+        }else if (rocket.getY() > 208){
+            return true;
+        }
+        return false;
     }
 
     @Override
