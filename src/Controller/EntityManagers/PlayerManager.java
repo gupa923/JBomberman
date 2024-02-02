@@ -5,9 +5,10 @@ import Model.GameModel;
 import View.EntitiesGraphics.PlayerGraphics;
 
 /**
- * questa classe gestisce il modello del player e la view del player
- * è singleton
- * @author gupa9
+ * questa classe crea il model e la view del Player.
+ * @see Player
+ * @see PlayerGraphics
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class PlayerManager {
     private static PlayerManager instance;

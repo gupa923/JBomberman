@@ -7,10 +7,8 @@ import View.GamePanel;
 import View.StatesGraphics.*;
 
 /**
- * Questa classe gestisce il passaggio tra uno stato all'altro fancendo cambiare sia il model che la view
- *
- *
- *
+ * Questa classe crea il model e la view di tutti gli stati del gioco e gestisce il passaggio tra uno stato e un altro
+ * @autor Guido Paluzzi, Matteo Santucci
  */
 public class StateManager {
 
@@ -31,6 +29,9 @@ public class StateManager {
     private final StatsMenuGraphics statsMenuGraphics;
     private static StateManager instance;
 
+    /**
+     * Costruttore della classe
+     */
     private StateManager(){
         gameModel = GameModel.getInstance();
         partita = gameModel.getPartita();
@@ -58,8 +59,7 @@ public class StateManager {
     }
 
     /**
-     * cambia la view e il model il base allo stato che deve essere impostato come stato attivo.
-     *
+     * Cambia lo stato della view in base a come è cambiato lo stato del model
      * @param nextState: in base a valore di nextState imposta actualState che verrà disegnato nella view
      */
     public void changeState(Stati nextState){
@@ -98,6 +98,9 @@ public class StateManager {
         loginManager = new LoginManager(gamePanel);
     }
 
+    /**
+     * Questo metodo rimuove il LoginPanel dal GamePanel.
+     */
     public void removeLoginPanel() {
         gameModel.setStatoAttuale(Stati.MENU);
         gamePanel.remove(loginManager.getLoginPanel());

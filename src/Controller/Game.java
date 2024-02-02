@@ -10,14 +10,11 @@ import View.GameFrame;
 import View.GamePanel;
 
 /**
- * questa classe inizializza tutte le cose chiama i vari costruttori e da inizio al gioco
- *
- * è singleton
+ * Questa classe controlla tutta l'esecuzione del gioco, istanzia quindi tutti gli elementi del model e del controller.
  * @see Runnable
  * @author gupa9
  */
 public class Game implements Runnable{
-
     private static Game instance;
     private final GameFrame gameFrame;
     private final GamePanel gamePanel;
@@ -34,34 +31,28 @@ public class Game implements Runnable{
     private final int FPS = 60;
     private final int UPS = 120;
 
+    /**
+     * Costruttore della classe, inizializza le classi del gioco
+     */
     private Game() {
-
         this.audioManager = new AudioManager();
 
-        //creazione model
         this.gameModel = GameModel.getInstance();
         this.stateManager = StateManager.getInstance();
         this.playerManager = PlayerManager.getInstance();
         this.levelManager = LevelManager.getInstance();
         enemySpawnerManager = new EnemySpawnerManager();
 
-        //creazione view
         this.gamePanel = new GamePanel(stateManager.getMenuGraphics());
         this.gameFrame = new GameFrame(gamePanel);
-
         stateManager.setGamePanel(gamePanel);
-
         gamePanel.setMatchGraphics(stateManager.getMatchGraphics());
         gamePanel.setMenuGraphics(stateManager.getMenuGraphics());
-        //aggiungo alla view le varie cose grafiche
         gamePanel.getMatchGraphics().setPlayerGraphics(playerManager.getPlayerGraphics());
         gamePanel.getMatchGraphics().setLevelGraphics(levelManager.getLevelGraphicsArrayList());
 
-        //inizializzazione dei listener
         mouseManager = new MouseManager(gameModel, stateManager);
         keyManager = new KeyManager(gameModel, stateManager);
-
-        //aggiunta dei listener
 
         gamePanel.addMouseListener(mouseManager);
         gamePanel.addMouseMotionListener(mouseManager);
@@ -71,8 +62,7 @@ public class Game implements Runnable{
     }
 
     /**
-     * iniza l'esecuzione del trhead
-     *
+     * Con questo metodo inizia l'esecuzione vera e propria del gioco
      */
     public void startGame(){
         thread = new Thread(this);
@@ -80,11 +70,8 @@ public class Game implements Runnable{
     }
 
     /**
-     * gameloop
-     * il gameloop è un while che viene eseguito finchè l'esecuzione non viene interrotta.
-     * il loop aggiorna il model e la view.
-     * gli update per secondo sono 120 e il game loop in base a quanto tempo è passato dall'ultimo update, chiama gameModel.update().
-     * lo stesso vale per i frame, impostati a 120
+     * Questa classe è quella che contiene il game loop. Viene controllato il tempo che passa tra un aggiornamento del model e l'altro, se è passato troppo tempo il model viene aggiornato nuovamente, in modo da avere 120 aggiornamenti per secondo.
+     * In modo analogo la viene fatto per la view viene ridisegnata 60 volte al secondo
      */
     @Override
     public void run() {
@@ -121,7 +108,6 @@ public class Game implements Runnable{
 
             if (System.currentTimeMillis() - lastCheck >= 1000) {
                 lastCheck = System.currentTimeMillis();
-                //System.out.println("FPS: " + frames + " | UPS: " + updates);
                 frames = 0;
                 updates = 0;
 

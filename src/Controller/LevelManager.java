@@ -12,19 +12,22 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
- * gestisce il model del level e la view del level
- *
- * @author gupa9
+ * Questa classe gestisce la creazione del model e della view dei livelli. Ogni livello è creato a partire da un immagine convertita in una matrice di interi
+ * @see Level
+ * @see LevelGraphics
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class LevelManager {
     private static LevelManager instance;
-
     private final GameModel gameModel;
     private Level level;
     private final ArrayList<Level> levels;
     private LevelGraphics levelGraphics;
     private final ArrayList<LevelGraphics> levelGraphicsArrayList;
 
+    /**
+     * Costruttore della classe
+     */
     private LevelManager(){
         levels = new ArrayList<>();
         levelGraphicsArrayList = new ArrayList<>();
@@ -69,10 +72,9 @@ public class LevelManager {
 
 
     /**
-     * dall'immagine lvlData nel res folder crea una matrice di interi i cui valori dipendono
-     * dal colore del pixel corrispondente.
-     *
-     * @return
+     * A partire dall'immagine al percorso name il metodo restituisce una matrice di interi che associa ad ogni pixel dell'immagine un numero
+     * @param name : percorso del file dove si trova l'immagine
+     * @return: una matrice di interi usata percreare il livello
      */
     private int[][] getLvlData(String name){
         InputStream is = LevelManager.class.getResourceAsStream(name);

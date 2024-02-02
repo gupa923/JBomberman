@@ -8,18 +8,27 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- *
- * classico keylistener
+ * Questa classe gestisce gli input da tastiera
+ * @see java.awt.event.KeyListener
+ * @see GameModel
+ * @see StateManager
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class KeyManager implements KeyListener {
 
     private final GameModel gameModel;
     private final StateManager stateManager;
 
+    /**
+     * Costruttore della classe
+     * @param gameModel: l'istanza del modello del gioco
+     * @param stateManager: l'istanza dello StateManager
+     */
     public KeyManager(GameModel gameModel, StateManager stateManager) {
         this.gameModel = gameModel;
         this.stateManager = stateManager;
     }
+
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -27,8 +36,8 @@ public class KeyManager implements KeyListener {
     }
 
     /**
-     * in base al tasto premuto imposta moving a true e imposta la direction del player
-     * @param e
+     * In base allo stato attuale e al tasto premuto viene eseguito il rispettivo comando
+     * @param e: the event to be processed
      */
     @Override
     public void keyPressed(KeyEvent e) {
@@ -151,8 +160,7 @@ public class KeyManager implements KeyListener {
     }
 
     /**
-     * in base al tasto rilasciato moving viene impostato a false e la direction viene impostata a STAY;
-     *
+     * In base al tasto rilasciato vengono eseguiti i relativi comandi
      * @param e the event to be processed
      */
     @Override

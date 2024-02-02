@@ -16,6 +16,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Questa classe gestisce il login quindi la creazione e il salvataggio degli utenti nel file di testo
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class LoginManager {
     private final LoginPanel loginPanel;
     private final GamePanel gamePanel;
@@ -25,6 +29,11 @@ public class LoginManager {
     private final LoginListener loginListener;
     private final RegisterListener registerListener;
     private UserView uv;
+
+    /**
+     * Costruttore della class
+     * @param gamePanel: il JPanel del gioco
+     */
     public LoginManager(GamePanel gamePanel){
         this.gamePanel = gamePanel;
         loginPanel = this.gamePanel.getLoginPanel();
@@ -38,8 +47,14 @@ public class LoginManager {
         this.loginPanel.getRegisterButton().addActionListener(registerListener);
     }
 
+    /**
+     * Questa classe è un action listener che gestisce il login
+     */
     private class LoginListener implements ActionListener{
-
+        /**
+         * Gestisce il login quindi controlla se i caratteri inseriti sono validi e effettua il login
+         * @param e the event to be processed
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             if (isTextValid()){
@@ -68,13 +83,24 @@ public class LoginManager {
 
     }
 
+    /**
+     * Questa classe controllla la validità del testo inserito
+     * @return: restituisce true se il testo inserito è valida
+     */
     private boolean isTextValid() {
         String[] tNickname = loginPanel.getUsernameField().getText().split(" ");
         String[] tPassword = loginPanel.getPasswordField().getText().split(" ");
         return tNickname.length == 1 && tPassword.length== 1;
     }
 
+    /**
+     * Questa classe è un action listener che gestisce la registrazione
+     */
     private class RegisterListener implements ActionListener{
+        /**
+         * Controlla se il testo è valido, poi controlla poi effettua la registrazione.
+         * @param e the event to be processed
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             if (loginPanel.getAvatarField().getText().equals("")){
@@ -115,6 +141,9 @@ public class LoginManager {
 
     }
 
+    /**
+     * Questo metodo salva gli utenti su un file di test chiamato "accounts.txt".
+     */
     public void saveUsers() {
         StringBuilder sb = new StringBuilder();
         for (User u : accounts.getUsers()){

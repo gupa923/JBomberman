@@ -14,15 +14,23 @@ import java.awt.event.MouseMotionListener;
 import static View.AudioPlayer.PLAY_EFFECTS;
 
 /**
- *
- * classico mouse listener
- *
+ * Questa classe gestisce gli input del mouse, quindi sia i tasti che il movimento del mouse
+ * @see java.awt.event.MouseListener
+ * @see java.awt.event.MouseMotionListener
+ * @see GameModel
+ * @see StateManager
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class MouseManager implements MouseListener, MouseMotionListener {
 
     private final GameModel gameModel;
     private final StateManager stateManager;
 
+    /**
+     * Costruttore della classe
+     * @param gameModel: l'istanza del modello del gioco
+     * @param stateManager: l'istanza dello StateManager
+     */
     public MouseManager(GameModel gameModel, StateManager stateManager) {
         this.gameModel = gameModel;
         this.stateManager = stateManager;
@@ -33,6 +41,10 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
     }
 
+    /**
+     * In base allo stato attuale controlla la posizione del mouse nel momento in cui è stato premuto ed esegue la relativa azione
+     * @param e the event to be processed
+     */
     @Override
     public void mousePressed(MouseEvent e) {
         switch (gameModel.getStatoAttuale()){
@@ -165,6 +177,10 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
     }
 
+    /**
+     * Gestisce gli eventi che si verificano quando il mouse viene rilasciato
+     * @param e the event to be processed
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
         switch (gameModel.getStatoAttuale()){
@@ -192,6 +208,10 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
     }
 
+    /**
+     * Gestisce il movimento del mouse
+     * @param e the event to be processed
+     */
     @Override
     public void mouseMoved(MouseEvent e) {
         switch (gameModel.getStatoAttuale()){
