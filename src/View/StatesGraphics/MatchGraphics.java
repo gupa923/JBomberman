@@ -104,6 +104,7 @@ public class MatchGraphics extends StateGraphics {
             } else if ( message.equals("NEW GAME")){
                 win = false;
                 playerGraphics.reset();
+                playerGraphics.setChangeLevel(false);
                 gameOverScreen.reset();
                 actualLevel = 0;
                 SCORE_VIEW = 0;

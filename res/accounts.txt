@@ -1,1 +1,1 @@
-Default default 2 9 1 6800
+Default default 2 22 9 10000

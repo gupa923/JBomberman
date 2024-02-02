@@ -155,9 +155,10 @@ public class Partita extends Stato{
     }
 
     public void restartGame() {
+        resetLevels();
+        cheat = false;
         player.reset();
         Player.VITE = 7;
-        resetLevels();
         actuaLevel = 0;
         SCORE = 0;
         gameCompleted = false;
