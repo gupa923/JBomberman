@@ -13,6 +13,7 @@ import static Model.EntityModel.Player.BOMBS;
 /**
  * Questa classe contiene tutte le informazioni comuni a tutti i nemici. Estende la classe Entity. Ogni nemico ha una x, una y, una larghezza, un'altezza e un type. Inoltre il nemico a due stati che non possono essere uguali allo stesso momento: cioè alive e dying.
  * @see Model.EntityModel.Entity
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public abstract class Enemy extends Entity {
     protected boolean immortality = false;
@@ -42,12 +43,17 @@ public abstract class Enemy extends Entity {
 
     /**
      * restituisce un array di interi contenente la rappresentazione del nemico in int[]. Questo array contiene l'ascissa, l'ordinata, la larghezza, l'altezza e il tipo.
-     * @return: la rappresentazione del nemico sotto forma di matrice di interi
+     * @return: la rappresentazione del nemico sotto forma di array di interi
      */
     public int[] toArr(){
         return new int[] {x, y, w, h, type};
     }
 
+    /**
+     * Controlla l'intersezione del nemico con le bombe
+     * @param dir: la direzione verso cui si sta muovendo il nemico
+     * @return: restituisce true se il nemico è entrato in collisione con una bomba.
+     */
     protected boolean intersect(String dir) {
         for (Bomb b : BOMBS){
             if (b.intersect(this, dir)){

@@ -6,11 +6,21 @@ import java.awt.geom.Rectangle2D;
 
 import static Model.EntityModel.Player.BOMBS;
 
+/**
+ * Questa classe gestisce il BlueEnemy, la cui caratteristica è quella di mangiare le bombe quando ci passa sopra.
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class BlueEnemy extends Enemy{
     private int updateTick, immortalityTick;
     private boolean immortality = true, moving = true;
 
-
+    /**
+     * Costruisce il nemico a partire da quattro interi e inizializza la hitbox
+     *      * @param x: ascissa punto di spawn
+     *      * @param y: ordinata del punto di spawn
+     *      * @param w: larghezza
+     *      * @param h: altezza
+     */
     public BlueEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
         sx = x;
@@ -23,12 +33,18 @@ public class BlueEnemy extends Enemy{
         initHitbox();
     }
 
+    /**
+     * Inizializza le hitbox
+     */
     @Override
     public void initHitbox() {
         hitbox = new Hitbox(x, y , 16, 16);
         bounds = new Rectangle2D.Float(x, y , 16, 16);
     }
 
+    /**
+     * Aggiorna lo stato del nemico e notifica gli observer di conseguenza.
+     */
     @Override
     public void update() {
         if (dying){
@@ -137,6 +153,11 @@ public class BlueEnemy extends Enemy{
         updateTick++;
     }
 
+    /**
+     * Questo metodo controlla la collisione tra il BlueEnemy e le bombe.
+     * @param dir: la direzione verso cui si sta muovendo il nemico
+     * @return: true se il nemico è entrato in collisione con una bomba che sta esplodendo
+     */
     @Override
     protected boolean intersect(String dir) {
         for (int i = 0; i < BOMBS.size(); i++){
@@ -147,6 +168,9 @@ public class BlueEnemy extends Enemy{
         return false;
     }
 
+    /**
+     * Gestisce il danno subito dal blueenemy e anche la morte dello stesso
+     */
     @Override
     public void hit() {
         if (!immortality) {

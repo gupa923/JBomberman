@@ -6,10 +6,24 @@ import java.awt.geom.Rectangle2D;
 
 import static Model.EntityModel.Player.BOMBS;
 
+/**
+ * Questa classi gestisce il RedEnemy
+ * @see Model.EntityModel.Enemies.Enemy
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class RedEnemy extends Enemy {
 
     private boolean moving = true;
     private int updateTick;
+
+    /**
+     *  Costruisce un nemico a partire da quattro interi e inizializza la hitbox
+     *
+     * @param x : ascissa punto di spawn
+     * @param y : ordinata del punto di spawn
+     * @param w : larghezza
+     * @param h : altezza
+     */
     public RedEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
         sx = x;
@@ -22,6 +36,9 @@ public class RedEnemy extends Enemy {
         initHitbox();
     }
 
+    /**
+     * Aggiorna lo stato del RedEnemy e aggiorna l'Observer di conseguenza
+     */
     @Override
     public void update() {
         if (dying){
@@ -130,12 +147,18 @@ public class RedEnemy extends Enemy {
         updateTick++;
     }
 
+    /**
+     * Inizializza la hitbox
+     */
     @Override
     public void initHitbox() {
         hitbox = new Hitbox(x, y + 8, 16, 16);
         bounds = new Rectangle2D.Float(x, y + 8, 16, 16);
     }
 
+    /**
+     * Gestisce il danno subito dal nemico e la morte dello stesso
+     */
     @Override
     public void hit() {
         if (!immortality) {

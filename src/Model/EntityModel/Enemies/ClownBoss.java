@@ -7,6 +7,11 @@ import java.awt.geom.Rectangle2D;
 
 import static Model.EntityModel.Player.BOMBS;
 
+/**
+ * Questa classe gestisce il primo boss del gioco, le sua caratteristica è il movimento veloce ed imprevedibile
+ * @see Model.EntityModel.Enemies.Enemy
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class ClownBoss extends Enemy{
     private boolean moving = true;
     private int updateTick;
@@ -34,12 +39,18 @@ public class ClownBoss extends Enemy{
         initHitbox();
     }
 
+    /**
+     * inizializza le hitbox
+     */
     @Override
     public void initHitbox() {
         hitbox = new Hitbox(x, y, 16, 16);
         bounds = new Rectangle2D.Float(x-47, y-44, 110, 105);
     }
 
+    /**
+     * Aggiorna lo stato del boss e manda le notifiche all'observer di conseguenza
+     */
     @Override
     public void update() {
         if (dying){
@@ -151,12 +162,20 @@ public class ClownBoss extends Enemy{
         updateTick++;
     }
 
+    /**
+     * Cambia casualmente la direzione del boss
+     */
     private void changeDirection() {
         if ((hitbox.x/16)% 2 == 0 && (hitbox.y/16)%2 == 1){
             defaultDirection = dirs[r.nextInt(4)];
         }
     }
 
+    /**
+     *
+     * @param dir: la direzione verso cui si sta muovendo il nemico
+     * @return: return true se il boss collide con una bomba
+     */
     @Override
     protected boolean intersect(String dir) {
         for (Bomb b : BOMBS){
@@ -167,6 +186,9 @@ public class ClownBoss extends Enemy{
         return false;
     }
 
+    /**
+     * gestisce il danno subito
+     */
     @Override
     public void hit() {
         if (!immortality) {

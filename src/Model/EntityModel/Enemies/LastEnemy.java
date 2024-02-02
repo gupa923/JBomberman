@@ -6,13 +6,17 @@ import java.awt.geom.Rectangle2D;
 
 import static Model.EntityModel.Player.BOMBS;
 
+/**
+ * Questa classe gestisce il LastEnemy, le cui caratterisctiche sono quelle di muoversi attraverso tutti gli ostacoli distruttibili, quindi anche le bombe.
+ * @see Model.EntityModel.Enemies.Enemy
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class LastEnemy extends Enemy {
     private int updateTick;
     private boolean moving;
 
     /**
      * Costruisce un nemico a partire da quattro interi e inizializza la hitbox
-     *
      * @param x : ascissa punto di spawn
      * @param y : ordinata del punto di spawn
      * @param w : larghezza
@@ -30,6 +34,9 @@ public class LastEnemy extends Enemy {
         initHitbox();
     }
 
+    /**
+     * Inizializza le hitbox
+     */
     @Override
     public void initHitbox() {
         hitbox = new Hitbox(x, y + 8, 16, 16);
@@ -37,6 +44,9 @@ public class LastEnemy extends Enemy {
         bounds = new Rectangle2D.Float(x, y + 8, 16, 16);
     }
 
+    /**
+     * Aggiorna lo stato del LastEnemy, mandando le notifiche al suo Observer di conseguenza
+     */
     @Override
     public void update() {
         if (dying){
@@ -148,11 +158,20 @@ public class LastEnemy extends Enemy {
         updateTick++;
     }
 
+    /**
+     * Cambia casualmente la direzione del nemico
+     */
     private void changeDirection() {
         if ((hitbox.x/16)% 2 == 0 && (hitbox.y/16)%2 == 1){
             defaultDirection = dirs[r.nextInt(4)];
         }
     }
+
+    /**
+     * Gestisce la collisione con le bombe
+     * @param dir: la direzione verso cui si sta muovendo il nemico
+     * @return: true se una bomba che esplode collide con il nemico
+     */
     @Override
     protected boolean intersect(String dir) {
         for (int i = 0; i < BOMBS.size(); i++){
@@ -163,6 +182,9 @@ public class LastEnemy extends Enemy {
         return false;
     }
 
+    /**
+     * Gestisce il danno subito dal nemico e ancha la morte dello stesso
+     */
     @Override
     public void hit() {
         if (!immortality) {

@@ -8,7 +8,11 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 /**
- * Questa classe crea e gestisce i nemici all'interno di un livello della partita. I nemici vengono creati a partire dalla matrice di interi data. questa classe contiene due array di nemici. Uno è quello dei nemici attivi nel gioco, mentre l'altro contiene i nemici inattivi.
+ * Questa classe crea e gestisce i nemici all'interno di un livello della partita. I nemici vengono creati a partire dalla matrice di interi data.
+ * @see Level
+ * @see Enemy
+ * @see Observable
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class EnemySpawner extends Observable {
     private final int[][] data;
@@ -17,8 +21,7 @@ public class EnemySpawner extends Observable {
     private final ArrayList<Enemy> enemies;
 
     /**
-     * dato il parametro level, al campo data viene assegnato il valore della matrice data del level. Tremite il metodo createEnemies() vengono creati i nemici e vengono aggiunti all'ArrayList enemy
-     *
+     * Costruttore della classe
      * @param level: il livello i cui nemici vengono gestiti da questa classe
      */
     public EnemySpawner(Level level){
@@ -69,7 +72,7 @@ public class EnemySpawner extends Observable {
     }
 
     /**
-     * questo metodo chiama il metodo update di ogni nemico presente nell'ArrayList enemy
+     * Questo metodo aggiorna tutti i nemici
      */
     public void update(){
         for (int i = 0; i < enemies.size(); i++){
@@ -82,7 +85,7 @@ public class EnemySpawner extends Observable {
     }
 
     /**
-     * per ogni nemico nell'ArrayList chiama il metodo playerHit che controlla se il nemico è entrato in collisione con il player
+     * Controlla se uno dei nemici attivi è entrato in collisione con il player
      * @param player: il player
      */
     public void checkPlayerHit(Player player){
@@ -92,7 +95,7 @@ public class EnemySpawner extends Observable {
     }
 
     /**
-     * dato l'indice i rimuove dall'array enemy l'Enemy all'indice i e lo aggiunge all'array di inactiveEnemy
+     * Dato l'indice i, rimuove il nemico che si trova alla posizione i dell'array
      * @param i: indice dell'ArrayList in cui si trova il nemico da rimuovere
      */
     private void despawnEnemy(int i) {
@@ -109,7 +112,7 @@ public class EnemySpawner extends Observable {
     }
 
     /**
-     * questo metodo viene chiamato quando l'EnemySpawner viene associato al livello e al suo Observer. invia una notifica contenete una matrice di interi avente per righe la rappresentazione del nemico tramite un array di interi
+     * Questo metodo manda la prima notifica che contiene tutti i dati di tutti nemici
      */
     public void firstNotify(){
         int[][] message = enemies.stream().map(e -> e.toArr()).toArray(int[][]::new);
@@ -122,7 +125,7 @@ public class EnemySpawner extends Observable {
     }
 
     /**
-     * questo metodo viene chiamato quando si inizia una nuova partita. Questo metodo trasferisce tutti gli Enemy in inactiveEnemy nell'array enemies, svuotando il primo
+     * questo metodo viene chiamato quando si inizia una nuova partita. Ripristina gli stati della classe agli stati di partenza
      */
     public void reset() {
         for (Enemy e: inactiveEnemies){

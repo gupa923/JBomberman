@@ -61,6 +61,9 @@ public abstract class Entity extends Observable {
         return hitbox;
     }
 
+    /**
+     * Genstisce il danno subito dalle Enity
+     */
     public void hit() {
 
     }

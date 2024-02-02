@@ -6,12 +6,24 @@ import java.awt.geom.Rectangle2D;
 
 import static Model.EntityModel.Player.BOMBS;
 
+/**
+ * Questa classe gestisce lo YellowEnemy, la cui caratteristica è quella di avere due HP, ma di essere estremamente lento.
+ * @see Model.EntityModel.Enemies.Enemy
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class YellowEnemy extends Enemy{
     private int updateTick;
     private boolean moving = true;
     private boolean immortality = false;
     private int immortalityTick;
 
+    /**
+     * Costruisce un nemico a partire da quattro interi e inizializza la hitbox
+     * @param x: ascissa punto di spawn
+     * @param y: ordinata del punto di spawn
+     * @param w: larghezza
+     * @param h: altezza
+     */
     public YellowEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
         sx = x;
@@ -24,12 +36,18 @@ public class YellowEnemy extends Enemy{
         initHitbox();
     }
 
+    /**
+     * Inizializza le hitbox
+     */
     @Override
     public void initHitbox() {
         hitbox = new Hitbox(x, y + 8, 16, 16);
         bounds = new Rectangle2D.Float(x, y + 8, 16, 16);
     }
 
+    /**
+     * Aggiorna lo stato del nemico e notifica i cambiamenti agli observer di conseguenza
+     */
     @Override
     public void update() {
         if (dying){
@@ -148,6 +166,9 @@ public class YellowEnemy extends Enemy{
         return false;
     }
 
+    /**
+     * Questo metodo gestisce il danno subito dallo YellowEnemy e anche la morte dello stesso
+     */
     @Override
     public void hit() {
         if (!immortality) {

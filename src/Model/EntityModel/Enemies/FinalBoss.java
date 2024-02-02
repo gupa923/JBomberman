@@ -10,6 +10,11 @@ import java.util.ArrayList;
 
 import static Model.EntityModel.Player.BOMBS;
 
+/**
+ * Questa classe gestisce il boss final del gioco, la sua caratteristica è quella di lanciare razzi.
+ * @see Model.EntityModel.Enemies.Enemy
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class FinalBoss extends Enemy{
     private boolean moving = true;
     private int updateTick;
@@ -30,17 +35,22 @@ public class FinalBoss extends Enemy{
         type = 10;
         HP = 5;
         defaultHP = HP;
-
         immortality = false;
         initHitbox();
     }
 
+    /**
+     * inizializza le hitbox
+     */
     @Override
     public void initHitbox() {
         hitbox = new Hitbox(x, y, 16, 16);
         bounds = new Rectangle2D.Float(x, y, 74, 74);
     }
 
+    /**
+     * Aggiorna lo stato del gioco e  notifica di conseguenza il suo observer
+     */
     @Override
     public void update() {
         if (dying){
@@ -161,6 +171,11 @@ public class FinalBoss extends Enemy{
         }
     }
 
+    /**
+     * Controlla se il rocket è fuori dal bordo della mappa
+     * @param rocket: il Rocket su cui effetturare il controllo
+     * @return: true se il rocket è fuori dalla mappa
+     */
     private boolean checkRocketOutOfBoards(Rocket rocket) {
         if (rocket.getX()+rocket.getW() < 0){
             return true;
@@ -174,6 +189,10 @@ public class FinalBoss extends Enemy{
         return false;
     }
 
+    /**
+     * Controlla se il boss o uno dei razzi ha colpito il Player
+     * @param player: il player
+     */
     @Override
     public void playerHit(Player player){
         Hitbox pHitbox = player.getHitbox();
@@ -187,6 +206,10 @@ public class FinalBoss extends Enemy{
             }
         }
     }
+
+    /**
+     * Questo metodo crea un razzo e lo aggiunge alla lista dei razzi in gioco
+     */
     private void shootRocket() {
         int i = r.nextInt(4);
         rockets.add(new Rocket(x+28, y + 20, 20, 20, dirs[i]));
@@ -194,6 +217,11 @@ public class FinalBoss extends Enemy{
         notifyObservers(new int[] {x+28, y+20, 20, 20, i});
     }
 
+    /**
+     * Controlla se il Boss entra in collisione con una bomba
+     * @param dir: la direzione verso cui si sta muovendo il nemico
+     * @return: true se il boss collide con una bomba
+     */
     @Override
     protected boolean intersect(String dir) {
         for (Bomb b : BOMBS) {
@@ -204,6 +232,9 @@ public class FinalBoss extends Enemy{
         return false;
     }
 
+    /**
+     * Gestisce il danno subito dal boss e anche la morte dello stesso
+     */
     @Override
     public void hit() {
         if (!immortality) {
