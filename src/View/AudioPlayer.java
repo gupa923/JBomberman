@@ -50,6 +50,8 @@ public class AudioPlayer {
      */
     public static void PlaySong(){
         StopSong();
+        FloatControl volume = (FloatControl) EFFECTS.get(9).getControl(FloatControl.Type.MASTER_GAIN);
+        volume.setValue(-25);
         EFFECTS.get(9).setMicrosecondPosition(0);
         EFFECTS.get(9).loop(Clip.LOOP_CONTINUOUSLY);
     }
