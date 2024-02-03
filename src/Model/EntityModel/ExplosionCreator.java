@@ -5,15 +5,19 @@ import Model.Level;
 import java.util.ArrayList;
 
 /**
- * questa classe contiene i metodi statici che consentono di creare l'esplosione
+ * Questa classe contiene metodi static per la creazione delle esplosioni
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class ExplosionCreator {
     /**
-     * questo metodo prende in ingresso una bomba e in base alla bomba passata in input crea un array che contiene le coordinate di tutte le tile coinvolte dall'esplosione
-     *
-     * ho usato gli stream
-     * @param bomb
-     * @return
+     * Il raggio di esplosione della bomba
+     */
+    public static int RANGE = 1;
+
+    /**
+     * Data una bomba in ingresso crea l'esplosione
+     * @param bomb: la bomba che deve esplodere
+     * @return: Una matrice di intere che contiene le coordinate delle tile coinvolte nell'esplosione.
      */
     public static int[][] CreateExplosionTiles(Bomb bomb){
         Level lvl = bomb.getHitbox().getLevel();
@@ -25,7 +29,7 @@ public class ExplosionCreator {
         ArrayList<int[]> l = new ArrayList<>();
         ArrayList<int[]> r = new ArrayList<>();
         temp.add(new int[] {x, y});
-        for (int c = 1; c <= Bomb.RANGE; c++ ){
+        for (int c = 1; c <= RANGE; c++ ){
             u.add(new int[] {x , y-c});
             d.add(new int[] {x , y+c});
             l.add(new int[] {x -c, y});
@@ -40,8 +44,7 @@ public class ExplosionCreator {
     }
 
     /**
-     * questo metodo controlla se le tile sono valide: vede se una di esse corrisponde ad un muro. se cioè è false aggiunge la tile a result in caso contrario esce dalla funzione poichè nessuna delle tile successive deve essere aggiunta all'array
-     *
+     * Questo metodo controlla se le tile coinvolte nell'esplosione sono valide, cioè se non sono muri o se sono fuori dalla mappa
      * @param l: lista di tile colpite da un esplosione in una direzione
      * @param result: la lista a cui appendere le tile valide
      */
@@ -56,11 +59,6 @@ public class ExplosionCreator {
         }
     }
 
-    /**
-     * controlla se la tile non è un muro
-     * @param pos
-     * @return
-     */
     private static boolean CheckValidity(int[] pos, Level lvl){
         int[][] lvlData = lvl.getData();
         try{
@@ -81,11 +79,6 @@ public class ExplosionCreator {
         }
     }
 
-    /**
-     * moltiplca i valori di un array di dimensione 2 per 16
-     * @param c
-     * @return
-     */
     private static int[] MulTimes16(int[] c){
         int nc0 = c[0] * 16;
         int nc1 = c[1] * 16;

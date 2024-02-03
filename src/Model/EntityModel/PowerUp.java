@@ -5,7 +5,10 @@ import Model.StateModels.Partita;
 import java.awt.geom.Rectangle2D;
 
 /**
- * questa classe rappresenta i Power Up. estende la classe Entity. Gestisce gli effetti del power up sullo stato del gioco.
+ * Questa classe gestisce i power up del gioco. I PowerUp possono essere di diversi tipi ed hanno effetti diversi in base ad esso
+ * @see Model.EntityModel.Entity
+ * @see PowerUpType
+ * @autor Guido Paluzzi, Matteo Santucci
  */
 public class PowerUp extends Entity{
     public static Player player;
@@ -15,6 +18,13 @@ public class PowerUp extends Entity{
     private boolean collision, active = true;
     private boolean over = true;
     private final Rectangle2D.Float bounds;
+
+    /**
+     * Costruttore della classe
+     * @param x: coordinata x del PowerUp
+     * @param y: coordinata y del PowerUp
+     * @param pType: il tipo del PowerUp
+     */
     public PowerUp(int x, int y, PowerUpType pType) {
         super(x, y, 16, 16);
         name = pType.getName();
@@ -30,7 +40,7 @@ public class PowerUp extends Entity{
     }
 
     /**
-     * se il power up è attivo controola se il player gli è passato sopra e attiva il suo effetto, per poi rimuoverlo.
+     * Aggiorna lo stato del PowerUp, controlla quindi se è stato preso o meno dal Player
      */
     @Override
     public void update() {
@@ -48,7 +58,7 @@ public class PowerUp extends Entity{
     }
 
     /**
-     * in base al tipo di power up applicail suo effetto
+     * Applica l'effetto del PowerUp
      */
     private void applyPowerUP() {
         switch (name){

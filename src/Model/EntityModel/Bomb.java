@@ -3,13 +3,14 @@ package Model.EntityModel;
 import Model.EntityModel.Enemies.*;
 
 /**
- * questa classe rappresenta la bomba. estende la classe Entity. gestisce la bomba, la sua esplosione e la collisione con il giocatore
+ * Questa classe gestisce la bomba, la sua esplosione e le collissioni tra essa e le altre entitò del gioco
  * @see Model.EntityModel.Entity
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class
 Bomb extends Entity {
     /**
-     * questo counter contiene il numero di bombe attive nel gioco in preciso momento
+     * Indica il numero di bombe non esplose presenti nel gioco
      */
     public static int BOMB_COUNTER = 0;
     private int notCollideTick = 0;
@@ -19,7 +20,13 @@ Bomb extends Entity {
     private final int explosionEnd = 600;
     private int[][] explosionTiles;
     private boolean exploding;
-    public static int RANGE = 1;
+
+    /**
+     * Costruttore della classe
+     * @param player: Il Player che ha piazzato la bomba
+     * @param x: la x su cui piazzare la bomba
+     * @param y: la y su cui piazzare la bomba
+     */
     public Bomb(Player player, int x, int y) {
         super(x*16, y*16, 16, 16);
         this.player = player;
@@ -27,6 +34,9 @@ Bomb extends Entity {
         initHitbox();
     }
 
+    /**
+     * inizializza la hitbox della bomba
+     */
     @Override
     public void initHitbox() {
         hitbox = new Hitbox(x, y, 16, 16);
@@ -35,8 +45,7 @@ Bomb extends Entity {
     }
 
     /**
-     * viene aumentato un contatore che per 180 che indica gli update in cui una bomba è presente nel terreno
-     * dopo un certo numero di update il giocatore può collidere con la bomba e dopo un certo numero di update labomba esploderà.
+     * Aggiorna lo stato della bomba
      */
     @Override
     public void update() {
@@ -49,7 +58,7 @@ Bomb extends Entity {
     }
 
     /**
-     * questo metodo controlla la collisione tra il giocatore e la bomba. se la bomba sta esplodendo e la collisione avviene allora il giocatore viene colpito e perde un HP
+     * Gestisce la collisione tra il Player e la bomba
      *
      * @param dir: la direzione in cui il player si sta muovendo
      * @return
@@ -116,6 +125,12 @@ Bomb extends Entity {
         }
     }
 
+    /**
+     * Gestisce la collisione tra il blue enemy e una bomba. Se la bomba non sta esplodendo allora viene rimossa.
+     * @param enemy: Un'istanza della classe BlueEnemy
+     * @param dir: la direzione verso cui si sta muovendo
+     * @return: true se il nemico entra in collisione con una bomba
+     */
     public boolean intersect(BlueEnemy enemy, String dir){
         Hitbox pHitbox = enemy.getHitbox();
         if (notCollideTick <= collideTickLim)
@@ -186,6 +201,12 @@ Bomb extends Entity {
         }
     }
 
+    /**
+     * Gestisce la collisione tra la bomba e il nemico
+     * @param enemy: Un'istanza della classe LastEnemy
+     * @param dir: la direzione verso cui si muove il nemico
+     * @return: true se il nemico collide con la bomba
+     */
     public boolean intersect(LastEnemy enemy, String dir){
         Hitbox pHitbox = enemy.getHitbox();
         if (exploding){
@@ -231,6 +252,12 @@ Bomb extends Entity {
     }
 
 
+    /**
+     * Gestisce la collisione tra il ClownBoss e la bomba
+     * @param enemy: Un'istanza della classe ClownBoss
+     * @param dir: la direzione verso cui si sta muovendo il boss
+     * @return: true se collide con una bomba
+     */
     public boolean intersect(ClownBoss enemy, String dir){
         //Hitbox pHitbox = enemy.getDamageBox();
         if (notCollideTick <= collideTickLim)
@@ -248,6 +275,12 @@ Bomb extends Entity {
         }
     }
 
+    /**
+     *
+     * @param enemy: Un'Istanza della classe FinalBoss
+     * @param dir: la direzione verso la quale si muove il boss
+     * @return: true se il boss entra in collisione con una bomba
+     */
     public boolean intersect(FinalBoss enemy, String dir){
         if (notCollideTick <= collideTickLim)
             return false;
@@ -265,6 +298,12 @@ Bomb extends Entity {
     }
 
 
+    /**
+     * Gestisce la collisione tra un Enemy e una bomba
+     * @param enemy: Un'istanza della classe Enemy
+     * @param dir: la direzione verso cui l'enemy si sta muovendo
+     * @return: true se l'enemy entra in collisione con una bomba
+     */
     public boolean intersect(Enemy enemy, String dir){
         Hitbox pHitbox = enemy.getHitbox();
         if (notCollideTick <= collideTickLim)

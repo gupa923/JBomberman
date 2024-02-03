@@ -3,9 +3,8 @@ package Model.EntityModel;
 import Model.Level;
 
 /**
- * questa classe gestisce le collisioni con le tile non walkabili sulla mappa
- *
- * @author gupa9
+ * L'Hitbox è una classe che viene associata ad ogni entità del gioco e gestisce le collisioni con la mappa
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class Hitbox {
     public int x, y, w, h;
@@ -13,6 +12,13 @@ public class Hitbox {
     private int[][] data;
     private boolean walkOver;
 
+    /**
+     * Costruttore della classe
+     * @param x: la x della hitbox
+     * @param y: la y della hitbox
+     * @param w: la larghezza della hitbox
+     * @param h: la lunghezza della hitbox
+     */
     public Hitbox(int x, int y, int w, int h) {
         this.x = x;
         this.y = y;
@@ -21,9 +27,9 @@ public class Hitbox {
     }
 
     /**
-     * con questo metodo viene aggiornata la posizione della hitbox
-     * @param dx
-     * @param dy
+     * Aggiorna la posizione della hitbox
+     * @param dx: il valore di quanto aumentare la x della hitbox
+     * @param dy: il valore di quanto aumentare la y della hitbox
      */
     public void update(int dx, int dy){
         x += dx;
@@ -32,7 +38,6 @@ public class Hitbox {
 
     /**
      * questo metodo gestisce la collisione con i muri della mappa e con gli ostacoli
-     *
      * @param x: coordinata x del player
      * @param y: coordinata y del player
      * @return boolean: restituisce true se il giocatore può spostarsi su x, y

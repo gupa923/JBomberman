@@ -10,7 +10,7 @@ import java.util.Observable;
  *
  * @see Hitbox
  * @see Observable
- * @author gupa9
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public abstract class Entity extends Observable {
 

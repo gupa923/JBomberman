@@ -2,7 +2,7 @@ package Model.EntityModel;
 
 /**
  * Questa enum rappresenta i possibili tipi di power up presenti nel gioco
- * @author gupa9
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public enum PowerUpType {
 

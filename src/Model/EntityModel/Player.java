@@ -3,11 +3,9 @@ package Model.EntityModel;
 import java.util.ArrayList;
 
 /**
- * questa classe rappresenta il giocatore nel gioco. Estende la classe Entity. Gestisce le azioni e lo stato del giocatore. Al Giocatore è associato un array di Bomb, che contiene tutte le bombe presenti nel gioco in un determinato momento.
- *
- *
+ * questa classe rappresenta il giocatore nel gioco. Gestisce le azioni e lo stato del giocatore. Al Player sono associate le bombe in gioco
  * @see Entity
- * @author gupa9
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class Player extends Entity{
     /**
@@ -48,7 +46,7 @@ public class Player extends Entity{
     private int dynigTick;
 
     /**
-     * Viene chiamato il costruttore della superclasse e viene inizializzata l'hitbox.
+     * Costruttore della classe
      * @param x: ascissa del punto di spawn del Player
      * @param y: ordinata del punto di spawn del Player
      * @param w; larghezza del Player
@@ -61,7 +59,6 @@ public class Player extends Entity{
 
     /**
      * inizializza la hitbox
-     * @see Hitbox
      */
     @Override
     public void initHitbox() {
@@ -69,7 +66,7 @@ public class Player extends Entity{
     }
 
     /**
-     * questo metodo gestisce le azioni del giocatore. in particolare il movimento e la creazione, l'esplosione e la rimozione delle bombe
+     * Questo metodo aggiorna lo stato del Player, le azioni dello stesso e invia di conseguenza notifiche agli observer
      */
     @Override
     public void update() {
@@ -185,7 +182,7 @@ public class Player extends Entity{
     }
 
     /**
-     * itera sull'array di bomb e restituisce true se il giocatore collide con una bomba
+     * Per ogni bomba nel gioco controlla se il Player è entrato in collisione con la bomba.
      * @param dir: direzione verso cui si sta muovendo il giocatore
      * @return: restituisce true se il giocatore colpisce una bomba
      */
@@ -199,8 +196,8 @@ public class Player extends Entity{
     }
 
     /**
-     * questo metodo crea un bomba. In primo luogo viene controllato se il giocatore ha raggiunto il massimo numero di bombe possibile, che è dato dal campo statico MAX_BOMB_NUMS. A questo punto vede se la posizione in cui si vuole posizionare questa bomba è lecita o meno: per non esserlo basta che una bomba si già posizionata in quel punto oppure che il giocatore si trovi sopraun ostacolo.
-     * Se la posizione è legale allore viene generata una bomba e viene incrementato il valore di BOMB_COUNTER, campo statico che contiene il numero di bombe attualmente in gioco.
+     * questo metodo crea un bomba. In primo luogo viene controllato se il giocatore ha raggiunto il massimo numero di bombe possibili. A questo punto vede se la posizione in cui si vuole posizionare questa bomba è lecita o meno.
+     * Se la posizione è legale allore viene generata una bomba e viene incrementato il valore di BOMB_COUNTER.
      */
     private void spawnBomb() {
         if (Bomb.BOMB_COUNTER < MAX_BOMB_NUMS) {
@@ -226,7 +223,7 @@ public class Player extends Entity{
     }
 
     /**
-     * Data una bomba che deve eplodere il metodo trova la bomba passata come parametro e la fa esplodere, cioè viene settata a true il campo exploding della bomba.
+     * Questo metodo fa esplodere la bomba
      * @param b: la bomba che deve esplodere
      */
     public void explodeBomb(Bomb b) {
@@ -238,8 +235,7 @@ public class Player extends Entity{
     }
 
     /**
-     * Data una bomba che deve essere rimossa dal gioco il metodo cerca la bomba nell'array BOMBS e la rimuove dall'array stesso.
-     *
+     * Dopo che l'esplosione della bomba è finita, questo metodo la rimuove dal gioco
      * @param b: bomba da rimuovere dall'array
      */
     public void removeBomb(Bomb b) {
@@ -291,6 +287,9 @@ public class Player extends Entity{
         return alive;
     }
 
+    /**
+     * resetta la posizione del player
+     */
     public void resetPos() {
         bufferPowerUp();
         transition = false;
@@ -311,7 +310,7 @@ public class Player extends Entity{
     }
 
     /**
-     * Questo metodo viene chiamato quando il player collide con un'entità che può causare danno cioè l'espplosione di una bomba o un nemico
+     * Gestisce il danno subito dal nemico e la sua morte
      */
     @Override
     public void hit(){
@@ -326,6 +325,10 @@ public class Player extends Entity{
             sendMessage("IMMORTALITY");
         }
     }
+
+    /**
+     * Aumenta la velocità del player
+     */
     public void moreSpeed(){
         speedClock--;
         if (speedClock < 1){
@@ -355,6 +358,9 @@ public class Player extends Entity{
         this.walkOver = walkOver;
     }
 
+    /**
+     * Resetta i valori dei power up a quelli precedenti
+     */
     public void loadBufferPUps() {
         HP = tHP;
         MAX_BOMB_NUMS = tMaxBombs;
