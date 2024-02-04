@@ -6,11 +6,19 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
 
+/**
+ * Questa classe gestisce la rappresentazione grafica del menù delle impostazioni
+ * @see View.StatesGraphics.StateGraphics
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class SettingsGraphics extends StateGraphics{
     private BufferedImage[] imgs;
     private int imgIndex;
     private UserView uv;
 
+    /**
+     * Costruttore della classe
+     */
     public SettingsGraphics(){
         loadImgs();
     }
@@ -22,6 +30,11 @@ public class SettingsGraphics extends StateGraphics{
         imgs[2] = loadImg("/Imgs/settings_menu/JBomberman_menù_impostazioni_non_premuti.png");
         imgs[3] = loadImg("/Imgs/settings_menu/JBomberman_menù_impostazioni_start_page_premuto.png");
     }
+
+    /**
+     * Disegna gli elementi di questa classe
+     * @param g: istanza della classe Graphics
+     */
     @Override
     public void draw(Graphics g) {
         g.drawImage(imgs[imgIndex], 0, 0, 816, 816, null);
@@ -30,6 +43,12 @@ public class SettingsGraphics extends StateGraphics{
         g.drawImage(uv.getAvatar(), 0, 816-64, 64, 64, null);
     }
 
+    /**
+     * Aggiorna lo stato di questa classe in basse alle notifiche ricevute dagli Observable
+     * @param o     the observable object.
+     * @param arg   an argument passed to the {@code notifyObservers}
+     *                 method.
+     */
     @Override
     public void update(Observable o, Object arg) {
         if (arg instanceof String message){

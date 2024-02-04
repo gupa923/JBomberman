@@ -3,16 +3,33 @@ package View.EntitiesGraphics;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * Questa classe gestisce la rappresentazione grafica dei razzi
+ * @see View.EntitiesGraphics.EntityGraphics
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class RocketGraphics extends EntityGraphics {
     private BufferedImage temp, tempFlip;
     private BufferedImage[][] sprites;
     int dir;
+
+    /**
+     * Costruttore della classe
+     * @param x: la coordinata x del punto di spawn
+     * @param y: la coordinata y del punto di spawn
+     * @param w: la larghezza del razzo
+     * @param h: l'altezza del razzo
+     * @param dir: la direzione verso cui si muove il razzo
+     */
     public RocketGraphics(int x, int y, int w, int h, int dir) {
         super(x, y, w, h);
         this.dir = dir;
         loadAnimations();
     }
 
+    /**
+     * Carica le immagine della classe rocket
+     */
     @Override
     public void loadAnimations() {
         temp = loadImg("/Imgs/entitySprites/enemySprite/Boss2.png");
@@ -29,6 +46,10 @@ public class RocketGraphics extends EntityGraphics {
 
     }
 
+    /**
+     * Disegna a schermo un'istanza della classe RocketGraphics
+     * @param g: istanza della classe Graphics
+     */
     @Override
     public void draw(Graphics g) {
         if (dir == 0) {
@@ -43,6 +64,9 @@ public class RocketGraphics extends EntityGraphics {
     }
 
 
+    /**
+     * Aggiorna la posizione dell'istanza di questa classe
+     */
     public void moveRocket() {
         if (dir == 0){
             x -= 2;

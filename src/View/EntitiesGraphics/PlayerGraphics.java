@@ -13,12 +13,10 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * questa classe gestisce la parte grafica relativa al player
- * ridisegna il player quando si muove e imposta la corretta animazione
- *
- * @see ImgImporter
+ * Questa classe gestisce la rappresentazione grafica del player. A questa classe sono anche associate le bombe presenti nel gioco
+ * @see EntityGraphics
  * @see Observer
- * @author gupa9
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class PlayerGraphics extends EntityGraphics implements Observer {
     private int speed = 1;
@@ -39,6 +37,13 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     private boolean death;
     private final AudioPlayer audioPlayer;
 
+    /**
+     * Costruttore della classe
+     * @param x: la coordinata x del punto di spawn
+     * @param y: la coordinata y del punto di spawn
+     * @param w: la larghezza del playerGraphics
+     * @param h: l'altezza del playerGraphics
+     */
     public PlayerGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
         bombViews = new ArrayList<>();
@@ -47,10 +52,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         loadAnimations();
     }
 
-    /**
-     * questo metodo importa attraverso l'interfaccia ImgImporte le immagini relative alle varie animazioni e le salva in un array
-     * @see ImgImporter
-     */
+
     private void loadSprites() {
         right = loadImg("/Imgs/entitySprites/playerSprites/right.png");
         left = loadImg("/Imgs/entitySprites/playerSprites/left.png");
@@ -68,7 +70,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * a partire dall'array di BufferedImage imgAmount questo metodo crea una matrice di BufferedImage ogni riga conterra frame della stessa animazione
+     * Questo metodo carica tutte le immagini coinvolte nelle animazioni della classe PlayerGraphics
      */
     @Override
     public void loadAnimations() {
@@ -112,8 +114,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * questo metodo update in base al valore di arg che ci si aspetta essere una stringa, imposta il tipo di animazione da eseguire e se necessario modifica la posizione del giocatore
-     *
+     * Aggiorna lo stato di questa classe in base alle notifiche arrivate dall'Observable
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.
@@ -191,10 +192,6 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         }
     }
 
-    /**
-     * elimina la bomba dall'array
-     * @param a
-     */
     private void despawnBomb(String[] a) {
         int xb = Integer.parseInt(a[0]);
         int yb = Integer.parseInt(a[1]);
@@ -206,10 +203,6 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         }
     }
 
-    /**
-     * fa esplodere una bomba
-     * @param pos
-     */
     private void explodBomb(int[][] pos) {
         for (int x = 0; x < bombViews.size(); x++){
             BombGraphics temp = bombViews.get(x);
@@ -222,9 +215,6 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         }
     }
 
-    /**
-     * aggiunge una bomba
-     */
     private void spawnBomb() {
         int nx = (x)/16;
         int ny = (y+8)/16;
@@ -235,12 +225,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * questo metodo si occupa di aggiornare l'animazione.
-     * tutte le animazioni sono contenute in una matrice.
-     * questo metodo imposta degli indici che fanno in modo di scegliere il frame corretto da disegnare
-     * le animazioni hanno un contatore che viene resettato ogni volta che ragginge il valore di animationSpeed, quando questo succede viene incrementato l'indice dell'animazione corrente, se questo indice supera la lunghezza dell'array delle animazioni disponibili allora viene azzerato.
-     * se il giocatore non si muove viene disegnato un frame di default.
-     *
+     * Questo metodo aggiorna lo stato delle animazioni
      */
     @Override
     public void updateAnimation(){
@@ -279,8 +264,8 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * per ora disegna il player e per ora anche la hitbox ma solo per fini di debug.
-     * @param g
+     * Questo metodo disegna a schermo il player e gestisce acìnche la rappresentazione grafica delle bombe.
+     * @param g: istanza della classe Graphics
      */
     @Override
     public void draw(Graphics g){
@@ -305,6 +290,9 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         this.moving = moving;
     }
 
+    /**
+     * Resetta lo stato del player allo stato iniziale
+     */
     public void reset() {
         x = 32;
         y = 8;
@@ -315,6 +303,9 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         animationIndex = 1;
     }
 
+    /**
+     * Resetta la posizione del PlayerGraphics a quella iniziale
+     */
     public void resetPos() {
         x = 32;
         y = 8;
@@ -324,12 +315,20 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
         animationIndex = 1;
     }
 
+    /**
+     * Questo metodo inizia la transizione tra un livello e l'altro
+     * @param changeLevel: true se il player sta entrando nella botola per cambiare livello
+     */
     public void setChangeLevel(boolean changeLevel) {
         this.changeLevel = changeLevel;
         cLevelIndexUpdate = 0;
         cLevelIndex = 0;
     }
 
+    /**
+     * Disegna a schermo il player e le bomba ma blocca l'aggiornamento dell'animazione
+     * @param g: istanza della classe Graphics
+     */
     public void freeze(Graphics g) {
         g.drawImage(movingAnimations[0][1], x * 3, y * 3, w * 3, h * 3, null);
         for (BombGraphics b : bombViews) {

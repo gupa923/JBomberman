@@ -4,6 +4,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
 
+/**
+ * Questa classe gestisce la rappresentazione grafica del ClownBoss
+ * @see View.EntitiesGraphics.EnemyGraphics.EnemyGraphics
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class ClownBossGraphics extends EnemyGraphics{
     private BufferedImage temp;
     private BufferedImage[] sprites;
@@ -12,6 +17,13 @@ public class ClownBossGraphics extends EnemyGraphics{
     private int animationIndexUpdate;
     private final int animationSpeed = 15;
 
+    /**
+     * Costruttore della classe
+     * @param x: la coordinata x del punto di spawn
+     * @param y: la coordinata y del punto di spawn
+     * @param w: la larghezza del ClownBossGraphics
+     * @param h: l'altezza del ClownBossGraphics
+     */
     public ClownBossGraphics(int x, int y, int w, int h) {
         super(x-47, y-44, w, h);
         sx = x-47;
@@ -19,6 +31,9 @@ public class ClownBossGraphics extends EnemyGraphics{
         loadAnimations();
     }
 
+    /**
+     * Carica tutte le immagini coinvolte nelle animazioni di questa classe
+     */
     @Override
     public void loadAnimations() {
         temp = loadImg("/Imgs/entitySprites/enemySprite/Boos1.png");
@@ -42,6 +57,9 @@ public class ClownBossGraphics extends EnemyGraphics{
 
     }
 
+    /**
+     * Aggiorna lo stato delle animazioni
+     */
     @Override
     public void updateAnimation() {
         if (death) {
@@ -68,6 +86,10 @@ public class ClownBossGraphics extends EnemyGraphics{
         }
     }
 
+    /**
+     * Disegna un'istanza della classe ClownBossGraphics
+     * @param g: istanza della classe Graphics
+     */
     @Override
     public void draw(Graphics g) {
         updateAnimation();
@@ -78,10 +100,20 @@ public class ClownBossGraphics extends EnemyGraphics{
         }
     }
 
+    /**
+     * Disegana un'istanza di questa classe senza aggiornare le animazioni
+     * @param g: istanza della classe Graphics
+     */
     public void freeze(Graphics g) {
         g.drawImage(sprites[animationIndex], x * 3, y * 3, w * 3, h * 3, null);
     }
 
+    /**
+     * Aggiorna lo stato di questa classe in base alle notifiche ricevute dagli Observable
+     * @param o     the observable object.
+     * @param arg   an argument passed to the {@code notifyObservers}
+     *                 method.
+     */
     @Override
     public void update(Observable o, Object arg) {
         if (arg instanceof String dir){

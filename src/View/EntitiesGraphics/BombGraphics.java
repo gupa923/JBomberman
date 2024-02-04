@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
 
 /**
  * gestisce la rappresentazione grafica di una bomba
+ * @see View.EntitiesGraphics.EntityGraphics
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class BombGraphics extends EntityGraphics {
     private BufferedImage[] imgs, explosionImgs;
@@ -18,6 +20,11 @@ public class BombGraphics extends EntityGraphics {
     private int[][] explosion;
     private final AudioPlayer audioPlayer;
 
+    /**
+     * Costruttore della classe
+     * @param x: la coordinata x del punto di spawn
+     * @param y: la coordinata y del punto di spawn
+     */
     public BombGraphics(int x, int y){
         super (x*16, y*16, 16, 16);
         audioPlayer = new AudioPlayer();
@@ -25,6 +32,9 @@ public class BombGraphics extends EntityGraphics {
     }
 
 
+    /**
+     * Carica tutte le immagine coinvolte nell'animazione della bomba e dell'esplosione
+     */
     @Override
     public void loadAnimations(){
         BufferedImage temp = loadImg("/Imgs/entitySprites/bombSprites/bomb.png");
@@ -43,6 +53,9 @@ public class BombGraphics extends EntityGraphics {
         explosionImgs[4] = temp1.getSubimage(16 + 2, 6*16 + 6, 16, 16);
     }
 
+    /**
+     * Aggiorna l'animazione
+     */
     @Override
     public void updateAnimation() {
         numFrames++;
@@ -55,6 +68,10 @@ public class BombGraphics extends EntityGraphics {
         }
     }
 
+    /**
+     * Disegna l'istanza della classe Bomb a schermo
+     * @param g: istanza della classe Graphics
+     */
     @Override
     public void draw(Graphics g){
         if (canDraw) {
@@ -98,6 +115,10 @@ public class BombGraphics extends EntityGraphics {
         audioPlayer.playEffects(3);
     }
 
+    /**
+     * Disegna l'istanza della classe Bomb, ma ne disattiva l'aggiornamento
+     * @param g: un'istanza della classe Graphics
+     */
     public void freeze(Graphics g) {
         if (!exploding) {
             g.drawImage(imgs[animationIndex], x * 3, (y) * 3, w * 3, h * 3, null);

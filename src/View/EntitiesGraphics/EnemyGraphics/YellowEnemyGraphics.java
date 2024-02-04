@@ -4,6 +4,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
 
+/**
+ * Questa classe gestisce la rappresentazione grafica dello YellowEnemy
+ * @see View.EntitiesGraphics.EnemyGraphics.EnemyGraphics
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class YellowEnemyGraphics extends EnemyGraphics{
     private BufferedImage[] sprites;
     private int rem = 1;
@@ -11,6 +16,14 @@ public class YellowEnemyGraphics extends EnemyGraphics{
     private int animationIndex;
     private final int animationSpeed = 8;
     private boolean moving = true;
+
+    /**
+     * Costruttore della classe
+     * @param x: la coordinata x del punto di spawn
+     * @param y: la coordinata y del punto di spawn
+     * @param w: la larghezza del ClownBossGraphics
+     * @param h: l'altezza del ClownBossGraphics
+     */
     public YellowEnemyGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
         sx = x;
@@ -18,6 +31,9 @@ public class YellowEnemyGraphics extends EnemyGraphics{
         loadAnimations();
     }
 
+    /**
+     * Carica tutte le immagini coinvolte nelle animazioni di questa classe
+     */
     @Override
     public void loadAnimations() {
         BufferedImage temp = loadImg("/Imgs/entitySprites/enemySprite/yellow_enemy/Nemico_Giallo.png");
@@ -32,6 +48,9 @@ public class YellowEnemyGraphics extends EnemyGraphics{
 
     }
 
+    /**
+     * Aggiorna lo stato di tutte le animazioni coinvolte
+     */
     @Override
     public void updateAnimation() {
         if (death){
@@ -60,6 +79,10 @@ public class YellowEnemyGraphics extends EnemyGraphics{
         }
     }
 
+    /**
+     * Disegna un'istanza di questa classe
+     * @param g: istanza della classe Graphics
+     */
     @Override
     public void draw(Graphics g) {
         updateAnimation();
@@ -71,9 +94,20 @@ public class YellowEnemyGraphics extends EnemyGraphics{
         }
     }
 
+    /**
+     * Disegna un'istanza di questa classe senza aggiornare l'animazione
+     * @param g: istanza della classe Graphics
+     */
     public void freeze(Graphics g) {
         g.drawImage(sprites[animationIndex], x * 3, y * 3, w * 3, h * 3, null);
     }
+
+    /**
+     * Aggiorna lo stato di questa classe in base alle notifiche ricevute dall'Observable
+     * @param o     the observable object.
+     * @param arg   an argument passed to the {@code notifyObservers}
+     *                 method.
+     */
     @Override
     public void update(Observable o, Object arg) {
         if (arg instanceof String dir){

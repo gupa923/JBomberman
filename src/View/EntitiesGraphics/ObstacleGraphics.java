@@ -3,6 +3,11 @@ package View.EntitiesGraphics;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * Questa classe gestisce la rappresentazione grafica degli ostacoli. Ci sono due tipi di ostacoli disponibili
+ * @see View.EntitiesGraphics.EntityGraphics
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class ObstacleGraphics extends EntityGraphics {
     private final BufferedImage sprite;
     private final BufferedImage explosionSprite;
@@ -12,7 +17,12 @@ public class ObstacleGraphics extends EntityGraphics {
     private int animationIndex, animationTick, animatioSpeed = 20;
     private final int type;
 
-
+    /**
+     * Costruttore della classe
+     * @param x: coordinata x dell'ostacolo
+     * @param y: coordinata y dell'ostacolo
+     * @param type: il tipo di ostacolo
+     */
     public ObstacleGraphics(int x, int y, int type){
         super(x, y, 16, 16);
         this.type = type;
@@ -21,6 +31,10 @@ public class ObstacleGraphics extends EntityGraphics {
         loadAnimations();
     }
 
+    /**
+     * Disegna a schermo un'istanza della classe ObstacleGraphics
+     * @param g: istanza della classe Graphics
+     */
     @Override
     public void draw(Graphics g) {
         updateAnimation();
@@ -39,6 +53,9 @@ public class ObstacleGraphics extends EntityGraphics {
         }
     }
 
+    /**
+     * Carica tutte le immagine coinvolte nelle animazione dell'ostacolo. Vengono caricate anche le animazione della morte dell'ostacolo
+     */
     @Override
     public void loadAnimations() {
         sprites = new BufferedImage[4];
@@ -57,6 +74,9 @@ public class ObstacleGraphics extends EntityGraphics {
         }
     }
 
+    /**
+     * Aggiorna l'animazione dell'ostacolo
+     */
     @Override
     public void updateAnimation() {
         if (!exploading){
@@ -88,6 +108,10 @@ public class ObstacleGraphics extends EntityGraphics {
         return y;
     }
 
+    /**
+     * Questo metodo fa in modo che l'ostacolo esploda
+     * @param exploading: true se l'ostacolo deve esplodere
+     */
     public void setExploading(boolean exploading) {
         this.exploading = exploading;
         animatioSpeed = 11;
@@ -95,6 +119,10 @@ public class ObstacleGraphics extends EntityGraphics {
         animationIndex = 0;
     }
 
+    /**
+     * Fa in modo che gli ostacoli vengano disegnati, ma impedisce il loro aggiornamento
+     * @param g: istanza della classe Graphics
+     */
     public void freeze(Graphics g) {
         if (type == 0) {
             if (!exploading)

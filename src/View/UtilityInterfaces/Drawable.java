@@ -9,5 +9,9 @@ import java.awt.*;
  */
 @FunctionalInterface
 public interface Drawable {
+    /**
+     * Consente di disegnare elementi a schermo
+     * @param g: istanza della classe Graphics
+     */
     void draw(Graphics g);
 }

@@ -8,6 +8,13 @@ import java.awt.image.BufferedImage;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * Gestisce la rappresentazione grafica di un utente e dei suoi dati
+ * @see View.UtilityInterfaces.ImgImporter
+ * @see View.UtilityInterfaces.Drawable
+ * @see java.util.Observer
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class UserView implements Observer, Drawable, ImgImporter {
     private final String nickname;
     private int games;
@@ -17,6 +24,14 @@ public class UserView implements Observer, Drawable, ImgImporter {
     private BufferedImage[] avatars;
     private BufferedImage avatar;
 
+    /**
+     * Costruttore della classe
+     * @param nickname: nickname dell'utente
+     * @param games: partite giocate dall'utente
+     * @param victories: vittorie dell'utente
+     * @param record: record dell'utente
+     * @param avatarIndex: indice dell'avatar scelto dall'utente
+     */
     public UserView(String nickname, int games, int victories, int record, int avatarIndex) {
         this.nickname = nickname;
         this.games = games;
@@ -35,6 +50,12 @@ public class UserView implements Observer, Drawable, ImgImporter {
         avatars[3] = loadImg("/Imgs/Avatars/Avatar_4.png");
     }
 
+    /**
+     * Aggiorna i valori nei campi di questa classe in base alle notifiche che arrivano dagli Observable
+     * @param o     the observable object.
+     * @param arg   an argument passed to the {@code notifyObservers}
+     *                 method.
+     */
     @Override
     public void update(Observable o, Object arg) {
         if (arg instanceof String s){
@@ -49,6 +70,10 @@ public class UserView implements Observer, Drawable, ImgImporter {
 
     }
 
+    /**
+     * Rappresenta graficamente le informazioni dell'utente
+     * @param g: istanza della classe Graphics
+     */
     @Override
     public void draw(Graphics g) {
         g.setColor(new Color(255,207, 151));

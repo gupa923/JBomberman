@@ -11,10 +11,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 /**
- * questa classe gestisce la rappresentazione grafica della partita vera e propria
- *
- *
- *
+ * Questa classe gestisce la rappresentazione grafica della partita, quindi anche la rappresentazione dello stato di GameOver, Win e Pause
  */
 public class MatchGraphics extends StateGraphics {
 
@@ -26,10 +23,19 @@ public class MatchGraphics extends StateGraphics {
     private final WinGraphics winGraphics;
     private final BufferedImage matchUI;
     private final BufferedImage lifeUI;
+    /**
+     * La rappresentazione grafica dello score
+     */
     public static int SCORE_VIEW = 0;
+    /**
+     * La rappresentazione grafica delle vite
+     */
     public static int LIFE_VIEW = 7;
     private AudioPlayer audioPlayer;
 
+    /**
+     * Costrutttore della classe
+     */
     public MatchGraphics(){
         audioPlayer = new AudioPlayer();
         gameOverScreen = new GameOverScreen();
@@ -37,6 +43,11 @@ public class MatchGraphics extends StateGraphics {
         matchUI = loadImg("/Imgs/UI PARTITA.png");
         lifeUI = loadImg("/Imgs/UI.png").getSubimage(1,39,16, 16);
     }
+
+    /**
+     * Disegna tutti gli elementi coinvolti nella partita
+     * @param g: istanza della classe Graphics
+     */
     @Override
     public void draw(Graphics g) {
         if(win){
@@ -58,6 +69,10 @@ public class MatchGraphics extends StateGraphics {
         }
     }
 
+    /**
+     * Disegna tutte le informazioni riguardanti la partita come vite rimaste, punteggio attuale e record
+     * @param g: istanza della classe Graphics
+     */
     public void drawUI(Graphics g){
         g.setFont(new Font("serif", 1, 30));
         g.drawImage(matchUI, 0, 0, 272*3, 272*3, null);
@@ -82,6 +97,12 @@ public class MatchGraphics extends StateGraphics {
         return playerGraphics;
     }
 
+    /**
+     * Aggiorna lo stato di questa classe in base alle notifiche che vengono inviate dagli Observable
+     * @param o     the observable object.
+     * @param arg   an argument passed to the {@code notifyObservers}
+     *                 method.
+     */
     @Override
     public void update(Observable o, Object arg) {
         if (arg instanceof String message){
@@ -112,6 +133,9 @@ public class MatchGraphics extends StateGraphics {
         }
     }
 
+    /**
+     * Resetta gli attributi della classe PlayerGraphics
+     */
     private void resetALL() {
         playing = true;
         playerGraphics.resetPos();

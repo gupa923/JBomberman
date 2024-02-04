@@ -14,10 +14,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * contiene l'immagine del livello attuale e la disegna con il metodo draw
- *
+ * Gestisce la rappresentazione grafica dei singoli livelli e di tutti gli elementi ad esso associati
  * @see ImgImporter
- * @author gupa9
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class LevelGraphics implements ImgImporter, Drawable, Observer {
     private final BufferedImage lvl1Bg;
@@ -28,6 +27,10 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     private int type;
     private final AudioPlayer audioPlayer;
 
+    /**
+     * Costruttore della classe, crea la classe a partire dall'immagine al path filename
+     * @param filename: il percorso dell'immagine di sfondo del livello
+     */
     public LevelGraphics(String filename) {
         if (filename.equals("/Imgs/livelli/livello2/Stage2.png")){
             type = 1;
@@ -39,6 +42,10 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
         powerUps = new ArrayList<>();
     }
 
+    /**
+     * Disegna l'immagine di sfondo del livello e tutte le entità associate al livello stesso
+     * @param g: istanza della classe Graphics
+     */
     @Override
     public void draw(Graphics g){
         g.drawImage(lvl1Bg, 0,0, 272 * 3, 208*3, null);
@@ -56,6 +63,10 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
         }
     }
 
+    /**
+     * Crea tutte le istanze della classe ObstacleGraphics associate a questo livello
+     * @param pos: matrice che contiene tutte le coordinate dei punti di spawn degli ostacoli
+     */
     public void initObstacleGraphics(int[][] pos) {
         obstacleGraphics.clear();
         exploadingObstacles.clear();
@@ -65,6 +76,12 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
 
     }
 
+    /**
+     * Aggiorna lo stato degli elementi di questa classe in base alle notifiche che inviano gli Observable
+     * @param o     the observable object.
+     * @param arg   an argument passed to the {@code notifyObservers}
+     *                 method.
+     */
     @Override
     public void update(Observable o, Object arg) {
         if (arg instanceof int[][]){
@@ -128,6 +145,10 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
         this.enemyGraphicsSpawner = enemyGraphicsSpawner;
     }
 
+    /**
+     * Chiama il metodo freeze di tutti gli elementi associati al livello
+     * @param g: istanza della classe Graphics
+     */
     public void freeze(Graphics g) {
         g.drawImage(lvl1Bg, 0,0, 272 * 3, 208*3, null);
         for (PowerUpGraphics p : powerUps){

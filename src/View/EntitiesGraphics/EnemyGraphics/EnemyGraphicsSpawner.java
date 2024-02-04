@@ -1,6 +1,5 @@
 package View.EntitiesGraphics.EnemyGraphics;
 
-import Model.EntityModel.Enemies.FinalBoss;
 import View.AudioPlayer;
 import View.StatesGraphics.MatchGraphics;
 import View.UtilityInterfaces.Drawable;
@@ -10,16 +9,31 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * Questa classe gestisce la creazione delle istanze della classe EnemyGraphics dei livelli a cui è associata
+ * @see View.UtilityInterfaces.Drawable
+ * @see java.util.Observer
+ */
 public class EnemyGraphicsSpawner implements Observer , Drawable {
     private final ArrayList<EnemyGraphics> enemyGraphics;
     private final ArrayList<EnemyGraphics> inactiveEnemies;
     private final AudioPlayer audioPlayer;
 
+    /**
+     * Costruttore della classe
+     */
     public EnemyGraphicsSpawner(){
         audioPlayer = new AudioPlayer();
         enemyGraphics = new ArrayList<>();
         inactiveEnemies = new ArrayList<>();
     }
+
+    /**
+     * Aggiorna gli elementi dei campi della classe in base alle notifiche che arrivano dai vari Observable
+     * @param o     the observable object.
+     * @param arg   an argument passed to the {@code notifyObservers}
+     *                 method.
+     */
     @Override
     public void update(Observable o, Object arg) {
         if (arg instanceof int[] t){
@@ -127,6 +141,10 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
         }
     }
 
+    /**
+     * Questo metodo gestisce la rappresentazione grafica dei nemici
+     * @param g: istanza della classe Graphics
+     */
     @Override
     public void draw(Graphics g) {
         for (EnemyGraphics e : enemyGraphics){
@@ -138,6 +156,10 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
         return enemyGraphics;
     }
 
+    /**
+     * Chiama il metodo freeze() di tutti i nemici presenti nel livello
+     * @param g: istanza della classe Graphics
+     */
     public void freeze(Graphics g) {
         for (EnemyGraphics e : enemyGraphics){
             e.freeze(g);

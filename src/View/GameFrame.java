@@ -4,25 +4,18 @@ import javax.swing.*;
 
 
 /**
- * questa classe è la finestra del gioco
- *
+ * Questa classe è la finestra del gioco e contiene il GamePanel
  * @see GamePanel
  * @see JFrame
- * @author gupa9
+ * @author Guido Paluzzi
  */
 public class GameFrame extends JFrame {
 
     private final GamePanel gamePanel;
 
     /**
-     * ha campo GamePanel
-     * inanzi tutto viene impostato che quando la finestra viene chiusa termina anche l'esecuzione del programma,
-     * viene in seguito aggiunto il gamePanel,
-     * viene impedido all'utente di poter modificare la dimensione della finestra.
-     * con la funzione pack() si fa in modo che la finestra si addatti alla dimensione del GamePanel
-     * infine la finestra viene posizionata al centro dello schermo e viene resa visibile.
-     *
-     * @param gamePanel
+     * Costruttore della classe. Imposta i valori relativi alla finestra di gioco e poi aggiunge il gamePanel
+     * @param gamePanel: il pannello del gioco
      */
     public GameFrame(GamePanel gamePanel){
         super("JBomberman");

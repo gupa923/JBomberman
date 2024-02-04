@@ -9,10 +9,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * questa classe è il pannello del gioco e gestisce tutte le cose che vanno disegnate sullo schermo
- * il gamePanel ha un activeState che ha un metodo draw che verrà invocato durante l'esecuzione del paintComponent.
+ * Questa classe è il pannello del gioco, che permette di visualizzare a schermo tutte le componenti del gioco
  * @see JPanel
- * @author gupa9
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class GamePanel extends JPanel {
 
@@ -31,7 +30,7 @@ public class GamePanel extends JPanel {
     }
 
     /**
-     * questo metodo chiama i metodi draw di tutte le classi della view che gestiscono la rappresentazione a schermo dei vari elementi del gioco
+     * Questo metodo gestisce la rappresentazione grafica di tutti gli elementi del gioco
      *
      * @param g the <code>Graphics</code> object to protect
      */
