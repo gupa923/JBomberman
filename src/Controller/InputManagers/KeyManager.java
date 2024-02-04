@@ -20,9 +20,9 @@ public class KeyManager implements KeyListener {
     private final StateManager stateManager;
 
     /**
-     * Costruttore della classe
-     * @param gameModel: l'istanza del modello del gioco
-     * @param stateManager: l'istanza dello StateManager
+     * Class constructor
+     * @param gameModel: Game Model instance
+     * @param stateManager: StateManager instance
      */
     public KeyManager(GameModel gameModel, StateManager stateManager) {
         this.gameModel = gameModel;
@@ -36,7 +36,7 @@ public class KeyManager implements KeyListener {
     }
 
     /**
-     * In base allo stato attuale e al tasto premuto viene eseguito il rispettivo comando
+     * The respective command is executed based on the current status and the pressed key
      * @param e: the event to be processed
      */
     @Override
@@ -160,7 +160,7 @@ public class KeyManager implements KeyListener {
     }
 
     /**
-     * In base al tasto rilasciato vengono eseguiti i relativi comandi
+     * The commands are executed based on the released key
      * @param e the event to be processed
      */
     @Override

@@ -5,7 +5,7 @@ import Model.GameModel;
 import View.EntitiesGraphics.PlayerGraphics;
 
 /**
- * questa classe crea il model e la view del Player.
+ * This class creates Player's model and view.
  * @see Player
  * @see PlayerGraphics
  * @author Guido Paluzzi, Matteo Santucci

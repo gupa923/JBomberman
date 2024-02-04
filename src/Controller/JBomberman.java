@@ -1,7 +1,7 @@
 package Controller;
 
 /**
- * Questa classe contiene il metodo main, che istanzia la classe Game e fa partire l'esecuzione del gioco
+ * This class contains the main method, that instances the class Game and starts the game execution.
  * @author Guido Paluzzi, Matteo Santucci
  */
 public class JBomberman {

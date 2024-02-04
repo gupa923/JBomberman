@@ -12,7 +12,7 @@ import View.LevelGraphics;
 import java.util.ArrayList;
 
 /**
- * Questa classe gestisce la creazione dei EnemySpawner dei rispettivi livelli. Associa ad ogni Enemy il rispettivo observer.
+ * This class manages the creation of each level EnemySpawners. It associates every Enemy to its observer.
  * @see EnemySpawner
  * @see EnemyGraphicsSpawner
  * @see LevelManager
@@ -24,7 +24,7 @@ public class EnemySpawnerManager {
      private final ArrayList<LevelGraphics> lvlsG;
 
     /**
-     * Costruttore della classe
+     * Class constructor
      */
     public EnemySpawnerManager(){
          levelManager = LevelManager.getInstance();
@@ -35,9 +35,9 @@ public class EnemySpawnerManager {
     }
 
     /**
-     * Per Ogni livello crea il rispettivo EnemySpawner e per ogni LevelGraphics crea il rispettivo EnemyGraphicsSpawner. Infine ad ogni Enemy, creato dall'EnemySpawer, viene aggiunto il rispettivo observer creato dal'EnemyGraphicsSpawner
-     * @param lvls: Array dei livelli del gioco
-     * @param lvlsG: Array della rappresentazione grafica dei livelli del gioco
+     * For each level it creates its EnemySpawner and for each LevelGraphics creates its EnemyGraphicsSpawner. Lastly for each Enemy, created by the EnemySpawner, is added its observer created by EnemyGraphicsSpawner.
+     * @param lvls: Array of game levels
+     * @param lvlsG: Array of the game levels graphic representation
      */
     private void createEnemySpawners(ArrayList<Level> lvls, ArrayList<LevelGraphics> lvlsG) {
          for (int i = 0;i < lvls.size(); i++) {

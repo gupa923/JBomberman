@@ -7,13 +7,13 @@ import java.net.URL;
 import static View.AudioPlayer.EFFECTS;
 
 /**
- * Questa classe importa tutti gli effetti audio presenti nel gioco
+ * This class imports all audio effects in the game
  * @see Clip
  * @author Guido Paluzzi, Matteo Santucci
  */
 public class AudioManager {
     /**
-     * Costruttore della classe.
+     * Class constructor.
      */
     public AudioManager(){
         EFFECTS.add(importAudio("/audio/Bomberman Dies.wav"));

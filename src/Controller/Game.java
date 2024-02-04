@@ -10,7 +10,7 @@ import View.GameFrame;
 import View.GamePanel;
 
 /**
- * Questa classe controlla tutta l'esecuzione del gioco, istanzia quindi tutti gli elementi del model e del controller.
+ * This class handles all the game execution. It instances all the game's model and controller.
  * @see Runnable
  * @author gupa9
  */
@@ -32,7 +32,7 @@ public class Game implements Runnable{
     private final int UPS = 120;
 
     /**
-     * Costruttore della classe, inizializza le classi del gioco
+     * Class constructor, initialize game classes.
      */
     private Game() {
         this.audioManager = new AudioManager();
@@ -62,7 +62,7 @@ public class Game implements Runnable{
     }
 
     /**
-     * Con questo metodo inizia l'esecuzione vera e propria del gioco
+     * With this method starts the execution of the game.
      */
     public void startGame(){
         thread = new Thread(this);
@@ -70,8 +70,8 @@ public class Game implements Runnable{
     }
 
     /**
-     * Questa classe è quella che contiene il game loop. Viene controllato il tempo che passa tra un aggiornamento del model e l'altro, se è passato troppo tempo il model viene aggiornato nuovamente, in modo da avere 120 aggiornamenti per secondo.
-     * In modo analogo la viene fatto per la view viene ridisegnata 60 volte al secondo
+     * This class contains the game loop. It controls time between each model update, if too much the model is updated again, reaching 120 updates per second.
+     * The same thing is done for redesigned view, 60 updates per second.
      */
     @Override
     public void run() {
