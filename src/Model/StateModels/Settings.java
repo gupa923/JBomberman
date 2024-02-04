@@ -3,11 +3,20 @@ package Model.StateModels;
 import Model.GameModel;
 import Model.UI.Button;
 
+/**
+ * Questa classe gestisce lo stato Settings cioè le impostazioni del gioco
+ * @see Model.StateModels.Stato
+ * @autor Guido Paluzzi, Matteo Santucci
+ */
 public class Settings extends Stato{
     private final Button bComandi;
     private final Button bAudio;
     private final Button bStartPage;
 
+    /**
+     * Costruttore della classe
+     * @param gameModel: L'istanza del GameModel
+     */
     public Settings(GameModel gameModel) {
         super(gameModel);
         bComandi = new Button(272, 208, 272, 64, "COMANDI");
@@ -18,6 +27,9 @@ public class Settings extends Stato{
         bStartPage.setStato(this);
     }
 
+    /**
+     * Aggiorna gli elementi della classe
+     */
     @Override
     public void update() {
         bComandi.update();

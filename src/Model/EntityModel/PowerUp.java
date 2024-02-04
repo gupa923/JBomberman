@@ -11,7 +11,7 @@ import java.awt.geom.Rectangle2D;
  * @autor Guido Paluzzi, Matteo Santucci
  */
 public class PowerUp extends Entity{
-    public static Player player;
+    public static Player PLAYER;
     private final String name;
     private final int val;
     private final int id;
@@ -45,7 +45,7 @@ public class PowerUp extends Entity{
     @Override
     public void update() {
         if (active) {
-            if (bounds.contains(player.getHitbox().x, player.getHitbox().y))
+        if (bounds.contains(PLAYER.getHitbox().x, PLAYER.getHitbox().y))
                 if (!over) {
                     collision = true;
                 }
@@ -64,34 +64,34 @@ public class PowerUp extends Entity{
         switch (name){
             case "LIVE_UP" -> {
                 Player.VITE += val;
-                player.sendMessage(+1);
+                PLAYER.sendMessage(+1);
             }
             case "BOMB_UP" -> {
                 Player.MAX_BOMB_NUMS += val;
             }
             case "CAKE" -> {
                 Partita.SCORE += val;
-                player.sendMessage(val);
+                PLAYER.sendMessage(val);
             }
             case "HP_PLUS" -> {
                 Player.HP += val;
-                player.sendMessage("IMMORTALITY");
+                PLAYER.sendMessage("IMMORTALITY");
             }
             case "HP_MEN" -> {
-                player.hit();
+                PLAYER.hit();
 
             }
             case "IMMORTALITY" -> {
-                if (player.isImmortality()){
-                    player.resetImmortalityTick();
+                if (PLAYER.isImmortality()){
+                    PLAYER.resetImmortalityTick();
                 }else {
-                    player.setImmortality(true);
+                    PLAYER.setImmortality(true);
                 }
             }case "WALK_OVER" -> {
-                player.setWalkOver(true);
+                PLAYER.setWalkOver(true);
             }
             case "SPEED" -> {
-                player.moreSpeed();
+                PLAYER.moreSpeed();
             }
 
         }

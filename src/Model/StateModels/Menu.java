@@ -3,12 +3,21 @@ package Model.StateModels;
 import Model.GameModel;
 import Model.UI.Button;
 
-
+/**
+ * Questa classe gestisce le meccaniche del menu iniziale
+ * @see Model.StateModels.Stato
+ * @autor Guido Paluzzi, Matteo Santucci
+ */
 public class Menu extends Stato {
     private final Button bPlay;
     private final Button bSettings;
     private final Button bStats;
     private final Button bExit;
+
+    /**
+     * Costruttore della classe
+     * @param gameModel: l'istanza del GameModel
+     */
     public Menu(GameModel gameModel) {
         super(gameModel);
         bPlay = new Button(272, 104,272, 64, "PLAY");
@@ -21,6 +30,9 @@ public class Menu extends Stato {
         bExit.setStato(this);
     }
 
+    /**
+     * Aggiorna gli elementi della classe, in particolare i bottoni al suo interno
+     */
     @Override
     public void update() {
         bPlay.update();

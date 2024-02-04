@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import static Model.GameModel.USER;
 
 /**
- * la classe partita gestisce la logica della partita
- *
+ *Questa classe gestisce le meccaniche della partita e tutte le entità che prendono parte ad essa.
+ * Alla partita sono associati il Plaeyer, i Livelli e gli stati Win e GameOver poichè possono avvenire solo mentre si sta giocando una partita.
+ * @see Model.StateModels.Stato
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class Partita extends Stato{
     public static int SCORE = 0;
@@ -26,12 +28,19 @@ public class Partita extends Stato{
     private boolean cheat = false;
     private boolean restarted = true;
 
+    /**
+     * Costruttore della classe
+     * @param gameModel: L'istanza del GameModel
+     */
     public Partita(GameModel gameModel) {
         super(gameModel);
         gameOver = new GameOver(this.gameModel);
         win = new Win(this.gameModel);
     }
 
+    /**
+     * Aggiorna lo stato della partita
+     */
     @Override
     public void update() {
         if (gameCompleted){
@@ -109,6 +118,9 @@ public class Partita extends Stato{
     }
 
 
+    /**
+     * Questo metodo gestisce la transizione al livello successivo
+     */
     public void nextLevel() {
         actuaLevel ++;
         if (actuaLevel >= levels.size()){
@@ -122,11 +134,20 @@ public class Partita extends Stato{
         notifyObservers("NEW LEVEL");
     }
 
+
+    /**
+     * Setta il Player e associa il player ai PowerUp
+     * @param player: Un istanza della classe Player
+     */
     public void setPlayer(Player player) {
         this.player = player;
-        PowerUp.player = this.player;
+        PowerUp.PLAYER = this.player;
     }
 
+    /**
+     * Setta tutti i livelli della partita
+     * @param levels: tutti i livelli della partita
+     */
     public void setLevels(ArrayList<Level> levels) {
         this.levels = levels;
         player.getHitbox().setLevel(this.levels.get(actuaLevel));
@@ -136,7 +157,7 @@ public class Partita extends Stato{
     }
 
     /**
-     * resetta tutte le classi coinvolte nella partita
+     * Questo metodo resetta le classi coinvolte nella partita
      */
     public void reset(){
         gameModel.setStatoAttuale(Stati.PARTITA);
@@ -154,6 +175,9 @@ public class Partita extends Stato{
         return gameOver;
     }
 
+    /**
+     * Questo metodo rinizia la partita dopo una vittoria o una sconfitt
+     */
     public void restartGame() {
         resetLevels();
         cheat = false;
@@ -173,6 +197,10 @@ public class Partita extends Stato{
         }
     }
 
+    /**
+     * Invia una notifica agli observer
+     * @param arg: gli argomenti da inviare all'observer
+     */
     public void sendMessage(Object arg){
         setChanged();
         notifyObservers(arg);

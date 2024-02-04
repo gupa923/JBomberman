@@ -2,6 +2,10 @@ package Model;
 
 import Model.StateModels.*;
 
+/**
+ * Questa classe gestisce la logica del passaggio tra uno stato all'altro del gioco
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class GameModel{
     private static GameModel instance;
     private Stati statoAttuale;
@@ -14,6 +18,9 @@ public class GameModel{
     public static User USER;
 
 
+    /**
+     * Costruttore della classe. Istanzia tutti gli stati del gioco
+     */
     private GameModel(){
         this.statoAttuale = Stati.LOGIN;
         partita = new Partita(this);
@@ -31,8 +38,7 @@ public class GameModel{
     }
 
     /**
-     * questo metodo update chiama gli update di tutte le classi del model
-     *
+     * In base allo stato attuale aggiorna la relativa classe
      */
     public void update(){
         switch(statoAttuale){

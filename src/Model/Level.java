@@ -13,13 +13,12 @@ import java.util.Random;
 import static Model.StateModels.Partita.SCORE;
 
 /**
- * questa classe gestisce il livello e tutti i suoi oggetti. Contiene la mappa sotto forma di matrice di interi di 17 colonne e 13 righe, inoltre contiene un ArrayList contenete i power up, una contenente gli ostacoli e una contenete i nemici
+ * Questa classe gestisce il livello e tutte le sue componenti cioè i nemici, gli ostacoli e i powerup. Ogni livello è costruito a partire da una matrice di interi
  * @see PowerUp
  * @see Obstacle
  * @see java.util.Observable
- * @author gupa9
+ * @author Guido Paluzzi, Matteo Santucci
  */
-// TODO fare classe figlia che gestisce i livelli con i Boss.
 public class Level extends Observable {
     public static PowerUpType[] pTypes = PowerUpType.values();
     private final ArrayList<PowerUp> powerUps = new ArrayList<>();
@@ -31,7 +30,7 @@ public class Level extends Observable {
 
     /**
      * costruttore della classe level.
-     * @param data: mappa del livello sotto la forma di una matrice
+     * @param data: mappa del livello sotto la forma di una matrice di interi
      */
     public Level(int[][] data){
         this.data = data;
@@ -45,7 +44,7 @@ public class Level extends Observable {
     }
 
     /**
-     * inizialmente questo metodo crea gli ostacoli e i power up, poi itera sugli ostacoli e li aggiorna. infine itera sui power up e se non sono attivi li rimuove
+     * Aggiorna lo stato di tutti gli oggetti del livello
      */
     public void update(){
         if (firstUpdate){
@@ -68,19 +67,12 @@ public class Level extends Observable {
 
     }
 
-    /**
-     * rimuove il power up all'indice i dell'array di power up ed invia una notifica agli observer con le coordinate del power up cancellato
-     * @param i: indice del power up da rimuovere
-     */
     private void despawnPowerUp(int i) {
         PowerUp temp = powerUps.remove(i);
         setChanged();
         notifyObservers(new int[] {temp.getX(), temp.getY(), temp.getId()});
     }
 
-    /**
-     * questo metodo crea i power up. Il metodo cicla sulla matrice data e se l'intero vale 4 allora crea un power up alle posizioni di quell'intero
-     */
     private void createPowerUp() {
         Random r = new Random();
         for (int y = 0; y < data.length; y++){
@@ -95,9 +87,6 @@ public class Level extends Observable {
         notifyObservers(message);
     }
 
-    /**
-     * questo metodo crea gli ostacoli. itera sulla matrice e posizione un ostacolo dove questa vale 2, 3, o 4
-     * */
     private void createObstacles(){
         for (int y = 0; y < data.length; y++){
             for (int x = 0; x < data[y].length; x++){
@@ -117,7 +106,7 @@ public class Level extends Observable {
     }
 
     /**
-     * quando viene chiamato questo metodo cerca nell'array l'ostacolo colpito e imposta il suo booleano hit = true.
+     * Questo metodo gestisce l'esplosione degli ostacoli
      * @param x: coordinata dell'ostacolo
      * @param y: coordinata dell'ostacole
      */
@@ -140,7 +129,7 @@ public class Level extends Observable {
     }
 
     /**
-     * questo metodo rimuove l'ostacolo dall'array
+     * Questo metodo rimuove gli ostacoli dal livello dopo che sono esplosi
      * @param obstacle: l'ostacolo da rimuovere
      */
     public void removeObstacle(Obstacle obstacle) {
@@ -156,7 +145,7 @@ public class Level extends Observable {
     }
 
     /**
-     * questo metodo inizializza nuovamente il livello.
+     * Questo metodo resetta il livello e tutti i suoi oggetti
      */
     public void reset() {
         obstacles.clear();

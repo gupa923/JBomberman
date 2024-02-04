@@ -4,13 +4,19 @@ import Model.GameModel;
 import Model.UI.Button;
 
 /**
- * questa classe gestisce la logica dello stato di pausa: la partita viene interrotta manenendo la situazione corrente
- *
+ * questa classe gestisce la logica dello stato di pausa: la partita viene interrotta mantenendo la situazione corrente
+ * @see Model.StateModels.Stato
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class Pause extends Stato{
     private final Button bResume;
     private final Button bQuit;
     private final Button bClose;
+
+    /**
+     * Costruttore della classe
+     * @param gameModel: l'istanza del GameModel
+     */
     public Pause(GameModel gameModel) {
         super(gameModel);
         bResume = new Button(272, 208, 272, 64, "RESUME");
@@ -21,6 +27,9 @@ public class Pause extends Stato{
         bClose.setStato(this);
     }
 
+    /**
+     * Aggiorna gli elementi dello stato Pausa
+     */
     @Override
     public void update() {
         bResume.update();

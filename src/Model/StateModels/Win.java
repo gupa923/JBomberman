@@ -3,9 +3,19 @@ package Model.StateModels;
 import Model.GameModel;
 import Model.UI.Button;
 
+/**
+ * Gestisce le meccaniche che avvengono quando il giocatore vince una partita
+ * @see Model.StateModels.Stato
+ * @author Guido Paluzzi, Matteo Santucci
+ */
 public class Win extends Stato{
     private final Button bNewGame;
     private final Button bMenuIniziale;
+
+    /**
+     * Il costruttore della classe
+     * @param gameModel: L'istanza del GameModel
+     */
     public Win(GameModel gameModel) {
         super(gameModel);
         bNewGame = new Button(275, 304 + 41, 272, 64, "NEW GAME");
@@ -14,6 +24,9 @@ public class Win extends Stato{
         bMenuIniziale.setStato(this);
     }
 
+    /**
+     * Aggiorna gli elementi dello stato
+     */
     @Override
     public void update() {
 
