@@ -5,19 +5,19 @@ import Model.Level;
 import java.util.ArrayList;
 
 /**
- * Questa classe contiene metodi static per la creazione delle esplosioni
+ * This class contains static methods for creating explosions
  * @author Guido Paluzzi, Matteo Santucci
  */
 public class ExplosionCreator {
     /**
-     * Il raggio di esplosione della bomba
+     * The explosion radius of the bomb
      */
     public static int RANGE = 1;
 
     /**
-     * Data una bomba in ingresso crea l'esplosione
-     * @param bomb: la bomba che deve esplodere
-     * @return: Una matrice di intere che contiene le coordinate delle tile coinvolte nell'esplosione.
+     * Given an incoming bomb creates the explosion
+     * @param bomb: Exploding Bomb
+     * @return: An integer matrix containing the coordinates of the tiles involved in the explosion.
      */
     public static int[][] CreateExplosionTiles(Bomb bomb){
         Level lvl = bomb.getHitbox().getLevel();
@@ -44,9 +44,9 @@ public class ExplosionCreator {
     }
 
     /**
-     * Questo metodo controlla se le tile coinvolte nell'esplosione sono valide, cioè se non sono muri o se sono fuori dalla mappa
-     * @param l: lista di tile colpite da un esplosione in una direzione
-     * @param result: la lista a cui appendere le tile valide
+     * This method checks if the tiles involved in the explosion are valid, i.e. if they are not walls or if they are outside the map
+     * @param l: list of tiles hit by an explosion in one direction
+     * @param result: the list to which to append valid tiles
      */
     private static void AddValidTiles(ArrayList<int[]> l, ArrayList<int[]> result, Level lvl){
         for (int[] p: l){

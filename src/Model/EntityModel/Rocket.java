@@ -3,7 +3,7 @@ package Model.EntityModel;
 import java.awt.geom.Rectangle2D;
 
 /**
- * Questa classe gestisce i razzi sparati dal FinalBoss
+ * This class handles the rockets fired by the FinalBoss
  * @see Model.EntityModel.Entity
  * @autor Guido Paluzzi, Matteo Santucci
  */
@@ -11,12 +11,12 @@ public class Rocket extends Entity{
     private String dir;
     private Rectangle2D.Float bounds;
     /**
-     * Ogni Entity viene creata a partire da 4 interi
+     * Each Entity is created from 4 integers
      *
-     * @param x : ascissa punto di spawn
-     * @param y : ordinata del punto di spawn
-     * @param w : larghezza
-     * @param h : altezza
+     * @param x : abscissa spawn point
+     * @param y : spawn point ordinate
+     * @param w : length
+     * @param h : height
      */
     public Rocket(int x, int y, int w, int h, String dir) {
         super(x, y, w, h);
@@ -25,7 +25,7 @@ public class Rocket extends Entity{
     }
 
     /**
-     * Inizializzala hitbox
+     * Initialize the hitbox
      */
     @Override
     public void initHitbox() {
@@ -33,7 +33,7 @@ public class Rocket extends Entity{
     }
 
     /**
-     * Aggiorna lo stato del Razzo
+     * Update the Rocket's status
      */
     @Override
     public void update() {

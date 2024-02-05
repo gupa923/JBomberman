@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D;
 import static Model.EntityModel.Player.BOMBS;
 
 /**
- * Questa classe gestisce il BlueEnemy, la cui caratteristica è quella di mangiare le bombe quando ci passa sopra.
+ * This class manages the BlueEnemy, which is characterized by eating bombs when it passes on them.
  * @author Guido Paluzzi, Matteo Santucci
  */
 public class BlueEnemy extends Enemy{
@@ -15,11 +15,11 @@ public class BlueEnemy extends Enemy{
     private boolean immortality = true, moving = true;
 
     /**
-     * Costruisce il nemico a partire da quattro interi e inizializza la hitbox
-     *      * @param x: ascissa punto di spawn
-     *      * @param y: ordinata del punto di spawn
-     *      * @param w: larghezza
-     *      * @param h: altezza
+     * Builds the enemy from 4 integers and starts the hitbox
+     *      * @param x: abscissa spawn point
+     *      * @param y: ordinate spawn point
+     *      * @param w: lenght
+     *      * @param h: height
      */
     public BlueEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -34,7 +34,7 @@ public class BlueEnemy extends Enemy{
     }
 
     /**
-     * Inizializza le hitbox
+     * Starts the hitboxes
      */
     @Override
     public void initHitbox() {
@@ -43,7 +43,7 @@ public class BlueEnemy extends Enemy{
     }
 
     /**
-     * Aggiorna lo stato del nemico e notifica gli observer di conseguenza.
+     * Updates the enemy state and notify the observers.
      */
     @Override
     public void update() {
@@ -154,9 +154,9 @@ public class BlueEnemy extends Enemy{
     }
 
     /**
-     * Questo metodo controlla la collisione tra il BlueEnemy e le bombe.
-     * @param dir: la direzione verso cui si sta muovendo il nemico
-     * @return: true se il nemico è entrato in collisione con una bomba che sta esplodendo
+     * This method manages the collision between BlueEnemy and bombs.
+     * @param dir: the direction in which the enemy is moving
+     * @return: true if the enemy is in collision with an exploding bomb
      */
     @Override
     protected boolean intersect(String dir) {
@@ -169,7 +169,7 @@ public class BlueEnemy extends Enemy{
     }
 
     /**
-     * Gestisce il danno subito dal blueenemy e anche la morte dello stesso
+     * Manages the BlueEnemy's suffered damage and also BlueEnemy's death
      */
     @Override
     public void hit() {

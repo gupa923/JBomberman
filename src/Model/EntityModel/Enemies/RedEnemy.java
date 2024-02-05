@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D;
 import static Model.EntityModel.Player.BOMBS;
 
 /**
- * Questa classi gestisce il RedEnemy
+ * This class handles the RedEnemy
  * @see Model.EntityModel.Enemies.Enemy
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -17,12 +17,12 @@ public class RedEnemy extends Enemy {
     private int updateTick;
 
     /**
-     *  Costruisce un nemico a partire da quattro interi e inizializza la hitbox
+     *  Constructs an enemy from four wholes and initializes the hitbox
      *
-     * @param x : ascissa punto di spawn
-     * @param y : ordinata del punto di spawn
-     * @param w : larghezza
-     * @param h : altezza
+     * @param x : abscissa spawn point
+     * @param y : ordinate spawn point
+     * @param w : lenght
+     * @param h : height
      */
     public RedEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -37,7 +37,7 @@ public class RedEnemy extends Enemy {
     }
 
     /**
-     * Aggiorna lo stato del RedEnemy e aggiorna l'Observer di conseguenza
+     * Update the status of the RedEnemy and update the Observer accordingly
      */
     @Override
     public void update() {
@@ -148,7 +148,8 @@ public class RedEnemy extends Enemy {
     }
 
     /**
-     * Inizializza la hitbox
+     * Start the hitbox
+     *
      */
     @Override
     public void initHitbox() {
@@ -157,7 +158,7 @@ public class RedEnemy extends Enemy {
     }
 
     /**
-     * Gestisce il danno subito dal nemico e la morte dello stesso
+     * It manages the damage suffered by the enemy and the death of the same
      */
     @Override
     public void hit() {

@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D;
 import static Model.EntityModel.Player.BOMBS;
 
 /**
- * Questa classe gestisce il primo boss del gioco, le sua caratteristica è il movimento veloce ed imprevedibile
+ * This class manages the first boss of the game, its characteristic is fast and unpredictable movement
  * @see Model.EntityModel.Enemies.Enemy
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -19,12 +19,12 @@ public class ClownBoss extends Enemy{
 
 
     /**
-     * Costruisce un nemico a partire da quattro interi e inizializza la hitbox
+     * Constructs an enemy from four wholes and initializes the hitbox
      *
-     * @param x : ascissa punto di spawn
-     * @param y : ordinata del punto di spawn
-     * @param w : larghezza
-     * @param h : altezza
+     * @param x : abscissa spawn point
+     * @param y : ordinate spawn point
+     * @param w : lenght
+     * @param h : height
      */
     public ClownBoss(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -40,7 +40,7 @@ public class ClownBoss extends Enemy{
     }
 
     /**
-     * inizializza le hitbox
+     * Starts the hitboxes
      */
     @Override
     public void initHitbox() {
@@ -49,7 +49,7 @@ public class ClownBoss extends Enemy{
     }
 
     /**
-     * Aggiorna lo stato del boss e manda le notifiche all'observer di conseguenza
+     * Updates boss's state and observer
      */
     @Override
     public void update() {
@@ -163,7 +163,7 @@ public class ClownBoss extends Enemy{
     }
 
     /**
-     * Cambia casualmente la direzione del boss
+     * Changes randomly boss direction
      */
     private void changeDirection() {
         if ((hitbox.x/16)% 2 == 0 && (hitbox.y/16)%2 == 1){
@@ -173,8 +173,8 @@ public class ClownBoss extends Enemy{
 
     /**
      *
-     * @param dir: la direzione verso cui si sta muovendo il nemico
-     * @return: return true se il boss collide con una bomba
+     * @param dir: the direction in which the enemy is moving
+     * @return: return true if boss collides with a bomb.
      */
     @Override
     protected boolean intersect(String dir) {
@@ -187,7 +187,7 @@ public class ClownBoss extends Enemy{
     }
 
     /**
-     * gestisce il danno subito
+     * manages suffered damage
      */
     @Override
     public void hit() {

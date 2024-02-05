@@ -11,7 +11,7 @@ import java.util.Random;
 import static Model.EntityModel.Player.BOMBS;
 
 /**
- * Questa classe contiene tutte le informazioni comuni a tutti i nemici. Estende la classe Entity. Ogni nemico ha una x, una y, una larghezza, un'altezza e un type. Inoltre il nemico a due stati che non possono essere uguali allo stesso momento: cioè alive e dying.
+ * This class contains all the information common to all enemies. Extends the Entity class. Each enemy has an x, a y, a width, a height and a type. Furthermore, the enemy has two states that cannot be equal at the same time: that is, alive and dying.
  * @see Model.EntityModel.Entity
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -31,28 +31,28 @@ public abstract class Enemy extends Entity {
     protected int HP, defaultHP;
 
     /**
-     * Costruisce un nemico a partire da quattro interi e inizializza la hitbox
-     * @param x: ascissa punto di spawn
-     * @param y: ordinata del punto di spawn
-     * @param w: larghezza
-     * @param h: altezza
+     * Constructs an enemy from four wholes and initializes the hitbox
+     * @param x: abscissa spawn point
+     * @param y: ordinate spawn point
+     * @param w: lenght
+     * @param h: height
      */
     public Enemy(int x, int y, int w, int h) {
         super(x, y, w, h);
     }
 
     /**
-     * restituisce un array di interi contenente la rappresentazione del nemico in int[]. Questo array contiene l'ascissa, l'ordinata, la larghezza, l'altezza e il tipo.
-     * @return: la rappresentazione del nemico sotto forma di array di interi
+     * returns an array of integers containing the enemy representation in int[]. This array contains the abscissa, ordinate, width, height and type.
+     * @return: the representation of the enemy in the form of an array of integers
      */
     public int[] toArr(){
         return new int[] {x, y, w, h, type};
     }
 
     /**
-     * Controlla l'intersezione del nemico con le bombe
-     * @param dir: la direzione verso cui si sta muovendo il nemico
-     * @return: restituisce true se il nemico è entrato in collisione con una bomba.
+     * Control the enemy's intersection with bombs
+     * @param dir: the direction in which the enemy is moving
+     * @return: returns true if the enemy collided with a bomb.
      */
     protected boolean intersect(String dir) {
         for (Bomb b : BOMBS){
@@ -72,7 +72,7 @@ public abstract class Enemy extends Entity {
     }
 
     /**
-     * il metodo gestisce la collisione tra il nemico e il player
+     * the method manages the collision between the enemy and the player
      * @param player: il player
      */
     public void playerHit(Player player){
@@ -87,7 +87,7 @@ public abstract class Enemy extends Entity {
     }
 
     /**
-     * resetta la posizione e la hitbox del nemico alla posizione iniziale
+     * resets the enemy's position and hitbox to the starting position
      */
     public void resetPos() {
         this.x = sx;

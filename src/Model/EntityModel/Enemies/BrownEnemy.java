@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D;
 import static Model.EntityModel.Player.BOMBS;
 
 /**
- * Questa classe gestisce il BrownEnemy, le cui caratterisctiche sono quelle di muoversi molto velocemente e in modo imprevedibile.
+ * This class managed the BrownEnemy, which is characterized by fast and unpredictable movements.
  * @see Model.EntityModel.Enemies.Enemy
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -16,11 +16,11 @@ public class BrownEnemy extends Enemy{
     private int updateTick;
 
     /**
-     * Costruisce un nemico a partire da quattro interi e inizializza la hitbox
-     * @param x: ascissa punto di spawn
-     * @param y: ordinata del punto di spawn
-     * @param w: larghezza
-     * @param h: altezza
+     * Builds an enemy from four wholes and initializes the hitbox
+     * @param x: abscissa spawn pint
+     * @param y: ordinate spawn point
+     * @param w: lenght
+     * @param h: height
      */
     public BrownEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -34,7 +34,7 @@ public class BrownEnemy extends Enemy{
     }
 
     /**
-     * Inizializza le hitbox
+     * Starts the hitboxes
      */
     @Override
     public void initHitbox() {
@@ -43,7 +43,7 @@ public class BrownEnemy extends Enemy{
     }
 
     /**
-     * Aggiorna lo stato dello YellowEnemy e aggiorna il suo observer di conseguenza
+     * Updates the YellowEnemy's state and updates his observer
      */
     @Override
     public void update() {
@@ -154,7 +154,7 @@ public class BrownEnemy extends Enemy{
     }
 
     /**
-     * Gestisce il danno subito dal nemico e anche la morte dello stesso
+     * Manages enemy's suffered damage and death.
      */
     @Override
     public void hit() {

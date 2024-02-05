@@ -1,7 +1,7 @@
 package Model.EntityModel;
 import Model.Level;
 /**
- * Questa classe gestisce gli ostacoli del gioco. Ogni ostacolo è associato ad un livello
+ * This class handles the game's obstacles. Each obstacle is associated with a level
  * @see Model.EntityModel.Entity
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -12,10 +12,10 @@ public class Obstacle extends Entity{
     private final int lim = 120;
 
     /**
-     * Costruttore della classe
-     * @param level: il livello a cui è associato l'ostacolo
-     * @param x: la coordinata x dell'ostacolo
-     * @param y: la coordinata y dell'ostacolo
+     * Class Constructor
+     * @param level: the level at which the obstacle is associated
+     * @param x: the x coordinate of the obstacle
+     * @param y: the y coordinate of the obstacle
      */
     public Obstacle(Level level, int x, int y) {
         super(x, y, 16, 16);
@@ -24,7 +24,7 @@ public class Obstacle extends Entity{
     }
 
     /**
-     * inizializza la hitbox
+     * initializes the hitbox
      */
     @Override
     public void initHitbox() {
@@ -32,7 +32,7 @@ public class Obstacle extends Entity{
     }
 
     /**
-     * Aggiorna lo stato dell'ostacolo
+     * Update the obstacle status
      */
     @Override
     public void update() {

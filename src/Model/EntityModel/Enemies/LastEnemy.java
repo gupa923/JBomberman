@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D;
 import static Model.EntityModel.Player.BOMBS;
 
 /**
- * Questa classe gestisce il LastEnemy, le cui caratterisctiche sono quelle di muoversi attraverso tutti gli ostacoli distruttibili, quindi anche le bombe.
+ * This class manages the LastEnemy, whose characteristics are to move through all destructible obstacles, therefore also bombs.
  * @see Model.EntityModel.Enemies.Enemy
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -16,11 +16,11 @@ public class LastEnemy extends Enemy {
     private boolean moving;
 
     /**
-     * Costruisce un nemico a partire da quattro interi e inizializza la hitbox
-     * @param x : ascissa punto di spawn
-     * @param y : ordinata del punto di spawn
-     * @param w : larghezza
-     * @param h : altezza
+     * Constructs an enemy from four wholes and initializes the hitbox
+     * @param x : abscissa spawn point
+     * @param y : ordinate spawn point
+     * @param w : lenght
+     * @param h : height
      */
     public LastEnemy(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -35,7 +35,7 @@ public class LastEnemy extends Enemy {
     }
 
     /**
-     * Inizializza le hitbox
+     * Starts the hitboxes
      */
     @Override
     public void initHitbox() {
@@ -45,7 +45,7 @@ public class LastEnemy extends Enemy {
     }
 
     /**
-     * Aggiorna lo stato del LastEnemy, mandando le notifiche al suo Observer di conseguenza
+     * Updates the status of the LastEnemy, sending notifications to its Observer accordingly
      */
     @Override
     public void update() {
@@ -159,7 +159,7 @@ public class LastEnemy extends Enemy {
     }
 
     /**
-     * Cambia casualmente la direzione del nemico
+     * Randomly changes the enemy's direction
      */
     private void changeDirection() {
         if ((hitbox.x/16)% 2 == 0 && (hitbox.y/16)%2 == 1){
@@ -168,9 +168,9 @@ public class LastEnemy extends Enemy {
     }
 
     /**
-     * Gestisce la collisione con le bombe
-     * @param dir: la direzione verso cui si sta muovendo il nemico
-     * @return: true se una bomba che esplode collide con il nemico
+     * Handles bomb collision
+     * @param dir: the direction in which the enemy is moving
+     * @return: true if an exploding bomb collides with the enemy
      */
     @Override
     protected boolean intersect(String dir) {
@@ -183,7 +183,7 @@ public class LastEnemy extends Enemy {
     }
 
     /**
-     * Gestisce il danno subito dal nemico e ancha la morte dello stesso
+     * It manages the damage suffered by the enemy and also the death of the same
      */
     @Override
     public void hit() {

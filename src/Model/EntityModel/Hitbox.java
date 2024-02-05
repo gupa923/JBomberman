@@ -3,7 +3,7 @@ package Model.EntityModel;
 import Model.Level;
 
 /**
- * L'Hitbox è una classe che viene associata ad ogni entità del gioco e gestisce le collisioni con la mappa
+ * The Hitbox is a class that is associated with each entity in the game and manages collisions with the map
  * @author Guido Paluzzi, Matteo Santucci
  */
 public class Hitbox {
@@ -13,11 +13,11 @@ public class Hitbox {
     private boolean walkOver;
 
     /**
-     * Costruttore della classe
-     * @param x: la x della hitbox
-     * @param y: la y della hitbox
-     * @param w: la larghezza della hitbox
-     * @param h: la lunghezza della hitbox
+     * Class Constructor
+     * @param x: the x of the hitbox
+     * @param y: the y of the hitbox
+     * @param w: the width of the hitbox
+     * @param h: the length of the hitbox
      */
     public Hitbox(int x, int y, int w, int h) {
         this.x = x;
@@ -27,9 +27,9 @@ public class Hitbox {
     }
 
     /**
-     * Aggiorna la posizione della hitbox
-     * @param dx: il valore di quanto aumentare la x della hitbox
-     * @param dy: il valore di quanto aumentare la y della hitbox
+     * Update hitbox position
+     * @param dx: the value of how much to increase the x of the hitbox
+     * @param dy: the value of how much to increase the y of the hitbox
      */
     public void update(int dx, int dy){
         x += dx;
@@ -37,10 +37,10 @@ public class Hitbox {
     }
 
     /**
-     * questo metodo gestisce la collisione con i muri della mappa e con gli ostacoli
-     * @param x: coordinata x del player
-     * @param y: coordinata y del player
-     * @return boolean: restituisce true se il giocatore può spostarsi su x, y
+     * this method handles collisions with map walls and obstacles
+     * @param x: x coordinate of the player
+     * @param y: y coordinate of the player
+     * @return boolean: returns true if the player can move x, y
      */
     public boolean checkCollision(int x, int y){
         int nx = x / 16;

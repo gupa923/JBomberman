@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import static Model.EntityModel.Player.BOMBS;
 
 /**
- * Questa classe gestisce il boss final del gioco, la sua caratteristica è quella di lanciare razzi.
+ * This class manages the final boss of the game, its characteristic is to launch rockets.
  * @see Model.EntityModel.Enemies.Enemy
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -20,12 +20,12 @@ public class FinalBoss extends Enemy{
     private int updateTick;
     private ArrayList<Rocket> rockets = new ArrayList<>();
     /**
-     * Costruisce un nemico a partire da quattro interi e inizializza la hitbox
+     * Constructs an enemy from four wholes and initializes the hitbox
      *
-     * @param x : ascissa punto di spawn
-     * @param y : ordinata del punto di spawn
-     * @param w : larghezza
-     * @param h : altezza
+     * @param x : abscissa spawn point
+     * @param y : ordinate spawn point
+     * @param w : lenght
+     * @param h : height
      */
     public FinalBoss(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -40,7 +40,7 @@ public class FinalBoss extends Enemy{
     }
 
     /**
-     * inizializza le hitbox
+     * Starts the hitboxes
      */
     @Override
     public void initHitbox() {
@@ -49,7 +49,7 @@ public class FinalBoss extends Enemy{
     }
 
     /**
-     * Aggiorna lo stato del gioco e  notifica di conseguenza il suo observer
+     * Updates the game state and notifies its observer accordingly
      */
     @Override
     public void update() {
@@ -172,9 +172,9 @@ public class FinalBoss extends Enemy{
     }
 
     /**
-     * Controlla se il rocket è fuori dal bordo della mappa
-     * @param rocket: il Rocket su cui effetturare il controllo
-     * @return: true se il rocket è fuori dalla mappa
+     * Check if the rocket is outside the edge of the map
+     * @param rocket: the Rocket on which to carry out the check
+     * @return: true if the rocket is off the map
      */
     private boolean checkRocketOutOfBoards(Rocket rocket) {
         if (rocket.getX()+rocket.getW() < 0){
@@ -190,8 +190,8 @@ public class FinalBoss extends Enemy{
     }
 
     /**
-     * Controlla se il boss o uno dei razzi ha colpito il Player
-     * @param player: il player
+     * Check if the boss or one of the rockets hit the Player
+     * @param player: the player
      */
     @Override
     public void playerHit(Player player){
@@ -208,7 +208,7 @@ public class FinalBoss extends Enemy{
     }
 
     /**
-     * Questo metodo crea un razzo e lo aggiunge alla lista dei razzi in gioco
+     * This method creates a rocket and adds it to the list of rockets in the game
      */
     private void shootRocket() {
         int i = r.nextInt(4);
@@ -218,9 +218,9 @@ public class FinalBoss extends Enemy{
     }
 
     /**
-     * Controlla se il Boss entra in collisione con una bomba
-     * @param dir: la direzione verso cui si sta muovendo il nemico
-     * @return: true se il boss collide con una bomba
+     * Check if the Boss collides with a bomb
+     * @param dir: the direction in which the enemy is moving
+     * @return: true if the boss collides with a bomb
      */
     @Override
     protected boolean intersect(String dir) {
@@ -233,7 +233,7 @@ public class FinalBoss extends Enemy{
     }
 
     /**
-     * Gestisce il danno subito dal boss e anche la morte dello stesso
+     * It manages the damage suffered by the boss and also the death of the same
      */
     @Override
     public void hit() {

@@ -3,14 +3,14 @@ package Model.EntityModel;
 import Model.EntityModel.Enemies.*;
 
 /**
- * Questa classe gestisce la bomba, la sua esplosione e le collissioni tra essa e le altre entitò del gioco
+ * This class manages the bomb, its explosion and the collisions between it and the other entities in the game
  * @see Model.EntityModel.Entity
  * @author Guido Paluzzi, Matteo Santucci
  */
 public class
 Bomb extends Entity {
     /**
-     * Indica il numero di bombe non esplose presenti nel gioco
+     * Indicates the number of unexploded bombs in the game
      */
     public static int BOMB_COUNTER = 0;
     private int notCollideTick = 0;
@@ -22,10 +22,10 @@ Bomb extends Entity {
     private boolean exploding;
 
     /**
-     * Costruttore della classe
-     * @param player: Il Player che ha piazzato la bomba
-     * @param x: la x su cui piazzare la bomba
-     * @param y: la y su cui piazzare la bomba
+     * Class constructor
+     * @param player: The Player who planted the bomb
+     * @param x: the x on which to place the bomb
+     * @param y: the y on which to place the bomb
      */
     public Bomb(Player player, int x, int y) {
         super(x*16, y*16, 16, 16);
@@ -35,7 +35,7 @@ Bomb extends Entity {
     }
 
     /**
-     * inizializza la hitbox della bomba
+     * initializes the bomb's hitbox
      */
     @Override
     public void initHitbox() {
@@ -45,7 +45,7 @@ Bomb extends Entity {
     }
 
     /**
-     * Aggiorna lo stato della bomba
+     * Update bomb status
      */
     @Override
     public void update() {
@@ -58,9 +58,9 @@ Bomb extends Entity {
     }
 
     /**
-     * Gestisce la collisione tra il Player e la bomba
+     * Manages the collision between the Player and the bomb
      *
-     * @param dir: la direzione in cui il player si sta muovendo
+     * @param dir: the direction in which the player is moving
      * @return
      */
     public boolean intersect( String dir){
@@ -126,10 +126,10 @@ Bomb extends Entity {
     }
 
     /**
-     * Gestisce la collisione tra il blue enemy e una bomba. Se la bomba non sta esplodendo allora viene rimossa.
-     * @param enemy: Un'istanza della classe BlueEnemy
-     * @param dir: la direzione verso cui si sta muovendo
-     * @return: true se il nemico entra in collisione con una bomba
+     * Manages the collision between the blue enemy and a bomb. If the bomb is not exploding then it is removed.
+     * @param enemy: An instance of the BlueEnemy class
+     * @param dir: the direction in which it is moving
+     * @return: true if the enemy collides with a bomb
      */
     public boolean intersect(BlueEnemy enemy, String dir){
         Hitbox pHitbox = enemy.getHitbox();
@@ -202,10 +202,10 @@ Bomb extends Entity {
     }
 
     /**
-     * Gestisce la collisione tra la bomba e il nemico
-     * @param enemy: Un'istanza della classe LastEnemy
-     * @param dir: la direzione verso cui si muove il nemico
-     * @return: true se il nemico collide con la bomba
+     * Manages the collision between the bomb and the enemy
+     * @param enemy: An instance of the LastEnemy class
+     * @param dir: the direction in which the enemy is moving
+     * @return: true if the enemy collides with the bomb
      */
     public boolean intersect(LastEnemy enemy, String dir){
         Hitbox pHitbox = enemy.getHitbox();
@@ -253,10 +253,10 @@ Bomb extends Entity {
 
 
     /**
-     * Gestisce la collisione tra il ClownBoss e la bomba
-     * @param enemy: Un'istanza della classe ClownBoss
-     * @param dir: la direzione verso cui si sta muovendo il boss
-     * @return: true se collide con una bomba
+     * Handles the collision between the ClownBoss and the bomb
+     * @param enemy: An instance of the ClownBoss class
+     * @param dir: the direction the boss is moving in
+     * @return: true if it collides with a bomb
      */
     public boolean intersect(ClownBoss enemy, String dir){
         //Hitbox pHitbox = enemy.getDamageBox();
@@ -277,9 +277,9 @@ Bomb extends Entity {
 
     /**
      *
-     * @param enemy: Un'Istanza della classe FinalBoss
-     * @param dir: la direzione verso la quale si muove il boss
-     * @return: true se il boss entra in collisione con una bomba
+     * @param enemy: An Instance of the FinalBoss class
+     * @param dir: the direction in which the boss moves
+     * @return: true if the boss collides with a bomb
      */
     public boolean intersect(FinalBoss enemy, String dir){
         if (notCollideTick <= collideTickLim)
@@ -299,10 +299,10 @@ Bomb extends Entity {
 
 
     /**
-     * Gestisce la collisione tra un Enemy e una bomba
-     * @param enemy: Un'istanza della classe Enemy
-     * @param dir: la direzione verso cui l'enemy si sta muovendo
-     * @return: true se l'enemy entra in collisione con una bomba
+     * Handles the collision between an Enemy and a bomb
+     * @param enemy: An instance of the Enemy class
+     * @param dir: the direction in which the enemy is moving
+     * @return: true if the enemy collides with a bomb
      */
     public boolean intersect(Enemy enemy, String dir){
         Hitbox pHitbox = enemy.getHitbox();
@@ -362,12 +362,12 @@ Bomb extends Entity {
         }
     }
     /**
-     * è un metodo che controlla se due punti sono uguali
-     * @param x1: la x del primo punto
-     * @param y1: la y del primo punto
-     * @param x2: la x del secondo punto
-     * @param y2: la y del secondo punto
-     * @return: restituisce true se x1 è uguale a x2 e y1 è uguale a y2
+     * It is a method that checks whether two points are equal
+     * @param x1: the x of the first point
+     * @param y1: the y of the first point
+     * @param x2: the x of the second point
+     * @param y2: the y of the second point
+     * @return: returns true if x1 equals x2 and y1 equals y2
      */
     private boolean checkPoints(int x1, int y1, int x2, int y2){
         return (x1 == x2) && (y1 == y2);

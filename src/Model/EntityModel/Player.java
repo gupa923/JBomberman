@@ -3,23 +3,23 @@ package Model.EntityModel;
 import java.util.ArrayList;
 
 /**
- * questa classe rappresenta il giocatore nel gioco. Gestisce le azioni e lo stato del giocatore. Al Player sono associate le bombe in gioco
+ * this class represents the player in the game. Manages the player's actions and state. The bombs in play are associated with the Player
  * @see Entity
  * @author Guido Paluzzi, Matteo Santucci
  */
 public class Player extends Entity{
     /**
-     * Contatore che mantiene il numero di ostacoli distrutti
+     * Counter that keeps the number of obstacles destroyed
      */
     public static int OBSTACLE_DESTROYED = 0;
     /**
-     * contatore che contiene il numero di vite rimanenti al Player
+     * counter that contains the number of lives remaining to the Player
      */
     public static int VITE = 7;
     private String action = "STAY";
     private Bomb bomb;
     /**
-     * ArrayList che contiene le bombe attive
+     * ArrayList containing the active bombs
      */
     public static ArrayList<Bomb> BOMBS = new ArrayList<>();
     private final int speed = 1;
@@ -29,7 +29,7 @@ public class Player extends Entity{
     public static int MAX_BOMB_NUMS = 1;
     private boolean alive = true;
     /**
-     * COntiene il numero di HP del Player
+     * Contains the Player's HP number
      */
     public static int HP = 1;
     private boolean immortality = true;
@@ -46,11 +46,11 @@ public class Player extends Entity{
     private int dynigTick;
 
     /**
-     * Costruttore della classe
-     * @param x: ascissa del punto di spawn del Player
-     * @param y: ordinata del punto di spawn del Player
-     * @param w; larghezza del Player
-     * @param h: altezza del Player
+     * Class constructor
+     * @param x: abscissa of the Player's spawn point
+     * @param y: ordinate of the Player's spawn point
+     * @param w; Player width
+     * @param h: Player height
      */
     public Player(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -58,7 +58,7 @@ public class Player extends Entity{
     }
 
     /**
-     * inizializza la hitbox
+     * initializes the hitbox
      */
     @Override
     public void initHitbox() {
@@ -66,7 +66,7 @@ public class Player extends Entity{
     }
 
     /**
-     * Questo metodo aggiorna lo stato del Player, le azioni dello stesso e invia di conseguenza notifiche agli observer
+     * This method updates the Player's state, its actions and accordingly sends notifications to the observers
      */
     @Override
     public void update() {
@@ -182,9 +182,9 @@ public class Player extends Entity{
     }
 
     /**
-     * Per ogni bomba nel gioco controlla se il Player è entrato in collisione con la bomba.
-     * @param dir: direzione verso cui si sta muovendo il giocatore
-     * @return: restituisce true se il giocatore colpisce una bomba
+     * For each bomb in the game it checks whether the Player collided with the bomb.
+     * @param dir: direction in which the player is moving
+     * @return: returns true if the player hits a bomb
      */
     private boolean intersect(String dir) {
         for (Bomb b : BOMBS){
@@ -196,8 +196,8 @@ public class Player extends Entity{
     }
 
     /**
-     * questo metodo crea un bomba. In primo luogo viene controllato se il giocatore ha raggiunto il massimo numero di bombe possibili. A questo punto vede se la posizione in cui si vuole posizionare questa bomba è lecita o meno.
-     * Se la posizione è legale allore viene generata una bomba e viene incrementato il valore di BOMB_COUNTER.
+     * this method creates a bomb. First it is checked whether the player has reached the maximum possible number of bombs. At this point he sees whether the position in which he wants to place this bomb is legal or not.
+     * If the location is legal then a bomb is generated and the value of BOMB_COUNTER is increased.
      */
     private void spawnBomb() {
         if (Bomb.BOMB_COUNTER < MAX_BOMB_NUMS) {
@@ -223,8 +223,8 @@ public class Player extends Entity{
     }
 
     /**
-     * Questo metodo fa esplodere la bomba
-     * @param b: la bomba che deve esplodere
+     * This method detonates the bomb
+     * @param b: Exploding Bomb
      */
     public void explodeBomb(Bomb b) {
 
@@ -235,8 +235,8 @@ public class Player extends Entity{
     }
 
     /**
-     * Dopo che l'esplosione della bomba è finita, questo metodo la rimuove dal gioco
-     * @param b: bomba da rimuovere dall'array
+     * After the bomb's explosion is finished, this method removes it from the game
+     * @param b: bomb to remove from the array
      */
     public void removeBomb(Bomb b) {
         b.setExploding(false);
@@ -255,7 +255,7 @@ public class Player extends Entity{
     }
 
     /**
-     * resetta tutti i valori del player ai valori iniziali
+     * resets all player values to their initial values
      */
     public void reset() {
         transition = false;
@@ -288,7 +288,7 @@ public class Player extends Entity{
     }
 
     /**
-     * resetta la posizione del player
+     * resets the player's position
      */
     public void resetPos() {
         bufferPowerUp();
@@ -310,7 +310,7 @@ public class Player extends Entity{
     }
 
     /**
-     * Gestisce il danno subito dal nemico e la sua morte
+     * It manages the damage suffered by the enemy and his death
      */
     @Override
     public void hit(){
@@ -327,7 +327,7 @@ public class Player extends Entity{
     }
 
     /**
-     * Aumenta la velocità del player
+     * Increases player speed
      */
     public void moreSpeed(){
         speedClock--;
@@ -359,7 +359,7 @@ public class Player extends Entity{
     }
 
     /**
-     * Resetta i valori dei power up a quelli precedenti
+     * Resets the power up values to the previous ones
      */
     public void loadBufferPUps() {
         HP = tHP;

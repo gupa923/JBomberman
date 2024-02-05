@@ -1,41 +1,41 @@
 package Model.EntityModel;
 
 /**
- * Questa enum rappresenta i possibili tipi di power up presenti nel gioco
+ * This enum represents the possible types of power ups present in the game
  * @author Guido Paluzzi, Matteo Santucci
  */
 public enum PowerUpType {
 
     /**
-     * aumenta il numero massimo di bombe al valore contenuto in val
+     * increases the maximum number of bombs to the value contained in val
      */
     BOMB_UP("BOMB_UP", 1, 0),
     /**
-     * aumenta il numero di vite al valore presente nel campo val
+     * increases the number of lives to the value present in the value field
      */
     LIVE_UP("LIVE_UP", 1, 1),
     /**
-     * aggiunge il valore contentuto nel campoval allo score della partita
+     * adds the value contained in the field value to the match score
      */
     CAKE ("CAKE", 500, 2),
     /**
-     * aggiunge il valore del campo val al numreo di HP del giocatore
+     * adds the value of the val field to the player's HP number
      */
     HP_PLUS("HP_PLUS", 1, 3),
     /**
-     * toglie il valoew contenuto in val al numero di HP del giocatore
+     * removes the value contained in val from the player's HP number
      */
     HP_MEN("HP_MEN", -1, 4),
     /**
-     * rende il giocatore immortale per un breve periodo di tempo
+     * makes the player immortal for a short period of time
      */
     IMMORTALITY("IMMORTALITY", 0, 5),
     /**
-     * permette al giocatore di camminare sopra i blocchi distruttibili cioè ostacoli e bombe
+     * allows the player to walk over destructible blocks i.e. obstacles and bombs
      */
     WALK_OVER("WALK_OVER", 0, 6),
     /**
-     * quando viene preso dal giocatore attiva casualmente l'effetto di uno degli altri power up
+     * when taken by the player it randomly activates the effect of one of the other power ups
      */
     RANDOM("SPEED", 1, 7);
     private final String name;

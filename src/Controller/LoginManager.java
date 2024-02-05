@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Questa classe gestisce il login quindi la creazione e il salvataggio degli utenti nel file di testo
+ * This class manages the login and so the users creation and saving in the text file.
  * @author Guido Paluzzi, Matteo Santucci
  */
 public class LoginManager {
@@ -31,8 +31,8 @@ public class LoginManager {
     private UserView uv;
 
     /**
-     * Costruttore della class
-     * @param gamePanel: il JPanel del gioco
+     * Class Constructor
+     * @param gamePanel: Game JPanel
      */
     public LoginManager(GamePanel gamePanel){
         this.gamePanel = gamePanel;
@@ -48,11 +48,11 @@ public class LoginManager {
     }
 
     /**
-     * Questa classe è un action listener che gestisce il login
+     * This class is an "action listener" that manages the login
      */
     private class LoginListener implements ActionListener{
         /**
-         * Gestisce il login quindi controlla se i caratteri inseriti sono validi e effettua il login
+         * Manages the login and check if the entered characters are valid and does the login
          * @param e the event to be processed
          */
         @Override
@@ -84,8 +84,8 @@ public class LoginManager {
     }
 
     /**
-     * Questa classe controllla la validità del testo inserito
-     * @return: restituisce true se il testo inserito è valida
+     * This class validates the entered text
+     * @return: returns "true" is the entered text is correct
      */
     private boolean isTextValid() {
         String[] tNickname = loginPanel.getUsernameField().getText().split(" ");
@@ -94,11 +94,11 @@ public class LoginManager {
     }
 
     /**
-     * Questa classe è un action listener che gestisce la registrazione
+     * This class is an "action listener" che manages the registration
      */
     private class RegisterListener implements ActionListener{
         /**
-         * Controlla se il testo è valido, poi controlla poi effettua la registrazione.
+         * Check if the text is valid, then makes the registration
          * @param e the event to be processed
          */
         @Override
@@ -142,7 +142,7 @@ public class LoginManager {
     }
 
     /**
-     * Questo metodo salva gli utenti su un file di test chiamato "accounts.txt".
+     * This method saves the users in a text test file called "accounts.txt".
      */
     public void saveUsers() {
         StringBuilder sb = new StringBuilder();

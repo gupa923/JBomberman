@@ -3,10 +3,10 @@ package Model.EntityModel;
 import java.util.Observable;
 
 /**
- * questa classe contiene tutte le informazioni comuni a tutte le entità presenti nel gioco.
- * per chiarezza è considerata entita qualunque oggetto di gioco che può essere distrutto quindi gli ostacoli e i power up sono entità
- * le informazioni comuni ha tutte le entità sono una posizione cioè una coppia di coordinate (x,y), una altezza e una larghezza cioè h e w.
- * ogni entità inoltre avrà una hitbox.
+ * this class contains all the information common to all entities in the game.
+ * for clarity, any game object that can be destroyed is considered an entity, therefore obstacles and power ups are entities
+ * the common information all entities have is a position i.e. a pair of coordinates (x,y), a height and a width i.e. h and w.
+ * each entity will also have a hitbox
  *
  * @see Hitbox
  * @see Observable
@@ -18,11 +18,11 @@ public abstract class Entity extends Observable {
     protected Hitbox hitbox;
 
     /**
-     * Ogni Entity viene creata a partire da 4 interi
-     * @param x: ascissa punto di spawn
-     * @param y: ordinata del punto di spawn
-     * @param w: larghezza
-     * @param h: altezza
+     * Each Entity is created from 4 integers
+     * @param x: abscissa spawn point
+     * @param y: ordinate spawn point
+     * @param w: length
+     * @param h: height
      */
     public Entity(int x, int y, int w, int h) {
         this.x = x;
@@ -32,12 +32,12 @@ public abstract class Entity extends Observable {
     }
 
     /**
-     * inizializza la hitbox dell'Entity
+     * initializes the Entity's hitbox
      */
     public abstract void initHitbox();
 
     /**
-     * Aggiorna i campi dell'Entity ogni volta che viene chiamato
+     * Updates the Entity's fields every time it is called
      */
     public abstract void update();
 
@@ -62,15 +62,15 @@ public abstract class Entity extends Observable {
     }
 
     /**
-     * Genstisce il danno subito dalle Enity
+     * Manages damage taken by Enities
      */
     public void hit() {
 
     }
 
     /**
-     * invia una notifica all'observer
-     * @param arg:argomento da mandare come notifica all'observer
+     * sends a notification to the observer
+     * @param arg: topic to send as notification to the observer
      */
     public void sendMessage(Object arg){
         setChanged();
