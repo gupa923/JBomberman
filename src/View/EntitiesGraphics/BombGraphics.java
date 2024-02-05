@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * gestisce la rappresentazione grafica di una bomba
+ * manages the graphical representation of a bomb
  * @see View.EntitiesGraphics.EntityGraphics
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -21,9 +21,9 @@ public class BombGraphics extends EntityGraphics {
     private final AudioPlayer audioPlayer;
 
     /**
-     * Costruttore della classe
-     * @param x: la coordinata x del punto di spawn
-     * @param y: la coordinata y del punto di spawn
+     * Class constructor
+     * @param x: the x coordinate of the spawn point
+     * @param y: the y coordinate of the spawn point
      */
     public BombGraphics(int x, int y){
         super (x*16, y*16, 16, 16);
@@ -33,7 +33,7 @@ public class BombGraphics extends EntityGraphics {
 
 
     /**
-     * Carica tutte le immagine coinvolte nell'animazione della bomba e dell'esplosione
+     * Loads all images involved in the bomb and explosion animation
      */
     @Override
     public void loadAnimations(){
@@ -54,7 +54,7 @@ public class BombGraphics extends EntityGraphics {
     }
 
     /**
-     * Aggiorna l'animazione
+     * Update the animation
      */
     @Override
     public void updateAnimation() {
@@ -69,8 +69,8 @@ public class BombGraphics extends EntityGraphics {
     }
 
     /**
-     * Disegna l'istanza della classe Bomb a schermo
-     * @param g: istanza della classe Graphics
+     * Draw the Bomb class instance on the screen
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g){
@@ -116,8 +116,8 @@ public class BombGraphics extends EntityGraphics {
     }
 
     /**
-     * Disegna l'istanza della classe Bomb, ma ne disattiva l'aggiornamento
-     * @param g: un'istanza della classe Graphics
+     * Draws the Bomb class instance, but disables its updating
+     * @param g: an instance of the Graphics class
      */
     public void freeze(Graphics g) {
         if (!exploding) {

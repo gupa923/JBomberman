@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * Questa classe gestisce la rappresentazione grafica degli ostacoli. Ci sono due tipi di ostacoli disponibili
+ * This class manages the graphical representation of obstacles. There are two types of obstacles available
  * @see View.EntitiesGraphics.EntityGraphics
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -18,10 +18,10 @@ public class ObstacleGraphics extends EntityGraphics {
     private final int type;
 
     /**
-     * Costruttore della classe
-     * @param x: coordinata x dell'ostacolo
-     * @param y: coordinata y dell'ostacolo
-     * @param type: il tipo di ostacolo
+     * Class constructor
+     * @param x: x coordinate of the obstacle
+     * @param y: y coordinate of the obstacle
+     * @param type: the type of obstacle
      */
     public ObstacleGraphics(int x, int y, int type){
         super(x, y, 16, 16);
@@ -32,8 +32,8 @@ public class ObstacleGraphics extends EntityGraphics {
     }
 
     /**
-     * Disegna a schermo un'istanza della classe ObstacleGraphics
-     * @param g: istanza della classe Graphics
+     * Draw an instance of the ObstacleGraphics class on the screen
+     * @param g:instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -54,7 +54,7 @@ public class ObstacleGraphics extends EntityGraphics {
     }
 
     /**
-     * Carica tutte le immagine coinvolte nelle animazione dell'ostacolo. Vengono caricate anche le animazione della morte dell'ostacolo
+     * Loads all images involved in the obstacle animation. Obstacle death animations are also loaded
      */
     @Override
     public void loadAnimations() {
@@ -75,7 +75,7 @@ public class ObstacleGraphics extends EntityGraphics {
     }
 
     /**
-     * Aggiorna l'animazione dell'ostacolo
+     * Update the obstacle animation
      */
     @Override
     public void updateAnimation() {
@@ -109,8 +109,8 @@ public class ObstacleGraphics extends EntityGraphics {
     }
 
     /**
-     * Questo metodo fa in modo che l'ostacolo esploda
-     * @param exploading: true se l'ostacolo deve esplodere
+     * This method causes the obstacle to explode
+     * @param exploading: true if the obstacle should explode
      */
     public void setExploading(boolean exploading) {
         this.exploading = exploading;
@@ -120,8 +120,8 @@ public class ObstacleGraphics extends EntityGraphics {
     }
 
     /**
-     * Fa in modo che gli ostacoli vengano disegnati, ma impedisce il loro aggiornamento
-     * @param g: istanza della classe Graphics
+     * Causes obstacles to be drawn, but prevents them from updating
+     * @param g: instance of the Graphics class
      */
     public void freeze(Graphics g) {
         if (type == 0) {

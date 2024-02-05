@@ -13,7 +13,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Questa classe gestisce la rappresentazione grafica del player. A questa classe sono anche associate le bombe presenti nel gioco
+ * This class manages the graphical representation of the player. The bombs present in the game are also associated with this class
  * @see EntityGraphics
  * @see Observer
  * @author Guido Paluzzi, Matteo Santucci
@@ -38,11 +38,11 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     private final AudioPlayer audioPlayer;
 
     /**
-     * Costruttore della classe
-     * @param x: la coordinata x del punto di spawn
-     * @param y: la coordinata y del punto di spawn
-     * @param w: la larghezza del playerGraphics
-     * @param h: l'altezza del playerGraphics
+     * Class constructor
+     * @param x: the x coordinate of the spawn point
+     * @param y: the y coordinate of the spawn point
+     * @param w: the width of the playerGraphics
+     * @param h: the height of the playerGraphics
      */
     public PlayerGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -70,7 +70,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * Questo metodo carica tutte le immagini coinvolte nelle animazioni della classe PlayerGraphics
+     * This method loads all the images involved in the animations of the PlayerGraphics class
      */
     @Override
     public void loadAnimations() {
@@ -114,7 +114,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * Aggiorna lo stato di questa classe in base alle notifiche arrivate dall'Observable
+     * Update the state of this class based on notifications received from the Observable
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.
@@ -225,7 +225,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * Questo metodo aggiorna lo stato delle animazioni
+     * This method updates the state of the animations
      */
     @Override
     public void updateAnimation(){
@@ -264,8 +264,8 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * Questo metodo disegna a schermo il player e gestisce acìnche la rappresentazione grafica delle bombe.
-     * @param g: istanza della classe Graphics
+     * This method draws the player on the screen and also manages the graphic representation of the bombs.
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g){
@@ -291,7 +291,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * Resetta lo stato del player allo stato iniziale
+     * Resets the player state to the initial state
      */
     public void reset() {
         x = 32;
@@ -304,7 +304,7 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * Resetta la posizione del PlayerGraphics a quella iniziale
+     * Resets the PlayerGraphics position to the initial position
      */
     public void resetPos() {
         x = 32;
@@ -316,8 +316,8 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * Questo metodo inizia la transizione tra un livello e l'altro
-     * @param changeLevel: true se il player sta entrando nella botola per cambiare livello
+     * This method begins the transition between one level and another
+     * @param changeLevel: true if the player is entering the trapdoor to change levels
      */
     public void setChangeLevel(boolean changeLevel) {
         this.changeLevel = changeLevel;
@@ -326,8 +326,8 @@ public class PlayerGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * Disegna a schermo il player e le bomba ma blocca l'aggiornamento dell'animazione
-     * @param g: istanza della classe Graphics
+     * Draws the player and bombs on the screen but blocks the animation from updating
+     * @param g: instance of the Graphics class
      */
     public void freeze(Graphics g) {
         g.drawImage(movingAnimations[0][1], x * 3, y * 3, w * 3, h * 3, null);

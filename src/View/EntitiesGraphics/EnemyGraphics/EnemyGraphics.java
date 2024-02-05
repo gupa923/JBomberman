@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.util.Observer;
 
 /**
- * Questa classe gestisce la rappresentazione grafica dei nemici
+ * This class manages the graphical representation of enemies
  * @see View.EntitiesGraphics.EntityGraphics
  * @see java.util.Observer
  */
@@ -22,11 +22,11 @@ public abstract class EnemyGraphics extends EntityGraphics implements Observer {
     protected AudioPlayer audioPlayer;
 
     /**
-     * Costruttore della classe
-     * @param x: la coordinata x del punto di spawn
-     * @param y: la coordinata y del punto di spawn
-     * @param w: la larghezza dell'Enemy
-     * @param h: l'altezza dell'Enemy
+     * Class constructor
+     * @param x: the x coordinate of the spawn point
+     * @param y: the y coordinate of the spawn point
+     * @param w: the width of the Enemy
+     * @param h: the height of the Enemy
      */
     public EnemyGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -37,7 +37,7 @@ public abstract class EnemyGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * Carica le immagini coinvolte nell'animazione della morte del nemico
+     * Upload the images involved in the animation of the enemy's death
      */
     private void loadDeathAnimation() {
         BufferedImage temp = loadImg("/Imgs/entitySprites/enemySprite/morte_nemici/Morte_Nemici_DOWN.png");
@@ -57,7 +57,7 @@ public abstract class EnemyGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * Resetta la posizione dell'Enemy
+     * Resets the Enemy's position
      */
     public void resetPos() {
         x = sx;
@@ -65,8 +65,8 @@ public abstract class EnemyGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * Questo metodo gestisce l'animazione della morte dell'Enemy
-     * @param death: true se il nemico sta morendo
+     * This method handles the Enemy's death animation
+     * @param death: true if the enemy is dying
      */
     public void setDeath(boolean death) {
         this.death = death;
@@ -75,8 +75,8 @@ public abstract class EnemyGraphics extends EntityGraphics implements Observer {
     }
 
     /**
-     * Questo metodo disegna i nemici a schermo, ma disattiva gli aggiornamenti
-     * @param g: istanza della classe Graphics
+     * This method draws enemies on screen, but disables updates
+     * @param g: instance of the Graphics class
      */
     public abstract void freeze(Graphics g);
 }

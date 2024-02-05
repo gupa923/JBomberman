@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 /**
- * Questa classe gestisce la rappresentazione grafica del FinalBoss
+ * This class manages the graphical representation of the FinalBoss
  * @see View.EntitiesGraphics.EnemyGraphics.EnemyGraphics
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -22,11 +22,11 @@ public class FinalBossGraphics extends EnemyGraphics {
     private ArrayList<RocketGraphics> rocketGraphics = new ArrayList<>();
 
     /**
-     * Costruttore della classe
-     * @param x: la coordinata x del punto di spawn
-     * @param y: la coordinata y del punto di spawn
-     * @param w: la larghezza del FinalBossGraphics
-     * @param h: l'altezza del FinalBossGraphics
+     * Class constructor
+     * @param x: the x coordinate of the spawn point
+     * @param y: the y coordinate of the spawn point
+     * @param w: the width of the FinalBossGraphics
+     * @param h: the height of the FinalBossGraphics
      */
     public FinalBossGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -36,8 +36,8 @@ public class FinalBossGraphics extends EnemyGraphics {
     }
 
     /**
-     * Disegna un istanza di questa classe, ma disattiva gli aggiornamenti
-     * @param g: istanza della classe Graphics
+     * Draw an instance of this class, but disable updates
+     * @param g: instance of the Graphics class
      */
     @Override
     public void freeze(Graphics g) {
@@ -49,7 +49,7 @@ public class FinalBossGraphics extends EnemyGraphics {
     }
 
     /**
-     * Carica tutte le immagini coinvolte nell'animazione
+     * Upload all images involved in the animation
      */
     @Override
     public void loadAnimations() {
@@ -64,7 +64,7 @@ public class FinalBossGraphics extends EnemyGraphics {
     }
 
     /**
-     * Aggiorna lo stato dell'animazione
+     * Update the state of the animation
      */
     @Override
     public void updateAnimation() {
@@ -93,8 +93,8 @@ public class FinalBossGraphics extends EnemyGraphics {
     }
 
     /**
-     * Disegna un istanza di questa classe e tutti i rocket associati
-     * @param g: istanza della classe Graphics
+     * Draw an instance of this class and all associated rockets
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -130,7 +130,7 @@ public class FinalBossGraphics extends EnemyGraphics {
     }
 
     /**
-     * Aggiorna lo stato di questa classe in base alle notifiche ricevute dall'Observable
+     * Updates the state of this class based on notifications received from the Observable
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.

@@ -10,7 +10,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Questa classe gestisce la creazione delle istanze della classe EnemyGraphics dei livelli a cui è associata
+ * This class manages the creation of instances of the EnemyGraphics class of the levels it is associated with
  * @see View.UtilityInterfaces.Drawable
  * @see java.util.Observer
  */
@@ -20,7 +20,7 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
     private final AudioPlayer audioPlayer;
 
     /**
-     * Costruttore della classe
+     * Class constructor
      */
     public EnemyGraphicsSpawner(){
         audioPlayer = new AudioPlayer();
@@ -29,7 +29,7 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
     }
 
     /**
-     * Aggiorna gli elementi dei campi della classe in base alle notifiche che arrivano dai vari Observable
+     * Updates the elements of the class fields based on the notifications arriving from the various Observables
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.
@@ -142,8 +142,8 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
     }
 
     /**
-     * Questo metodo gestisce la rappresentazione grafica dei nemici
-     * @param g: istanza della classe Graphics
+     * This method handles the graphical representation of enemies
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -157,8 +157,8 @@ public class EnemyGraphicsSpawner implements Observer , Drawable {
     }
 
     /**
-     * Chiama il metodo freeze() di tutti i nemici presenti nel livello
-     * @param g: istanza della classe Graphics
+     * calls the freeze() method of all enemies in the level
+     * @param g: instance of the Graphics class
      */
     public void freeze(Graphics g) {
         for (EnemyGraphics e : enemyGraphics){

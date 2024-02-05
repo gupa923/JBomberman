@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.Observable;
 
 /**
- * Questa classe gestisce la rappresentazione grafica del blue enemy
+ * This class manages the graphical representation of the blue enemy
  * @see View.EntitiesGraphics.EnemyGraphics;
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -18,11 +18,11 @@ public class BlueEnemyGraphics extends EnemyGraphics{
     private boolean moving = true;
 
     /**
-     * Costruttore della classe
-     * @param x: la coordinata x del punto di spawn
-     * @param y: la coordinata y del punto di spawn
-     * @param w: la larghezza del BlueEnemy
-     * @param h: l'altezza del BlueEnemy
+     * Class Constructor
+     * @param x: the x coordinate of the spawn point
+     * @param y: the y coordinate of the spawn point
+     * @param w: the width of the BlueEnemy
+     * @param h: the height of the BlueEnemy
      */
     public BlueEnemyGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -32,7 +32,7 @@ public class BlueEnemyGraphics extends EnemyGraphics{
     }
 
     /**
-     * Carica tutte le immagini coinvolte nell'animazione dei questa classe
+     * Loads all images involved in the animation of this class
      */
     @Override
     public void loadAnimations() {
@@ -65,7 +65,7 @@ public class BlueEnemyGraphics extends EnemyGraphics{
     }
 
     /**
-     * Aggiorna lo stato delle animazioni
+     * Update the state of the animations
      */
     @Override
     public void updateAnimation() {
@@ -94,8 +94,8 @@ public class BlueEnemyGraphics extends EnemyGraphics{
     }
 
     /**
-     * Disegna a schermo un'istanza della classe BlueEnemyGraphics
-     * @param g: istanza della classe Graphics
+     * Draw an instance of the BlueEnemyGraphics class on the screen
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -109,8 +109,8 @@ public class BlueEnemyGraphics extends EnemyGraphics{
     }
 
     /**
-     * Disegna il BlueEnemyGraphics bloccandone l'animazione
-     * @param g: istanza della classe Graphics
+     * Draw the BlueEnemyGraphics by freezing its animation
+     * @param g: instance of the Graphics class
      */
     @Override
     public void freeze(Graphics g) {
@@ -118,7 +118,7 @@ public class BlueEnemyGraphics extends EnemyGraphics{
     }
 
     /**
-     * Aggiorna lo stato di questa classe in base alle notifiche inviate dall'Observable
+     * Updates the state of this class based on notifications sent by the Observable
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.

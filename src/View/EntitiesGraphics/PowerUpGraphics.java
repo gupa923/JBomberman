@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * Questa classe gestisce la rappresentazione grafica dei power up all'interno del gioco.
+ * This class manages the graphical representation of power ups within the game.
  * @see View.EntitiesGraphics.EntityGraphics
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -17,9 +17,9 @@ public class PowerUpGraphics extends EntityGraphics{
 
     /**
      *
-     * @param x: la coordinata x del punto di spawn
-     * @param y: la coordinata y del punto di spawn
-     * @param id: l'intero che identifica di che tipo di power up si tratta
+     * @param x: the x coordinate of the spawn point
+     * @param y: the y coordinate of the spawn point
+     * @param id: the integer that identifies what type of power up it is
      */
     public PowerUpGraphics(int x, int y, int id) {
         super(x, y, 16, 16);
@@ -54,7 +54,7 @@ public class PowerUpGraphics extends EntityGraphics{
     }
 
     /**
-     * Aggiorna le animazioni
+     * Update animations
      */
     @Override
     public void updateAnimation() {
@@ -68,8 +68,8 @@ public class PowerUpGraphics extends EntityGraphics{
     }
 
     /**
-     * Disegna a schermo i power up
-     * @param g: istanza della classe Graphics
+     * Draw power ups on the screen
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -86,8 +86,8 @@ public class PowerUpGraphics extends EntityGraphics{
     }
 
     /**
-     * Disegna i power up a schermo, ma blocca l'aggiornamento dell'animazione
-     * @param g: istanza della classe Graphics
+     * Draws power ups on screen, but blocks animation updating
+     * @param g:instance of the Graphics class
      */
     public void freeze(Graphics g) {
         g.drawImage(imgs[id][0], x*3, y*3, w*3, h*3, null);

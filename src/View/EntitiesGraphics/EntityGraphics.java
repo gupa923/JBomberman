@@ -5,7 +5,7 @@ import View.UtilityInterfaces.Drawable;
 import View.UtilityInterfaces.ImgImporter;
 
 /**
- * Questa classe gestisce la rappresentazione grafica delle entità del gioco. Contiene tutti gli elementi comuni a tutte le classi che gestiscono la rappresentazione grafica dell'entità.
+ * This class manages the graphical representation of game entities. Contains all the elements common to all the classes that manage the graphical representation of the entity.
  * @see View.UtilityInterfaces.Animatable
  * @see View.UtilityInterfaces.Drawable
  * @see View.UtilityInterfaces.ImgImporter
@@ -15,11 +15,11 @@ public abstract class EntityGraphics implements ImgImporter, Drawable, Animatabl
     protected int x, y, w, h;
 
     /**
-     * Costruttore della class
-     * @param x: coordinata x del punto di spawn
-     * @param y: coordinata y del punto di spawn
-     * @param w: larghezza dell'Entity
-     * @param h: altezza dell'Entity
+     * Class builder
+     * @param x: x coordinate of the spawn point
+     * @param y: y coordinate of the spawn point
+     * @param w: width of the Entity
+     * @param h: height of the Entity
      */
     public EntityGraphics(int x, int y, int w, int h) {
         this.x = x;

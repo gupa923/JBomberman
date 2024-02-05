@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * Questa classe gestisce la rappresentazione grafica dei razzi
+ * This class manages the graphical representation of rockets
  * @see View.EntitiesGraphics.EntityGraphics
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -14,12 +14,12 @@ public class RocketGraphics extends EntityGraphics {
     int dir;
 
     /**
-     * Costruttore della classe
-     * @param x: la coordinata x del punto di spawn
-     * @param y: la coordinata y del punto di spawn
-     * @param w: la larghezza del razzo
-     * @param h: l'altezza del razzo
-     * @param dir: la direzione verso cui si muove il razzo
+     * Class Constructor
+     * @param x: the x coordinate of the spawn point
+     * @param y: the y coordinate of the spawn point
+     * @param w: the width of the rocket
+     * @param h: the height of the rocket
+     * @param dir: the direction in which the rocket is moving
      */
     public RocketGraphics(int x, int y, int w, int h, int dir) {
         super(x, y, w, h);
@@ -28,7 +28,7 @@ public class RocketGraphics extends EntityGraphics {
     }
 
     /**
-     * Carica le immagine della classe rocket
+     * Load images of the rocket class
      */
     @Override
     public void loadAnimations() {
@@ -47,8 +47,8 @@ public class RocketGraphics extends EntityGraphics {
     }
 
     /**
-     * Disegna a schermo un'istanza della classe RocketGraphics
-     * @param g: istanza della classe Graphics
+     * Draw an instance of the RocketGraphics class on the screen
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -65,7 +65,7 @@ public class RocketGraphics extends EntityGraphics {
 
 
     /**
-     * Aggiorna la posizione dell'istanza di questa classe
+     * Update the location of the instance of this class
      */
     public void moveRocket() {
         if (dir == 0){

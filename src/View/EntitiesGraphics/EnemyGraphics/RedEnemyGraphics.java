@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.util.Observable;
 
 /**
- * Questa classe gestisce la rappresentazione grafica del RedEnemy
+ * This class manages the graphical representation of the RedEnemy
  * @see View.EntitiesGraphics.EnemyGraphics.EnemyGraphics
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -19,11 +19,11 @@ public class RedEnemyGraphics extends EnemyGraphics {
     private boolean moving = true;
 
     /**
-     * Costruttore della classe
-     * @param x: la coordinata x del punto di spawn
-     * @param y: la coordinata y del punto di spawn
-     * @param w: la larghezza del ClownBossGraphics
-     * @param h: l'altezza del ClownBossGraphics
+     * Class constructor
+     * @param x: the x coordinate of the spawn point
+     * @param y: the y coordinate of the spawn point
+     * @param w: the width of the ClownBossGraphics
+     * @param h: the height of the ClownBossGraphics
      */
     public RedEnemyGraphics(int x, int y, int w, int h) {
         super(x, y, w, h);
@@ -33,7 +33,7 @@ public class RedEnemyGraphics extends EnemyGraphics {
     }
 
     /**
-     * Carica le immagini coinvolte nelle animazioni
+     * Loads the images involved in the animations
      */
     @Override
     public void loadAnimations() {
@@ -86,7 +86,7 @@ public class RedEnemyGraphics extends EnemyGraphics {
     }
 
     /**
-     * Aggiorna lo stato delle animazioni
+     * Update the state of the animations
      */
     @Override
     public void updateAnimation() {
@@ -115,8 +115,8 @@ public class RedEnemyGraphics extends EnemyGraphics {
     }
 
     /**
-     * Disegna un istanza di questa classe
-     * @param g: istanza della classe Graphics
+     * Draw an instance of this class
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -130,15 +130,15 @@ public class RedEnemyGraphics extends EnemyGraphics {
     }
 
     /**
-     * Disegna un'istanza di questa classe, senza aggiornare le animazioni
-     * @param g: istanza della classe Graphics
+     * Draw an instance of this class, without updating the animations
+     * @param g: instance of the Graphics class
      */
     public void freeze(Graphics g) {
         g.drawImage(sprites[typeAnimation][animationIndex], x * 3, y * 3, w * 3, h * 3, null);
     }
 
     /**
-     * Aggiorna lo stato di questa classe in base alle notifiche ricevute dall'Observable
+     * Updates the state of this class based on notifications received from the Observable
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.
