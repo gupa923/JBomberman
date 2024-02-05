@@ -6,7 +6,7 @@ import View.UtilityInterfaces.ImgImporter;
 import java.util.Observer;
 
 /**
- * Questa classe gestisce la rappresentazione grafica di uno Stato
+ * This class manages the graphical representation of a State
  * @see View.UtilityInterfaces.ImgImporter
  * @see View.UtilityInterfaces.Drawable
  * @see java.util.Observer

@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.Observable;
 
 /**
- * Questa classe gestisce la rappresentazione grafica del menù dei comandi
+ * This class manages the graphical representation of the command menu
  * @see View.StatesGraphics.StateGraphics
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -17,7 +17,7 @@ public class CommandInfoGraphics extends StateGraphics{
     private int imgIndex;
 
     /**
-     * Costruttore della classe
+     * Class constructor
      */
     public CommandInfoGraphics(){
         loadImgs();
@@ -30,8 +30,8 @@ public class CommandInfoGraphics extends StateGraphics{
     }
 
     /**
-     * Disegna gli elementi dello stato
-     * @param g: istanza della classe Graphics
+     * Draw the elements of the state
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -39,7 +39,7 @@ public class CommandInfoGraphics extends StateGraphics{
     }
 
     /**
-     * Aggiorna lo stato di questa classe in base alle notifiche ricevute dall'Observable
+     * Updates the state of this class based on notifications received from the Observable
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.

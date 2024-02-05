@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 /**
- * Questa classe gestisce la rappresentazione grafica della partita, quindi anche la rappresentazione dello stato di GameOver, Win e Pause
+ * This class manages the graphical representation of the game, therefore also the representation of the GameOver, Win and Pause states
  */
 public class MatchGraphics extends StateGraphics {
 
@@ -24,17 +24,17 @@ public class MatchGraphics extends StateGraphics {
     private final BufferedImage matchUI;
     private final BufferedImage lifeUI;
     /**
-     * La rappresentazione grafica dello score
+     * The graphic representation of the score
      */
     public static int SCORE_VIEW = 0;
     /**
-     * La rappresentazione grafica delle vite
+     * The graphic representation of lives
      */
     public static int LIFE_VIEW = 7;
     private AudioPlayer audioPlayer;
 
     /**
-     * Costrutttore della classe
+     * Class constructor
      */
     public MatchGraphics(){
         audioPlayer = new AudioPlayer();
@@ -45,8 +45,8 @@ public class MatchGraphics extends StateGraphics {
     }
 
     /**
-     * Disegna tutti gli elementi coinvolti nella partita
-     * @param g: istanza della classe Graphics
+     * Draw all the elements involved in the match
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -70,8 +70,8 @@ public class MatchGraphics extends StateGraphics {
     }
 
     /**
-     * Disegna tutte le informazioni riguardanti la partita come vite rimaste, punteggio attuale e record
-     * @param g: istanza della classe Graphics
+     * Draws all information regarding the match such as remaining lives, current score and record
+     * @param g: instance of the Graphics class
      */
     public void drawUI(Graphics g){
         g.setFont(new Font("serif", 1, 30));
@@ -98,7 +98,7 @@ public class MatchGraphics extends StateGraphics {
     }
 
     /**
-     * Aggiorna lo stato di questa classe in base alle notifiche che vengono inviate dagli Observable
+     * Updates the state of this class based on the notifications that are sent by the Observables
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.
@@ -134,7 +134,7 @@ public class MatchGraphics extends StateGraphics {
     }
 
     /**
-     * Resetta gli attributi della classe PlayerGraphics
+     * Resets the attributes of the PlayerGraphics class
      */
     private void resetALL() {
         playing = true;

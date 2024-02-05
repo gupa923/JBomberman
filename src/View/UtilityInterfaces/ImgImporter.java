@@ -6,16 +6,16 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Questa interfaccia permette alle classi che la implementano di usare un metodo default che cosente di importare un immagine
+ * This interface allows the classes that implement it to use a default method that allows you to import an image
  * @see BufferedImage
  * @author Guido Paluzzi, Matteo Santucci
  */
 public interface ImgImporter {
 
     /**
-     * Questo metodo, dato un path ad un'immagine png, consente di importarla come BufferedImage
-     * @param filename: il percorso dell'immagine che si vuole importare
-     * @return: l'immagine al dato path restituita come BufferedImage
+     * This method, given a path to a png image, allows you to import it as a BufferedImage
+     * @param filename: the path of the image you want to import
+     * @return: the image at the given path returned as BufferedImage
      */
     default BufferedImage loadImg(String filename){
         InputStream is = ImgImporter.class.getResourceAsStream(filename);

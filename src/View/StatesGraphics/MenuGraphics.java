@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.util.Observable;
 
 /**
- * Questa classe gestisce la rappresentazione grafica del menù iniziale
+ * This class manages the graphical representation of the initial menu
  * @see View.StatesGraphics.StateGraphics
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -18,7 +18,7 @@ public class MenuGraphics extends StateGraphics{
     private UserView uv;
 
     /**
-     * Costruttoredella classe
+     * Class constructor
      */
     public MenuGraphics(){
         loadImgs();
@@ -34,8 +34,8 @@ public class MenuGraphics extends StateGraphics{
     }
 
     /**
-     * Disegna gli elementi di questa classe
-     * @param g: istanza della classe Graphics
+     * Draw the elements of this class
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -47,7 +47,7 @@ public class MenuGraphics extends StateGraphics{
     }
 
     /**
-     * Aggiorna lo stato di questa classe in base alle notifiche ricevute dagli Observable
+     * Updates the state of this class based on notifications received from Observables
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.

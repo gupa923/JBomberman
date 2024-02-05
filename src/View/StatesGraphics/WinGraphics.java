@@ -5,14 +5,14 @@ import java.awt.image.BufferedImage;
 import java.util.Observable;
 
 /**
- * Questa classe gestisce la rappresentazione grafica dello stato Win
+ * This class manages the graphical representation of the Win state
  */
 public class WinGraphics extends StateGraphics{
     private BufferedImage[] imgs;
     private int imgIndex;
 
     /**
-     * Costruttore della classe
+     * Class constructor
      */
     public WinGraphics(){
         loadImgs();
@@ -26,8 +26,8 @@ public class WinGraphics extends StateGraphics{
     }
 
     /**
-     * Disegna gli elementi di questa classe
-     * @param g: istanza della classe Graphics
+     * Draw the elements of this class
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -37,7 +37,7 @@ public class WinGraphics extends StateGraphics{
     }
 
     /**
-     * Aggiorna lo stato della classe in base alle notifiche ricevute dagli Observable
+     * Updates the class status based on notifications received from Observables
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.

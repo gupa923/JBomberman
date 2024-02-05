@@ -4,7 +4,7 @@ import javax.swing.*;
 
 
 /**
- * Questa classe è la finestra del gioco e contiene il GamePanel
+ * This class is the game window and contains the GamePanel
  * @see GamePanel
  * @see JFrame
  * @author Guido Paluzzi
@@ -14,8 +14,8 @@ public class GameFrame extends JFrame {
     private final GamePanel gamePanel;
 
     /**
-     * Costruttore della classe. Imposta i valori relativi alla finestra di gioco e poi aggiunge il gamePanel
-     * @param gamePanel: il pannello del gioco
+     * Class constructor. Sets the values ​​for the game window and then adds the gamePanel
+     * @param gamePanel: the game panel
      */
     public GameFrame(GamePanel gamePanel){
         super("JBomberman");

@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.Observable;
 
 /**
- * questa classe gestisce la rappresentazione grafica dello stato di pausa
+ * this class manages the graphical representation of the pause state
  * @see View.StatesGraphics.StateGraphics
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -14,7 +14,7 @@ public class PauseGraphics extends StateGraphics{
     private int imgIndex;
 
     /**
-     * Costruttore della classe
+     * Class constructor
      */
     public PauseGraphics(){
         loadImgs();
@@ -29,8 +29,8 @@ public class PauseGraphics extends StateGraphics{
     }
 
     /**
-     * Disegna gli elementi di questa classe
-     * @param g: istanza della classe Graphics
+     * Draw the elements of this class
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -40,7 +40,7 @@ public class PauseGraphics extends StateGraphics{
     }
 
     /**
-     * Aggiorna lo stato di questa classe in base alle notifiche ricevute dagli Observable
+     * Updates the state of this class based on notifications received from Observables
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.

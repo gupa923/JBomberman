@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.Observable;
 
 /**
- * Questa classe gestisce la rappresentazione grafica dello stato GameOver
+ * This class handles the graphical representation of the GameOver state
  * @see View.StatesGraphics.StateGraphics
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -20,7 +20,7 @@ public class GameOverScreen extends StateGraphics{
     private int firstCallCounter = 0;
 
     /**
-     * Costruttore della classe
+     * Class constructor
      */
     public GameOverScreen(){
         audioPlayer = new AudioPlayer();
@@ -35,8 +35,8 @@ public class GameOverScreen extends StateGraphics{
     }
 
     /**
-     * Disegna gli elementi di questa classe
-     * @param g: istanza della classe Graphics
+     * Draw the elements of this class
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -53,7 +53,7 @@ public class GameOverScreen extends StateGraphics{
     }
 
     /**
-     * Aggiorna lo stato della classe in base alle notifiche ricevute dagli Observer
+     * Updates the class status based on notifications received from Observers
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.

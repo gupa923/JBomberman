@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Questa classe gestisce la rappresentazione grafica della schermata di login
+ * This class manages the graphical representation of the login screen
  * @see javax.swing.JPanel
  * @see View.UtilityInterfaces.ImgImporter
  * @author Guido Paluzzi, Matteo Santucci
@@ -20,7 +20,7 @@ public class LoginPanel extends JPanel implements ImgImporter {
     private ImageIcon avatar1, avatar2, avatar3, avatar4;
 
     /**
-     * Costruttore della classe
+     * Class constructor
      */
     public LoginPanel(){
         setFocusable(true);

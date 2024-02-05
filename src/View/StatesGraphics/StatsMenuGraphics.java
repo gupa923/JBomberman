@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.util.Observable;
 
 /**
- * Questa classe gestisce il menù delle statistiche
+ * This class manages the statistics menu
  * @see View.StatesGraphics.StateGraphics
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -18,7 +18,7 @@ public class StatsMenuGraphics extends StateGraphics {
     private UserView uv;
 
     /**
-     * Costruttore della classe
+     * Class constructor
      */
     public StatsMenuGraphics(){
         loadImgs();
@@ -31,8 +31,8 @@ public class StatsMenuGraphics extends StateGraphics {
     }
 
     /**
-     * Questo metodo disegna gli elementi di questa classe
-     * @param g: istanza della classe Graphics
+     * This method draws the elements of this class
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -41,7 +41,7 @@ public class StatsMenuGraphics extends StateGraphics {
     }
 
     /**
-     * Aggiorna lo stato del gioco in base alle notifiche ricevute dagli Observable
+     * Updates game status based on notifications received from Observables
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.

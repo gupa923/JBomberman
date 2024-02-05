@@ -9,7 +9,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Gestisce la rappresentazione grafica di un utente e dei suoi dati
+ * Manages the graphical representation of a user and his data
  * @see View.UtilityInterfaces.ImgImporter
  * @see View.UtilityInterfaces.Drawable
  * @see java.util.Observer
@@ -25,12 +25,12 @@ public class UserView implements Observer, Drawable, ImgImporter {
     private BufferedImage avatar;
 
     /**
-     * Costruttore della classe
-     * @param nickname: nickname dell'utente
-     * @param games: partite giocate dall'utente
-     * @param victories: vittorie dell'utente
-     * @param record: record dell'utente
-     * @param avatarIndex: indice dell'avatar scelto dall'utente
+     * Class constructor
+     * @param nickname: user nickname
+     * @param games: games played by the user
+     * @param victories: user victories
+     * @param record: user records
+     * @param avatarIndex: index of the avatar chosen by the user
      */
     public UserView(String nickname, int games, int victories, int record, int avatarIndex) {
         this.nickname = nickname;
@@ -51,7 +51,7 @@ public class UserView implements Observer, Drawable, ImgImporter {
     }
 
     /**
-     * Aggiorna i valori nei campi di questa classe in base alle notifiche che arrivano dagli Observable
+     * Updates the values ​​in the fields of this class based on notifications arriving from the Observables
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.
@@ -71,8 +71,8 @@ public class UserView implements Observer, Drawable, ImgImporter {
     }
 
     /**
-     * Rappresenta graficamente le informazioni dell'utente
-     * @param g: istanza della classe Graphics
+     * Graphically represents user information
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {

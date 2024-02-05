@@ -3,15 +3,15 @@ package View.UtilityInterfaces;
 import java.awt.*;
 
 /**
- * Questa interfaccia funzionale consente alle classi che la implementano di disegnare a schermo.
+ * This functional interface allows the classes that implement it to draw on the screen.
  * @see Graphics
  * @autor Guido Paluzzi, Matteo Santucci
  */
 @FunctionalInterface
 public interface Drawable {
     /**
-     * Consente di disegnare elementi a schermo
-     * @param g: istanza della classe Graphics
+     * Allows you to draw elements on the screen
+     * @param g: instance of the Graphics class
      */
     void draw(Graphics g);
 }

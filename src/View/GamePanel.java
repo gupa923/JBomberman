@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Questa classe è il pannello del gioco, che permette di visualizzare a schermo tutte le componenti del gioco
+ * This class is the game panel, which allows you to view all the game components on the screen
  * @see JPanel
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -30,7 +30,7 @@ public class GamePanel extends JPanel {
     }
 
     /**
-     * Questo metodo gestisce la rappresentazione grafica di tutti gli elementi del gioco
+     * This method manages the graphical representation of all elements of the game
      *
      * @param g the <code>Graphics</code> object to protect
      */

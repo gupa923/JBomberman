@@ -14,7 +14,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Gestisce la rappresentazione grafica dei singoli livelli e di tutti gli elementi ad esso associati
+ * Manages the graphic representation of the individual levels and all the elements associated with it
  * @see ImgImporter
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -28,8 +28,8 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     private final AudioPlayer audioPlayer;
 
     /**
-     * Costruttore della classe, crea la classe a partire dall'immagine al path filename
-     * @param filename: il percorso dell'immagine di sfondo del livello
+     * Class constructor, creates the class starting from the image at the filename path
+     * @param filename: the path to the layer's background image
      */
     public LevelGraphics(String filename) {
         if (filename.equals("/Imgs/livelli/livello2/Stage2.png")){
@@ -43,8 +43,8 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     }
 
     /**
-     * Disegna l'immagine di sfondo del livello e tutte le entità associate al livello stesso
-     * @param g: istanza della classe Graphics
+     * Draws the background image of the layer and all the entities associated with the layer itself
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g){
@@ -64,8 +64,8 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     }
 
     /**
-     * Crea tutte le istanze della classe ObstacleGraphics associate a questo livello
-     * @param pos: matrice che contiene tutte le coordinate dei punti di spawn degli ostacoli
+     * Creates all instances of the ObstacleGraphics class associated with this layer
+     * @param pos: matrix containing all the coordinates of the obstacle spawn points
      */
     public void initObstacleGraphics(int[][] pos) {
         obstacleGraphics.clear();
@@ -77,7 +77,7 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     }
 
     /**
-     * Aggiorna lo stato degli elementi di questa classe in base alle notifiche che inviano gli Observable
+     * Updates the state of the elements of this class based on the notifications that the Observables send
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.
@@ -146,8 +146,8 @@ public class LevelGraphics implements ImgImporter, Drawable, Observer {
     }
 
     /**
-     * Chiama il metodo freeze di tutti gli elementi associati al livello
-     * @param g: istanza della classe Graphics
+     * Calls the freeze method of all elements associated with the layer
+     * @param g: instance of the Graphics class
      */
     public void freeze(Graphics g) {
         g.drawImage(lvl1Bg, 0,0, 272 * 3, 208*3, null);

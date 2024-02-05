@@ -1,18 +1,18 @@
 package View.UtilityInterfaces;
 
 /**
- * E' implementata da tutte le classi che hanno la caratteristica di avere animazioni
+ * It is implemented by all classes that have the characteristic of having animations
  * @author Guido Paluzzi, Matteo Santucci
  */
 public interface Animatable {
 
     /**
-     * Questo metodo carica le immagini necessarie per le animazioni
+     * This method loads the images needed for animations
      */
     void loadAnimations();
 
     /**
-     * Questo metodo aggiorna l'animazione al passare del tempo
+     * This method updates the animation as time passes
      */
     void updateAnimation();
 }

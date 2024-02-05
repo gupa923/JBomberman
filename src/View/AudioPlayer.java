@@ -5,14 +5,14 @@ import javax.sound.sampled.FloatControl;
 import java.util.ArrayList;
 
 /**
- * Questa classe contiene gli effetti e la canzone del gioco. Consente alle classi che la istanziano di eseguire tali effetti tramite appositi metodi
+ * This class contains the game's effects and song. It allows the classes that instantiate it to perform these effects via appropriate methods
  *
  * @see Clip
  * @autor Guido Paluzzi, Matteo Santucci
  */
 public class AudioPlayer {
     /**
-     * E' un array di tutti gli audio presenti nel gioco
+     * It's an array of all the audio in the game
      */
     public static ArrayList<Clip> EFFECTS = new ArrayList<>();
     public static boolean PLAY_EFFECTS = true;
@@ -22,8 +22,8 @@ public class AudioPlayer {
     }
 
     /**
-     * Questo metodo permette l'esecuzione di un effetto audio, solo se l'utente ha consentito l'esecuzione di effetti
-     * @param i: l'indice del effetto da eseguire
+     * This method allows the execution of an audio effect, only if the user has allowed the execution of effects
+     * @param i: the index of the effect to be performed
      */
     public void playEffects(int i){
         if (PLAY_EFFECTS) {

@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.Observable;
 
 /**
- * Questa classe gestisce la rappresentazione grafica del menù delle impostazioni
+ * This class manages the graphical representation of the settings menu
  * @see View.StatesGraphics.StateGraphics
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -17,7 +17,7 @@ public class SettingsGraphics extends StateGraphics{
     private UserView uv;
 
     /**
-     * Costruttore della classe
+     * Class constructor
      */
     public SettingsGraphics(){
         loadImgs();
@@ -32,8 +32,8 @@ public class SettingsGraphics extends StateGraphics{
     }
 
     /**
-     * Disegna gli elementi di questa classe
-     * @param g: istanza della classe Graphics
+     * Draw the elements of this class
+     * @param g: instance of the Graphics class
      */
     @Override
     public void draw(Graphics g) {
@@ -44,7 +44,7 @@ public class SettingsGraphics extends StateGraphics{
     }
 
     /**
-     * Aggiorna lo stato di questa classe in basse alle notifiche ricevute dagli Observable
+     * Updates the status of this class based on the notifications received from the Observables
      * @param o     the observable object.
      * @param arg   an argument passed to the {@code notifyObservers}
      *                 method.
