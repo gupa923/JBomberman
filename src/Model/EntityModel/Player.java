@@ -184,7 +184,7 @@ public class Player extends Entity{
     /**
      * For each bomb in the game it checks whether the Player collided with the bomb.
      * @param dir: direction in which the player is moving
-     * @return: returns true if the player hits a bomb
+     * @return returns true if the player hits a bomb
      */
     private boolean intersect(String dir) {
         for (Bomb b : BOMBS){

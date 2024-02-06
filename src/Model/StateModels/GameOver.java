@@ -4,17 +4,17 @@ import Model.GameModel;
 import Model.UI.Button;
 
 /**
- * Questo stato gestisce le meccaniche che avvengono dopo che il giocatore ha perso la partita
+ * This class handles the mechanics that happen after the player has lost the game
  * @see Model.StateModels.Stato
- * @autor Guido Paluzzi, Matteo Santucci
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class GameOver extends Stato{
     private final Button bRetry;
     private final Button bQuit;
 
     /**
-     * Costruttore della classe
-     * @param gameModel: l'istanza del GameModel
+     * Class oonstructor
+     * @param gameModel: GameModel's instance
      */
     public GameOver(GameModel gameModel) {
         super(gameModel);
@@ -25,7 +25,7 @@ public class GameOver extends Stato{
     }
 
     /**
-     * Aggiorna lo stato dei suoi bottoni
+     * Update the state of the buttons
      */
     @Override
     public void update() {

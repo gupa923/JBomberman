@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D;
  * This class handles the game's power ups. PowerUps can be of different types and have different effects based on it
  * @see Model.EntityModel.Entity
  * @see PowerUpType
- * @autor Guido Paluzzi, Matteo Santucci
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class PowerUp extends Entity{
     public static Player PLAYER;

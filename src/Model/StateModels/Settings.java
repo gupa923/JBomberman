@@ -6,7 +6,7 @@ import Model.UI.Button;
 /**
  * Questa classe gestisce lo stato Settings cioè le impostazioni del gioco
  * @see Model.StateModels.Stato
- * @autor Guido Paluzzi, Matteo Santucci
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class Settings extends Stato{
     private final Button bComandi;

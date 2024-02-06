@@ -17,7 +17,7 @@ public class ExplosionCreator {
     /**
      * Given an incoming bomb creates the explosion
      * @param bomb: Exploding Bomb
-     * @return: An integer matrix containing the coordinates of the tiles involved in the explosion.
+     * @return An integer matrix containing the coordinates of the tiles involved in the explosion.
      */
     public static int[][] CreateExplosionTiles(Bomb bomb){
         Level lvl = bomb.getHitbox().getLevel();

@@ -5,7 +5,7 @@ import java.awt.geom.Rectangle2D;
 /**
  * This class handles the rockets fired by the FinalBoss
  * @see Model.EntityModel.Entity
- * @autor Guido Paluzzi, Matteo Santucci
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class Rocket extends Entity{
     private String dir;

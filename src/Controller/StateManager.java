@@ -8,7 +8,7 @@ import View.StatesGraphics.*;
 
 /**
  * This class creates every game state's model and view, the manages each state change.
- * @autor Guido Paluzzi, Matteo Santucci
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class StateManager {
 

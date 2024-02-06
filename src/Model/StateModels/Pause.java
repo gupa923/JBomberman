@@ -4,7 +4,7 @@ import Model.GameModel;
 import Model.UI.Button;
 
 /**
- * questa classe gestisce la logica dello stato di pausa: la partita viene interrotta mantenendo la situazione corrente
+ * This class handles the machanics of the pause state
  * @see Model.StateModels.Stato
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -14,8 +14,8 @@ public class Pause extends Stato{
     private final Button bClose;
 
     /**
-     * Costruttore della classe
-     * @param gameModel: l'istanza del GameModel
+     * Class oonstructor
+     * @param gameModel: GameModel's instance
      */
     public Pause(GameModel gameModel) {
         super(gameModel);
@@ -28,7 +28,7 @@ public class Pause extends Stato{
     }
 
     /**
-     * Aggiorna gli elementi dello stato Pausa
+     * Update the elements of this class
      */
     @Override
     public void update() {

@@ -6,7 +6,7 @@ import Model.UI.Button;
 /**
  * Questa classe gestisce le meccaniche del menu iniziale
  * @see Model.StateModels.Stato
- * @autor Guido Paluzzi, Matteo Santucci
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class Menu extends Stato {
     private final Button bPlay;
