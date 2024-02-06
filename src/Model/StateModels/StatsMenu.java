@@ -7,7 +7,7 @@ import Model.UI.Button;
 /**
  * This class manages the mechanics of the statistics menu
  * @see Model.StateModels.Stato
- * @autor Guido Paluzzi, Matteo Santucci
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class StatsMenu extends Stato {
     private final Button bBack;

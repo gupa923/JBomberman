@@ -156,7 +156,7 @@ public class BlueEnemy extends Enemy{
     /**
      * This method manages the collision between BlueEnemy and bombs.
      * @param dir: the direction in which the enemy is moving
-     * @return: true if the enemy is in collision with an exploding bomb
+     * @return true if the enemy is in collision with an exploding bomb
      */
     @Override
     protected boolean intersect(String dir) {

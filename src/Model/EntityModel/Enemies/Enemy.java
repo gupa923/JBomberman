@@ -43,7 +43,7 @@ public abstract class Enemy extends Entity {
 
     /**
      * returns an array of integers containing the enemy representation in int[]. This array contains the abscissa, ordinate, width, height and type.
-     * @return: the representation of the enemy in the form of an array of integers
+     * @return the representation of the enemy in the form of an array of integers
      */
     public int[] toArr(){
         return new int[] {x, y, w, h, type};
@@ -52,7 +52,7 @@ public abstract class Enemy extends Entity {
     /**
      * Control the enemy's intersection with bombs
      * @param dir: the direction in which the enemy is moving
-     * @return: returns true if the enemy collided with a bomb.
+     * @return returns true if the enemy collided with a bomb.
      */
     protected boolean intersect(String dir) {
         for (Bomb b : BOMBS){

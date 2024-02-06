@@ -170,7 +170,7 @@ public class LastEnemy extends Enemy {
     /**
      * Handles bomb collision
      * @param dir: the direction in which the enemy is moving
-     * @return: true if an exploding bomb collides with the enemy
+     * @return true if an exploding bomb collides with the enemy
      */
     @Override
     protected boolean intersect(String dir) {

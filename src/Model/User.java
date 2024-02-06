@@ -44,7 +44,7 @@ public class User extends Observable {
 
     /**
      * When a match ends this method checks if the record has been improved
-     * @param record
+     * @param record: the score
      */
     public void setRecord(int record) {
         if (record >= this.record) {

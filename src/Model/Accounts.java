@@ -34,7 +34,7 @@ public class Accounts {
     /**
      * This method handles login. Then check whether the credentials entered correspond to an existing user
      * @param credential: the credentials with which you want to try to log in
-     * @return: true if the login was successful
+     * @return true if the login was successful
      */
     public boolean login(String[] credential) {
         for (User u: users){
@@ -49,7 +49,7 @@ public class Accounts {
     /**
      * This method handles logging. Check whether the credentials entered have already been taken by another user, if not, proceed to register the new user
      * @param credential: the credentials with which you want to register
-     * @return: true if the registration was successful
+     * @return true if the registration was successful
      */
     public boolean register(String[] credential) {
         for (User u: users){

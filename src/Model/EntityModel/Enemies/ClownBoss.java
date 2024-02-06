@@ -174,7 +174,7 @@ public class ClownBoss extends Enemy{
     /**
      *
      * @param dir: the direction in which the enemy is moving
-     * @return: return true if boss collides with a bomb.
+     * @return return true if boss collides with a bomb.
      */
     @Override
     protected boolean intersect(String dir) {

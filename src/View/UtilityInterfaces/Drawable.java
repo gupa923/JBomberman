@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  * This functional interface allows the classes that implement it to draw on the screen.
  * @see Graphics
- * @autor Guido Paluzzi, Matteo Santucci
+ * @author Guido Paluzzi, Matteo Santucci
  */
 @FunctionalInterface
 public interface Drawable {

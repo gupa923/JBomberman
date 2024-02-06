@@ -15,7 +15,7 @@ public interface ImgImporter {
     /**
      * This method, given a path to a png image, allows you to import it as a BufferedImage
      * @param filename: the path of the image you want to import
-     * @return: the image at the given path returned as BufferedImage
+     * @return the image at the given path returned as BufferedImage
      */
     default BufferedImage loadImg(String filename){
         InputStream is = ImgImporter.class.getResourceAsStream(filename);

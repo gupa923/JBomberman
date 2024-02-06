@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * This class contains the game's effects and song. It allows the classes that instantiate it to perform these effects via appropriate methods
  *
  * @see Clip
- * @autor Guido Paluzzi, Matteo Santucci
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public class AudioPlayer {
     /**

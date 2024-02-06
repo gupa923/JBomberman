@@ -74,7 +74,7 @@ public class LevelManager {
     /**
      * Starting from the image, which path is "name", the method builds an int matrix that associate each image pixel to a number.
      * @param name : Image's Path
-     * @return: Int Matrix for level creation
+     * @return Int Matrix for level creation
      */
     private int[][] getLvlData(String name){
         InputStream is = LevelManager.class.getResourceAsStream(name);

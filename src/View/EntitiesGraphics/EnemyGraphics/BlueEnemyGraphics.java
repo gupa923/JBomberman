@@ -6,7 +6,7 @@ import java.util.Observable;
 
 /**
  * This class manages the graphical representation of the blue enemy
- * @see View.EntitiesGraphics.EnemyGraphics;
+ * @see View.EntitiesGraphics.EnemyGraphics
  * @author Guido Paluzzi, Matteo Santucci
  */
 public class BlueEnemyGraphics extends EnemyGraphics{

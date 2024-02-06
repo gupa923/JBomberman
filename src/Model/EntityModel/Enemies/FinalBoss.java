@@ -174,7 +174,7 @@ public class FinalBoss extends Enemy{
     /**
      * Check if the rocket is outside the edge of the map
      * @param rocket: the Rocket on which to carry out the check
-     * @return: true if the rocket is off the map
+     * @return true if the rocket is off the map
      */
     private boolean checkRocketOutOfBoards(Rocket rocket) {
         if (rocket.getX()+rocket.getW() < 0){
@@ -220,7 +220,7 @@ public class FinalBoss extends Enemy{
     /**
      * Check if the Boss collides with a bomb
      * @param dir: the direction in which the enemy is moving
-     * @return: true if the boss collides with a bomb
+     * @return true if the boss collides with a bomb
      */
     @Override
     protected boolean intersect(String dir) {

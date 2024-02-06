@@ -85,7 +85,7 @@ public class LoginManager {
 
     /**
      * This class validates the entered text
-     * @return: returns "true" is the entered text is correct
+     * @return returns "true" is the entered text is correct
      */
     private boolean isTextValid() {
         String[] tNickname = loginPanel.getUsernameField().getText().split(" ");

@@ -9,7 +9,7 @@ import View.UtilityInterfaces.ImgImporter;
  * @see View.UtilityInterfaces.Animatable
  * @see View.UtilityInterfaces.Drawable
  * @see View.UtilityInterfaces.ImgImporter
- * @autor Guido Paluzzi, Matteo Santucci
+ * @author Guido Paluzzi, Matteo Santucci
  */
 public abstract class EntityGraphics implements ImgImporter, Drawable, Animatable {
     protected int x, y, w, h;
