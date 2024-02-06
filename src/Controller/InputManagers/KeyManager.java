@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * Questa classe gestisce gli input da tastiera
+ * This class handles input from keyboard
  * @see java.awt.event.KeyListener
  * @see GameModel
  * @see StateManager
