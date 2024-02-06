@@ -5,7 +5,7 @@ import Model.StateModels.Stato;
 import java.awt.geom.Rectangle2D;
 
 /**
- * Questa classe gestisce i dati di un bottone quindi la sua posizione, il testo contenuto e se viene premuto o meno
+ * This class manages the data of a button, therefore its position, the text contained and whether it is pressed or not
  * @author Guido Paluzzi, Matteo Santucci
  */
 public class Button {
@@ -16,12 +16,12 @@ public class Button {
     private final Rectangle2D.Float bounds;
 
     /**
-     * Costruttore della classe
-     * @param x: la coordinata x del bottone
-     * @param y: la coordinata y del bottone
-     * @param w: la larghezza del bottone
-     * @param h: l'altezza del bottone
-     * @param text: il testo contenuto dal bottone
+     * Class Constructor
+     * @param x: the x coordinate of the button
+     * @param y: the y coordinate of the button
+     * @param w: the width of the button
+     * @param h: the height of the button
+     * @param text: the text contained by the button
      */
     public Button(int x, int y, int w, int h,String text) {
         this.x = x;
@@ -33,7 +33,7 @@ public class Button {
     }
 
     /**
-     * Aggiorna lo stato del bottone
+     * Update the button state
      */
     public void update(){
         if (mousePressed){

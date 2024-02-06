@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import static Model.GameModel.USER;
 
 /**
- * Questa classe gestisce i vari account e le meccaniche di login e registrazione. Contiene quindi tutti gli User presenti e i loro dati
+ * This class manages the various accounts and the login and registration mechanics. It therefore contains all the Users present and their data
  * @see User
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -13,16 +13,16 @@ public class Accounts {
     private final ArrayList<User> users = new ArrayList<>();
 
     /**
-     * Costruttore della classe
-     * @param usersStrings: dati di tutti gli utenti
+     * Class Constructor
+     * @param usersStrings: all users data
      */
     public Accounts(ArrayList<String> usersStrings) {
         loadUsers(usersStrings);
     }
 
     /**
-     * Dai dati dei vari utenti crea gli User stessi
-     * @param usersStrings: i dati dei vari User del gioco
+     * From the data of the various users it creates the Users themselves
+     * @param usersStrings: the data of the various Users of the game
      */
     private void loadUsers(ArrayList<String> usersStrings) {
         for (String s: usersStrings){
@@ -32,9 +32,9 @@ public class Accounts {
     }
 
     /**
-     * Questo metodo gestisce il login. Controlla quindi se le credenziali inserite corrispondono ad un utente esistente
-     * @param credential: le credenziali con cui si vuole provare a fare il login
-     * @return: true se il login è andato a buon fine
+     * This method handles login. Then check whether the credentials entered correspond to an existing user
+     * @param credential: the credentials with which you want to try to log in
+     * @return: true if the login was successful
      */
     public boolean login(String[] credential) {
         for (User u: users){
@@ -47,9 +47,9 @@ public class Accounts {
     }
 
     /**
-     * Questo metodo gestisce la registrazione. Controlla se le credenziali inserite sono già state prese da un altro utente, se non è così procede a registrare il nuovo utente
-     * @param credential: le credenziali con cui ci si vuole registrare
-     * @return: true se la registrazione ha avuto successo
+     * This method handles logging. Check whether the credentials entered have already been taken by another user, if not, proceed to register the new user
+     * @param credential: the credentials with which you want to register
+     * @return: true if the registration was successful
      */
     public boolean register(String[] credential) {
         for (User u: users){

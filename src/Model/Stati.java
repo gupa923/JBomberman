@@ -1,46 +1,46 @@
 package Model;
 
 /**
- * Questa Enum contiene tutti gli stati del gioco
+ * This Enum contains all states of the game
  * @author Guido Paluzzi, Matteo Santucci
  */
 
 public enum Stati {
 
     /**
-     * Questo stato indica che ci si trova nella partita
+     * This status indicates that you are in the game
      */
     PARTITA,
     /**
-     * Questo stato corrisponde al menù iniziale
+     * This state corresponds to the initial menu
      */
     MENU,
     /**
-     * Questo stato corrisponde allo stato di login
+     * This state corresponds to the login state
      */
     LOGIN,
     /**
-     * Questo stato corrisponde al menù delle impostazione
+     * This status corresponds to the settings menu
      */
     SETTINGS,
     /**
-     * Questo stato corrisponde al menù dei comandi
+     * This state corresponds to the command menu
      */
     COMMAND_INFO,
     /**
-     * Questo stato si verifica quando il giocatoreperde la partita
+     * This state occurs when the player loses the game
      */
     GAME_OVER,
     /**
-     * Questo stato si verifica quando il giocatore vince la partita
+     * This state occurs when the player wins the game
      */
     WIN,
     /**
-     * Questo stato corrisponde al menù delle statistiche dell'utente
+     * This status corresponds to the user statistics menu
      */
     STATS,
     /**
-     * Questo stato è attivo quando il giocatore mette in pausa il gioco
+     * This state is active when the player pauses the game
      */
     PAUSE;
 

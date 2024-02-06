@@ -4,7 +4,7 @@ import Model.GameModel;
 import Model.UI.Button;
 
 /**
- * Questa classe gestisce lo stato Settings cioè le impostazioni del gioco
+ * This class manages the Settings state i.e. the game settings
  * @see Model.StateModels.Stato
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -14,8 +14,8 @@ public class Settings extends Stato{
     private final Button bStartPage;
 
     /**
-     * Costruttore della classe
-     * @param gameModel: L'istanza del GameModel
+     * Class constructor
+     * @param gameModel: GameModel Instance
      */
     public Settings(GameModel gameModel) {
         super(gameModel);
@@ -28,7 +28,7 @@ public class Settings extends Stato{
     }
 
     /**
-     * Aggiorna gli elementi della classe
+     * Update class elements
      */
     @Override
     public void update() {

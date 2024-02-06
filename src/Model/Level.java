@@ -13,7 +13,7 @@ import java.util.Random;
 import static Model.StateModels.Partita.SCORE;
 
 /**
- * Questa classe gestisce il livello e tutte le sue componenti cioè i nemici, gli ostacoli e i powerup. Ogni livello è costruito a partire da una matrice di interi
+ * This class manages the level and all its components, i.e. enemies, obstacles and powerups. Each level is built from a matrix of integers
  * @see PowerUp
  * @see Obstacle
  * @see java.util.Observable
@@ -29,8 +29,8 @@ public class Level extends Observable {
     private Player player;
 
     /**
-     * costruttore della classe level.
-     * @param data: mappa del livello sotto la forma di una matrice di interi
+     * constructor of the level class.
+     * @param data: level map in the form of a matrix of integers
      */
     public Level(int[][] data){
         this.data = data;
@@ -44,7 +44,7 @@ public class Level extends Observable {
     }
 
     /**
-     * Aggiorna lo stato di tutti gli oggetti del livello
+     * Updates the state of all objects in the level
      */
     public void update(){
         if (firstUpdate){
@@ -106,9 +106,9 @@ public class Level extends Observable {
     }
 
     /**
-     * Questo metodo gestisce l'esplosione degli ostacoli
-     * @param x: coordinata dell'ostacolo
-     * @param y: coordinata dell'ostacole
+     * This method handles the explosion of obstacles
+     * @param x: coordinate of the obstacle
+     * @param y: coordinate of the obstacle
      */
     public void explodeObstacle(int x, int y) {
         for (int j = 0; j < obstacles.size(); j++){
@@ -129,8 +129,8 @@ public class Level extends Observable {
     }
 
     /**
-     * Questo metodo rimuove gli ostacoli dal livello dopo che sono esplosi
-     * @param obstacle: l'ostacolo da rimuovere
+     * This method removes obstacles from the level after they explode
+     * @param obstacle: the obstacle to be removed
      */
     public void removeObstacle(Obstacle obstacle) {
         obstacles.remove(obstacle);
@@ -145,7 +145,7 @@ public class Level extends Observable {
     }
 
     /**
-     * Questo metodo resetta il livello e tutti i suoi oggetti
+     * This method resets the level and all its objects
      */
     public void reset() {
         obstacles.clear();

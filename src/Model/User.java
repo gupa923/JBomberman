@@ -4,7 +4,7 @@ import java.util.Observable;
 import java.util.Random;
 
 /**
- * Questa classe gestisce i dati di un User, e l'aggiornamento degli stessi
+ * This class manages a User's data and its updating
  * @author Guido Paluzzi, Matteo Santucci
  */
 public class User extends Observable {
@@ -18,8 +18,8 @@ public class User extends Observable {
 
 
     /**
-     * Costurttore della classe. Crea un'istanza di User a partire da tutti i dati dell'utente
-     * @param usersCredential: tutti i dati dell'utente
+     * Class builder. Creates an instance of User from all the user's data
+     * @param usersCredential: all user's data
      */
     public User(String[] usersCredential) {
         nickname = usersCredential[0];
@@ -31,10 +31,10 @@ public class User extends Observable {
     }
 
     /**
-     * Crea un Utente a partire dal nome utente dalla password e dall'indice dell'avatar scelto
-     * @param nickname: il nickname dell'utente
-     * @param password: la password dekkk'utente
-     * @param avatarIndex: l'indice dell'avatar scelto
+     * Create a User starting from the username, password and index of the chosen avatar
+     * @param nickname: the user's nickname
+     * @param password: the password of the user
+     * @param avatarIndex: the index of the chosen avatar
      */
     public User(String nickname, String password, int avatarIndex) {
         this.nickname = nickname;
@@ -43,7 +43,7 @@ public class User extends Observable {
     }
 
     /**
-     * Quando una partita termina questo metodo controlla se il record è stato migliorato
+     * When a match ends this method checks if the record has been improved
      * @param record
      */
     public void setRecord(int record) {
@@ -54,7 +54,7 @@ public class User extends Observable {
     }
 
     /**
-     * Aumenta il numero di partite giocate
+     * Increase the number of games played
      */
     public void setGamePlayed(){
         gamePlayed++;
@@ -63,7 +63,7 @@ public class User extends Observable {
     }
 
     /**
-     * Aumenta il numero di partite vinte
+     * Increases the number of games won
      */
     public void setVictories(){
         victories++;

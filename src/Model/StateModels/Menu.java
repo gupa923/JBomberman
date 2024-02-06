@@ -4,7 +4,7 @@ import Model.GameModel;
 import Model.UI.Button;
 
 /**
- * Questa classe gestisce le meccaniche del menu iniziale
+ * This class handles the mechanics of the start menu
  * @see Model.StateModels.Stato
  * @author Guido Paluzzi, Matteo Santucci
  */
@@ -15,7 +15,7 @@ public class Menu extends Stato {
     private final Button bExit;
 
     /**
-     * Costruttore della classe
+     * Class constructor
      * @param gameModel: l'istanza del GameModel
      */
     public Menu(GameModel gameModel) {
@@ -31,7 +31,7 @@ public class Menu extends Stato {
     }
 
     /**
-     * Aggiorna gli elementi della classe, in particolare i bottoni al suo interno
+     * Update the elements of the class, especially the buttons inside it
      */
     @Override
     public void update() {

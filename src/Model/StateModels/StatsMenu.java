@@ -5,7 +5,7 @@ import Model.GameModel;
 import Model.UI.Button;
 
 /**
- * Questa classe gestisce le meccanice del menu delle statitiche
+ * This class manages the mechanics of the statistics menu
  * @see Model.StateModels.Stato
  * @autor Guido Paluzzi, Matteo Santucci
  */
@@ -13,8 +13,8 @@ public class StatsMenu extends Stato {
     private final Button bBack;
 
     /**
-     * Costruttore della classe
-     * @param gameModel: L'istanza del GameModel
+     * Class constructor
+     * @param gameModel: The GameModel instance
      */
     public StatsMenu(GameModel gameModel) {
         super(gameModel);
@@ -23,7 +23,7 @@ public class StatsMenu extends Stato {
     }
 
     /**
-     * Aggiorna gli elementi dello stato
+     * Update status items
      */
     @Override
     public void update() {
